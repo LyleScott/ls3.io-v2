@@ -1,7 +1,6 @@
 baseURL = "https://ls3.io"
 languageCode = "en-us"
 title = "Lyle Scott, III"
-theme = "lyleness-v1"
 
 [markup]
   [markup.highlight]
