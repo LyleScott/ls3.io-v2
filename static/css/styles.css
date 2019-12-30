@@ -20,7 +20,9 @@ body {
 
 .site-heading {
     font-family: "HeadingFont";
-    letter-spacing: .09em;
+    letter-spacing: .1em;
+    font-size: 1.1em;
+    font-weight: bold;
 }
 
 .site-heading img {
