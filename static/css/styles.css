@@ -23,6 +23,22 @@ body {
     letter-spacing: .09em;
 }
 
+.site-heading img {
+    margin: 0 .2em;
+}
+
+.site-heading a:link,
+.site-heading a:hover,
+.site-heading a:visited {
+    color: #333;
+    text-decoration: none;
+}
+
+.site-heading a:hover {
+    color: #000;
+    text-decoration: none;
+}
+
 article h1 {
     font-family: CommonFont;
     font-size: 1.8em;
