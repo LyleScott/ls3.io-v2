@@ -1,5 +1,7 @@
 set -ex
 
+rm -rf public/
+
 # Build site and create ./public
 hugo
 
