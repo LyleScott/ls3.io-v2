@@ -2,8 +2,6 @@ baseURL = "https://ls3.io"
 languageCode = "en-us"
 title = "Lyle Scott, III"
 
-is_local = false
-
 [markup]
   [markup.highlight]
     codeFences = true
