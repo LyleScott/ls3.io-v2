@@ -21,6 +21,17 @@ Parameters:
       - 100
       - 200
 
+  CacheThatMess:
+    Description: Use high caching times (not for dev envs...)
+    Type: String
+    Default: '0'
+    AllowedValues: [ '0', '1' ]
+
+
+Conditions:
+
+  CacheThatMessCond: !Equal [ !Ref CacheThatMess, '1' ]
+
 Resources:
 
   Bucket:
@@ -41,10 +52,7 @@ Resources:
           - Effect: Allow
             Principal: '*'
             Action: s3:GetObject
-            Resource: !Join
-              - '/'
-              - - !GetAtt Bucket.Arn
-                - '*'
+            Resource: !Join [ '/', [ !GetAtt Bucket.Arn, '*' ] ]
 
   Site:
     Type: 'AWS::CloudFront::Distribution'
@@ -69,8 +77,8 @@ Resources:
             - - 'S3'
               - !Ref Domain
           ViewerProtocolPolicy: redirect-to-https
-          DefaultTTL: 30
-          MinTTL: 0
+          DefaultTTL: !If [ CacheThatMessCond, 86400, 60 ]
+          MinTTL: !If [ CacheThatMessCond, 300, 1 ]
           AllowedMethods:
             - HEAD
             - GET
