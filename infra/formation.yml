@@ -69,7 +69,7 @@ Resources:
         DefaultRootObject: index.html
         Enabled: true
         HttpVersion: http2
-        PriceClass: !Sub "PricaeClass_${PriceClass}"
+        PriceClass: !Sub "PriceClass_${PriceClass}"
         DefaultCacheBehavior:
           TargetOriginId: !Join
             - '-'
