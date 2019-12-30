@@ -1,0 +1,14 @@
+[
+    {
+        "ParameterKey": "Domain",
+        "ParameterValue": ""
+    },
+    {
+        "ParameterKey": "AcmCert",
+        "ParameterValue": ""
+    },
+    {
+        "ParameterKey": "PriceClass",
+        "ParameterValue": "100"
+    }
+]
