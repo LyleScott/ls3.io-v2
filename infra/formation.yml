@@ -27,10 +27,9 @@ Parameters:
     Default: '0'
     AllowedValues: [ '0', '1' ]
 
-
 Conditions:
 
-  CacheThatMessCond: !Equal [ !Ref CacheThatMess, '1' ]
+  CacheThatMessCond: !Equals [ !Ref CacheThatMess , '1' ]
 
 Resources:
 
