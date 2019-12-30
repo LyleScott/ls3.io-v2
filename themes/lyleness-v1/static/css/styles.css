@@ -1,0 +1,48 @@
+@font-face {
+    font-family: "HeadingFont";
+    src: url("/fonts/android_101/Android 101.otf");
+}
+
+@font-face {
+    font-family: "CommonFont";
+    src: url('/fonts/comfortaa/Comfortaa-Regular.ttf');
+}
+
+body {
+
+}
+
+#main {
+    line-height: 1.5em;
+    font-size: 1em;
+    margin: 1em;
+}
+
+.site-heading {
+    font-family: "HeadingFont";
+    letter-spacing: .09em;
+}
+
+article h1 {
+    font-family: CommonFont;
+    font-size: 1.8em;
+}
+
+article h2 {
+    font-family: CommonFont;
+    font-size: 1.6em;
+}
+
+article h3 {
+    font-family: CommonFont;
+    font-size: 1.4em;
+}
+
+article h4 {
+    font-family: CommonFont;
+    font-size: 1.2em;
+}
+
+.highlight > pre {
+    padding: .4em .5em;
+}

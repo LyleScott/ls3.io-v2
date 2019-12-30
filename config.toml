@@ -1,0 +1,16 @@
+baseURL = "https://ls3.io"
+languageCode = "en-us"
+title = "Lyle Scott, III"
+theme = "lyleness-v1"
+
+[markup]
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ""
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true
+    style = "manni"
+    tabWidth = 4
