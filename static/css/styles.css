@@ -1,11 +1,13 @@
 @font-face {
     font-family: "HeadingFont";
     src: url("/fonts/android_101/Android 101.otf");
+    font-display: swap;
 }
 
 @font-face {
     font-family: "CommonFont";
     src: url('/fonts/comfortaa/Comfortaa-Regular.ttf');
+    font-display: swap;
 }
 
 body {
