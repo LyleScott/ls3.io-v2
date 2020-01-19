@@ -7,8 +7,10 @@
     <ul class="pure-menu-list">
     <!-- Ranges through content/posts/*.md -->
     {{ range .Pages }}
-        <li class="pure-menu-item">
-            <a href="{{.Permalink}}">{{.Date.Format "2006-01-02"}} // {{.Title}}</a>
+        <li class="pure-menu-item" style="color: gray; margin-top: .35em;">
+          {{.Date.Format "2006-01-02"}}
+          &nbsp;
+          <a href="{{.Permalink}}">{{.Title}}</a>
         </li>
     {{ end }}
     </ul>
