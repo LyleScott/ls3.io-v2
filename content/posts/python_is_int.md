@@ -3,7 +3,7 @@ title: "Python try/except Can Be a Performant Way to Check for Type"
 date: 2019-11-24T14:42:00-05:00
 ---
 
-Say, you want to do some math with a variable. Math implies that the variable in the operation is a numerical value (we'll say in the typical case... don't mean tweet me...). Before doing math operations, you might want to sanity check the variavble so that your code will not blow up if the input is not numerical.
+Say, you want to do some math with a variable. Math implies that the variable in the operation is a numerical value (we'll say in the typical case... don't mean tweet me...). Before doing math operations, you might want to sanity check the variable so that your code will not blow up if the input is not numerical.
 
 `isinstance` is a go-to for asking this _generally_. You just use it like `isinstance(some_variable, Type_Or_Class)` or to check a variable against multiple instance types you would just change the second argument to a tuple like `isinstance(some_variable, (Type_Or_Class1, Type_Or_Class2))`.
 
@@ -73,7 +73,7 @@ except TypeError:
 print(timeit.timeit(setup=setup, stmt=test, number=N_ITERATIONS))
 ```
 
-On a random EC2 instance I SSh'ed into:
+On a random EC2 instance I SSH'ed into:
 
 ```shell
 1.5472514729946852
