@@ -12,7 +12,7 @@ So, the usage would be as a _pre-check_ to validation:
 ```python
 def validate(foobar):
     if not isinstance(foobar, (int, float)):
-        raise ValueError('This input must be an int')
+        raise ValueError("This input must be a number!")
     
     return foobar + 10
 ```
@@ -31,7 +31,7 @@ def validate(foobar):
     try:
         return foobar + 10
     except:
-        raise ValueError('This input must be a number!')
+        raise ValueError("This input must be a number!")
 ```
 
 Whenever I stumble upon something like this, I like to break out `timeit` to compare.
@@ -59,7 +59,7 @@ test = """
 try:
     unix_epoch += 1
 except TypeError:
-    pass
+    raise ValueError("This input must be a number!")
 """
 print(timeit.timeit(setup=setup, stmt=test, number=N_ITERATIONS))
 
@@ -68,7 +68,7 @@ test = """
 try:
     unix_epoch / 2
 except TypeError:
-    pass
+    raise ValueError("This input must be a number!")
 """
 print(timeit.timeit(setup=setup, stmt=test, number=N_ITERATIONS))
 ```
