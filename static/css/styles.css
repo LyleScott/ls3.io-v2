@@ -6,7 +6,7 @@
 
 @font-face {
     font-family: "CommonFont";
-    src: url('/fonts/comfortaa/Comfortaa-Regular.ttf');
+    src: url('/fonts/comfortaa/Comfortaa-Bold.ttf');
     font-display: swap;
 }
 
@@ -15,16 +15,23 @@ body {
 }
 
 #main {
-    line-height: 1.5em;
+    line-height: 1.3em;
     font-size: 1em;
     margin: 1em;
 }
 
+#site-header {
+    background-color: #EEE;
+    border-bottom: 2px solid #CCC;
+    color: #EEE;
+    margin-top: .1em;
+}
+
 .site-heading {
-    font-family: "HeadingFont";
     letter-spacing: .1em;
     font-size: 1.1em;
     font-weight: bold;
+    text-transform: none;
 }
 
 .site-heading img {
@@ -34,7 +41,7 @@ body {
 .site-heading a:link,
 .site-heading a:hover,
 .site-heading a:visited {
-    color: #333;
+    color: #666;
     text-decoration: none;
 }
 
@@ -66,3 +73,18 @@ article h4 {
 .highlight > pre {
     padding: .4em .5em;
 }
+
+blockquote {
+    margin: 0;
+    background-color: #EEE;
+    padding: .2em .4em;
+    border-left: .2em solid #999;
+}
+
+blockquote > p {
+    margin: 0;
+    padding: 0;
+}
+
+
+code { color: darkred; }
