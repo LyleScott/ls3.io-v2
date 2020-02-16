@@ -16,7 +16,6 @@ html-minifier --input-dir ./public --output-dir ./public --collapse-whitespace -
 
 # Sync files to S3.
 aws s3 sync \
-    --quiet \
     --delete \
     public/ s3://ls3.io
 

@@ -66,3 +66,13 @@ article h4 {
 .highlight > pre {
     padding: .4em .5em;
 }
+
+table {
+    border: 1px solid #CCC;
+    font-family: monospace;
+}
+
+th, td {
+    padding: 3px 6px;
+    border: 1px solid #CCC;
+}
