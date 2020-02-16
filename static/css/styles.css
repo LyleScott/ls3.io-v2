@@ -23,12 +23,13 @@ body {
 #site-header {
     background-color: #EEE;
     border-bottom: 2px solid #CCC;
-    color: #EEE;
+    color: #121212;
     margin-top: .1em;
 }
 
 .site-heading {
     letter-spacing: .1em;
+    font-family: HeadingFont;
     font-size: 1.1em;
     font-weight: bold;
     text-transform: none;
@@ -98,4 +99,3 @@ th, td {
     padding: 3px 6px;
     border: 1px solid #CCC;
 }
->>>>>>> 834f87da4e1643199c0a9ff5877f10f03fc48cc9
