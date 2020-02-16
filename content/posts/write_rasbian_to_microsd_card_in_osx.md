@@ -45,7 +45,7 @@ a cheap USB-C adapter that includes a MicroSD card slot (it also has one for the
 > which would  mean you can only read data from it (writes are prevented). Usually, this requires
 > you to slide the lock "forward"; towards the end you plug into the slot.
 
-{{<figure src="/imgs/usbc_sd_card_reader.jpg" alt="USB-C SD Card Reader" title="USB-C SD Card Reader">}}
+{{<figure src="/img/usbc_sd_card_reader.jpg" alt="USB-C SD Card Reader" title="USB-C SD Card Reader">}}
 
 _Before_ plugging in your MicroSD card to your computer, take a look at your current disks.
 This will give you a base-line of currently mounted disks. **Make sure NOT to write the Raspbian

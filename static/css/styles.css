@@ -88,3 +88,14 @@ blockquote > p {
 
 
 code { color: darkred; }
+
+table {
+    border: 1px solid #CCC;
+    font-family: monospace;
+}
+
+th, td {
+    padding: 3px 6px;
+    border: 1px solid #CCC;
+}
+>>>>>>> 834f87da4e1643199c0a9ff5877f10f03fc48cc9

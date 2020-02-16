@@ -16,6 +16,12 @@ html-minifier --input-dir ./public --output-dir ./public --collapse-whitespace -
 
 # Sync files to S3.
 aws s3 sync \
-    --quiet \
     --delete \
     public/ s3://ls3.io
+
+# Expire CDN assets so new content makes it out to browsers.
+aws cloudfront \
+    --profile personal \
+    create-invalidation \
+        --distribution-id E2RK2MVKQPV6WM \
+        --paths '/*'
