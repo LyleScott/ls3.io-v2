@@ -6,7 +6,7 @@ date: 2020-02-22T10:12:34-05:00
 Since `drop tables like '%_staging'` isn't implemented it seems like, I always open up the Snowflake web console and fall back to good 'ol 
 
 ```
-SELECT CONCAT('DROP TABLE', table_name, ';')
+SELECT CONCAT('DROP TABLE ', table_name, ' ;')
 FROM mytable.information_schema.tables 
 WHERE table_name like '%_STAGING';
 ```
