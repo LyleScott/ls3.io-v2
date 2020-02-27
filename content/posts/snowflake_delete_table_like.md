@@ -7,7 +7,7 @@ Since `drop tables like '%_staging'` isn't implemented it seems like, I always o
 
 ```sql
 SELECT CONCAT('DROP TABLE ', table_name, ' ;')
-FROM mytable.information_schema.tables 
+FROM your_database_name.information_schema.tables 
 WHERE table_name like '%_STAGING';
 ```
 
