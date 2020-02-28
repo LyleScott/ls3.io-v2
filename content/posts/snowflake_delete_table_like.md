@@ -15,10 +15,5 @@ meta_kw:
 
 Since `drop tables like '%_staging'` isn't implemented it seems like, I always open up the Snowflake web console and fall back to good 'ol:
 
-```sql
-SELECT CONCAT('DROP TABLE ', table_name, ' ;')
-FROM your_database_name.information_schema.tables
-WHERE table_name like '%_STAGING';
-```
+{{< gist LyleScott e9ef47ecea98c7b8918d1ed74bf0abd4 >}}
 
-Then, click "COPY" to get the TSV results. Paste all those commants to a Snowflake UI worksheet, select all of them, and execute the queries.
