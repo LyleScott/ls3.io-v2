@@ -1,6 +1,16 @@
 ---
 title: "SQL for Getting the Most Recent Values for Time Series"
 date: 2020-01-18T22:14:36-05:00
+tags:
+  - "data engineering"
+  - "snowflake"
+  - "sql"
+meta_kw:
+  - "snowflake"
+  - "query"
+  - "latest"
+  - "most recent"
+  - "time"
 ---
 
 Given a table for time-series data, it is often useful to ask _what are the most recent values for each entity_ to get a picture of the state up to a specific time.

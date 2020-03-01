@@ -1,6 +1,13 @@
 ---
 title: "Python try/except Can Be a Performant Way to Check for Type"
 date: 2019-11-24T14:42:00-05:00
+tags:
+  - "python"
+meta_kw:
+  - "python performance"
+  - "type except"
+  - "python tips"
+  - "tricks"
 ---
 
 Say, you want to do some math with a variable. Math implies that the variable in the operation is a numerical value (we'll say in the typical case... don't mean tweet me...). Before doing math operations, you might want to sanity check the variable so that your code will not blow up if the input is not numerical.
