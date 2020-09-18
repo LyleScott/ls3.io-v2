@@ -12,10 +12,11 @@ curl -X POST -s --data-urlencode 'input@/tmp/combined.css' https://cssminifier.c
     > public/css/styles.css
 
 # Minimize HTML
-html-minifier --input-dir ./public --output-dir ./public --collapse-whitespace --file-ext html
+#html-minifier --input-dir ./public --output-dir ./public --collapse-whitespace --file-ext html
 
 # Sync files to S3.
 aws s3 sync \
+    --profile personal \
     --delete \
     public/ s3://ls3.io
 

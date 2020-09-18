@@ -1,4 +1,4 @@
-# Consulting
+# Hire Me
 
 I consult on a variety of topics that are devops, development, and data science related.
 
