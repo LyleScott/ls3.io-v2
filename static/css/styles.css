@@ -1,73 +1,77 @@
-@font-face {
-    font-family: "HeadingFont";
-    src: url("/fonts/android_101/Android 101.otf");
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "CommonFont";
-    src: url('/fonts/comfortaa/Comfortaa-Bold.ttf');
-    font-display: swap;
-}
-
 body {
-
 }
 
 #main {
-    line-height: 1.3em;
-    font-size: 1em;
-    margin: 1em;
+    line-height: 1.6em;
+    font-size: 1.2em;
+    margin: .5em;
 }
 
 #site-header {
-    background-color: #EEE;
-    border-bottom: 2px solid #CCC;
+    background-color: #DEDEDE;
+    border-bottom: 2px solid #A1A1A1;
     color: #121212;
-    margin-top: .1em;
+    padding: .5em .6em;
+    height: 1.3em;
+    font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+    font-size: 1.2em;
 }
 
-.site-heading {
-    letter-spacing: .1em;
-    font-family: HeadingFont;
-    font-size: 1.1em;
-    font-weight: bold;
-    text-transform: none;
-}
-
-.site-heading img {
-    margin: 0 .2em;
-}
-
-.site-heading a:link,
-.site-heading a:hover,
-.site-heading a:visited {
+#site-header a:active,
+#site-header a:link,
+#site-header a:visited {
     color: #666;
     text-decoration: none;
 }
 
-.site-heading a:hover {
+#site-header a:hover {
     color: #000;
     text-decoration: none;
 }
 
+#site-header ul {
+    margin: 0;
+    padding: 0;
+    display: inline;
+}
+
+#site-header li {
+    display: inline;
+    list-style: none;
+    margin-right: .3em;
+}
+
+#site-header #site-header-links {
+    float: right;
+}
+
+#site-header #site-header-links li {
+    border-left: .2em solid #A1A1A1;
+    margin-right: 2em;
+    padding-left: .5em;
+}
+
+#site-header #site-header-links li:hover {
+    border-left: .2em solid #000;
+}
+
 article h1 {
-    font-family: CommonFont;
-    font-size: 1.8em;
+    font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+    font-size: 1.7em;
 }
 
 article h2 {
-    font-family: CommonFont;
-    font-size: 1.6em;
+    font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+    font-size: 1.5em;
 }
 
 article h3 {
-    font-family: CommonFont;
+    font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
     font-size: 1.4em;
 }
 
 article h4 {
-    font-family: CommonFont;
+    font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
     font-size: 1.2em;
 }
 
