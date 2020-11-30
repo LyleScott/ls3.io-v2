@@ -1,5 +1,5 @@
 +++
-date = "2017-10-05"
+date = "2020-10-05"
 title = "My Docker Patterns"
 description = "Docker patterns that I find useful"
 tags = [
