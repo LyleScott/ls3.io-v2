@@ -1,0 +1,48 @@
+.. _general_ordering:
+
+========
+Ordering
+========
+
+Generally, API results are orderable by the local attributes **defined in the REST
+data model**.
+
+Intro
+=====
+
+For example, given the data model:
+
+============  ========
+User          Datatype
+============  ========
+id            id
+created       datetime
+name          string
+account_type  ref
+============  ========
+
+Order on `name` in ascending order:
+
+.. http:get:: /users/?order_by=name
+
+Order on `name` in descending order:
+
+.. http:get:: /users/?order_by=-name
+
+Order on multiple fields:
+
+.. http:get:: /users/?order_by=created,name
+
+.. _general_ordering_meta:
+
+Ordering Objects by Meta values
+-------------------------------
+
+Many objects support a :ref:`Meta <general_meta>` interface for generic key/value like storage. You
+may use a value that exists on :ref:`Meta <general_meta>` with the `order_by` URL parameter as well.
+
+.. warning:: Currently, only one `meta__` field can be supplied in the `order_by`.
+
+For example:
+
+.. http:get:: /devices/?order_by=-meta__dim

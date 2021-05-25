@@ -1,0 +1,450 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Als-to-Lux Correlation &mdash; Documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/navtree.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Documentation" href="../index.html"/>
+        <link rel="up" title="Integrations" href="../integrations.html"/>
+        <link rel="next" title="External Sensors" href="external_sensor.html"/>
+        <link rel="prev" title="Integrations" href="../integrations.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Cloud API
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="link caption"><span class="link caption-text"><a class="reference internal" href="../misc.html">Misc</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/change_log.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/object_relation_diagram.html">Object Relation Diagram</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../general.html">General</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/analytics.html">Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api_tokens.html">API Tokens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/authentication.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/clearing_field_values.html">Clearing Field Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/device_counts.html">Device Counts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/exclude_include_fields.html">Include/Exclude Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/filtering.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ordering.html">Ordering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/meta.html">Meta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/meta_groups.html">Meta Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/pagination.html">Pagination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/pubsub.html">PubSub Message Broker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/search.html">Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/scope.html">Scope</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../objects.html">Objects</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../objects/action_types.html">Action Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/actions.html">Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/analytics_export.html">Analytics Export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/analytics_query.html">Analytics Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/areas.html">Areas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/buildings.html">Buildings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/connected_products.html">Connected Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/currency.html">Currency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/customers.html">Customers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/dashboards.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/devices.html">Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/fault_alarms.html">Fault Alarms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/local_rules.html">Local Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/locations.html">Locations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/partners.html">Partners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/product_files.html">Product Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/product_types.html">Product Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/products.html">Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/rules_v2.html">Rules V2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/rule_groups.html">Rule Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/scenes.html">Scenes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/schedules.html">Schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/spaces.html">Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/timezones.html">Timezones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/user_features.html">User Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/user_groups.html">User Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/user_preferences.html">User Preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/users.html">Users</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../integrations.html">Integrations</a></span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Als-to-Lux Correlation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#flow">Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#complex-constraints">Complex Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#endpoint">Endpoint</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="external_sensor.html">External Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gateway_lite.html">Gateway Lite</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cloud API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../integrations.html">Integrations</a> &raquo;</li>
+        
+      <li>Als-to-Lux Correlation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/integrations/als2lux.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="als-to-lux-correlation">
+<span id="als2lux"></span><h1><a class="toc-backref" href="#id1">Als-to-Lux Correlation</a><a class="headerlink" href="#als-to-lux-correlation" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="quick-links">
+<p class="topic-title first">Quick Links</p>
+<ul class="simple">
+<li><a class="reference internal" href="#als-to-lux-correlation" id="id1">Als-to-Lux Correlation</a><ul>
+<li><a class="reference internal" href="#description" id="id2">Description</a></li>
+<li><a class="reference internal" href="#flow" id="id3">Flow</a></li>
+<li><a class="reference internal" href="#data-model" id="id4">Data Model</a></li>
+<li><a class="reference internal" href="#complex-constraints" id="id5">Complex Constraints</a></li>
+<li><a class="reference internal" href="#endpoint" id="id6">Endpoint</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="description">
+<h2><a class="toc-backref" href="#id2">Description</a><a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>A 3rd party calibration mobile app by Lumo takes ALS readings at various Dim levels and then
+outputs a Lux value. The end result after the calibration process is multiple x,y coordinates,
+where x is ALS, y is Lux, and each coordinate corresponds to a different Dim level.  By default,
+Cloud API automatically prepends the minimum x/y coordinate when it is not provided.</p>
+<p>This endpoint performs a linear best-fit on the calibration coordinates to arrive at best-fit
+coefficients. When an ALS <a class="reference internal" href="../general/meta.html#general-meta"><span class="std std-ref">Meta</span></a> value changes, the corresponding Lux
+<a class="reference internal" href="../general/meta.html#general-meta"><span class="std std-ref">Meta</span></a> is output as well per the best-fit coefficients.</p>
+</div>
+<div class="section" id="flow">
+<h2><a class="toc-backref" href="#id3">Flow</a><a class="headerlink" href="#flow" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>The Gooee commissioning app provides the Gooee API input data points for a best fit calculation.</li>
+<li>The Gooee API computes the best-fit coefficients and stores them on the <a class="reference internal" href="../objects/devices.html#objects-devices"><span class="std std-ref">Device</span></a>&#8216;s custom fields.</li>
+<li>As part of business rule evaluation, the Reactor does the als-to-lux calculation on-the-fly when the <a class="reference internal" href="../objects/devices.html#objects-devices"><span class="std std-ref">Device</span></a>&#8216;s als meta changes.</li>
+</ol>
+</div>
+<div class="section" id="data-model">
+<h2><a class="toc-backref" href="#id4">Data Model</a><a class="headerlink" href="#data-model" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="28%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>device</td>
+<td>UUID</td>
+<td>required</td>
+</tr>
+<tr class="row-odd"><td>fit_degree</td>
+<td>int</td>
+<td>required, <a class="reference internal" href="#als2lux-constraints"><span class="std std-ref">Complex Constraints</span></a></td>
+</tr>
+<tr class="row-even"><td>points</td>
+<td>array(array())</td>
+<td>required, [[x1,y1],..,[xN,yN]], <a class="reference internal" href="#als2lux-constraints"><span class="std std-ref">Complex Constraints</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="complex-constraints">
+<span id="als2lux-constraints"></span><h2><a class="toc-backref" href="#id5">Complex Constraints</a><a class="headerlink" href="#complex-constraints" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>The minimum value of <code class="docutils literal"><span class="pre">fit_degree</span></code> is <code class="docutils literal"><span class="pre">1</span></code>.</li>
+<li>The minimum length of <code class="docutils literal"><span class="pre">points</span></code> is <code class="docutils literal"><span class="pre">fit_degree</span></code> plus <code class="docutils literal"><span class="pre">1</span></code>.</li>
+<li>X values may not repeat within <code class="docutils literal"><span class="pre">points</span></code>.</li>
+</ul>
+</div>
+<div class="section" id="endpoint">
+<h2><a class="toc-backref" href="#id6">Endpoint</a><a class="headerlink" href="#endpoint" title="Permalink to this headline">¶</a></h2>
+<p>This endpoint is used to calibrate the automatic conversion of ALS to Lux for a Device.</p>
+<dl class="post">
+<dt id="post--integrations-als2lux">
+<code class="descname">POST </code><code class="descname">/integrations/als2lux</code><a class="headerlink" href="#post--integrations-als2lux" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">JSON Parameters:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first simple">
+<li><strong>device</strong> (<em>string</em>) &#8211; Device UUID (required)</li>
+<li><strong>fit_degree</strong> (<em>int</em>) &#8211; Best-fit degree for coefficients, e.g 1=linear, etc. (required)</li>
+<li><strong>points</strong> (<em>array</em>) &#8211; x,y calibration coordinates [[x1,y1],..,[xN,yN]] (required)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2">201 Created</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/integrations/als2lux</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">application/json</span>
+
+{
+  &quot;device&quot;: &quot;d52b19fa-e78b-4f45-9fea-617d83c539c7&quot;,
+  &quot;fit_degree&quot;: 1,
+  &quot;points&quot;: [[0,0],[10,20],[20,41],[30,58]]
+}
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">CREATED</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+    <span class="nt">&quot;device&quot;</span><span class="p">:</span> <span class="s2">&quot;d52b19fa-e78b-4f45-9fea-617d83c539c7&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;fit_degree&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nt">&quot;points&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">[</span>
+            <span class="mi">0</span><span class="p">,</span>
+            <span class="mi">0</span>
+        <span class="p">],</span>
+        <span class="p">[</span>
+            <span class="mi">10</span><span class="p">,</span>
+            <span class="mi">20</span>
+        <span class="p">],</span>
+        <span class="p">[</span>
+            <span class="mi">20</span><span class="p">,</span>
+            <span class="mi">41</span>
+        <span class="p">],</span>
+        <span class="p">[</span>
+            <span class="mi">30</span><span class="p">,</span>
+            <span class="mi">58</span>
+        <span class="p">]</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="external_sensor.html" class="btn btn-neutral float-right" title="External Sensors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../integrations.html" class="btn btn-neutral" title="Integrations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Gooee, LLC.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/tabs.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

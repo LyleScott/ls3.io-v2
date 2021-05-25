@@ -1,0 +1,28 @@
+{
+  "device": "$device_id",
+  "name": "bright als",
+  "conditions": [
+    {
+      "variable": "als",
+      "operator": ">",
+      "value": 55,
+      "logical_operator": null
+    }
+  ],
+  "operations": [
+    {
+      "spaces": [
+        "$space_id"
+      ],
+      "actions": [
+        {
+          "name": "dim",
+          "parameters": {
+            "level": 20,
+            "transition_time": 3
+          }
+        }
+      ]
+    }
+  ]
+}

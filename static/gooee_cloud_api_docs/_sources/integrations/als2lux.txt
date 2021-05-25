@@ -1,0 +1,103 @@
+.. _als2lux:
+
+======================
+Als-to-Lux Correlation
+======================
+
+.. contents:: Quick Links
+
+Description
+===========
+
+A 3rd party calibration mobile app by Lumo takes ALS readings at various Dim levels and then
+outputs a Lux value. The end result after the calibration process is multiple x,y coordinates,
+where x is ALS, y is Lux, and each coordinate corresponds to a different Dim level.  By default,
+Cloud API automatically prepends the minimum x/y coordinate when it is not provided.
+
+This endpoint performs a linear best-fit on the calibration coordinates to arrive at best-fit
+coefficients. When an ALS :ref:`Meta <general_meta>` value changes, the corresponding Lux
+:ref:`Meta <general_meta>` is output as well per the best-fit coefficients.
+
+Flow
+====
+
+1. The Gooee commissioning app provides the Gooee API input data points for a best fit calculation.
+2. The Gooee API computes the best-fit coefficients and stores them on the :ref:`Device <objects_devices>`'s custom fields.
+3. As part of business rule evaluation, the Reactor does the als-to-lux calculation on-the-fly when the :ref:`Device <objects_devices>`'s als meta changes.
+
+Data Model
+==========
+
+===============  =====================================  =========================
+Key              Datatype                               Notes
+===============  =====================================  =========================
+device           UUID                                   required
+fit_degree       int                                    required, :ref:`Complex Constraints <als2lux_constraints>`
+points           array(array())                         required, [[x1,y1],..,[xN,yN]], :ref:`Complex Constraints <als2lux_constraints>`
+===============  =====================================  =========================
+
+.. _als2lux_constraints:
+
+Complex Constraints
+===================
+
+- The minimum value of ``fit_degree`` is ``1``.
+- The minimum length of ``points`` is ``fit_degree`` plus ``1``.
+- X values may not repeat within ``points``.
+
+Endpoint
+========
+
+This endpoint is used to calibrate the automatic conversion of ALS to Lux for a Device.
+
+.. http:POST:: /integrations/als2lux
+
+    :json string device: Device UUID (required)
+    :json int fit_degree: Best-fit degree for coefficients, e.g 1=linear, etc. (required)
+    :json array points: x,y calibration coordinates [[x1,y1],..,[xN,yN]] (required)
+
+    :statuscode 201:
+
+    **Example request**:
+
+    .. sourcecode:: http
+
+        POST /integrations/als2lux HTTP/1.1
+        Host: api.gooee.io
+        Accept: application/json
+
+        {
+          "device": "d52b19fa-e78b-4f45-9fea-617d83c539c7",
+          "fit_degree": 1,
+          "points": [[0,0],[10,20],[20,41],[30,58]]
+        }
+
+    **Example response**:
+
+    .. sourcecode:: http
+
+        HTTP/1.1 201 CREATED
+        Content-Type: application/json
+
+        {
+            "device": "d52b19fa-e78b-4f45-9fea-617d83c539c7",
+            "fit_degree": 1,
+            "points": [
+                [
+                    0,
+                    0
+                ],
+                [
+                    10,
+                    20
+                ],
+                [
+                    20,
+                    41
+                ],
+                [
+                    30,
+                    58
+                ]
+            ]
+        }

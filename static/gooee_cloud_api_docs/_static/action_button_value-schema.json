@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "button_number": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 4
+    }
+  },
+  "required": [
+    "button_number"
+  ],
+  "additionalProperties": false
+}

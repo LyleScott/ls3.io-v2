@@ -1,0 +1,237 @@
+.. _general_filtering:
+
+=========
+Filtering
+=========
+
+.. contents:: Quick Links
+
+Intro
+=====
+
+Generally, API endpoints are filterable by the attributes **defined in the REST
+data model**. Filtering is also enabled on the attributes of those first-order
+relations.
+
+For example, given the data models:
+
+============  ========
+User          Datatype
+============  ========
+id            id
+created       datetime
+name          string
+account_type  ref
+============  ========
+
+
+=========  ========
+User Role  Datatype
+=========  ========
+id         id
+created    datetime
+name       string
+=========  ========
+
+You can filter on attributes:
+
+.. http:get:: /users/?name__contains=sylv
+.. http:get:: /users/?user_role=02ec4289-8e03-4a61-9829-e9ba512468b8
+
+You can also filter on a relation attribute, just keep in mind that the ability
+to filter on that relation's relations is not supported. (if you need this,
+speak up.)
+
+.. http:get:: /users/?user_role__name__iexact=admin
+.. http:get:: /users/?user_role__created__gt=2016-01-26T14:34:25-05:00
+
+
+Extra Filters
+=============
+
+Filtering on extra fields may be supported on some objects.
+See the following table for reference:
+
+===============================================  ============  ==================================
+Object                                           Extra Fields  Examples
+===============================================  ============  ==================================
+:ref:`Devices <objects_devices>`                 customer      /devices/?customer=ID
+                                                               /devices/?customer=ID&type=gateway
+
+                                                 building      /devices/?building=ID
+                                                               /devices/?building=ID&type=wim
+
+===============================================  ============  ==================================
+
+.. note:: For :ref:`Devices <objects_devices>` filtering by `customer` and `building` we only
+          support **equal(=)** operator.
+
+          Those objects use different paths between the object itself
+          and the :ref:`Building <objects_buildings>` or :ref:`Customer <objects_customers>`.
+          :ref:`Devices <objects_devices>` can have 2 possible paths:
+
+          1. Device -> Gateway -> Space -> Building -> Customer
+          2. Device -> Connected Product -> Space -> Building -> Customer
+
+          :ref:`Gateway Devices <objects_devices>` can have 1 possible path:
+
+          1. Gateway -> Space -> Building -> Customer
+
+          :ref:`Mesh Access Point Devices <objects_devices>` can have 1 possible path:
+
+          1. Mesh Access Point -> Gateway -> Space -> Building -> Customer
+
+
+True/False Filters
+==================
+
+If you are using boolean filters, use **True** and **False** as the values.
+Not 0/1 or true/false. This is a constraint of the filtering library using
+Python native datatypes to cheat a bit.
+
+Examples
+--------
+
+.. http:get:: /users/?is_active=True
+
+
+Default ID Filters
+==================
+
+Most IDs in the system are UUIDs rather than integer IDs. It's worth noting
+that these UUID fields will be stored **in lowercase**, so keep that in mind
+when you are filtering.
+
+======  =========
+Filter  Notes
+======  =========
+=       Is equal
+!=      Not equal
+======  =========
+
+Examples
+--------
+
+.. http:get:: /users/?id=0123963e-d50b-4e02-830e-cd2d4b22573b
+
+
+Tags Filters
+============
+
+Most objects on the system can be tagged. If you are filtering an object by its tags you can
+only use the *equal* operator with a comma separated list of tags.
+
+Examples
+--------
+
+.. http:get:: /users/?tags=vip,etc
+
+
+Default DateTime Filters
+========================
+
+Dates are ISO-8601 formatted.
+
+=========   ====================================================
+Filter      Notes
+=========   ====================================================
+=           Is equal
+!=          Not equal
+\__gt       Greater than
+\__gte      Greater than or equal to
+\__lt       Less than
+\__lte      Less than or equal to
+\__in
+\__range
+\__year     Supports *=*, *!=*, *__lt*, *__lte*, *__gt*, *__gte*
+\__month    Supports *=*, *!=*, *__lt*, *__lte*, *__gt*, *__gte*
+\__day      Supports *=*, *!=*, *__lt*, *__lte*, *__gt*, *__gte*
+\__hour     Supports *=*, *!=*, *__lt*, *__lte*, *__gt*, *__gte*
+\__minute   Supports *=*, *!=*, *__lt*, *__lte*, *__gt*, *__gte*
+\__second   Supports *=*, *!=*, *__lt*, *__lte*, *__gt*, *__gte*
+\__isnull   =True or =False
+=========   ====================================================
+
+Examples
+--------
+
+.. http:get:: /users/?created=2016-01-26T14:22:26-05:00
+.. http:get:: /users/?created__lt=2016-01-26T19:23:21+00:00
+.. http:get:: /users/?created__year=2016&created__day=20
+
+
+Default String Filters
+======================
+
+==============  ============================================
+Filter          Notes
+==============  ============================================
+=               Is equal
+!=              Not equal
+\__iexact       Case-insensitive equals
+\__contains     Substring match
+\__icontains    Substring match (case insensitive)
+\__in
+\__startswith   Starts with the substring
+\__istartswith  Starts with the substring (case insensitive)
+\__endswith     Ends with the substring
+\__iendswith    Ends with the substring (case insensitive)
+\__isnull       =True or =False
+\__regex        Matches regex
+\__iregex       Matches regex (case insensitive)
+==============  ============================================
+
+Examples
+--------
+
+.. http:get:: /users/?name=Lyle
+.. http:get:: /users/?name__iexact=lyle
+.. http:get:: /users/?name__iendswith=le
+.. http:get:: /users/?created__isnull=True
+
+.. _general_filtering_device_meta:
+
+Filter Devices by Meta
+======================
+
+:ref:`Devices <objects_devices>` can be filtered by their :ref:`Meta <general_meta>` ``value`` using 
+the following syntax:
+
+.. http:get:: /devices/?meta__{{META_NAME}}={{META_VALUE}}
+
+where ``{{META_NAME}}`` is the ``name`` of a Meta and ``{{META_VALUE}}`` is the ``value``.
+
+You may also filter :ref:`Devices <objects_devices>` for the existence of a particular
+:ref:`Meta <general_meta>` by name, using the following syntax:
+
+.. http:get:: /devices/?meta__{{META_NAME}}__isnull=True
+.. http:get:: /devices/?meta__{{META_NAME}}__isnull=False
+
+Examples
+--------
+
+.. http:get:: /devices/?meta__is_online=true
+.. http:get:: /devices/?meta__is_online=True
+.. http:get:: /devices/?meta__dim=5
+.. http:get:: /devices/?meta__als__isnull=false
+
+
+.. _general_ordering_device_meta:
+
+Order Devices by Meta
+=====================
+
+:ref:`Devices <objects_devices>` can be ordered by their :ref:`Meta <general_meta>` ``value`` using 
+the following syntax:
+
+.. http:get:: /devices/?order_by=meta__{{META_NAME}}
+
+When ordering by Device Meta ``value`` you will be excluding Devices that do not currently have that 
+Meta.  If you would like to reverse the order then prefix the Meta Name with ``-``.
+
+Examples
+--------
+
+.. http:get:: /devices/?order_by=meta__dim
+.. http:get:: /devices/?order_by=meta__is_online
+.. http:get:: /devices/?order_by=meta__last_activity

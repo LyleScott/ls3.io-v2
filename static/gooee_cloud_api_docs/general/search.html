@@ -1,0 +1,877 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Search &mdash; Documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/navtree.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Documentation" href="../index.html"/>
+        <link rel="up" title="General" href="../general.html"/>
+        <link rel="next" title="Scope" href="scope.html"/>
+        <link rel="prev" title="PubSub Message Broker" href="pubsub.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Cloud API
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="link caption"><span class="link caption-text"><a class="reference internal" href="../misc.html">Misc</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/change_log.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/object_relation_diagram.html">Object Relation Diagram</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../general.html">General</a></span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="analytics.html">Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_tokens.html">API Tokens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clearing_field_values.html">Clearing Field Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="device_counts.html">Device Counts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exclude_include_fields.html">Include/Exclude Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filtering.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ordering.html">Ordering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meta.html">Meta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meta_groups.html">Meta Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pagination.html">Pagination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pubsub.html">PubSub Message Broker</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Search</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="scope.html">Scope</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../objects.html">Objects</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../objects/action_types.html">Action Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/actions.html">Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/analytics_export.html">Analytics Export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/analytics_query.html">Analytics Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/areas.html">Areas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/buildings.html">Buildings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/connected_products.html">Connected Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/currency.html">Currency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/customers.html">Customers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/dashboards.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/devices.html">Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/fault_alarms.html">Fault Alarms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/local_rules.html">Local Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/locations.html">Locations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/partners.html">Partners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/product_files.html">Product Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/product_types.html">Product Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/products.html">Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/rules_v2.html">Rules V2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/rule_groups.html">Rule Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/scenes.html">Scenes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/schedules.html">Schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/spaces.html">Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/timezones.html">Timezones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/user_features.html">User Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/user_groups.html">User Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/user_preferences.html">User Preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/users.html">Users</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../integrations.html">Integrations</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/als2lux.html">Als-to-Lux Correlation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/external_sensor.html">External Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/gateway_lite.html">Gateway Lite</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cloud API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../general.html">General</a> &raquo;</li>
+        
+      <li>Search</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/general/search.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="search">
+<span id="general-search"></span><h1>Search<a class="headerlink" href="#search" title="Permalink to this headline">¶</a></h1>
+<p>The Search API provides site-wide, case-insensitive, locale-insensitive fulltext searching
+capabilities.  See <a class="reference internal" href="#search-parameters"><span class="std std-ref">Parameters</span></a> for how to query.</p>
+<div class="section" id="data-model">
+<h2>Data Model<a class="headerlink" href="#data-model" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="8%" />
+<col width="81%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Data Type</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>model</td>
+<td>string</td>
+<td>Model representing the record.</td>
+</tr>
+<tr class="row-odd"><td>id</td>
+<td>ref</td>
+<td>UUID of the record.</td>
+</tr>
+<tr class="row-even"><td>relevance</td>
+<td>number</td>
+<td>Relevance of the search result based on your query parameter.</td>
+</tr>
+<tr class="row-odd"><td>fields</td>
+<td>object</td>
+<td>Fields of the result.  See <a class="reference internal" href="#search-supported-model-fields"><span class="std std-ref">Supported Model Fields</span></a>.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="supported-model-fields">
+<span id="search-supported-model-fields"></span><h3>Supported Model Fields<a class="headerlink" href="#supported-model-fields" title="Permalink to this headline">¶</a></h3>
+<p>Depending on the <code class="docutils literal"><span class="pre">model</span></code> of the search result the <code class="docutils literal"><span class="pre">fields</span></code> provided will be different.  When conducting a
+search these are the <code class="docutils literal"><span class="pre">fields</span></code> for each <code class="docutils literal"><span class="pre">model</span></code> that are searched and returned in the result:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#search-area"><span class="std std-ref">Area Fields</span></a></li>
+<li><a class="reference internal" href="#search-building"><span class="std std-ref">Building Fields</span></a></li>
+<li><a class="reference internal" href="#search-connectedproduct"><span class="std std-ref">Connected Product Fields</span></a></li>
+<li><a class="reference internal" href="#search-customer"><span class="std std-ref">Customer Fields</span></a></li>
+<li><a class="reference internal" href="#search-device"><span class="std std-ref">Device Fields</span></a></li>
+<li><a class="reference internal" href="#search-eventrule"><span class="std std-ref">Event Rule Fields</span></a></li>
+<li><a class="reference internal" href="#search-partner"><span class="std std-ref">Partner Fields</span></a></li>
+<li><a class="reference internal" href="#search-product"><span class="std std-ref">Product Fields</span></a></li>
+<li><a class="reference internal" href="#search-propertyrule"><span class="std std-ref">Property Rule Fields</span></a></li>
+<li><a class="reference internal" href="#search-scene"><span class="std std-ref">Scene Fields</span></a></li>
+<li><a class="reference internal" href="#search-schedule"><span class="std std-ref">Schedule Fields</span></a></li>
+<li><a class="reference internal" href="#search-space"><span class="std std-ref">Space Fields</span></a></li>
+<li><a class="reference internal" href="#search-user"><span class="std std-ref">User Fields</span></a></li>
+<li><a class="reference internal" href="#search-usergroup"><span class="std std-ref">User Group Fields</span></a></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="area-fields">
+<span id="search-area"></span><h3>Area Fields<a class="headerlink" href="#area-fields" title="Permalink to this headline">¶</a></h3>
+<p>This is the data structure of <code class="docutils literal"><span class="pre">fields</span></code> for the <code class="docutils literal"><span class="pre">area</span></code> model.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Data Type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>string</td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>string</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="building-fields">
+<span id="search-building"></span><h3>Building Fields<a class="headerlink" href="#building-fields" title="Permalink to this headline">¶</a></h3>
+<p>This is the data structure of <code class="docutils literal"><span class="pre">fields</span></code> for the <code class="docutils literal"><span class="pre">building</span></code> model.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Data Type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>string</td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>string</td>
+</tr>
+<tr class="row-even"><td>addr1</td>
+<td>string</td>
+</tr>
+<tr class="row-odd"><td>addr2</td>
+<td>string</td>
+</tr>
+<tr class="row-even"><td>city</td>
+<td>string</td>
+</tr>
+<tr class="row-odd"><td>state</td>
+<td>string</td>
+</tr>
+<tr class="row-even"><td>postal_code</td>
+<td>string</td>
+</tr>
+<tr class="row-odd"><td>country</td>
+<td>string</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="connected-product-fields">
+<span id="search-connectedproduct"></span><h3>Connected Product Fields<a class="headerlink" href="#connected-product-fields" title="Permalink to this headline">¶</a></h3>
+<p>This is the data structure of <code class="docutils literal"><span class="pre">fields</span></code> for the <code class="docutils literal"><span class="pre">connectedproduct</span></code> model.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Data Type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>string</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="customer-fields">
+<span id="search-customer"></span><h3>Customer Fields<a class="headerlink" href="#customer-fields" title="Permalink to this headline">¶</a></h3>
+<p>This is the data structure of <code class="docutils literal"><span class="pre">fields</span></code> for the <code class="docutils literal"><span class="pre">customer</span></code> model.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Data Type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>string</td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>string</td>
+</tr>
+<tr class="row-even"><td>logo</td>
+<td>string</td>
+</tr>
+<tr class="row-odd"><td>addr1</td>
+<td>string</td>
+</tr>
+<tr class="row-even"><td>addr2</td>
+<td>string</td>
+</tr>
+<tr class="row-odd"><td>city</td>
+<td>string</td>
+</tr>
+<tr class="row-even"><td>state</td>
+<td>string</td>
+</tr>
+<tr class="row-odd"><td>postal_code</td>
+<td>string</td>
+</tr>
+<tr class="row-even"><td>country</td>
+<td>string</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="device-fields">
+<span id="search-device"></span><h3>Device Fields<a class="headerlink" href="#device-fields" title="Permalink to this headline">¶</a></h3>
+<p>This is the data structure of <code class="docutils literal"><span class="pre">fields</span></code> for the <code class="docutils literal"><span class="pre">device</span></code> model.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Data Type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>string</td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>string</td>
+</tr>
+<tr class="row-even"><td>type</td>
+<td>string</td>
+</tr>
+<tr class="row-odd"><td>euid</td>
+<td>string</td>
+</tr>
+<tr class="row-even"><td>building</td>
+<td><a class="reference internal" href="../objects/buildings.html#objects-buildings"><span class="std std-ref">ref</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="event-rule-fields">
+<span id="search-eventrule"></span><h3>Event Rule Fields<a class="headerlink" href="#event-rule-fields" title="Permalink to this headline">¶</a></h3>
+<p>This is the data structure of <code class="docutils literal"><span class="pre">fields</span></code> for the <code class="docutils literal"><span class="pre">eventrule</span></code> model.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Data Type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>string</td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>string</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="partner-fields">
+<span id="search-partner"></span><h3>Partner Fields<a class="headerlink" href="#partner-fields" title="Permalink to this headline">¶</a></h3>
+<p>This is the data structure of <code class="docutils literal"><span class="pre">fields</span></code> for the <code class="docutils literal"><span class="pre">partner</span></code> model.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Data Type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>string</td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>string</td>
+</tr>
+<tr class="row-even"><td>logo</td>
+<td>string</td>
+</tr>
+<tr class="row-odd"><td>addr1</td>
+<td>string</td>
+</tr>
+<tr class="row-even"><td>addr2</td>
+<td>string</td>
+</tr>
+<tr class="row-odd"><td>city</td>
+<td>string</td>
+</tr>
+<tr class="row-even"><td>state</td>
+<td>string</td>
+</tr>
+<tr class="row-odd"><td>postal_code</td>
+<td>string</td>
+</tr>
+<tr class="row-even"><td>country</td>
+<td>string</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="product-fields">
+<span id="search-product"></span><h3>Product Fields<a class="headerlink" href="#product-fields" title="Permalink to this headline">¶</a></h3>
+<p>This is the data structure of <code class="docutils literal"><span class="pre">fields</span></code> for the <code class="docutils literal"><span class="pre">product</span></code> model.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Data Type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>string</td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>string</td>
+</tr>
+<tr class="row-even"><td>image</td>
+<td>string</td>
+</tr>
+<tr class="row-odd"><td>sku</td>
+<td>string</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="property-rule-fields">
+<span id="search-propertyrule"></span><h3>Property Rule Fields<a class="headerlink" href="#property-rule-fields" title="Permalink to this headline">¶</a></h3>
+<p>This is the data structure of <code class="docutils literal"><span class="pre">fields</span></code> for the <code class="docutils literal"><span class="pre">propertyrule</span></code> model.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Data Type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>string</td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>string</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="scene-fields">
+<span id="search-scene"></span><h3>Scene Fields<a class="headerlink" href="#scene-fields" title="Permalink to this headline">¶</a></h3>
+<p>This is the data structure of <code class="docutils literal"><span class="pre">fields</span></code> for the <code class="docutils literal"><span class="pre">scene</span></code> model.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Data Type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>string</td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>string</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="schedule-fields">
+<span id="search-schedule"></span><h3>Schedule Fields<a class="headerlink" href="#schedule-fields" title="Permalink to this headline">¶</a></h3>
+<p>This is the data structure of <code class="docutils literal"><span class="pre">fields</span></code> for the <code class="docutils literal"><span class="pre">schedule</span></code> model.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Data Type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>string</td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>string</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="space-fields">
+<span id="search-space"></span><h3>Space Fields<a class="headerlink" href="#space-fields" title="Permalink to this headline">¶</a></h3>
+<p>This is the data structure of <code class="docutils literal"><span class="pre">fields</span></code> for the <code class="docutils literal"><span class="pre">space</span></code> model.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Data Type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>string</td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>string</td>
+</tr>
+<tr class="row-even"><td>building</td>
+<td><a class="reference internal" href="../objects/buildings.html#objects-buildings"><span class="std std-ref">ref</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="user-fields">
+<span id="search-user"></span><h3>User Fields<a class="headerlink" href="#user-fields" title="Permalink to this headline">¶</a></h3>
+<p>This is the data structure of <code class="docutils literal"><span class="pre">fields</span></code> for the <code class="docutils literal"><span class="pre">user</span></code> model.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Data Type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>username</td>
+<td>string</td>
+</tr>
+<tr class="row-odd"><td>first_name</td>
+<td>string</td>
+</tr>
+<tr class="row-even"><td>last_name</td>
+<td>string</td>
+</tr>
+<tr class="row-odd"><td>avatar</td>
+<td>string</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="user-group-fields">
+<span id="search-usergroup"></span><h3>User Group Fields<a class="headerlink" href="#user-group-fields" title="Permalink to this headline">¶</a></h3>
+<p>This is the data structure of <code class="docutils literal"><span class="pre">fields</span></code> for the <code class="docutils literal"><span class="pre">usergroup</span></code> model.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Data Type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>string</td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>string</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="parameters">
+<span id="search-parameters"></span><h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<p>The following table lists all available search parameters, which are supplied in the URL query
+string.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Fuzzy searching is not yet supported. This will be implemented in the future.</p>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="47%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Filter</th>
+<th class="head">Description</th>
+<th class="head">Example</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>q</td>
+<td>Some text to search for. Minimum of 3 characters.</td>
+<td><code class="docutils literal"><span class="pre">/search?q=foobar</span></code></td>
+</tr>
+<tr class="row-odd"><td>models</td>
+<td>A list of models to search. If not given,
+all models are searched</td>
+<td><code class="docutils literal"><span class="pre">/search?q=quux&amp;models=customer,building</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="query-search">
+<h3>Query search<a class="headerlink" href="#query-search" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--search?q=banana">
+<code class="descname">GET </code><code class="descname">/search?q=banana</code><a class="headerlink" href="#get--search?q=banana" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Link</span><span class="o">:</span> <span class="l">...</span>
+<span class="na">X-Result-Count</span><span class="o">:</span> <span class="l">2</span>
+
+<span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;881466fa-e1ae-44b6-b066-7db5a85d26bb&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;relevance&quot;</span><span class="p">:</span> <span class="mf">3.26788</span><span class="p">,</span>
+    <span class="nt">&quot;fields&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;A light bulb that looks like a banana!&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;euid&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;BananaBulb™&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;bulb&quot;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;bbd13896-8e2d-446e-b2e4-7c3029e7994c&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;relevance&quot;</span><span class="p">:</span> <span class="mf">1.766</span><span class="p">,</span>
+    <span class="nt">&quot;fields&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;avatar&quot;</span><span class="p">:</span> <span class="s2">&quot;/_images/johan-avatar.png&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;first_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Johan&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;last_name&quot;</span><span class="p">:</span> <span class="s2">&quot;McBananaFace&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;banana@fruit.net&quot;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="query-search-filtered-by-model">
+<h3>Query search, filtered by model<a class="headerlink" href="#query-search-filtered-by-model" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--search?q=banana&amp;models=device">
+<code class="descname">GET </code><code class="descname">/search?q=banana&amp;models=device</code><a class="headerlink" href="#get--search?q=banana&models=device" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Link</span><span class="o">:</span> <span class="l">...</span>
+<span class="na">X-Result-Count</span><span class="o">:</span> <span class="l">1</span>
+
+<span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;881466fa-e1ae-44b6-b066-7db5a85d26bb&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;relevance&quot;</span><span class="p">:</span> <span class="mf">3.26788</span><span class="p">,</span>
+    <span class="nt">&quot;fields&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;A light bulb that looks like a banana!&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;euid&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Banana Device&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;bulb&quot;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="scope.html" class="btn btn-neutral float-right" title="Scope" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="pubsub.html" class="btn btn-neutral" title="PubSub Message Broker" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Gooee, LLC.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/tabs.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,1197 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Devices &mdash; Documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/navtree.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Documentation" href="../index.html"/>
+        <link rel="up" title="Objects" href="../objects.html"/>
+        <link rel="next" title="Fault Alarms" href="fault_alarms.html"/>
+        <link rel="prev" title="Dashboards" href="dashboards.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Cloud API
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="link caption"><span class="link caption-text"><a class="reference internal" href="../misc.html">Misc</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/change_log.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/object_relation_diagram.html">Object Relation Diagram</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../general.html">General</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/analytics.html">Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api_tokens.html">API Tokens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/authentication.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/clearing_field_values.html">Clearing Field Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/device_counts.html">Device Counts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/exclude_include_fields.html">Include/Exclude Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/filtering.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ordering.html">Ordering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/meta.html">Meta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/meta_groups.html">Meta Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/pagination.html">Pagination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/pubsub.html">PubSub Message Broker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/search.html">Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/scope.html">Scope</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../objects.html">Objects</a></span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="action_types.html">Action Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions.html">Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analytics_export.html">Analytics Export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analytics_query.html">Analytics Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="areas.html">Areas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="buildings.html">Buildings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="connected_products.html">Connected Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="currency.html">Currency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customers.html">Customers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dashboards.html">Dashboards</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Devices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gateway-description">Gateway Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mesh-access-point-description">Mesh Access Point Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#integration-specific">Integration Specific</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#commission-state-conditions">Commission State Conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#complex-constraints">Complex Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gateway-managed-attributes">Gateway Managed Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extra-filters">Extra Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#beacon-config-meta">Beacon Config Meta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#default-meta-values">Default Meta Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#devices-of-type-wim">Devices of Type WIM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#devices-with-dimmable-support">Devices with Dimmable Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#api-endpoints">API Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#device-operations">Device Operations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fault_alarms.html">Fault Alarms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="local_rules.html">Local Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="locations.html">Locations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="partners.html">Partners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="product_files.html">Product Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="product_types.html">Product Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="products.html">Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules_v2.html">Rules V2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rule_groups.html">Rule Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scenes.html">Scenes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schedules.html">Schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spaces.html">Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timezones.html">Timezones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_features.html">User Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_groups.html">User Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_preferences.html">User Preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Users</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../integrations.html">Integrations</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/als2lux.html">Als-to-Lux Correlation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/external_sensor.html">External Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/gateway_lite.html">Gateway Lite</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cloud API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../objects.html">Objects</a> &raquo;</li>
+        
+      <li>Devices</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/objects/devices.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="devices">
+<span id="objects-devices"></span><h1><a class="toc-backref" href="#id1">Devices</a><a class="headerlink" href="#devices" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="quick-links">
+<p class="topic-title first">Quick Links</p>
+<ul class="simple">
+<li><a class="reference internal" href="#devices" id="id1">Devices</a><ul>
+<li><a class="reference internal" href="#description" id="id2">Description</a></li>
+<li><a class="reference internal" href="#gateway-description" id="id3">Gateway Description</a></li>
+<li><a class="reference internal" href="#mesh-access-point-description" id="id4">Mesh Access Point Description</a></li>
+<li><a class="reference internal" href="#integration-specific" id="id5">Integration Specific</a></li>
+<li><a class="reference internal" href="#data-model" id="id6">Data Model</a></li>
+<li><a class="reference internal" href="#commission-state-conditions" id="id7">Commission State Conditions</a></li>
+<li><a class="reference internal" href="#complex-constraints" id="id8">Complex Constraints</a></li>
+<li><a class="reference internal" href="#gateway-managed-attributes" id="id9">Gateway Managed Attributes</a></li>
+<li><a class="reference internal" href="#extra-filters" id="id10">Extra Filters</a></li>
+<li><a class="reference internal" href="#beacon-config-meta" id="id11">Beacon Config Meta</a></li>
+<li><a class="reference internal" href="#default-meta-values" id="id12">Default Meta Values</a></li>
+<li><a class="reference internal" href="#devices-of-type-wim" id="id13">Devices of Type WIM</a><ul>
+<li><a class="reference internal" href="#devices-of-type-gateway" id="id14">Devices of Type Gateway</a></li>
+<li><a class="reference internal" href="#devices-of-type-mesh-access-point" id="id15">Devices of Type Mesh Access Point</a></li>
+<li><a class="reference internal" href="#devices-of-type-sensor" id="id16">Devices of Type Sensor</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#devices-with-dimmable-support" id="id17">Devices with Dimmable Support</a></li>
+<li><a class="reference internal" href="#api-endpoints" id="id18">API Endpoints</a><ul>
+<li><a class="reference internal" href="#create-a-device" id="id19">Create a Device</a></li>
+<li><a class="reference internal" href="#check-device-euid-availability" id="id20">Check Device EUID availability</a></li>
+<li><a class="reference internal" href="#list-devices" id="id21">List Devices</a></li>
+<li><a class="reference internal" href="#update-a-device" id="id22">Update a Device</a></li>
+<li><a class="reference internal" href="#partially-update-a-device" id="id23">Partially Update a Device</a></li>
+<li><a class="reference internal" href="#retrieve-a-device" id="id24">Retrieve a Device</a></li>
+<li><a class="reference internal" href="#deactivate-a-device" id="id25">Deactivate a Device</a></li>
+<li><a class="reference internal" href="#delete-a-device" id="id26">Delete a Device</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#device-operations" id="id27">Device Operations</a><ul>
+<li><a class="reference internal" href="#move-unassign-space" id="id28">Move/Unassign Space</a></li>
+<li><a class="reference internal" href="#unassign-building" id="id29">Unassign Building</a></li>
+<li><a class="reference internal" href="#unassign-customer" id="id30">Unassign Customer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="description">
+<h2><a class="toc-backref" href="#id2">Description</a><a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>Devices are network addressable hardware entities that have <a class="reference internal" href="../general/meta.html#general-meta"><span class="std std-ref">Meta</span></a> values that
+can track state changes over time. For example, a Device can have a <cite>type</cite> of WIM, Bulb, Sensor,
+etc. Devices also support the <a class="reference internal" href="actions.html#objects-actions"><span class="std std-ref">Action</span></a> interface which allows for a more
+pragmatic way of dealing with pragmatic events.</p>
+</div>
+<div class="section" id="gateway-description">
+<h2><a class="toc-backref" href="#id3">Gateway Description</a><a class="headerlink" href="#gateway-description" title="Permalink to this headline">¶</a></h2>
+<p>Gateways are on-premise devices that facilitate local communication to other
+<a class="reference internal" href="#objects-devices"><span class="std std-ref">Devices</span></a>.  By communicating Device actuation (power, dim, etc) locally, a
+much faster response time is achieved.</p>
+</div>
+<div class="section" id="mesh-access-point-description">
+<span id="objects-mesh-access-point"></span><h2><a class="toc-backref" href="#id4">Mesh Access Point Description</a><a class="headerlink" href="#mesh-access-point-description" title="Permalink to this headline">¶</a></h2>
+<p>Mesh Access Points are devices used to extend the coverage area of a <cite>gateway</cite>. They operate much like a
+<cite>gateway</cite>, only they are children of a <cite>gateway</cite> and facilitate opportunities for signal-strength
+optimizations to decrease response times.</p>
+</div>
+<div class="section" id="integration-specific">
+<h2><a class="toc-backref" href="#id5">Integration Specific</a><a class="headerlink" href="#integration-specific" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="../integrations/gateway_lite.html#integrations-gateway-lite"><span class="std std-ref">Gateway Lite</span></a></li>
+</ul>
+</div>
+<div class="section" id="data-model">
+<h2><a class="toc-backref" href="#id6">Data Model</a><a class="headerlink" href="#data-model" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">Make <cite>mesh_access_points</cite> and <cite>devices</cite> read-only on &#8216;gateways&#8217; since they are programatically
+managed by the Gateway.</p>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="32%" />
+<col width="54%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>ref</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>created</td>
+<td>datetime</td>
+<td>read-only</td>
+</tr>
+<tr class="row-even"><td>modified</td>
+<td>datetime</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>name</td>
+<td>string</td>
+<td>required, max_length=100</td>
+</tr>
+<tr class="row-even"><td>description</td>
+<td>string</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>type</td>
+<td>string</td>
+<td>read-only</td>
+</tr>
+<tr class="row-even"><td>commission_state</td>
+<td>enum</td>
+<td>read-only, options=[inactive, customer_provisioned, site_provisioned, active, deactivated],
+see <a class="reference internal" href="#device-commission-state-conditions"><span class="std std-ref">Commission State Conditions</span></a></td>
+</tr>
+<tr class="row-odd"><td>commissioned_date</td>
+<td>datetime</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>sku</td>
+<td>string</td>
+<td>Copied from <a class="reference internal" href="products.html#objects-products"><span class="std std-ref">Product</span></a> for a <em>new</em> Device, if not supplied.</td>
+</tr>
+<tr class="row-odd"><td>product</td>
+<td><a class="reference internal" href="products.html#objects-products"><span class="std std-ref">ref</span></a></td>
+<td>required</td>
+</tr>
+<tr class="row-even"><td>parent_device</td>
+<td><a class="reference internal" href="#objects-devices"><span class="std std-ref">ref</span></a></td>
+<td><a class="reference internal" href="#device-complex-constraints"><span class="std std-ref">Complex Constraints</span></a></td>
+</tr>
+<tr class="row-odd"><td>child_devices</td>
+<td>array(<a class="reference internal" href="#objects-devices"><span class="std std-ref">ref</span></a>)</td>
+<td><a class="reference internal" href="#device-complex-constraints"><span class="std std-ref">Complex Constraints</span></a></td>
+</tr>
+<tr class="row-even"><td>building</td>
+<td><a class="reference internal" href="buildings.html#objects-buildings"><span class="std std-ref">ref</span></a></td>
+<td>Copied from <a class="reference internal" href="spaces.html#objects-spaces"><span class="std std-ref">Spaces</span></a> <a class="reference internal" href="buildings.html#objects-buildings"><span class="std std-ref">Building</span></a> when available.</td>
+</tr>
+<tr class="row-odd"><td>space</td>
+<td><a class="reference internal" href="spaces.html#objects-spaces"><span class="std std-ref">ref</span></a></td>
+<td><a class="reference internal" href="#device-complex-constraints"><span class="std std-ref">Complex Constraints</span></a></td>
+</tr>
+<tr class="row-even"><td>virtual_spaces</td>
+<td>array(<a class="reference internal" href="spaces.html#objects-spaces"><span class="std std-ref">ref</span></a>)</td>
+<td><a class="reference internal" href="#device-complex-constraints"><span class="std std-ref">Complex Constraints</span></a></td>
+</tr>
+<tr class="row-odd"><td>connected_products</td>
+<td>array(<a class="reference internal" href="connected_products.html#objects-connected-products"><span class="std std-ref">ref</span></a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>device_count</td>
+<td><a class="reference internal" href="../general/device_counts.html#general-device-counts"><span class="std std-ref">count object</span></a></td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>mesh_access_point_count</td>
+<td><a class="reference internal" href="../general/device_counts.html#general-device-counts"><span class="std std-ref">count object</span></a></td>
+<td>read-only</td>
+</tr>
+<tr class="row-even"><td>euid</td>
+<td>string</td>
+<td>max_length=128, unique, base16 value, write-once</td>
+</tr>
+<tr class="row-odd"><td>serial</td>
+<td>string</td>
+<td>max_length=64, unique, alphanumeric, write-once</td>
+</tr>
+<tr class="row-even"><td>meta</td>
+<td>array(<a class="reference internal" href="../general/meta.html#general-meta"><span class="std std-ref">meta</span></a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>custom_fields</td>
+<td>object</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>features</td>
+<td>object</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>data_service_id</td>
+<td>string</td>
+<td>read-only</td>
+</tr>
+<tr class="row-even"><td>data_source_id</td>
+<td>string</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>customer_scopes</td>
+<td>array(<a class="reference internal" href="customers.html#objects-customers"><span class="std std-ref">ref</span></a>)</td>
+<td>see <a class="reference internal" href="../general/scope.html#general-scope"><span class="std std-ref">Scope</span></a></td>
+</tr>
+<tr class="row-even"><td>partner_scopes</td>
+<td>array(<a class="reference internal" href="partners.html#objects-partners"><span class="std std-ref">ref</span></a>)</td>
+<td>see <a class="reference internal" href="../general/scope.html#general-scope"><span class="std std-ref">Scope</span></a></td>
+</tr>
+<tr class="row-odd"><td>tags</td>
+<td>array(str)</td>
+<td>max_length=50 per tag</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="commission-state-conditions">
+<span id="device-commission-state-conditions"></span><h2><a class="toc-backref" href="#id7">Commission State Conditions</a><a class="headerlink" href="#commission-state-conditions" title="Permalink to this headline">¶</a></h2>
+<p>The Commission State of a Device is recalculated during the save and delete of its Space,
+parent Devices, and the Device itself. The following is a sequential list of the different
+Commission States and their conditions:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Status</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>inactive</td>
+<td>Device has never been associated with a Customer, Building, or Space.</td>
+</tr>
+<tr class="row-odd"><td>customer_provisioned</td>
+<td>Device is scoped to a Customer.</td>
+</tr>
+<tr class="row-even"><td>site_provisioned</td>
+<td>Device meets the conditions for <cite>customer_provisioned</cite> and is assigned to a
+Building.</td>
+</tr>
+<tr class="row-odd"><td>active</td>
+<td>Device meets the conditions for <cite>site_provisioned</cite> and is assigned to a Space.</td>
+</tr>
+<tr class="row-even"><td>deactivated</td>
+<td>Device is not associated with a Customer, Building, or Space, but was
+previously active.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="complex-constraints">
+<span id="device-complex-constraints"></span><h2><a class="toc-backref" href="#id8">Complex Constraints</a><a class="headerlink" href="#complex-constraints" title="Permalink to this headline">¶</a></h2>
+<p>The <cite>state</cite> of the associated <cite>product</cite> must be <cite>active</cite>.</p>
+<p><em>space</em> cannot be of type virtual.</p>
+<p><em>virtual_spaces</em> must all be of type virtual.</p>
+<p>All <em>virtual_spaces</em> and the physical space must be associated with the same <a class="reference internal" href="buildings.html#objects-buildings"><span class="std std-ref">Building</span></a>.</p>
+<p>All parent and child devices must have the same Building.</p>
+<p>The <cite>building</cite> cannot change.</p>
+<p>The <em>parent_device</em> of a <cite>mesh_access_point</cite> can only be a <cite>gateway</cite>.</p>
+<p>Devices of <cite>type</cite> <cite>wim</cite> cannot be on more than one non-virtual Space.</p>
+</div>
+<div class="section" id="gateway-managed-attributes">
+<h2><a class="toc-backref" href="#id9">Gateway Managed Attributes</a><a class="headerlink" href="#gateway-managed-attributes" title="Permalink to this headline">¶</a></h2>
+<p><cite>mesh_access_points</cite> and <cite>devices</cite> are all managed by the Gateway itself and are not meant to be updated
+directly from the API.</p>
+</div>
+<div class="section" id="extra-filters">
+<h2><a class="toc-backref" href="#id10">Extra Filters</a><a class="headerlink" href="#extra-filters" title="Permalink to this headline">¶</a></h2>
+<p>See the <a class="reference internal" href="../general/filtering.html#general-filtering"><span class="std std-ref">general filtering docs</span></a> page for details on filtering by
+<a class="reference internal" href="customers.html#objects-customers"><span class="std std-ref">Customers</span></a> and <a class="reference internal" href="buildings.html#objects-buildings"><span class="std std-ref">Buildings</span></a>.</p>
+</div>
+<div class="section" id="beacon-config-meta">
+<span id="device-beacon-config-meta"></span><h2><a class="toc-backref" href="#id11">Beacon Config Meta</a><a class="headerlink" href="#beacon-config-meta" title="Permalink to this headline">¶</a></h2>
+<p>Devices which are <cite>beacon-capable</cite> support a <a class="reference internal" href="../general/meta.html#general-meta"><span class="std std-ref">Meta</span></a> named <cite>beacon_config</cite> which
+is managed by the <cite>gateway</cite> and sent to the API for create/update via the <cite>cloudapi-evt-bridge</cite>.
+The following shows the format for the <cite>value</cite> property of the <cite>beacon_config</cite> <a class="reference internal" href="../general/meta.html#general-meta"><span class="std std-ref">Meta</span></a>:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;slot_0&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;onoff&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;interval&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+        <span class="nt">&quot;broadcast_tx&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ibeacon&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;acfd065ec3c011e39bbe1a514932ac01&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;major&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="nt">&quot;minor&quot;</span><span class="p">:</span> <span class="mi">14876</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;slot_1&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;onoff&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;interval&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+        <span class="nt">&quot;broadcast_tx&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ibeacon&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;acfd065ec3c011e39bbe1a514932ac01&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;major&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="nt">&quot;minor&quot;</span><span class="p">:</span> <span class="mi">14876</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;slot_2&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;onoff&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;interval&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+        <span class="nt">&quot;broadcast_tx&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;eddystone-uid&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;uid&quot;</span><span class="p">:</span> <span class="s2">&quot;acfd065e1a514932ac01000002014876&quot;</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;slot_3&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;onoff&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;interval&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+        <span class="nt">&quot;broadcast_tx&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;eddystone-url&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://www.blueupbeacons.com&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>See the <a class="reference internal" href="action_types.html#objects-action-types"><span class="std std-ref">Action Types</span></a> page for details about the meaning of each of the
+<cite>key/values</cite> pairs above.</p>
+</div>
+<div class="section" id="default-meta-values">
+<span id="device-default-meta"></span><h2><a class="toc-backref" href="#id12">Default Meta Values</a><a class="headerlink" href="#default-meta-values" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Meta values are also created based on <a class="reference internal" href="products.html#objects-products"><span class="std std-ref">Product</span></a> features.</p>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="42%" />
+<col width="42%" />
+<col width="16%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Display Name</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>onoff</td>
+<td>Status</td>
+<td>true</td>
+</tr>
+<tr class="row-odd"><td>last_activity</td>
+<td>Last Activity</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>is_online</td>
+<td>Online</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="devices-of-type-wim">
+<span id="wim-default-meta"></span><h2><a class="toc-backref" href="#id13">Devices of Type WIM</a><a class="headerlink" href="#devices-of-type-wim" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="45%" />
+<col width="38%" />
+<col width="17%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Display Name</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>dim</td>
+<td>Dim</td>
+<td>100</td>
+</tr>
+<tr class="row-odd"><td>gen_power_measurement_type</td>
+<td>Power Metering Support</td>
+<td>Calculated</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="devices-of-type-gateway">
+<span id="gateway-default-meta"></span><h3><a class="toc-backref" href="#id14">Devices of Type Gateway</a><a class="headerlink" href="#devices-of-type-gateway" title="Permalink to this headline">¶</a></h3>
+<p>The following <a class="reference internal" href="../general/meta.html#general-meta"><span class="std std-ref">Meta</span></a> are automatically created when you create a Gateway.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="45%" />
+<col width="45%" />
+<col width="10%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Display Name</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>bluetooth_channel</td>
+<td>BlueTooth Channel</td>
+<td>&#8220;&#8221;</td>
+</tr>
+<tr class="row-odd"><td>network_type</td>
+<td>Network Type</td>
+<td>&#8220;&#8221;</td>
+</tr>
+<tr class="row-even"><td>firmware_version</td>
+<td>Firmware Version</td>
+<td>&#8220;&#8221;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="devices-of-type-mesh-access-point">
+<span id="mesh-access-point-default-meta"></span><h3><a class="toc-backref" href="#id15">Devices of Type Mesh Access Point</a><a class="headerlink" href="#devices-of-type-mesh-access-point" title="Permalink to this headline">¶</a></h3>
+<p>The following <a class="reference internal" href="../general/meta.html#general-meta"><span class="std std-ref">Meta</span></a> are automatically created when you create a Mesh Access Point.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="45%" />
+<col width="45%" />
+<col width="10%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Display Name</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>bluetooth_channel</td>
+<td>BlueTooth Channel</td>
+<td>&#8220;&#8221;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="devices-of-type-sensor">
+<span id="sensor-default-meta"></span><h3><a class="toc-backref" href="#id16">Devices of Type Sensor</a><a class="headerlink" href="#devices-of-type-sensor" title="Permalink to this headline">¶</a></h3>
+<p>The following <a class="reference internal" href="../general/meta.html#general-meta"><span class="std std-ref">Meta</span></a> are automatically created when you create a Sensor.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="40%" />
+<col width="40%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Display Name</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ip_address</td>
+<td>IP Address</td>
+<td>&#8220;127.0.0.1&#8221;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="devices-with-dimmable-support">
+<span id="dimmable-default-meta"></span><h2><a class="toc-backref" href="#id17">Devices with Dimmable Support</a><a class="headerlink" href="#devices-with-dimmable-support" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="42%" />
+<col width="42%" />
+<col width="16%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Display Name</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>dim</td>
+<td>Dim</td>
+<td>100</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="api-endpoints">
+<h2><a class="toc-backref" href="#id18">API Endpoints</a><a class="headerlink" href="#api-endpoints" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="create-a-device">
+<h3><a class="toc-backref" href="#id19">Create a Device</a><a class="headerlink" href="#create-a-device" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--devices">
+<code class="descname">POST </code><code class="descname">/devices</code><a class="headerlink" href="#post--devices" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2">201 Created</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="check-device-euid-availability">
+<span id="device-check-euid"></span><h3><a class="toc-backref" href="#id20">Check Device EUID availability</a><a class="headerlink" href="#check-device-euid-availability" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--devices-euid-check">
+<code class="descname">POST </code><code class="descname">/devices/euid/check</code><a class="headerlink" href="#post--devices-euid-check" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">JSON Parameters:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first simple">
+<li><strong>euid</strong> (<em>string</em>) &#8211; A device EUID.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; returns whether or not an euid is available.</li>
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> &#8211; parameters are missing or invalid.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/devices/euid/check</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">application/json</span>
+
+{
+  &quot;euid&quot;: &quot;0123456789ABCDEF&quot;
+}
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+    <span class="nt">&quot;euid&quot;</span><span class="p">:</span> <span class="s2">&quot;0123456789ABCDEF&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;is_available&quot;</span><span class="p">:</span> <span class="kc">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="list-devices">
+<h3><a class="toc-backref" href="#id21">List Devices</a><a class="headerlink" href="#list-devices" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--devices">
+<code class="descname">GET </code><code class="descname">/devices</code><a class="headerlink" href="#get--devices" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="update-a-device">
+<h3><a class="toc-backref" href="#id22">Update a Device</a><a class="headerlink" href="#update-a-device" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--devices-(id)">
+<code class="descname">PUT </code><code class="descname">/devices/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#put--devices-(id)" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="partially-update-a-device">
+<h3><a class="toc-backref" href="#id23">Partially Update a Device</a><a class="headerlink" href="#partially-update-a-device" title="Permalink to this headline">¶</a></h3>
+<dl class="patch">
+<dt id="patch--devices-(id)">
+<code class="descname">PATCH </code><code class="descname">/devices/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#patch--devices-(id)" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="retrieve-a-device">
+<h3><a class="toc-backref" href="#id24">Retrieve a Device</a><a class="headerlink" href="#retrieve-a-device" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--devices-(id)">
+<code class="descname">GET </code><code class="descname">/devices/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#get--devices-(id)" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="deactivate-a-device">
+<span id="device-deactivate"></span><h3><a class="toc-backref" href="#id25">Deactivate a Device</a><a class="headerlink" href="#deactivate-a-device" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--devices-(id)-deactivate">
+<code class="descname">PUT </code><code class="descname">/devices/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><code class="descname">/deactivate</code><a class="headerlink" href="#put--devices-(id)-deactivate" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.5">204 No Content</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="delete-a-device">
+<h3><a class="toc-backref" href="#id26">Delete a Device</a><a class="headerlink" href="#delete-a-device" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Only Gooee Admins may delete a Device.</p>
+</div>
+<dl class="delete">
+<dt id="delete--devices-(id)">
+<code class="descname">DELETE </code><code class="descname">/devices/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#delete--devices-(id)" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.5">204 No Content</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="device-operations">
+<span id="device-ops"></span><h2><a class="toc-backref" href="#id27">Device Operations</a><a class="headerlink" href="#device-operations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="move-unassign-space">
+<h3><a class="toc-backref" href="#id28">Move/Unassign Space</a><a class="headerlink" href="#move-unassign-space" title="Permalink to this headline">¶</a></h3>
+<p>This endpoint is for moving or unassigning a Space from Devices. Set <code class="docutils literal"><span class="pre">plan</span></code> to <code class="docutils literal"><span class="pre">true</span></code> to see what entities will be affected by the move/unassign Space operation <strong>without</strong> actually performing the operation.</p>
+<dl class="post">
+<dt id="post--devices-ops-move-">
+<code class="descname">POST </code><code class="descname">/devices/ops/move/</code><a class="headerlink" href="#post--devices-ops-move-" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">JSON Parameters:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first simple">
+<li><strong>plan</strong> (<em>boolean</em>) &#8211; <code class="docutils literal"><span class="pre">default=false</span></code>, if <code class="docutils literal"><span class="pre">true</span></code>, the response is an object that shows affected entities, <strong>no actual operation is performed</strong></li>
+<li><strong>devices</strong> (<em>array</em>) &#8211; Array of Device ids to move/unassign from a Space.</li>
+<li><strong>to_space</strong> (<em>string</em>) &#8211; ID of the Space to move all the Devices into. Can be set to <code class="docutils literal"><span class="pre">null</span></code> for unassigning the Space.</li>
+<li><strong>from_space</strong> (<em>string</em>) &#8211; ID of the Space that contains all the Devices, <strong>All Devices must exist in this Space</strong></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; move/unassign operation completed successfully</li>
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3">202 Accepted</a> &#8211; payload valid, plan flag was set to true, <strong>operation NOT executed</strong></li>
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> &#8211; parameters are missing or incorrect</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/devices/ops/move/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">application/json</span>
+
+{
+  &quot;plan&quot;: true,
+  &quot;devices&quot;: [&quot;{{DEVICE1_ID}}&quot;, &quot;{{DEVICE2_ID}}&quot;],
+  &quot;to_space&quot;: null,
+  &quot;from_space&quot;: &quot;{{SPACE_ID}}&quot;
+}
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">202</span> <span class="ne">ACCEPTED</span>
+
+{
+  &quot;{{DEVICE1_ID}}&quot;: {
+    &quot;from_space&quot;: &quot;{{SPACE_ID}}&quot;,
+    &quot;to_space&quot;: null,
+    &quot;from_parent_device&quot;: &quot;{{PARENT_DEVICE_ID}}&quot;,
+    &quot;to_parent_device&quot;: null,
+    &quot;from_child_devices&quot;: [&quot;{{CHILD_1}}&quot;, &quot;{{CHILD_2}}&quot;],
+    &quot;to_child_devices&quot;: [],
+    &quot;from_rules&quot;: [&quot;{{RULE_ID}}&quot;],
+    &quot;to_rules&quot;: [],
+    &quot;from_property_rules&quot;: [],
+    &quot;to_property_rules&quot;: [],
+    &quot;from_event_rules&quot;: [],
+    &quot;to_event_rules&quot;: [],
+    &quot;from_property_rule_groups&quot;: [],
+    &quot;to_property_rule_groups&quot;: [],
+    &quot;from_areas&quot;: [&quot;{{AREA_ID}}&quot;],
+    &quot;to_areas&quot;: []
+  },
+  &quot;{{DEVICE2_ID}}&quot;: {
+    ...
+  }
+}
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="unassign-building">
+<h3><a class="toc-backref" href="#id29">Unassign Building</a><a class="headerlink" href="#unassign-building" title="Permalink to this headline">¶</a></h3>
+<p>This endpoint is for unassigning the Building from Devices. Set <code class="docutils literal"><span class="pre">plan</span></code> to <code class="docutils literal"><span class="pre">true</span></code> to see what entities will be affected by the unassign Building operation <strong>without</strong> actually performing the operation.</p>
+<dl class="post">
+<dt id="post--devices-ops-unassign-building-">
+<code class="descname">POST </code><code class="descname">/devices/ops/unassign/building/</code><a class="headerlink" href="#post--devices-ops-unassign-building-" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">JSON Parameters:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first simple">
+<li><strong>plan</strong> (<em>boolean</em>) &#8211; <code class="docutils literal"><span class="pre">default=false</span></code>, if <code class="docutils literal"><span class="pre">true</span></code>, the response is an object that shows affected entities, <strong>no actual operation is performed</strong></li>
+<li><strong>devices</strong> (<em>array</em>) &#8211; Array of Device ids to unassign from a Building.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; unassign operation completed successfully</li>
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3">202 Accepted</a> &#8211; payload valid, plan flag was set to true, <strong>operation NOT executed</strong></li>
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> &#8211; parameters are missing or incorrect</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/devices/ops/unassign/building/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">application/json</span>
+
+{
+  &quot;plan&quot;: true,
+  &quot;devices&quot;: [&quot;{{DEVICE1_ID}}&quot;, &quot;{{DEVICE2_ID}}&quot;]
+}
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">202</span> <span class="ne">ACCEPTED</span>
+
+{
+  &quot;{{DEVICE1_ID}}&quot;: {
+    &quot;from_building&quot;: &quot;{{BUILDING_ID}}&quot;,
+    &quot;to_building&quot;: null,
+    &quot;from_areas&quot;: [],
+    &quot;to_areas&quot;: [],
+    &quot;from_space&quot;: &quot;{{SPACE_ID}}&quot;,
+    &quot;to_space&quot;: null,
+    &quot;from_parent_device&quot;: null,
+    &quot;to_parent_device&quot;: null,
+    &quot;from_child_devices&quot;: [],
+    &quot;to_child_devices&quot;: [],
+    &quot;from_rules&quot;: [],
+    &quot;to_rules&quot;: [],
+    &quot;from_property_rules&quot;: [],
+    &quot;to_property_rules&quot;: [],
+    &quot;from_event_rules&quot;: [],
+    &quot;to_event_rules&quot;: [],
+    &quot;from_property_rule_groups&quot;: [],
+    &quot;to_property_rule_groups&quot;: []
+  },
+  &quot;{{DEVICE2_ID}}&quot;: {
+    ...
+  }
+}
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="unassign-customer">
+<h3><a class="toc-backref" href="#id30">Unassign Customer</a><a class="headerlink" href="#unassign-customer" title="Permalink to this headline">¶</a></h3>
+<p>This endpoint is for unassigning the Customer from Devices. Set <code class="docutils literal"><span class="pre">plan</span></code> to <code class="docutils literal"><span class="pre">true</span></code> to see which entities will be affected by the unassign Customer operation <strong>without</strong> actually performing the operation. Customer will be deduced from the provided Devices&#8217; Building. If it cannot be deduced due to Devices not being assigned to a Building, then it <strong>must</strong> be provided. This operation essentially <a class="reference internal" href="../general/scope.html#general-scope"><span class="std std-ref">un-scopes</span></a> the Customer from the provided Devices.</p>
+<dl class="post">
+<dt id="post--devices-ops-unassign-customer-">
+<code class="descname">POST </code><code class="descname">/devices/ops/unassign/customer/</code><a class="headerlink" href="#post--devices-ops-unassign-customer-" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">JSON Parameters:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first simple">
+<li><strong>plan</strong> (<em>boolean</em>) &#8211; <code class="docutils literal"><span class="pre">default=false</span></code>, if <code class="docutils literal"><span class="pre">true</span></code>, the response is an object that shows affected entities, <strong>no actual operation is performed</strong></li>
+<li><strong>devices</strong> (<em>array</em>) &#8211; Array of Device ids to unassign/de-scope from a Customer.</li>
+<li><strong>customer</strong> (<em>string</em>) &#8211; ID of the Customer to unassign all the Devices from. Defaults to the Device&#8217;s Building&#8217;s Customer.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; unassign operation completed successfully</li>
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3">202 Accepted</a> &#8211; payload valid, plan flag was set to true, <strong>operation NOT executed</strong></li>
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> &#8211; parameters are missing or incorrect</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/devices/ops/unassign/customer/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">application/json</span>
+
+{
+  &quot;plan&quot;: true,
+  &quot;devices&quot;: [&quot;{{DEVICE1_ID}}&quot;, &quot;{{DEVICE2_ID}}&quot;]
+}
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">202</span> <span class="ne">ACCEPTED</span>
+
+{
+  &quot;{{DEVICE1_ID}}&quot;: {
+    &quot;from_customers&quot;: [
+      &quot;{{CUSTOMER_ID}}&quot;
+    ],
+    &quot;to_customers&quot;: [],
+    &quot;from_building&quot;: &quot;{{BUILDING_ID}}&quot;,
+    &quot;to_building&quot;: null,
+    &quot;from_areas&quot;: [],
+    &quot;to_areas&quot;: [],
+    &quot;from_space&quot;: &quot;{{SPACE_ID}}&quot;,
+    &quot;to_space&quot;: null,
+    &quot;from_parent_device&quot;: null,
+    &quot;to_parent_device&quot;: null,
+    &quot;from_child_devices&quot;: [],
+    &quot;to_child_devices&quot;: [],
+    &quot;from_rules&quot;: [],
+    &quot;to_rules&quot;: []
+  },
+  &quot;{{DEVICE2_ID}}&quot;: {
+    ...
+  }
+}
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="fault_alarms.html" class="btn btn-neutral float-right" title="Fault Alarms" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="dashboards.html" class="btn btn-neutral" title="Dashboards" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Gooee, LLC.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/tabs.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

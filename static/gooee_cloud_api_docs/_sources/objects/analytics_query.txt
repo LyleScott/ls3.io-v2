@@ -1,0 +1,174 @@
+.. _objects_analytics_query:
+
+===============
+Analytics Query
+===============
+
+.. contents:: Quick Links
+
+Description
+===========
+
+The Analytics Query resource represents a standard :ref:`analytics history query <analytics_historical>`
+that is wrapped up into an object that can be executed on demand via the Cloud API or combined
+with :ref:`Schedules <objects_schedules>` (coming soon).
+
+Data Model
+==========
+
+=================== ==========================================  ========================
+Key                 Datatype                                    Notes
+=================== ==========================================  ========================
+id                  ref                                         read-only
+created             datetime                                    read-only
+modified            datetime                                    read-only
+created_by          :ref:`ref <objects_users>`                  read-only
+name                str                                         required, max_length=100
+parameters          obj                                         JSON Field representing URL parameters to supply to an :ref:`analytics history query <analytics_historical>`
+last_run            datetime                                    read-only and updated on every run attempt
+last_successful_run datetime                                    read-only and updated on every *successful* run attempt
+tags                array(str)                                  max_length=50 per tag
+customer_scopes     array(:ref:`ref <objects_customers>`)       see :ref:`general_scope`
+partner_scopes      array(:ref:`ref <objects_partners>`)        see :ref:`general_scope`
+=================== ==========================================  ========================
+
+
+API Endpoints
+=============
+
+Create an Analytics Query
+-------------------------
+
+.. http:POST:: /analytics/query
+
+   :statuscode 201:
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      POST /analytics/query HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+      {
+        "name": "Yummy DimSum",
+        "parameters": {
+          "entities": ["7ca7297f-1de1-4799-8eeb-a7b4d557850c"],
+          "entity_type": "device",
+          "metrics": "dim",
+          "start": "2020-01-01T12:34:56Z",
+          "op": "sum",
+          "limit": 10
+        },
+        "tags": ["counts", "device"]
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 201 OK
+      Content-Type: application/json
+
+      {
+        "id": "b4b09d49-38b2-4c9f-a022-2496119b58dc",
+        "created": "2020-07-27T17:32:45.643432Z",
+        "modified": "2020-07-27T17:32:45.643458Z",
+        "created_by": "2a3130af-c738-4353-8050-a80fbafaf526",
+        "name": "Yummy DimSum",
+        "notes": "",
+        "last_run": null,
+        "last_successful_run": null,
+        "parameters": {
+          "entities": [
+            "f7f75f40-99f1-41f1-958a-349d4044233b"
+          ],
+          "entity_type": "device",
+          "metrics": "dim",
+          "start": "2020-01-01T12:34:56Z",
+          "op": "sum",
+          "limit": 10
+        },
+        "_query_url": "https://api.gooee.io/analytics/history?entities=f7f75f40-99f1-41f1-958a-349d4044233b&entity_type=device&metrics=dim&start=2020-01-01T12:34:56Z&op=sum&limit=10",
+        "tags": [
+          "counts",
+          "device"
+        ],
+        "ui_state": {}
+      }
+
+List Analytics Queries
+----------------------
+
+.. http:GET:: /analytics/queries/
+
+   :statuscode 200:
+
+Update an Analytics Query
+-------------------------
+
+.. http:PUT:: /analytics/queries/(id)/
+
+   :statuscode 200:
+
+Partially Update an Analytics Query
+-----------------------------------
+
+.. http:PATCH:: /analytics/queries/(id)/
+
+   :statuscode 200:
+
+Retrieve an Analytics Query
+---------------------------
+
+.. http:GET:: /analytics/queries/(id)/
+
+   :statuscode 200:
+
+Delete an Analytics Query
+-------------------------
+
+.. http:DELETE:: /analytics/queries/(id)/
+
+   :statuscode 204:
+
+Run an Analytics Query
+----------------------
+
+You may supply a `parameters` object to override parameters on the saved query or to use new parameters.
+
+This is useful for something like a "data-preview" where you want to just get a few results of a
+saved query. Or, to reduce the friction in experimenting and viewing data in *slightly* different
+ways.
+
+.. http:POST:: /analytics/query/(id)/run
+
+   :statuscode 201:
+
+   Run the saved query for the given `parameters` value.
+
+   .. sourcecode:: http
+
+      POST /analytics/query/run HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+.. http:POST:: /analytics/query/(id)/run/
+
+   :statuscode 201:
+
+   Override `op` and `limit` on the saved query.
+
+   .. sourcecode:: http
+
+      POST /analytics/query/run HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+      {
+        "parameters": {
+          "op": "avg",
+          "limit": 1
+        }
+      }

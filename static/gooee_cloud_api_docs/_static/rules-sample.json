@@ -1,0 +1,46 @@
+{
+  "device": "$device_id",
+  "name": "A sample rule",
+  "conditions": [
+    {
+      "variable": "occupancy_detected",
+      "operator": "=",
+      "value": false,
+      "duration": 60,
+      "logical_operator": "and"
+    },
+    {
+      "variable": "time_of_day",
+      "operator": "<",
+      "value": "13:00:00",
+      "logical_operator": "or"
+    },
+    {
+      "variable": "day_of_week",
+      "operator": "=",
+      "value": [
+        "mon",
+        "tue",
+        "wed"
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "spaces": [
+        "$space_id"
+      ],
+      "actions": [
+        {
+          "name": "on"
+        },
+        {
+          "name": "dim",
+          "parameters": {
+            "level": 5
+          }
+        }
+      ]
+    }
+  ]
+}

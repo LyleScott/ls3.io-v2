@@ -1,0 +1,545 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>API Tokens &mdash; Documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/navtree.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Documentation" href="../index.html"/>
+        <link rel="up" title="General" href="../general.html"/>
+        <link rel="next" title="Authentication" href="authentication.html"/>
+        <link rel="prev" title="Analytics" href="analytics.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Cloud API
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="link caption"><span class="link caption-text"><a class="reference internal" href="../misc.html">Misc</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/change_log.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/object_relation_diagram.html">Object Relation Diagram</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../general.html">General</a></span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="analytics.html">Analytics</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Tokens</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#permissions-and-scoping">Permissions and Scoping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#api-endpoints">API Endpoints</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clearing_field_values.html">Clearing Field Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="device_counts.html">Device Counts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exclude_include_fields.html">Include/Exclude Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filtering.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ordering.html">Ordering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meta.html">Meta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meta_groups.html">Meta Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pagination.html">Pagination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pubsub.html">PubSub Message Broker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search.html">Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scope.html">Scope</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../objects.html">Objects</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../objects/action_types.html">Action Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/actions.html">Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/analytics_export.html">Analytics Export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/analytics_query.html">Analytics Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/areas.html">Areas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/buildings.html">Buildings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/connected_products.html">Connected Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/currency.html">Currency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/customers.html">Customers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/dashboards.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/devices.html">Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/fault_alarms.html">Fault Alarms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/local_rules.html">Local Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/locations.html">Locations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/partners.html">Partners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/product_files.html">Product Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/product_types.html">Product Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/products.html">Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/rules_v2.html">Rules V2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/rule_groups.html">Rule Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/scenes.html">Scenes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/schedules.html">Schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/spaces.html">Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/timezones.html">Timezones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/user_features.html">User Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/user_groups.html">User Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/user_preferences.html">User Preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/users.html">Users</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../integrations.html">Integrations</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/als2lux.html">Als-to-Lux Correlation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/external_sensor.html">External Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/gateway_lite.html">Gateway Lite</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cloud API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../general.html">General</a> &raquo;</li>
+        
+      <li>API Tokens</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/general/api_tokens.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="api-tokens">
+<span id="general-api-tokens"></span><h1>API Tokens<a class="headerlink" href="#api-tokens" title="Permalink to this headline">¶</a></h1>
+<p>Requests can be made directly to the Gooee Cloud API through the use of API tokens. Data can be accessed
+programmatically, rather than relying on visiting the Gooee Cloud Portal.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">A default API token is generated automatically for each Customer.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><strong>Coming soon:</strong> granting each token a specific set of permissions.</p>
+</div>
+<div class="section" id="data-model">
+<h2>Data Model<a class="headerlink" href="#data-model" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="12%" />
+<col width="68%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>created</td>
+<td>datetime</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>string</td>
+<td>required, only visible for Customer API tokens.</td>
+</tr>
+<tr class="row-even"><td>api_token</td>
+<td>string</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>account_status</td>
+<td>string</td>
+<td>read-only</td>
+</tr>
+<tr class="row-even"><td>usage</td>
+<td>json</td>
+<td>read-only</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="permissions-and-scoping">
+<h2>Permissions and Scoping<a class="headerlink" href="#permissions-and-scoping" title="Permalink to this headline">¶</a></h2>
+<p>You must have the <code class="docutils literal"><span class="pre">edit_customer</span></code> <a class="reference internal" href="../objects/user_groups.html#objects-user-groups-permission-sets"><span class="std std-ref">permission set</span></a> to manage
+Customer API Tokens.</p>
+<p>You must be <a class="reference internal" href="scope.html#general-scope"><span class="std std-ref">scoped</span></a> to the parent <a class="reference internal" href="../objects/customers.html#objects-customers"><span class="std std-ref">Customer</span></a> in
+order to access a Customer API Token instance.</p>
+</div>
+<div class="section" id="api-endpoints">
+<h2>API Endpoints<a class="headerlink" href="#api-endpoints" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="list-customer-api-tokens">
+<h3>List Customer API Tokens<a class="headerlink" href="#list-customer-api-tokens" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--customers-(id)-api_tokens">
+<code class="descname">GET </code><code class="descname">/customers/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><code class="descname">/api_tokens</code><a class="headerlink" href="#get--customers-(id)-api_tokens" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/customers/93378718-b2ad-4b6c-a1bb-39c5436bf3e6/api_tokens</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;created&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-11-09T04:04:07.007725Z&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Default API Token&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;api_token&quot;</span><span class="p">:</span> <span class="s2">&quot;0011223344556677b1c2bcaa625fefc5469ca43caa121ca7f0ced65cdc2bdf2a&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;usage&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;now&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-11-09T05:03:51Z&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;api&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;day&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;2016-10-025T00:00:00Z&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+          <span class="nt">&quot;2016-11-09T00:00:00Z&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+          <span class="nt">&quot;2016-11-08T00:00:00Z&quot;</span><span class="p">:</span> <span class="mi">3</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;month&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;2016-10-01T00:00:00Z&quot;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span>
+          <span class="nt">&quot;2016-11-01T00:00:00Z&quot;</span><span class="p">:</span> <span class="mi">8</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;mqtt&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;day&quot;</span><span class="p">:</span> <span class="p">{},</span>
+        <span class="nt">&quot;month&quot;</span><span class="p">:</span> <span class="p">{}</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;account_status&quot;</span><span class="p">:</span> <span class="s2">&quot;active&quot;</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="create-a-customer-api-token">
+<h3>Create a Customer API Token<a class="headerlink" href="#create-a-customer-api-token" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--customers-(id)-api_tokens">
+<code class="descname">POST </code><code class="descname">/customers/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><code class="descname">/api_tokens</code><a class="headerlink" href="#post--customers-(id)-api_tokens" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2">201 Created</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/customers/93378718-b2ad-4b6c-a1bb-39c5436bf3e6/api_tokens</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;testing api token&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+
+<span class="p">{</span>
+  <span class="nt">&quot;created&quot;</span><span class="p">:</span> <span class="s2">&quot;2020-03-13T20:19:11.869809Z&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;testing api token&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;api_token&quot;</span><span class="p">:</span> <span class="s2">&quot;24c355c8ed563c0075371059d2a1057fe38b3919fff13bdebfd3007317fe8408b40ed340&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;account_status&quot;</span><span class="p">:</span> <span class="s2">&quot;active&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;usage&quot;</span><span class="p">:</span> <span class="s2">&quot;This feature is unavailable at this time.&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="activate-a-customer-api-token">
+<h3>Activate a Customer API Token<a class="headerlink" href="#activate-a-customer-api-token" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--customers-(id)-api_tokens-api_token-activate">
+<code class="descname">POST </code><code class="descname">/customers/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><code class="descname">/api_tokens/{api_token}/activate</code><a class="headerlink" href="#post--customers-(id)-api_tokens-api_token-activate" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.5">204 No Content</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="deactivate-a-customer-api-token">
+<h3>Deactivate a Customer API Token<a class="headerlink" href="#deactivate-a-customer-api-token" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--customers-(id)-api_tokens-api_token-deactivate">
+<code class="descname">POST </code><code class="descname">/customers/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><code class="descname">/api_tokens/{api_token}/deactivate</code><a class="headerlink" href="#post--customers-(id)-api_tokens-api_token-deactivate" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.5">204 No Content</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="delete-a-customer-api-token">
+<h3>Delete a Customer API Token<a class="headerlink" href="#delete-a-customer-api-token" title="Permalink to this headline">¶</a></h3>
+<dl class="delete">
+<dt id="delete--customers-(id)-api_tokens-api_token">
+<code class="descname">DELETE </code><code class="descname">/customers/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><code class="descname">/api_tokens/{api_token}</code><a class="headerlink" href="#delete--customers-(id)-api_tokens-api_token" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2">201 Created</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="view-user-api-token">
+<h3>View User API Token<a class="headerlink" href="#view-user-api-token" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--users-(id)-api_token">
+<code class="descname">GET </code><code class="descname">/users/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><code class="descname">/api_token</code><a class="headerlink" href="#get--users-(id)-api_token" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="authentication.html" class="btn btn-neutral float-right" title="Authentication" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="analytics.html" class="btn btn-neutral" title="Analytics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Gooee, LLC.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/tabs.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,158 @@
+.. _objects_analytics_export:
+
+================
+Analytics Export
+================
+
+.. contents:: Quick Links
+
+Description
+===========
+
+An Analytics Export allows you to export `all` of the results of an :ref:`Analytics Query <objects_analytics_query>`
+to a CSV file that is available to download. This makes it easier to consume large
+result sets and the export file can be referenced for a period of time.
+
+.. note:: You could accomplish the same with manual :ref:`Analytics History <analytics_historical>` API
+          requests by paginating through all results and converting column-major-order JSON to a CSV
+          file.
+
+Status Workflow
+===============
+
+When you create an export, you are actually scheduling an export to execute as soon as possible.
+This allows us to handle large data exports and allows the user to consume all results of a query
+with the least amount of complexity.
+
+As the export starts and eventually completes or fails, the ``status`` field is updated accordingly.
+This means that API consumers must poll for the desired ``status`` to occur.
+
+When the status becomes ``complete``, a ``url`` is then populated on the resource. This URL is a
+direct link to a downloadable CSV file that will expire in `1 hour` from the time it was generated.
+
+.. note: The 1 hour expiration time on the URL is generated *each time* you view the resource. The
+         link will then work for the current time of the request plus 1 hour.
+
+.. image:: ../_static/analytics_export_states.png
+
+Export File Structure
+==========================
+
+The downloaded file will be in CSV text (`text/csv`) format.
+
+Data Model
+==========
+
+=================== ==========================================  ========================
+Key                 Datatype                                    Notes
+=================== ==========================================  ========================
+id                  ref                                         read-only
+created             datetime                                    read-only
+modified            datetime                                    read-only
+created_by          :ref:`ref <objects_users>`                  read-only
+name                string                                      required, max_length=100
+notes               string
+query               :ref:`ref <objects_analytics_query>`        required
+status              enum                                        read-only. options=[``"queued"``, ``"running"``, ``"complete"``, ``"failed"``]
+errors              string                                      JSON Field representing why the export failed.
+number_of_rows      integer                                     visible when ``status`` is ``complete``.
+total_bytes         integer                                     visible when ``status`` is ``complete``.
+tags                array(str)                                  max_length=50 per tag
+customer_scopes     array(:ref:`ref <objects_customers>`)       see :ref:`general_scope`
+partner_scopes      array(:ref:`ref <objects_partners>`)        see :ref:`general_scope`
+=================== ==========================================  ========================
+
+
+API Endpoints
+=============
+
+.. warning:: Updates with ``PUT`` and ``PATCH`` are not supported for this resource.
+
+Create an Analytics Export
+--------------------------
+
+.. http:POST:: /analytics/export
+
+   :statuscode 201:
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      POST /analytics/export HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+      {
+        "name": "Export 007",
+        "query": "7ca7297f-1de1-4799-8eeb-a7b4d557850c"
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 201 OK
+      Content-Type: application/json
+
+      {
+        "id": "e06bc25d-4375-4320-a60e-375d75fa0fe3",
+        "created": "2020-08-13T19:37:21.755074Z",
+        "modified": "2020-08-13T19:37:21.755107Z",
+        "created_by": "2a3130af-c738-4353-8050-a80fbafaf526",
+        "name": "YumYum DimSum",
+        "notes": "",
+        "query": "6092953b-94a6-476d-aad8-f4b42a0f0c08",
+        "status": "queued",
+        "errors": null,
+        "number_of_rows": null,
+        "total_bytes": null,
+        "tags": []
+      }
+
+List Analytics Queries
+----------------------
+
+.. http:GET:: /analytics/exports/
+
+   :statuscode 200:
+
+Retrieve an Analytics Export
+----------------------------
+
+.. http:GET:: /analytics/exports/(id)/
+
+   :statuscode 200:
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json
+
+      {
+        "id": "e06bc25d-4375-4320-a60e-375d75fa0fe3",
+        "created": "2020-08-13T19:37:21.755074Z",
+        "modified": "2020-08-13T19:37:21.755107Z",
+        "created_by": "2a3130af-c738-4353-8050-a80fbafaf526",
+        "name": "YumYum DimSum",
+        "notes": "",
+        "query": "6092953b-94a6-476d-aad8-f4b42a0f0c08",
+        "status": "complete",
+        "errors": null,
+        "number_of_rows": 9876,
+        "total_bytes": 12345678,
+        "tags": [],
+        "url": "https://prod-anx-exports.s3.amazonaws.com/anx_export_37dea23d-1702-429c-8176-ea1d36fad3ba/user_2a3130af-c738-4353-8050-a80fbafaf526.csv?AWSAccessKeyId=AKIA5UHFLP6VCX2LOMER&Signature=CO4nwzNp4nJnpGCiRgElIsxGs7Q%3D&Expires=1597352155"
+      }
+
+Delete an Analytics Export
+--------------------------
+
+.. note:: This will also delete the backing files so any existing links that are not expired yet
+          will stop working.
+
+.. http:DELETE:: /analytics/exports/(id)/
+
+   :statuscode 204:

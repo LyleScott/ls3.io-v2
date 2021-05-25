@@ -1,0 +1,1334 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Buildings &mdash; Documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/navtree.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Documentation" href="../index.html"/>
+        <link rel="up" title="Objects" href="../objects.html"/>
+        <link rel="next" title="Connected Products" href="connected_products.html"/>
+        <link rel="prev" title="Areas" href="areas.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Cloud API
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="link caption"><span class="link caption-text"><a class="reference internal" href="../misc.html">Misc</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/change_log.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/object_relation_diagram.html">Object Relation Diagram</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../general.html">General</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/analytics.html">Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api_tokens.html">API Tokens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/authentication.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/clearing_field_values.html">Clearing Field Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/device_counts.html">Device Counts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/exclude_include_fields.html">Include/Exclude Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/filtering.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ordering.html">Ordering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/meta.html">Meta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/meta_groups.html">Meta Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/pagination.html">Pagination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/pubsub.html">PubSub Message Broker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/search.html">Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/scope.html">Scope</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../objects.html">Objects</a></span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="action_types.html">Action Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions.html">Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analytics_export.html">Analytics Export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analytics_query.html">Analytics Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="areas.html">Areas</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Buildings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#device-counts">Device Counts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#operating-hours">Operating Hours</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#complex-constraints">Complex Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#electrical-fee-schedule">Electrical Fee Schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#time-dependent-rates">Time Dependent Rates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#api-endpoints">API Endpoints</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="connected_products.html">Connected Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="currency.html">Currency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customers.html">Customers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dashboards.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="devices.html">Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fault_alarms.html">Fault Alarms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="local_rules.html">Local Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="locations.html">Locations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="partners.html">Partners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="product_files.html">Product Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="product_types.html">Product Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="products.html">Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules_v2.html">Rules V2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rule_groups.html">Rule Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scenes.html">Scenes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schedules.html">Schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spaces.html">Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timezones.html">Timezones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_features.html">User Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_groups.html">User Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_preferences.html">User Preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Users</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../integrations.html">Integrations</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/als2lux.html">Als-to-Lux Correlation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/external_sensor.html">External Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/gateway_lite.html">Gateway Lite</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cloud API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../objects.html">Objects</a> &raquo;</li>
+        
+      <li>Buildings</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/objects/buildings.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="buildings">
+<span id="objects-buildings"></span><h1><a class="toc-backref" href="#id8">Buildings</a><a class="headerlink" href="#buildings" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="quick-links">
+<p class="topic-title first">Quick Links</p>
+<ul class="simple">
+<li><a class="reference internal" href="#buildings" id="id8">Buildings</a><ul>
+<li><a class="reference internal" href="#description" id="id9">Description</a></li>
+<li><a class="reference internal" href="#data-model" id="id10">Data Model</a></li>
+<li><a class="reference internal" href="#device-counts" id="id11">Device Counts</a></li>
+<li><a class="reference internal" href="#operating-hours" id="id12">Operating Hours</a><ul>
+<li><a class="reference internal" href="#id1" id="id13">Data Model</a></li>
+<li><a class="reference internal" href="#time-schedule" id="id14">Time Schedule</a><ul>
+<li><a class="reference internal" href="#id2" id="id15">Data Model</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#complex-constraints" id="id16">Complex Constraints</a><ul>
+<li><a class="reference internal" href="#example" id="id17">Example</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#electrical-fee-schedule" id="id18">Electrical Fee Schedule</a><ul>
+<li><a class="reference internal" href="#id3" id="id19">Data Model</a></li>
+<li><a class="reference internal" href="#electrical-fee-schedule-complex-constraints" id="id20">Complex Constraints</a></li>
+<li><a class="reference internal" href="#time-dependent-rates-model" id="id21">Example</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#time-dependent-rates" id="id22">Time Dependent Rates</a><ul>
+<li><a class="reference internal" href="#id6" id="id23">Data Model</a></li>
+<li><a class="reference internal" href="#time-dependent-rates-complex-constraints" id="id24">Complex Constraints</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#api-endpoints" id="id25">API Endpoints</a><ul>
+<li><a class="reference internal" href="#create-a-building" id="id26">Create a Building</a></li>
+<li><a class="reference internal" href="#list-buildings" id="id27">List Buildings</a></li>
+<li><a class="reference internal" href="#update-a-building" id="id28">Update a Building</a></li>
+<li><a class="reference internal" href="#partially-update-a-building" id="id29">Partially Update a Building</a></li>
+<li><a class="reference internal" href="#retrieve-a-building" id="id30">Retrieve a Building</a></li>
+<li><a class="reference internal" href="#delete-a-building" id="id31">Delete a Building</a></li>
+<li><a class="reference internal" href="#append-entries-to-a-building-s-operating-hours" id="id32">Append Entries to a Building&#8217;s Operating Hours</a></li>
+<li><a class="reference internal" href="#replace-a-building-s-operating-hours" id="id33">Replace a Building&#8217;s Operating Hours</a></li>
+<li><a class="reference internal" href="#retrieve-a-building-s-operating-hours" id="id34">Retrieve a Building&#8217;s Operating Hours</a></li>
+<li><a class="reference internal" href="#remove-all-entries-from-a-building-s-operating-hours" id="id35">Remove All Entries From a Building&#8217;s Operating Hours</a></li>
+<li><a class="reference internal" href="#append-entries-to-a-building-s-electrical-fee-schedule" id="id36">Append Entries to a Building&#8217;s Electrical Fee Schedule</a></li>
+<li><a class="reference internal" href="#replace-a-building-s-electrical-fee-schedule" id="id37">Replace a Building&#8217;s Electrical Fee Schedule</a></li>
+<li><a class="reference internal" href="#retrieve-a-building-s-electrical-fee-schedule" id="id38">Retrieve a Building&#8217;s Electrical Fee Schedule</a></li>
+<li><a class="reference internal" href="#remove-all-entries-from-a-building-s-electrical-fee-schedule" id="id39">Remove All Entries From a Building&#8217;s Electrical Fee Schedule</a></li>
+<li><a class="reference internal" href="#list-a-building-s-hierarchy-with-devices" id="id40">List a Building&#8217;s Hierarchy with Devices</a></li>
+<li><a class="reference internal" href="#building-reactor-version" id="id41">Building Reactor Version</a></li>
+<li><a class="reference internal" href="#building-reactor-logs" id="id42">Building Reactor Logs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="description">
+<h2><a class="toc-backref" href="#id9">Description</a><a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>Buildings are composed of a hierarchy of <a class="reference internal" href="spaces.html#objects-spaces"><span class="std std-ref">Spaces</span></a>.  They
+belong to a <a class="reference internal" href="customers.html#objects-customers"><span class="std std-ref">Customer</span></a> and have a physical
+<a class="reference internal" href="locations.html#objects-locations"><span class="std std-ref">Location</span></a>.</p>
+</div>
+<div class="section" id="data-model">
+<h2><a class="toc-backref" href="#id10">Data Model</a><a class="headerlink" href="#data-model" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="37%" />
+<col width="45%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>ref</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>created</td>
+<td>datetime</td>
+<td>read-only</td>
+</tr>
+<tr class="row-even"><td>modified</td>
+<td>datetime</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>name</td>
+<td>string</td>
+<td>required, max_length=100</td>
+</tr>
+<tr class="row-even"><td>description</td>
+<td>string</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>customer</td>
+<td><a class="reference internal" href="customers.html#objects-customers"><span class="std std-ref">ref</span></a></td>
+<td>required, write-once</td>
+</tr>
+<tr class="row-even"><td>spaces</td>
+<td>array(<a class="reference internal" href="spaces.html#objects-spaces"><span class="std std-ref">ref</span></a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>physical_spaces</td>
+<td>array(<a class="reference internal" href="spaces.html#objects-spaces"><span class="std std-ref">ref</span></a>)</td>
+<td>read-only</td>
+</tr>
+<tr class="row-even"><td>virtual_spaces</td>
+<td>array(<a class="reference internal" href="spaces.html#objects-spaces"><span class="std std-ref">ref</span></a>)</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>location</td>
+<td><a class="reference internal" href="locations.html#objects-locations"><span class="std std-ref">location</span></a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>timezone</td>
+<td>enum</td>
+<td>default=UTC, see <a class="reference internal" href="timezones.html#objects-timezones"><span class="std std-ref">Timezones</span></a></td>
+</tr>
+<tr class="row-odd"><td>currency</td>
+<td>enum</td>
+<td>default=USD, see <a class="reference internal" href="currency.html#objects-currency"><span class="std std-ref">Currency</span></a></td>
+</tr>
+<tr class="row-even"><td>auto_dst</td>
+<td>boolean</td>
+<td>default=true, Automatic Daylight Savings</td>
+</tr>
+<tr class="row-odd"><td>last_activity</td>
+<td>datetime</td>
+<td>read-only</td>
+</tr>
+<tr class="row-even"><td>meta</td>
+<td>array(<a class="reference internal" href="../general/meta.html#general-meta"><span class="std std-ref">meta</span></a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>data_service_id</td>
+<td>string</td>
+<td>read-only</td>
+</tr>
+<tr class="row-even"><td>anx_dimensions</td>
+<td>array(str)</td>
+<td>see <a class="reference internal" href="../general/analytics.html#analytics-dimensions"><span class="std std-ref">Dimensions</span></a></td>
+</tr>
+<tr class="row-odd"><td>customer_scopes</td>
+<td>array(<a class="reference internal" href="customers.html#objects-customers"><span class="std std-ref">ref</span></a>)</td>
+<td>see <a class="reference internal" href="../general/scope.html#general-scope"><span class="std std-ref">Scope</span></a></td>
+</tr>
+<tr class="row-even"><td>partner_scopes</td>
+<td>array(<a class="reference internal" href="partners.html#objects-partners"><span class="std std-ref">ref</span></a>)</td>
+<td>see <a class="reference internal" href="../general/scope.html#general-scope"><span class="std std-ref">Scope</span></a></td>
+</tr>
+<tr class="row-odd"><td>tags</td>
+<td>array(str)</td>
+<td>max_length=50 per tag</td>
+</tr>
+<tr class="row-even"><td>reactor_version</td>
+<td>string</td>
+<td>max_length=64, s3-generated version e.g. &#8216;unknown&#8217;, write-only</td>
+</tr>
+<tr class="row-odd"><td>rule_version</td>
+<td>string</td>
+<td>read-only, options=[v1, v2], default=v2</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="device-counts">
+<span id="objects-buildings-annotations"></span><h2><a class="toc-backref" href="#id11">Device Counts</a><a class="headerlink" href="#device-counts" title="Permalink to this headline">¶</a></h2>
+<p>Device counts (online/total) are supported on an opt-in basis via the &#8220;_annotate&#8221; filter.
+See: <a class="reference internal" href="../general/device_counts.html#general-device-counts"><span class="std std-ref">Device Counts</span></a> for reference.</p>
+</div>
+<div class="section" id="operating-hours">
+<span id="objects-buildings-operating-hours"></span><h2><a class="toc-backref" href="#id12">Operating Hours</a><a class="headerlink" href="#operating-hours" title="Permalink to this headline">¶</a></h2>
+<p>Every Building may have operating hours to define the times that it will be open. By default Buildings will
+have empty operating hours <code class="docutils literal"><span class="pre">[]</span></code>.</p>
+<div class="section" id="id1">
+<h3><a class="toc-backref" href="#id13">Data Model</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="11%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>string</td>
+<td>required, unique, max_length=100</td>
+</tr>
+<tr class="row-odd"><td>effective_date</td>
+<td>date</td>
+<td>required, unique, format=`YYYY-mm-dd`</td>
+</tr>
+<tr class="row-even"><td>time_schedule</td>
+<td>object</td>
+<td>see <a class="reference internal" href="#time-schedule-model"><span class="std std-ref">Time Schedule</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="time-schedule">
+<span id="time-schedule-model"></span><h3><a class="toc-backref" href="#id14">Time Schedule</a><a class="headerlink" href="#time-schedule" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h4><a class="toc-backref" href="#id15">Data Model</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="12%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>day_of_week</td>
+<td>string</td>
+<td>required, choices=[mon,tue,wed,thu,fri,sat,sun]</td>
+</tr>
+<tr class="row-odd"><td>start</td>
+<td>time</td>
+<td>required, format=`HH:MM`</td>
+</tr>
+<tr class="row-even"><td>end</td>
+<td>time</td>
+<td>required, format=`HH:MM`</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="complex-constraints">
+<span id="time-schedule-complex-constraints"></span><h2><a class="toc-backref" href="#id16">Complex Constraints</a><a class="headerlink" href="#complex-constraints" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">start</span></code> and <code class="docutils literal"><span class="pre">end</span></code> for a single day must not match or overlap.</p>
+<div class="section" id="example">
+<h3><a class="toc-backref" href="#id17">Example</a><a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;operating_hours&quot;</span> <span class="o">:</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;effective_date&quot;</span><span class="o">:</span> <span class="s2">&quot;2017-07-01&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Summer Working Hours&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;time_schedule&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;day_of_week&quot;</span><span class="o">:</span> <span class="s2">&quot;mon&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;start&quot;</span><span class="o">:</span> <span class="s2">&quot;09:00&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;end&quot;</span><span class="o">:</span> <span class="s2">&quot;17:30&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;day_of_week&quot;</span><span class="o">:</span> <span class="s2">&quot;tue&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;start&quot;</span><span class="o">:</span> <span class="s2">&quot;09:00&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;end&quot;</span><span class="o">:</span> <span class="s2">&quot;17:30&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;day_of_week&quot;</span><span class="o">:</span> <span class="s2">&quot;wed&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;start&quot;</span><span class="o">:</span> <span class="s2">&quot;09:00&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;end&quot;</span><span class="o">:</span> <span class="s2">&quot;17:30&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;day_of_week&quot;</span><span class="o">:</span> <span class="s2">&quot;thu&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;start&quot;</span><span class="o">:</span> <span class="s2">&quot;09:00&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;end&quot;</span><span class="o">:</span> <span class="s2">&quot;17:30&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;day_of_week&quot;</span><span class="o">:</span> <span class="s2">&quot;fri&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;start&quot;</span><span class="o">:</span> <span class="s2">&quot;09:00&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;end&quot;</span><span class="o">:</span> <span class="s2">&quot;17:30&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;day_of_week&quot;</span><span class="o">:</span> <span class="s2">&quot;sat&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;start&quot;</span><span class="o">:</span> <span class="s2">&quot;08:00&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;end&quot;</span><span class="o">:</span> <span class="s2">&quot;12:00&quot;</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="electrical-fee-schedule">
+<span id="objects-buildings-electrical-fee-schedule"></span><h2><a class="toc-backref" href="#id18">Electrical Fee Schedule</a><a class="headerlink" href="#electrical-fee-schedule" title="Permalink to this headline">¶</a></h2>
+<p>An electrical fee schedule may be added to a building. The &#8220;name&#8221;, &#8220;effective_date&#8221; and &#8220;base_rate&#8221;
+fields are required and establish a default rate for the building. Exceptions to the default
+schedule may be added in the &#8220;time_dependent_rates&#8221; field.</p>
+<p>By default, every Building has an empty electrical fee schedule: <code class="docutils literal"><span class="pre">[]</span></code>.</p>
+<div class="section" id="id3">
+<h3><a class="toc-backref" href="#id19">Data Model</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="9%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>string</td>
+<td>required, unique, max_length=100</td>
+</tr>
+<tr class="row-odd"><td>effective_date</td>
+<td>date</td>
+<td>required, unique, format=`YYYY-mm-dd`</td>
+</tr>
+<tr class="row-even"><td>base_rate</td>
+<td>number</td>
+<td>required, &gt; 0</td>
+</tr>
+<tr class="row-odd"><td>time_dependent_rates</td>
+<td>object</td>
+<td>see <a class="reference internal" href="#time-dependent-rates-model"><span class="std std-ref">Time Dependent Rates</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="electrical-fee-schedule-complex-constraints">
+<span id="id4"></span><h3><a class="toc-backref" href="#id20">Complex Constraints</a><a class="headerlink" href="#electrical-fee-schedule-complex-constraints" title="Permalink to this headline">¶</a></h3>
+<p><cite>effective_date</cite> must be unique for the Building.</p>
+<p><cite>name</cite> must be unique for the Building.</p>
+</div>
+<div class="section" id="time-dependent-rates-model">
+<span id="id5"></span><h3><a class="toc-backref" href="#id21">Example</a><a class="headerlink" href="#time-dependent-rates-model" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;electrical_fee_schedule&quot;</span> <span class="o">:</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;effective_date&quot;</span><span class="o">:</span> <span class="s2">&quot;2016-01-01&quot;</span><span class="p">,</span>     <span class="c1">// YYYY-mm-dd</span>
+    <span class="s2">&quot;base_rate&quot;</span><span class="o">:</span> <span class="mf">150</span><span class="p">,</span>                   <span class="c1">// Positive number</span>
+    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Winter 2016&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;time_dependent_rates&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;day_of_week&quot;</span><span class="o">:</span> <span class="s2">&quot;mon&quot;</span><span class="p">,</span>           <span class="c1">// (mon,tue,wed,thu,fri,sat,sun)</span>
+        <span class="s2">&quot;start&quot;</span><span class="o">:</span> <span class="s2">&quot;07:00&quot;</span><span class="p">,</span>               <span class="c1">// 24 hour time (HH:MM)</span>
+        <span class="s2">&quot;end&quot;</span><span class="o">:</span> <span class="s2">&quot;18:30&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;rate&quot;</span><span class="o">:</span> <span class="mf">200</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;day_of_week&quot;</span><span class="o">:</span> <span class="s2">&quot;tue&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;start&quot;</span><span class="o">:</span> <span class="s2">&quot;07:00&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;end&quot;</span><span class="o">:</span> <span class="s2">&quot;18:30&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;rate&quot;</span><span class="o">:</span> <span class="mf">200</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;day_of_week&quot;</span><span class="o">:</span> <span class="s2">&quot;wed&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;start&quot;</span><span class="o">:</span> <span class="s2">&quot;07:00&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;end&quot;</span><span class="o">:</span> <span class="s2">&quot;18:30&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;rate&quot;</span><span class="o">:</span> <span class="mf">200</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;day_of_week&quot;</span><span class="o">:</span> <span class="s2">&quot;thu&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;start&quot;</span><span class="o">:</span> <span class="s2">&quot;07:00&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;end&quot;</span><span class="o">:</span> <span class="s2">&quot;18:30&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;rate&quot;</span><span class="o">:</span> <span class="mf">200</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;day_of_week&quot;</span><span class="o">:</span> <span class="s2">&quot;fri&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;start&quot;</span><span class="o">:</span> <span class="s2">&quot;07:00&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;end&quot;</span><span class="o">:</span> <span class="s2">&quot;18:30&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;rate&quot;</span><span class="o">:</span> <span class="mf">200</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="time-dependent-rates">
+<h2><a class="toc-backref" href="#id22">Time Dependent Rates</a><a class="headerlink" href="#time-dependent-rates" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h3><a class="toc-backref" href="#id23">Data Model</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="12%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>day_of_week</td>
+<td>string</td>
+<td>required, choices=[mon,tue,wed,thu,fri,sat,sun]</td>
+</tr>
+<tr class="row-odd"><td>start</td>
+<td>time</td>
+<td>required, format=`HH:MM`</td>
+</tr>
+<tr class="row-even"><td>end</td>
+<td>time</td>
+<td>required, format=`HH:MM`</td>
+</tr>
+<tr class="row-odd"><td>rate</td>
+<td>number</td>
+<td>required, &gt; 0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="time-dependent-rates-complex-constraints">
+<span id="id7"></span><h3><a class="toc-backref" href="#id24">Complex Constraints</a><a class="headerlink" href="#time-dependent-rates-complex-constraints" title="Permalink to this headline">¶</a></h3>
+<p><cite>start</cite> and <cite>end</cite> for a single day must not match or overlap.</p>
+</div>
+</div>
+<div class="section" id="api-endpoints">
+<h2><a class="toc-backref" href="#id25">API Endpoints</a><a class="headerlink" href="#api-endpoints" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="create-a-building">
+<h3><a class="toc-backref" href="#id26">Create a Building</a><a class="headerlink" href="#create-a-building" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--buildings">
+<code class="descname">POST </code><code class="descname">/buildings</code><a class="headerlink" href="#post--buildings" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2">201 Created</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/buildings/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Example Buidling&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;customer&quot;</span><span class="p">:</span> <span class="s2">&quot;e119942a-1d57-4180-b65a-4b48f7cb9f60&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;timezone&quot;</span><span class="p">:</span> <span class="s2">&quot;US/Eastern&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;addr1&quot;</span><span class="p">:</span> <span class="s2">&quot;4100 E Mexico Ave A&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;Denver&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;CO&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;postal_code&quot;</span><span class="p">:</span> <span class="s2">&quot;80222&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;US&quot;</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;meta&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;serial_number&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;display_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Serial Number&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;ABC123&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;temperature&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;display_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Temperature&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mf">1.23</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Example1234&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+  <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;5c541a96-3c50-41fa-8cbf-365554feddad&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;created&quot;</span><span class="p">:</span> <span class="s2">&quot;2020-03-17T14:56:01.204974Z&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;modified&quot;</span><span class="p">:</span> <span class="s2">&quot;2020-03-17T14:56:01.205003Z&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Example Building&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;customer&quot;</span><span class="p">:</span> <span class="s2">&quot;e119942a-1d57-4180-b65a-4b48f7cb9f60&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;spaces&quot;</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="nt">&quot;physical_spaces&quot;</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="nt">&quot;virtual_spaces&quot;</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="nt">&quot;users&quot;</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="nt">&quot;timezone&quot;</span><span class="p">:</span> <span class="s2">&quot;US/Eastern&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;currency&quot;</span><span class="p">:</span> <span class="s2">&quot;USD&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;last_activity&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="nt">&quot;meta&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;temperature&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;display_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Temperature&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mf">1.23</span><span class="p">,</span>
+      <span class="nt">&quot;unit_of_measure&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+      <span class="nt">&quot;modified&quot;</span><span class="p">:</span> <span class="s2">&quot;2020-03-17T14:56:01.513558Z&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;serial_number&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;display_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Serial Number&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;ABC123&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;unit_of_measure&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+      <span class="nt">&quot;modified&quot;</span><span class="p">:</span> <span class="s2">&quot;2020-03-17T14:56:01.505765Z&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;data_service_id&quot;</span><span class="p">:</span> <span class="s2">&quot;UsEwsCRbWmRkaSawwYbhkxgg&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;Example1234&quot;</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;rule_version&quot;</span><span class="p">:</span> <span class="s2">&quot;v2&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;anx_dimensions&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;addr1&quot;</span><span class="p">:</span> <span class="s2">&quot;4100 E Mexico Ave A&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;addr2&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;Denver&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;CO&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;postal_code&quot;</span><span class="p">:</span> <span class="s2">&quot;80222&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;US&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;phone_number&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;lat&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="nt">&quot;lng&quot;</span><span class="p">:</span> <span class="kc">null</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="list-buildings">
+<h3><a class="toc-backref" href="#id27">List Buildings</a><a class="headerlink" href="#list-buildings" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--buildings">
+<code class="descname">GET </code><code class="descname">/buildings</code><a class="headerlink" href="#get--buildings" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="update-a-building">
+<h3><a class="toc-backref" href="#id28">Update a Building</a><a class="headerlink" href="#update-a-building" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--buildings-(id)">
+<code class="descname">PUT </code><code class="descname">/buildings/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#put--buildings-(id)" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="partially-update-a-building">
+<h3><a class="toc-backref" href="#id29">Partially Update a Building</a><a class="headerlink" href="#partially-update-a-building" title="Permalink to this headline">¶</a></h3>
+<dl class="patch">
+<dt id="patch--buildings-(id)">
+<code class="descname">PATCH </code><code class="descname">/buildings/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#patch--buildings-(id)" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="retrieve-a-building">
+<h3><a class="toc-backref" href="#id30">Retrieve a Building</a><a class="headerlink" href="#retrieve-a-building" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--buildings-(id)">
+<code class="descname">GET </code><code class="descname">/buildings/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#get--buildings-(id)" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="delete-a-building">
+<h3><a class="toc-backref" href="#id31">Delete a Building</a><a class="headerlink" href="#delete-a-building" title="Permalink to this headline">¶</a></h3>
+<dl class="delete">
+<dt id="delete--buildings-(id)">
+<code class="descname">DELETE </code><code class="descname">/buildings/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#delete--buildings-(id)" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.5">204 No Content</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="append-entries-to-a-building-s-operating-hours">
+<h3><a class="toc-backref" href="#id32">Append Entries to a Building&#8217;s Operating Hours</a><a class="headerlink" href="#append-entries-to-a-building-s-operating-hours" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--buildings-(id)-operating_hours">
+<code class="descname">POST </code><code class="descname">/buildings/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><code class="descname">/operating_hours</code><a class="headerlink" href="#post--buildings-(id)-operating_hours" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2">201 Created</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/buildings/93378718-b2ad-4b6c-a1bb-39c5436bf3e6/operating_hours</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;effective_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2017-07-01&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Weekend Working Hours&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;time_schedule&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;day_of_week&quot;</span><span class="p">:</span> <span class="s2">&quot;sat&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="s2">&quot;08:00&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;end&quot;</span><span class="p">:</span> <span class="s2">&quot;12:00&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;day_of_week&quot;</span><span class="p">:</span> <span class="s2">&quot;sun&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="s2">&quot;08:00&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;end&quot;</span><span class="p">:</span> <span class="s2">&quot;12:00&quot;</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;01a19ae6-78ec-4d8f-859d-edf0f954042f&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Weekend Working Hours&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;effective_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2017-07-01&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;time_schedule&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;day_of_week&quot;</span><span class="p">:</span> <span class="s2">&quot;sat&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="s2">&quot;08:00&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;end&quot;</span><span class="p">:</span> <span class="s2">&quot;12:00&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;day_of_week&quot;</span><span class="p">:</span> <span class="s2">&quot;sun&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="s2">&quot;08:00&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;end&quot;</span><span class="p">:</span> <span class="s2">&quot;12:00&quot;</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="replace-a-building-s-operating-hours">
+<h3><a class="toc-backref" href="#id33">Replace a Building&#8217;s Operating Hours</a><a class="headerlink" href="#replace-a-building-s-operating-hours" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--buildings-(id)-operating_hours">
+<code class="descname">PUT </code><code class="descname">/buildings/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><code class="descname">/operating_hours</code><a class="headerlink" href="#put--buildings-(id)-operating_hours" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="retrieve-a-building-s-operating-hours">
+<h3><a class="toc-backref" href="#id34">Retrieve a Building&#8217;s Operating Hours</a><a class="headerlink" href="#retrieve-a-building-s-operating-hours" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--buildings-(id)-operating_hours">
+<code class="descname">GET </code><code class="descname">/buildings/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><code class="descname">/operating_hours</code><a class="headerlink" href="#get--buildings-(id)-operating_hours" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="remove-all-entries-from-a-building-s-operating-hours">
+<h3><a class="toc-backref" href="#id35">Remove All Entries From a Building&#8217;s Operating Hours</a><a class="headerlink" href="#remove-all-entries-from-a-building-s-operating-hours" title="Permalink to this headline">¶</a></h3>
+<dl class="delete">
+<dt id="delete--buildings-(id)-operating_hours">
+<code class="descname">DELETE </code><code class="descname">/buildings/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><code class="descname">/operating_hours</code><a class="headerlink" href="#delete--buildings-(id)-operating_hours" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.5">204 No Content</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="append-entries-to-a-building-s-electrical-fee-schedule">
+<h3><a class="toc-backref" href="#id36">Append Entries to a Building&#8217;s Electrical Fee Schedule</a><a class="headerlink" href="#append-entries-to-a-building-s-electrical-fee-schedule" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--buildings-(id)-electrical_fee_schedule">
+<code class="descname">POST </code><code class="descname">/buildings/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><code class="descname">/electrical_fee_schedule</code><a class="headerlink" href="#post--buildings-(id)-electrical_fee_schedule" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2">201 Created</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/buildings/93378718-b2ad-4b6c-a1bb-39c5436bf3e6/electrical_fee_schedule</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;effective_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-01-12&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;base_rate&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Example Schedule&quot;</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;598f3a8a-8489-4529-9922-f09db0654d20&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Example Schedule&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;effective_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-01-12&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;base_rate&quot;</span><span class="p">:</span> <span class="mf">100.0</span><span class="p">,</span>
+    <span class="nt">&quot;time_dependent_rates&quot;</span><span class="p">:</span> <span class="p">[]</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="replace-a-building-s-electrical-fee-schedule">
+<h3><a class="toc-backref" href="#id37">Replace a Building&#8217;s Electrical Fee Schedule</a><a class="headerlink" href="#replace-a-building-s-electrical-fee-schedule" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--buildings-(id)-electrical_fee_schedule">
+<code class="descname">PUT </code><code class="descname">/buildings/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><code class="descname">/electrical_fee_schedule</code><a class="headerlink" href="#put--buildings-(id)-electrical_fee_schedule" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="retrieve-a-building-s-electrical-fee-schedule">
+<h3><a class="toc-backref" href="#id38">Retrieve a Building&#8217;s Electrical Fee Schedule</a><a class="headerlink" href="#retrieve-a-building-s-electrical-fee-schedule" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--buildings-(id)-electrical_fee_schedule">
+<code class="descname">GET </code><code class="descname">/buildings/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><code class="descname">/electrical_fee_schedule</code><a class="headerlink" href="#get--buildings-(id)-electrical_fee_schedule" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="remove-all-entries-from-a-building-s-electrical-fee-schedule">
+<h3><a class="toc-backref" href="#id39">Remove All Entries From a Building&#8217;s Electrical Fee Schedule</a><a class="headerlink" href="#remove-all-entries-from-a-building-s-electrical-fee-schedule" title="Permalink to this headline">¶</a></h3>
+<dl class="delete">
+<dt id="delete--buildings-(id)-electrical_fee_schedule">
+<code class="descname">DELETE </code><code class="descname">/buildings/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><code class="descname">/electrical_fee_schedule</code><a class="headerlink" href="#delete--buildings-(id)-electrical_fee_schedule" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.5">204 No Content</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="list-a-building-s-hierarchy-with-devices">
+<span id="objects-buildings-hierarchy"></span><h3><a class="toc-backref" href="#id40">List a Building&#8217;s Hierarchy with Devices</a><a class="headerlink" href="#list-a-building-s-hierarchy-with-devices" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--buildings-(id)-devices">
+<code class="descname">GET </code><code class="descname">/buildings/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><code class="descname">/devices</code><a class="headerlink" href="#get--buildings-(id)-devices" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Query Parameters:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first simple">
+<li><strong>meta</strong> &#8211; Meta name used to filter devices.</li>
+<li><strong>features__has_keys</strong> &#8211; Filter using a list of primary feature names.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/buildings/93378718-b2ad-4b6c-a1bb-39c5436bf3e6/devices/?meta=dim&amp;features__has_keys=[&quot;bcn_ibeacon&quot;]</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</pre></div>
+</div>
+<p><strong>Example responses</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;53f9bed2-dc09-4aa0-87d1-4801e25c5b91&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;First Floor&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;floor&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;devices&quot;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="nt">&quot;parent_space&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="nt">&quot;child_spaces&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;0d9fde47-652e-4a85-af01-0b716dbda82b&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Corridor&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;room&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;devices&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;8c369415-9c3e-4fb0-9eb1-39ed7b50b593&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Name of New Device&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;wim&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;6be00c12-fb44-4aa9-b993-1b1d4d8d723b&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Light FX&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;wim&quot;</span>
+          <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;parent_space&quot;</span><span class="p">:</span> <span class="s2">&quot;53f9bed2-dc09-4aa0-87d1-4801e25c5b91&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;child_spaces&quot;</span><span class="p">:</span> <span class="p">[]</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="building-reactor-version">
+<span id="objects-buildings-reactor-version"></span><h3><a class="toc-backref" href="#id41">Building Reactor Version</a><a class="headerlink" href="#building-reactor-version" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--buildings-(id)-reactor">
+<code class="descname">GET </code><code class="descname">/buildings/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><code class="descname">/reactor</code><a class="headerlink" href="#get--buildings-(id)-reactor" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/buildings/93378718-b2ad-4b6c-a1bb-39c5436bf3e6/reactor</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+  <span class="nt">&quot;reactor_version&quot;</span><span class="p">:</span> <span class="s2">&quot;YULobu7VvxEqfdjm0D_rx7cGTbbVQCCz&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="building-reactor-logs">
+<span id="objects-buildings-reactor-logs"></span><h3><a class="toc-backref" href="#id42">Building Reactor Logs</a><a class="headerlink" href="#building-reactor-logs" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--buildings-(id)-reactor_logs">
+<code class="descname">GET </code><code class="descname">/buildings/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><code class="descname">/reactor_logs</code><a class="headerlink" href="#get--buildings-(id)-reactor_logs" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/buildings/93378718-b2ad-4b6c-a1bb-39c5436bf3e6/reactor_logs</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</pre></div>
+</div>
+<p><strong>Example responses</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;Uhp7na5GmXxc5nbdA7MKUbVk&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="mi">1472045241964</span><span class="p">,</span>
+    <span class="nt">&quot;logLevel&quot;</span><span class="p">:</span><span class="s2">&quot;error&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;createdAt&quot;</span><span class="p">:</span><span class="mi">1472045241964</span><span class="p">,</span>
+    <span class="nt">&quot;app&quot;</span><span class="p">:</span><span class="s2">&quot;UYKNnwpFGgbyp4bUArq5daPg&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;This is an error entry&quot;</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;UYKNnwpmmgxcpHxAA7qpUbBh&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="mi">1472045241963</span><span class="p">,</span>
+    <span class="nt">&quot;logLevel&quot;</span><span class="p">:</span><span class="s2">&quot;warn&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;createdAt&quot;</span><span class="p">:</span><span class="mi">1472045241963</span><span class="p">,</span>
+    <span class="nt">&quot;app&quot;</span><span class="p">:</span><span class="s2">&quot;UYKNnwpFGgbyp4bUArq5daPg&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;This is a warn entry&quot;</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;UEKr4RKmmDSyKHbUdrMKdbeg&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="mi">1472045241963</span><span class="p">,</span>
+    <span class="nt">&quot;logLevel&quot;</span><span class="p">:</span><span class="s2">&quot;info&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;createdAt&quot;</span><span class="p">:</span><span class="mi">1472045241963</span><span class="p">,</span>
+    <span class="nt">&quot;app&quot;</span><span class="p">:</span><span class="s2">&quot;UYKNnwpFGgbyp4bUArq5daPg&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;This is a info entry&quot;</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;UYpN4Rp3GXbcp4xdUNMpUxef&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="mi">1472045241962</span><span class="p">,</span>
+    <span class="nt">&quot;logLevel&quot;</span><span class="p">:</span><span class="s2">&quot;debug&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;createdAt&quot;</span><span class="p">:</span><span class="mi">1472045241962</span><span class="p">,</span>
+    <span class="nt">&quot;app&quot;</span><span class="p">:</span><span class="s2">&quot;UYKNnwpFGgbyp4bUArq5daPg&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;This is a debug entry&quot;</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="connected_products.html" class="btn btn-neutral float-right" title="Connected Products" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="areas.html" class="btn btn-neutral" title="Areas" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Gooee, LLC.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/tabs.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

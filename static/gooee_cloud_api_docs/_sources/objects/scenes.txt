@@ -1,0 +1,137 @@
+.. _objects_scenes:
+
+======
+Scenes
+======
+
+.. contents:: Quick Links
+
+Description
+===========
+
+Scenes are a collection of states applied to one or more :ref:`Devices <objects_devices>` via
+:ref:`Spaces <objects_spaces>`.  They are activated by using the scene_activate
+:ref:`Action_type <objects_action_types>`.
+
+Data Model
+==========
+
+===============  ==========================================  ========================
+Key              Datatype                                    Notes
+===============  ==========================================  ========================
+id               ref                                         read-only
+created          datetime                                    read-only
+modified         datetime                                    read-only
+name             string                                      required, max_length=100
+description      string
+space            :ref:`ref <objects_spaces>`                 required, read-only
+states           :ref:`ref <scene_states>`                   required
+rules            array(:ref:`ref <objects_local_rules>`)     read-only
+schedules        array(:ref:`ref <objects_schedules>`)       read-only
+meta             array(:ref:`meta <general_meta>`)
+tags             array(str)                                  max_length=50 per tag
+customer_scopes  array(:ref:`ref <objects_customers>`)       see :ref:`general_scope`
+partner_scopes   array(:ref:`ref <objects_partners>`)        see :ref:`general_scope`
+===============  ==========================================  ========================
+
+.. _scene_complex_constraints:
+
+Complex Constraints
+-------------------
+
+Scene State Devices must all be directly related to the Space.
+
+All Devices in a Scene's `states` field must be in the Scene's Space and support dimming and/or
+control.
+
+Devices that are in child Spaces of the Scene's Space are invalid.
+
+Devices may only be in 16 Scenes maximum.
+
+.. _scene_notes:
+
+Notes
+-----
+
+Removing the last :ref:`Device <objects_devices>` from a Scene results in the Scene being deleted.
+
+Scene Device filtering is supported using `devices`.
+
+.. _scene_states:
+
+States
+------
+
+States is a JSON structure composed of :ref:`Devices <objects_devices>` and the relative
+:ref:`Meta <general_meta>` names and values required to establish the various
+:ref:`Device <objects_devices>` states of a Scene.
+
+Data Model
+~~~~~~~~~~
+
+=====  ========  =====
+Key    Datatype  Notes
+=====  ========  =====
+dim    integer   required, range 0-100
+onoff  boolean
+=====  ========  =====
+
+Example
+~~~~~~~
+
+.. sourcecode:: json
+
+  {
+    "0298978e-e855-4b94-b686-817ff1ec19af": {
+      "dim": 75,
+    },
+    "029cd0ec-245f-4c1d-bf78-883fb1bf76e5": {
+      "dim": 50,
+      "onoff": false
+    }
+  }
+
+API Endpoints
+=============
+
+Create a Scene
+--------------
+
+.. http:POST:: /scenes/
+
+   :statuscode 201:
+
+List Scenes
+-----------
+
+.. http:GET:: /scenes/
+
+   :statuscode 200:
+
+Update a Scene
+--------------
+
+.. http:PUT:: /scenes/(id)/
+
+   :statuscode 200:
+
+Partially Update a Scene
+------------------------
+
+.. http:PATCH:: /scenes/(id)/
+
+   :statuscode 200:
+
+Retrieve a Scene
+----------------
+
+.. http:GET:: /scenes/(id)/
+
+   :statuscode 200:
+
+Delete a Scene
+--------------
+
+.. http:DELETE:: /scenes/(id)/
+
+   :statuscode 204:

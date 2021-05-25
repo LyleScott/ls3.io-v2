@@ -1,0 +1,591 @@
+.. _misc_change_log:
+
+==========
+Change Log
+==========
+
+**8/17/2020**
+
+- Created the :ref:`Analytics Export <objects_analytics_export>` resource to export
+  :ref:`Analytics Query <objects_analytics_query>` objects.
+
+**08/13/2020**
+
+- Added the ability to :ref:`Search <general_search>` for an :ref:`Area <search_area>`.
+
+**08/01/2020**
+
+- Removed 2017 changelog entries.
+- Refactored the :ref:`Analytics Queries <objects_analytics_query>` resource documentation.
+
+**07/22/2020**
+
+- Added the ability to report why a PubSub message is rejected and added a sample payload to the documentation.
+  For reference see the :ref:`PubSub Documentation <general_pubsub>`.
+
+**07/14/2020**
+
+- Added new notification :ref:`Action Types <objects_action_types>`: **send_email** and **send_sms**.
+
+**07/10/2020**
+
+- Added ``origin`` and ``origin_id`` fields to :ref:`Action <objects_actions>`.
+
+**07/08/2020**
+
+- Changed the `level` field on :ref:`Fault Alarms <objects_fault_alarms>` to allow updates.
+- Changed the `level` field on :ref:`Fault Alarms <objects_fault_alarms>` to accept a free-form string instead of predefined values.
+
+**06/30/2020**
+
+- Removed constraint where the combination ``device`` and ``type`` is unique across :ref:`Fault Alarms <fault_alarms_complex_constraints>`.
+- Added ``id`` field to the Fault Alarms PubSub topics. For reference see the
+  :ref:`PubSub Documentation <general_pubsub>`.
+
+**06/23/2020**
+
+- Deprecated acceptance of :ref:`Meta Names <general_meta>` with upper case letters.  Support will continue for 6 months.
+
+**06/18/2020**
+
+- Added support for query parameter ``ignore_errors=1|true`` to the bulk creation of :ref:`Meta Values <general_meta>` which allows ignoring invalid objects.
+
+**06/18/2020**
+
+- Added support for ``median``, ``mode``, and ``percentiles`` when using the ``op`` parameter in :ref:`Historical Analytics Parameters <analytics_historical_parameters>`.
+- Added the ``order_by`` field to :ref:`Historical Analytics Parameters <analytics_historical_parameters>`.
+
+**06/17/2020**
+
+- Added the ability to :ref:`Order Devices by Meta <general_ordering_device_meta>`.
+
+**06/03/2020**
+
+- Added the ``state``, ``from_state``, and ``to_state`` field to :ref:`Historical Analytics Parameters <analytics_historical_parameters>` to support querying analytics for :ref:Fault Alarms <objects_fault_alarms>.
+- Added support for ``fields`` to the :ref:`Historical Analytics Parameters <analytics_historical_parameters>` ``groupby`` field.
+
+**05/29/2020**
+
+- Added the `devices` field to :ref:`Schedule <objects_schedules>` accompanied with new :ref:`Schedule Complex Constraints <schedule_complex_constraints>`.
+
+**05/20/2020**
+
+- Added the `rollup_algo` field to :ref:`Historical Analytics Parameters <analytics_historical_parameters>`.
+
+**05/11/2020**
+
+- Added new :ref:`Set Fault Alarm Action Type <objects_action_types_set_fault_alarm>` available through Property Rules.
+- Updated complex constraints for :ref:`Rules V2 Actions <rule_v2_actions>`.
+
+**05/02/2020**
+
+- Added support for :ref:`Fault Alarms <objects_fault_alarms>`.
+
+**04/22/2020**
+
+- Added meta field ``value_display_name`` for storage of user friendly names based on :ref:`Meta Values <general_meta>`.
+
+**04/21/2020**
+
+- Added the `feature` field to :ref:`Action Types <objects_action_types>` to indicate their required Device Feature.
+
+**04/06/2020**
+
+- Added the ability to query raw data from :ref:`Analytics <analytics_historical>`.
+- Added ability to query based on each entity's local timezone, see `Analytics Timezone <analytics_history_parameters_timezone>`
+
+**04/01/2020**
+
+- Added the `transform` field to :ref:`Historical Analytics Parameters <analytics_historical_parameters>`.
+
+**03/30/2020**
+
+- Supporting new :ref:`Action Types <objects_action_types>`.
+
+**03/23/2020**
+
+- Added support for surface area (sq_feet, sq_meters) in the `dimensions` field for :ref:`Historical Analytics Parameters <analytics_historical_parameters>`.
+- Added the `metrics_per` field to :ref:`Historical Analytics Parameters <analytics_historical_parameters>`.
+
+**03/19/2020**
+
+- Added ``created`` field to the Actions PubSub topics. For reference see the
+  :ref:`PubSub Documentation <general_pubsub>`.
+- Added Building Actions PubSub topics that aggregate Actions for all the Devices in a Building. For reference see the :ref:`PubSub Documentation <general_pubsub>`.
+
+**03/03/2020**
+
+- Updated :ref:`User Groups <objects_user_groups>` to allow specifying object level permissions at building
+  level for `control_fixtures` and `manage_gateways` permission keys.
+
+**02/25/2020**
+
+- Removed the System Setting object type.
+
+**02/20/2020**
+
+- Removed Event Analytics from :ref:`Analytics <general_analytics>`.
+
+**02/11/2020**
+
+- Added a :ref:`User Complex Constraint <users_complex_constraints>` that only *partner* or *customer* may be provided.
+
+**02/04/2020**
+
+- The rotation value of PointGrab Devices is exported counter-clockwise during :ref:`External Sensor Integration Exports <integrations_commissioning_export>`.
+
+**01/23/2020**
+
+- Removed support for Rules v1 with ``execution_origin = "cloud"``.
+- Renamed Rules v1 to :ref:`Local Rules <objects_local_rules>`.
+
+**12/30/2019**
+
+- Removed deprecated PointGrab integration documentation. Reference the :ref:`External Sensor Integration <integrations_external_sensor_integrations>` documentation to integrate PointGrab Sensors.
+
+**11/19/2019**
+
+- Added support for analytics querying of `area_headcount_net` metric.
+
+**11/16/2019**
+
+- Removed support for the deprecated `roles` endpoint.
+- Added the possibility for a User to be in up to 5 :ref:`User Groups <objects_user_groups>`.
+
+**10/31/2019**
+
+- Updated complex constraints of Condition Groups of :ref:`Rules V2 <objects_rules_v2>`.
+
+**10/30/2019**
+
+- Added optional field `skip_trigger` to Conditions in Condition Groups of :ref:`Rules V2 <objects_rules_v2>`.
+- Updated complex constraints for Conditions in Condition Groups of :ref:`Rules V2 <objects_rules_v2>`.
+
+**10/25/2019**
+
+- Updated :ref:`External Sensor Integration <integrations_external_sensor_integrations>` to allow
+  easier Xovis sensor commissioning and support import of different file types instead of CSV only.
+
+**10/22/2019**
+
+- Updated complex constraints for :ref:`Rules V2 Actions <rule_v2_actions>`.
+- Reduced max duration to `30` minutes for the :ref:`Wait Action Type <action_type_wait>`.
+
+**10/21/2019**
+
+- Added a :ref:`Rules V1 Complex Constraint <rules_complex_constraints>` that the Rule `device`
+  must not be associated with a :ref:`Gateway Lite <integrations_gateway_lite>`.
+
+**10/18/2019**
+
+- Added support for :ref:`Areas <objects_areas>` in :ref:`V2 Rules <objects_rules_v2>`.
+
+**10/8/2019**
+
+- Updated documentation for :ref:`Rules Meta Options <objects_rules_v2_meta_options>`.
+
+**9/26/2019**
+
+- Added :ref:`Account Status Definitions <users_account_status_definitions>` to the
+  :ref:`User <objects_users>` documentation.
+- Users can now update their own User object using the :ref:`Current User endpoint <users_update_current_user>`.
+
+**9/20/2019**
+
+- Removed ``manage_customer_resources`` from the supported :ref:`permission sets <objects_user_groups_permission_sets>`.
+- Any previous reference to ``manage_customer_resources`` is replaced by ``manage_buildings``.
+
+**9/06/2019**
+
+- Added :ref:`Rule Groups <objects_rule_groups>`.
+
+**9/05/2019**
+
+- Removed ``sync_failed`` and ``sync_success`` from :ref:`Fingerprints <integrations_gateway_lite_fingerprints>`.
+
+**8/20/2019**
+
+- Updated :ref:`Als-to-Lux Correlation <als2lux>` calibration to not allow duplicate X values in ``points``.
+
+**8/05/2019**
+
+- Updated :ref:`Als-to-Lux Correlation <als2lux>` calibration to automatically prepend the minimum correlation values if they were not provided.
+
+**7/30/2019**
+
+- For analytics API requests for `power_consumption`, the API will return the same values under two keys named ``power_consumption`` and ``active_power`` respectively.
+- This behavior will be maintained until January 31st 2020, after which only the ``power_consumption`` key will appear in the API response.
+- Added the :ref:`Reset Fingerprints <objects_action_types_reset_fingerprints>` Action Type for Gateway Lite Devices.
+
+**7/22/2019**
+
+- Added ``sync_failed`` and ``sync_success`` to :ref:`Fingerprints <integrations_gateway_lite_fingerprints>`.
+
+**7/16/2019**
+
+-  Added support for specifying Fingerprints when :ref:`Resyncing Fingerprints <integrations_gateway_lite_fingerprints_resync_specific>`.
+
+**7/10/2019**
+
+- Removed ``auto`` granularity from :ref:`Historical Analytics Parameters <analytics_historical_parameters>` and Event Analytics Parameters.
+- Added ``groupby``, ``granularity``, and ``entity_type`` to the Event Analytics Parameters.
+- Added Grouped Counts capability of Event Analytics
+
+**7/10/2019**
+
+- Removed unsupported ``building``, ``space``, ``area``, ``device`` fields from :ref:`Historical Analytics Parameters <analytics_historical_parameters>`.
+- Added ``dimensions``, ``entities``, and ``entity_type`` fields to :ref:`Historical Analytics Parameters <analytics_historical_parameters>`.
+- Added an example :ref:`Historical Analytics Dimensions Filter <analytics_historical_api_dimensions_filter>`.
+- Added support for ``dimensions`` to the :ref:`Historical Analytics Parameters <analytics_historical_parameters>` ``groupby`` field.
+
+**7/09/2019**
+
+- New :ref:`Buildings <objects_buildings>` will default to the :ref:`Rules V2 <objects_rules_v2>` engine.
+
+**7/05/2019**
+
+- Filtering on :ref:`Action <objects_actions>` ``device`` and ``space`` fields is no longer
+  supported.  Instead reference ``target_type`` and ``target_id``.
+
+**7/02/2019**
+
+- Refactored the anx_dimensions field that is on some entities.
+- Enhance the ``anx_dimensions`` to support key:value pairs instead of an array of strings.
+  See the changes at :ref:`Analytics Dimensions <analytics_dimensions>`.
+- Dropped ``anx_dimensions`` from :ref:`Device <objects_devices>` and :ref:`Product <objects_products>`
+- :ref:`Analytics <analytics_historical>` validation has changed to make it more explicit.
+  - `granularity=auto` is no longer supported
+  - `start` is now required
+  - restrictions on too-fine or too-course granularity parameters has been lifted
+
+**6/11/2019**
+
+- Modified :ref:`Actions <objects_actions>` to be generic.
+
+  * Instead of requiring a device/space, an Action needs a ``target_type`` and ``target_id``.
+
+  * Users may still use the old Data Model for the next 6 months, afterwards the fields will be deprecated.
+
+- Renamed ``available_on_rules`` field on :ref:`Action Types <objects_action_types>` to be ``rules_support``
+- Added ``available_on`` field on :ref:`Action Types <objects_action_types>` to contain a list of ``target_type``-s supported by the ActionType.
+- Removed ``available_on_devices`` and ``available_on_spaces`` fields on :ref:`Action Types <objects_action_types>`.
+
+  * The data is now factored into the new ``available_on`` field, EX. ``"available_on": ["device", "space"]``
+
+- Added the :ref:`Blacklist <action_type_blacklist>` and :ref:`Wait <action_type_wait>` :ref:`Action Types <objects_action_types>`.
+- Removed ``beacons_detected`` and ``beacons_exited`` :ref:`Action Types <objects_action_types>`
+
+  * ``beacon_detected`` and ``beacon_exited`` are available for single :ref:`Action <objects_actions>` requests.
+- :ref:`Rules v2 <objects_rules_v2>` `operations` field has been replaced by :ref:`actions <rule_v2_actions>` which is composed of an array of arrays.
+
+  * The top level arrays are "Action groups" that contain a list of actions to be executed.
+  * "Action groups" are executed sequentially but their containing actions are executed synchronously.
+
+**5/13/2019**
+
+- Added support for PointGrab as an :ref:`External Sensor Integration <integrations_external_sensor_integrations>`
+
+**4/15/2019**
+
+- Deprecated ``Roles``. Support will be offered for Roles for 6 months. Roles are being replaced by :ref:`User Groups <objects_user_groups>`, which offer Object Level Permissions.
+
+**4/4/2019**
+
+- Added custom url/router support to :ref:`External Sensor Integration <integrations_external_sensor_integrations>` sensor modules.
+- Added Xovis csv import (bulk register) endpoint to register data source ids with Gooee :ref:`Areas <objects_areas>`.
+
+**3/28/2019**
+
+- Added support for Xovis zone occupancy, dwell time, dwell count, and line crossing metrics
+
+**3/11/2019**
+
+- Added the field ``anx_dimensions`` to various resources to support :ref:`Analytics Dimensions <analytics_dimensions>`.
+
+  - :ref:`Area <objects_areas>`
+  - :ref:`Building <objects_buildings>`
+  - :ref:`Customer <objects_customers>`
+  - :ref:`Device <objects_devices>`
+  - :ref:`Partner <objects_partners>`
+  - :ref:`Product <objects_products>`
+  - :ref:`Space <objects_spaces>`
+
+**2/15/2019**
+
+- Updated :ref:`Space Complex Constraints <space_complex_constraints>` so that all physical Spaces may have child virtual Spaces.
+
+**2/4/2019**
+
+- Updated PointGrab headcount webhook to return 410 (**Gone**) if the
+  :ref:`Area <objects_areas>`'s :ref:`Building <objects_buildings>` has a
+  PointGrab api v2.1 ``telemetry subscription``.
+
+**1/28/2019**
+
+- Added PointGrab csv import endpoint to associate PointGrab data source ids with Gooee ids for :ref:`Devices <objects_devices>` and :ref:`Areas <objects_areas>`
+
+**2/01/2018**
+
+- Modified the shape of :ref:`Device <general_device_counts>`.
+- Modified :ref:`Meta Value filtering <general_filtering_device_meta>` by reducing the supported
+  filters.
+- Modified the constraint on Meta values to allow for both `int` and `float` on the same Meta value.
+- Modified :ref:`Device <objects_devices>` so that the `/devices/<id>/meta/<name>` endpoint returns
+  the latest 10 values _and_ reduced the redundant payload by only listing `value` and `timestamp`
+  values.
+
+**1/16/2019**
+
+- Revised Event Analytics and
+  :ref:`Historical Analytics <analytics_historical>` responses to omit the ID suffix of all objects.
+- Removed the ID suffix from the :ref:`Historical Analytics Parameters <analytics_historical>`,
+  Event Analytics Parameters, and Annotate & Include Parameters.
+
+**1/14/2019**
+
+- Added new field in Building to track the space view version in use, see :ref:`Buildings <objects_buildings>`.
+
+**1/8/2019**
+
+- Added a new ``integration`` for `PointGrab <https://www.pointgrab.com>`_ sensors.
+
+**1/3/2019**
+
+- Added Device move/unassign Space endpoint, see :ref:`Device Operations <device_ops>`.
+- Added Device unassign Building endpoint, see :ref:`Device Operations <device_ops>`.
+- Added Device unassign Customer endpoint, see :ref:`Device Operations <device_ops>`.
+- Disable PUT/PATCH of Devices where payload intends to move/unassign Space, Building, or Customer.
+- Added checks to ensure that POSTing a Space with Devices that exist in other Spaces is prohibited.
+
+**11/27/2018**
+
+- Removed all Breadcrumb functionality.
+
+**11/21/2018**
+
+- Added a ``Complex Constraint`` for ``Roles`` to restrict ``type`` from changing when Users are
+  already associated with the Role.
+
+**11/16/2018**
+
+- Added :ref:`Rules v2 <objects_rules_v2>`.
+- Added ``rule_version`` to :ref:`Buildings <objects_buildings>`.
+- Deprecated :ref:`Rules <objects_local_rules>`. Support will be offered for both Rules and Rules v2
+  for 3 months until Rules are officially unsupported.
+- Meta associated with :ref:`Meta Groups <general_meta_groups>` containing the **~** character
+  may no longer be deleted except by Gooee Users.
+
+**11/13/2018**
+
+- The endpoints for :ref:`Rules <objects_local_rules>` have been modified so that
+  `/rules/<id>/activity_logs` unconditionally returns an empty array. Previously, the activity log
+  only contained a message for the Rule being created. The feature will be reimplemented in the
+  scope of the new rules engine v2 around Q1 2019.
+
+**10/19/2018**
+
+- Added a new integration :ref:`endpoint <als2lux>` to perform als-to-lux linear best-fit correlation.
+
+**10/11/2018**
+
+- Added JSONSchema validation for :ref:`Meta Values <general_meta>`.
+
+**10/04/2018**
+
+- Added `data_origin` to :ref:`Areas <objects_areas>` to support 'http' and 'mqtt' origins.
+- Added "Xovis" option to the sen_type :ref:`Product Type Spec <product_type_specs>`.
+
+**10/03/2018**
+
+- Changed ``features`` on :ref:`Devices <objects_devices>` from an array to an object.
+- Changed supported :ref:`Building Hierarchy <objects_buildings_hierarchy>` ``features`` filter.
+
+**9/24/2018**
+
+- Created new :ref:`Product Type Specs <product_type_specs>`.
+- Mapped old ``prd_`` :ref:`Product <objects_products>` specs to new specs (preserving old values).
+- Mapped old ``prd_`` :ref:`Device <objects_devices>` features to new specs/features.
+- Deleted old ``prd_`` Product Type Specs.
+
+**9/20/2018**
+
+- :ref:`Devices <objects_devices>` with ``Calculated`` feature set
+  (`default on certain` :ref:`Product Types <objects_product_types>`) will have ``active_power`` calculated if
+  the :ref:`Device <objects_devices>` has ``wattage`` and ``power_factor`` set on the :ref:`Device <objects_devices>` meta.
+
+**9/13/2018**
+- Added functionality to delete children Devices when a Gateway Lite is :ref:`released <integrations_gateway_lite_release>`.
+
+**9/10/2018**
+
+- When Gateway Lite is :ref:`acquired <integrations_gateway_lite_acquire>`,
+  it will get added to the first Building and Space found for the User's
+  Customer or it will create a Building and Space with Name "Default".
+
+**8/24/2018**
+
+- :ref:`Devices <objects_devices>` can be :ref:`Deactivated <device_deactivate>`.
+- :ref:`Devices <objects_devices>` can only be deleted by Gooee Admins.
+
+**8/14/2018**
+
+- Added `status` to :ref:`Areas <objects_areas>` to support 'draft', 'published', 'active' statuses
+
+**8/13/2018**
+
+- Added `serial` to :ref:`Devices <objects_devices>` as a write-once field.
+- Updated `euid` on :ref:`Devices <objects_devices>` to be a write-once field.
+
+**7/24/2018**
+
+- Added a new endpoint to check :ref:`Device EUID availability <device_check_euid>`.
+
+**7/17/2018**
+
+- Removed the ``meta_changes`` field from :ref:`Schedule Operations <schedule_operations>` and
+  :ref:`Rule Operations <rule_operations>`, and made ``actions`` a required field of both.
+
+**7/13/2018**
+
+- Added new :ref:`Space <objects_spaces>` type ``"zone"``.
+- Added :ref:`Complex Constraint <space_complex_constraints>` to
+  :ref:`Spaces <objects_spaces>` adding definitions to each Space level.
+
+**7/5/2018**
+
+- Added :ref:`User <objects_users>` read and write capabilities to :ref:`OAuth2 <general_authentication_oauth2>` tokens.
+
+**6/25/2018**
+
+- Added :ref:`endpoint <users_two_factor_details>`  to get the details of the User's Two-Factor
+  Authentication configuration.
+
+**6/4/2018**
+
+- Added support for both application/json and application/x-www-form-urlencoded on OAuth2 endpoints.
+
+**6/1/2018**
+
+- Added :ref:`Complex Constraint <space_complex_constraints>` to
+  :ref:`Spaces <objects_spaces>` Allow only 3 levels of Space nesting.
+
+**5/24/2018**
+
+- Added :ref:`lock conditions <rule_lock_condition>` to :ref:`Rules <objects_local_rules>`.
+
+
+**5/2/2018**
+
+- Added :ref:`OAuth2 <general_authentication_oauth2>` functionality.
+
+**4/26/2018**
+
+- Added :ref:`data source integration <area_data_source_integration>` for
+  :ref:`Areas <objects_areas>`.
+
+**4/23/2018**
+
+- Remove `access_address` Meta from :ref:`Devices <objects_devices>`.
+- Added `privacy_policy_url` to :ref:`Partner <objects_partners>`.
+
+**4/20/2018**
+
+- Added the :ref:`Area <objects_areas>` resource.
+
+**4/17/2018**
+
+- Bug fix for shifting devices around spaces and keeping them in sync.
+
+**4/6/2018**
+
+- Added the :ref:`RGB Change <action_type_rgb_change>` and
+  :ref:`Color Temperature Change <action_type_ct_change>`
+  :ref:`Action Types <objects_action_types>`.
+
+**3/29/2018**
+
+- Added Local :ref:`Rules <objects_local_rules>` Support
+
+**3/12/2018**
+
+- Changed the MQTT authentication to use `authorization` as the username and the :ref:`User API Token <general_api_tokens>` as the password. For reference see the :ref:`PubSub Documentation <general_pubsub>`.
+
+**3/7/2018**
+
+- Updated :ref:`Set Beacon Action Type<objects_action_types_set_beacon>` `data` schema to support `company_id`.
+
+**3/6/2018**
+
+- Added ability for :ref:`Rules <objects_local_rules>` to be triggered by :ref:`Actions
+  <objects_actions>`.
+- Created a constraint to not allow :ref:`Gateway Lite <integrations_gateway_lite>` Devices to be saved without an `installation_code` custom field.
+
+**2/28/2018**
+
+- Removed ``Service Profiles`` from the API.
+
+**2/22/2018**
+
+- Added Product Feature based default Meta for :ref:`Devices with Dimmable Support <dimmable_default_meta>`.
+- Changed `onoff` default value to `true` in :ref:`Device Default Meta <device_default_meta>`.
+- Changed `dim` default value to `100` in :ref:`WIM Default Meta <wim_default_meta>`.
+
+**2/21/2018**
+
+- Disabled insecure MQTT/WS connections. For reference see the :ref:`PubSub Documentation <general_pubsub>`.
+
+**2/16/2018**
+
+- Allow :ref:`Partners <objects_partners>` with ``is_gateway_lite_provider=True`` and
+  ``manage_customer_resources permission set`` to
+  :ref:`Release a Gateway Lite <integrations_gateway_lite_release>` on behalf of the :ref:`Customer
+  <objects_customers>`.
+
+**2/15/2018**
+
+- Added the :ref:`Action Types <objects_action_types>` `button_pressed` and `button_released` for
+  Switch :ref:`Devices <objects_devices>`.
+- Updated the `phone_number` field on :ref:`Partner <objects_partners>`, :ref:`Customers
+  <objects_customers>` and :ref:`User <objects_users>` to accept only phone numbers in any
+  International format(Starting with +Country Code).
+
+**2/9/2018**
+
+- Updated :ref:`Login <general_authentication_login>` to support Two-Factor Authentication using E-Mail.
+
+**2/8/2018**
+
+- Updated :ref:`Login <general_authentication_login>` to support Two-Factor Authentication using SMS.
+
+**2/5/2018**
+
+- Removed auto-scoping of :ref:`Customers <objects_customers>` to entities created by a :ref:`Partner <objects_partners>` :ref:`User <objects_users>`.
+
+**1/31/2018**
+
+- Renamed MicroGateway to :ref:`Mesh Access Point <objects_mesh_access_point>`.
+- Replaced `micro_gateway_count` :ref:`Device Counts <general_device_counts>` with `mesh_access_point_count`.
+
+**1/17/2018**
+
+- Added a constraint that :ref:`Rules <objects_local_rules>` can only be created on
+  :ref:`Devices <objects_devices>` with a ``commission_state`` of ``"active"``.
+
+**1/15/2018**
+
+- Added endpoint to resync :ref:`Gateway Lite Fingerprints<integrations_gateway_lite_fingerprints>`.
+
+**1/7/2018**
+
+- Added endpoint to release a Gateway Lite. Refer to: :ref:`Releasing a Gateway Lite
+  <integrations_gateway_lite_release>`.
+
+**1/6/2018**
+
+- Added `is_gateway_lite_provider` boolean field to :ref:`Partners <objects_partners>`. This field
+  allows Gateway Lite Users to register under a Partner and can only be changed by Gooee Users.
+- Added endpoint to obtain :ref:`Partners <objects_partners>` Integration Key for Gateway Lite
+  developers. Refer to: :ref:`Obtaining an Integration Key
+  <integration_gateway_lite_integration_key>`.
+- Added endpoints to register as a Gateway Lite User. Refer to :ref:`Gateway Lite
+  <integration_gateway_lite_users_registration>`.

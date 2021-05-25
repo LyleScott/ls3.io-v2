@@ -1,0 +1,101 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "title": "Schedule Operations",
+  "description": "Operations that are triggered on Schedule.",
+  "items": {
+    "type": "object",
+    "title": "Operation",
+    "description": "An operation definition.",
+    "properties": {
+      "spaces": {
+        "type": "array",
+        "title": "Spaces",
+        "description": "A list of Spaces to be acted upon.",
+        "items": {
+          "$ref": "#/definitions/uuid"
+        },
+        "minItems": 0
+      },
+      "devices": {
+        "type": "array",
+        "title": "Devices",
+        "description": "A list of Devices to be acted upon.",
+        "items": {
+          "$ref": "#/definitions/uuid"
+        },
+        "minItems": 0
+      },
+      "actions": {
+        "type": "array",
+        "title": "Actions",
+        "description": "A list of Actions to be applied.",
+        "minItems": 1,
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "enum": [
+                "adjust",
+                "ct_change",
+                "dim",
+                "off",
+                "on",
+                "rgb_change",
+                "co2_setpoint",
+                "extractfan_pressure_setpoint",
+                "extractfan_speed_setpoint",
+                "extracttemp_setpoint",
+                "fan_mode",
+                "flowpressure_setpoint",
+                "flowtemp_setpoint",
+                "humidity_setpoint",
+                "identify",
+                "louvers",
+                "mode",
+                "returntemp_setpoint",
+                "scene_activate",
+                "set_fault_alarm",
+                "set_state",
+                "speed_setpoint",
+                "supplyfan_pressure_setpoint",
+                "supplyfan_speed_setpoint",
+                "supplytemp_setpoint",
+                "temperature_setpoint",
+                "x1_setpoint",
+                "x2_setpoint",
+                "y1_setpoint",
+                "y2_setpoint"
+              ]
+            },
+            "parameters": {
+              "type": "object"
+            }
+          },
+          "required": ["name"],
+          "additionalProperties": false
+        }
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+      "actions"
+    ]
+  },
+  "definitions": {
+    "uuid": {
+      "title": "UUID",
+      "description": "A UUID value.",
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+      "minLength": 36,
+      "maxLength": 36
+    },
+    "transition_time": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 360000
+    }
+  }
+}

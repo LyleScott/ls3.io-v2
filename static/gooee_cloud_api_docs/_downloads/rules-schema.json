@@ -1,0 +1,677 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "Root schema.",
+  "description": "Schema used for Rules engine.",
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "Name",
+      "description": "Name for the rule.",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "device": {
+      "$ref": "#/definitions/uuid",
+      "title": "Device",
+      "description": "Device to be monitored."
+    },
+    "conditions": {
+      "type": "array",
+      "title": "Conditions",
+      "description": "Different conditions that must be met for the rule to trigger. Max 5",
+      "oneOf": [
+        {
+          "items": [
+            {
+              "$ref": "#/definitions/nullcondition"
+            }
+          ],
+          "minItems": 1,
+          "maxItems": 1
+        },
+        {
+          "items": [
+            {
+              "$ref": "#/definitions/condition"
+            },
+            {
+              "$ref": "#/definitions/nullcondition"
+            }
+          ],
+          "minItems": 2,
+          "maxItems": 2
+        },
+        {
+          "items": [
+            {
+              "$ref": "#/definitions/condition"
+            },
+            {
+              "$ref": "#/definitions/condition"
+            },
+            {
+              "$ref": "#/definitions/nullcondition"
+            }
+          ],
+          "minItems": 3,
+          "maxItems": 3
+        },
+        {
+          "items": [
+            {
+              "$ref": "#/definitions/condition"
+            },
+            {
+              "$ref": "#/definitions/condition"
+            },
+            {
+              "$ref": "#/definitions/condition"
+            },
+            {
+              "$ref": "#/definitions/nullcondition"
+            }
+          ],
+          "minItems": 4,
+          "maxItems": 4
+        },
+        {
+          "items": [
+            {
+              "$ref": "#/definitions/condition"
+            },
+            {
+              "$ref": "#/definitions/condition"
+            },
+            {
+              "$ref": "#/definitions/condition"
+            },
+            {
+              "$ref": "#/definitions/condition"
+            },
+            {
+              "$ref": "#/definitions/nullcondition"
+            }
+          ],
+          "minItems": 5,
+          "maxItems": 5
+        }
+      ]
+    },
+    "lock_condition": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/lockcondition"
+        },
+        {
+          "$ref": "#/definitions/null"
+        }
+      ]
+    },
+    "operations": {
+      "type": "array",
+      "title": "Operations",
+      "description": "Operations that are triggered when the rule conditions are met.",
+      "items": {
+        "type": "object",
+        "title": "Operation",
+        "description": "An operation definition.",
+        "properties": {
+          "spaces": {
+            "type": "array",
+            "title": "Spaces",
+            "description": "A list of spaces to be acted upon.",
+            "items": {
+              "$ref": "#/definitions/uuid"
+            },
+            "minItems": 1
+          },
+          "actions": {
+            "type": "array",
+            "title": "Actions",
+            "description": "A list of actions to be applied if the rule conditions are met.",
+            "minItems": 1,
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/action_types/action_onoff"
+                },
+                {
+                  "$ref": "#/definitions/action_types/action_dim"
+                },
+                {
+                  "$ref": "#/definitions/action_types/action_adjust"
+                },
+                {
+                  "$ref": "#/definitions/action_types/action_identify"
+                },
+                {
+                  "$ref": "#/definitions/action_types/action_scene_activate"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "spaces",
+          "actions"
+        ]
+      }
+    },
+    "enabled": {
+      "type": "boolean",
+      "title": "Enabled",
+      "description": "Allows for the rule to be enabled or disabled.",
+      "default": false
+    },
+    "execution_origin": {
+      "type": "string",
+      "title": "Execution",
+      "description": "Allows for the rule to be stored and executed in the cloud or locally on a gateway.",
+      "default": "cloud",
+      "enum": [
+        "cloud",
+        "gateway"
+      ]
+    }
+  },
+  "required": [
+    "name",
+    "device",
+    "conditions",
+    "operations"
+  ],
+  "definitions": {
+    "uuid": {
+      "title": "UUID",
+      "description": "A UUID value.",
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+      "minLength": 36,
+      "maxLength": 36
+    },
+    "transition_time": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 360000
+    },
+    "action_types": {
+      "action_onoff": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "enum": [
+              "on",
+              "off"
+            ]
+          },
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "transition_time": {
+                "$ref": "#/definitions/transition_time"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "name"
+        ]
+      },
+      "action_dim": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "enum": [
+              "dim"
+            ]
+          },
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "level": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "transition_time": {
+                "$ref": "#/definitions/transition_time"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "level"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "parameters"
+        ]
+      },
+      "action_adjust": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "enum": [
+              "adjust"
+            ]
+          },
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "delta": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": -100,
+                    "maximum": -1
+                  },
+                  {
+                    "type": "number",
+                    "minimum": 1,
+                    "maximum": 100
+                  }
+                ]
+              },
+              "transition_time": {
+                "$ref": "#/definitions/transition_time"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "delta"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "parameters"
+        ]
+      },
+      "action_identify": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "enum": [
+              "identify"
+            ]
+          },
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "onoff": {
+                "type": "boolean"
+              },
+              "timeout_on": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 600
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "onoff"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "parameters"
+        ]
+      },
+      "action_scene_activate": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "enum": [
+              "scene_activate"
+            ]
+          },
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "sceneid": {
+                "type": "string",
+                "description": "This is needed for gooee formatted scene ids to validate in reactor.",
+                "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+                "minLength": 36,
+                "maxLength": 36
+              },
+              "transition_time": {
+                "$ref": "#/definitions/transition_time"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "sceneid",
+              "transition_time"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "parameters"
+        ]
+      }
+    },
+    "basecondition": {
+      "title": "Condition",
+      "description": "A condition to check on the Device",
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/actioncondition"
+        },
+        {
+          "$ref": "#/definitions/variablecondition"
+        }
+      ]
+    },
+    "actioncondition": {
+      "properties": {
+        "action": {
+          "type": "string",
+          "title": "Action",
+          "description": "An Action that is being listened for.",
+          "pattern": "^[a-z0-9_]*$",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "parameters": {
+          "type": "object",
+          "title": "Parameters",
+          "description": "Parameter comparison of the Action payload.",
+          "properties": {
+            "variable": {
+              "type": "string",
+              "title": "Variable",
+              "description": "A property of the Action parameter. The subject of comparison.",
+              "pattern": "^[a-z0-9_]*$",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "operator": {
+              "type": "string",
+              "title": "Operator",
+              "description": "Method of comparison.",
+              "enum": [
+                ">",
+                ">=",
+                "<",
+                "<=",
+                "!=",
+                "="
+              ]
+            },
+            "value": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "array",
+                "object"
+              ],
+              "title": "Value",
+              "description": "An arbitrary value. The object of comparison."
+            }
+          },
+          "required": [
+            "variable",
+            "operator",
+            "value"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "action"
+      ]
+    },
+    "variablecondition": {
+      "properties": {
+        "variable": {
+          "type": "string",
+          "title": "Variable",
+          "description": "A variable that is being observed.",
+          "pattern": "^[a-z0-9_]*$",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "operator": {
+          "type": "string",
+          "title": "Operator",
+          "description": "Operator to apply to the value and the property/variable being observed.",
+          "enum": [
+            ">",
+            ">=",
+            "<",
+            "<=",
+            "!=",
+            "="
+          ]
+        },
+        "value": {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "array"
+          ],
+          "title": "Value",
+          "description": "Values to be operated on."
+        },
+        "duration": {
+          "minimum": 0,
+          "type": "integer",
+          "title": "Duration",
+          "description": "The Property must be valid for this amount of seconds for the rule to trigger."
+        }
+      },
+      "oneOf": [
+        {
+          "not": {
+            "type": "object",
+            "properties": {
+              "variable": {
+                "type": "string",
+                "enum": [
+                  "time_of_day",
+                  "day_of_week",
+                  "motion_intensity",
+                  "als"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "properties": {
+            "variable": {
+              "type": "string",
+              "enum": [
+                "time_of_day"
+              ]
+            },
+            "value": {
+              "type": "string",
+              "format": "time"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "properties": {
+            "variable": {
+              "type": "string",
+              "enum": [
+                "day_of_week"
+              ]
+            },
+            "value": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "mon",
+                  "tue",
+                  "wed",
+                  "thu",
+                  "fri",
+                  "sat",
+                  "sun"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "properties": {
+            "variable": {
+              "type": "string",
+              "enum": [
+                "motion_intensity"
+              ]
+            },
+            "value": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100,
+              "multipleOf": 10
+            }
+          }
+        },
+        {
+          "type": "object",
+          "properties": {
+            "variable": {
+              "type": "string",
+              "enum": [
+                "als"
+              ]
+            },
+            "value": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 20000
+            }
+          }
+        }
+      ],
+      "required": [
+        "operator",
+        "variable",
+        "value"
+      ]
+    },
+    "condition": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/basecondition"
+        },
+        {
+          "properties": {
+            "logical_operator": {
+              "type": [
+                "string"
+              ],
+              "title": "Logical Operator",
+              "description": "Logical Operator to apply to the condition in relation to other conditions.",
+              "enum": [
+                "and",
+                "or"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "nullcondition": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/basecondition"
+        },
+        {
+          "properties": {
+            "logical_operator": {
+              "type": "null",
+              "title": "Logical Operator",
+              "description": "Logical Operator to apply to the condition in relation to other conditions.",
+              "enum": [
+                null
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "null": {
+      "type": "null",
+      "title": "Null",
+      "description": "A null definition for general use."
+    },
+    "lockcondition": {
+      "type": "object",
+      "title": "Lock Condition",
+      "description": "Condition that must be satisfied for the rule to lock.",
+      "properties": {
+        "variable": {
+          "type": "string",
+          "title": "Variable",
+          "description": "A variable that is being observed.",
+          "pattern": "^[a-z0-9_]*$",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "operator": {
+          "type": "string",
+          "title": "Operator",
+          "description": "Operator to apply to the value and the property/variable being observed.",
+          "enum": [
+            ">",
+            ">=",
+            "<",
+            "<=",
+            "!=",
+            "="
+          ]
+        },
+        "value": {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "array"
+          ],
+          "title": "Value",
+          "description": "Values to be operated on."
+        }
+      },
+      "required": [
+        "variable",
+        "operator",
+        "value"
+      ]
+    }
+  }
+}

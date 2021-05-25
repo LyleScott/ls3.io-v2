@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "title": "Product Specs Schema",
+  "description": "Schema used for validating Product specs.",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "name": {
+        "type": "string",
+        "title": "Name",
+        "description": "Spec name."
+      },
+      "display_name": {
+        "type": "string",
+        "title": "Display Name",
+        "description": "Spec friendly name."
+      },
+      "value": {
+        "type": [
+          "number",
+          "string",
+          "boolean",
+          "array"
+        ],
+        "title": "Value",
+        "description": "Spec value."
+      },
+      "modified": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "title": "Last Modified",
+        "description": "When the spec was last modified"
+      }
+    },
+    "required": [
+      "name"
+    ]
+  }
+}

@@ -1,0 +1,181 @@
+.. _objects_product_types:
+
+=============
+Product Types
+=============
+
+.. contents:: Quick Links
+
+Description
+===========
+
+ProductTypes are objects containing a predefined set of meta properties
+that will be used when a new :ref:`Product <objects_products>` is created or imported in order to
+populate it with the default `specs`.
+
+Data Model
+==========
+
+=================  ===================================  ==========================================
+Key                Datatype                             Notes
+=================  ===================================  ==========================================
+created            datetime                             read-only
+modified           datetime                             read-only
+name               stringstring/ref                     read-only
+display_name       string                               read-only, max_length=100
+specs              array                                read-only, :ref:`See Specs Data Model <product_type_specs>`
+=================  ===================================  ==========================================
+
+.. _product_type_specs:
+
+Specs Data Model
+================
+
+================  ==========  ==========================================================
+Key               Datatype    Notes
+================  ==========  ==========================================================
+created           datetime    read-only
+modified          datetime    read-only
+name              string      read-only
+display_name      string      read-only
+datatype          enum        read-only, options=[int, float, str, bool, list]
+required          boolean     read-only, default=true
+choices           enum        read-only, represents the possible values in case that `datataype` is a list.
+multi_select      boolean     read-only, default=false, defines if multiple `choices` can be selected.
+unit_of_measure   string      read-only
+================  ==========  ==========================================================
+
+
+API Endpoints
+=============
+
+List Product Types
+------------------
+
+.. http:GET:: /product_types/
+
+   :statuscode 200:
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /product_types/ HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json
+
+      [
+        {
+          "created": "2016-11-21T21:27:16.150000Z",
+          "modified": "2016-11-21T21:27:16.150000Z",
+          "name": "bulb",
+          "display_name": "Bulb",
+          "specs": [
+            {
+              "created": "2016-12-06T02:30:02.769000Z",
+              "modified": "2016-12-06T02:30:02.769000Z",
+              "name": "ctrl_dimmable",
+              "display_name": "Dimmable Support",
+              "datatype": "bool",
+              "unit_of_measure": "",
+              "required": true,
+              "multi_select": false,
+              "choices": null
+            },
+            {
+              "created": "2016-12-06T02:30:02.769000Z",
+              "modified": "2016-12-06T02:30:02.769000Z",
+              "name": "ctrl_controllable",
+              "display_name": "Controllable Support",
+              "datatype": "bool",
+              "unit_of_measure": "",
+              "required": true,
+              "multi_select": false,
+              "choices": null
+            }
+          ]
+        },
+        {
+          "created": "2017-10-05T16:47:52.370465Z",
+          "modified": "2017-10-05T16:47:52.370506Z",
+          "name": "wim",
+          "display_name": "WIM",
+          "specs": [
+            {
+              "created": "2016-12-06T02:30:02.769000Z",
+              "modified": "2018-04-16T20:39:43.649927Z",
+              "name": "bcn_eddystone_url",
+              "display_name": "Eddystone URL Support",
+              "datatype": "bool",
+              "choices": null,
+              "required": false,
+              "multi_select": false,
+              "unit_of_measure": ""
+            }
+          ]
+        }
+      ]
+
+
+Retrieve a Product Type
+-----------------------
+
+.. http:GET:: /product_types/(name)/
+
+   :statuscode 200:
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /product_types/wim/ HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json
+
+      {
+          "created": "2016-11-21T21:26:59.896000Z",
+          "modified": "2016-11-21T21:26:59.896000Z",
+          "name": "wim",
+          "display_name": "Wim",
+          "specs": [
+            {
+              "created": "2016-12-06T02:30:02.769000Z",
+              "modified": "2016-12-06T02:30:02.769000Z",
+              "name": "bcn_eddystone_url",
+              "display_name": "Eddystone URL Support",
+              "datatype": "bool",
+              "unit_of_measure": "",
+              "required": false,
+              "multi_select": false,
+              "choices": null
+            },
+            {
+              "created": "2016-12-06T02:30:02.769000Z",
+              "modified": "2016-12-06T02:30:02.769000Z",
+              "name": "gen_power_measurement_type",
+              "display_name": "Power Metering Support",
+              "datatype": "str",
+              "unit_of_measure": null,
+              "required": true,
+              "multi_select": false,
+              "choices": [
+                "Metered",
+                "Calculated"
+              ]
+            }
+          ]
+      }

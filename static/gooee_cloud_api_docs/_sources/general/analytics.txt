@@ -1,0 +1,768 @@
+.. _general_analytics:
+
+=========
+Analytics
+=========
+
+.. _analytics_historical:
+
+Historical Analytics
+--------------------
+
+Query selected historical values for :ref:`Areas <objects_areas>`, :ref:`Devices <objects_devices>`,
+and :ref:`Fault Alarms <objects_fault_alarms>` with options for aggregations, grouping, filtering per
+the entitys' higher-order relations, and many other filtering, sorting, and ordering options.
+
+.. _analytics_historical_parameters:
+
+Historical Analytics URL Parameters
+-----------------------------------
+
+The following parameters are passed as URL querystring parameters:
+
+=====================  =======================  ==============================================================
+Parameter              Datatype                 Notes
+=====================  =======================  ==============================================================
+start                  iso8601 datetime/string  required, The start of the time period. :ref:`Complex Parameters <analytics_history_parameters_start_end>`
+                       or a string
+                       representing a relative
+                       date
+end                    iso8601 datetime/string  The end of the time period. :ref:`Complex Parameters <analytics_history_parameters_start_end>`
+                       or a string
+                       representing a relative
+                       date
+metrics                string                   required, The property to get data for (i.e: **active_power**).
+metrics_per            string                   The field to be used as a divisor for metrics. Supported values are (entity_type):(surface area metric) (i.e.: building:sq_feet)
+granularity            string                   The time period. choices=[seconds, minutes, hours, days, weeks, months, years] :ref:`Complex Parameters <analytics_history_parameters_granularity>`
+op                     string                   required, The metric statistic. choices=[avg, count, max, median, min, mode, percentiles, raw, std, sum] :ref:`Complex Parameters <analytics_history_parameters_op>`
+offset                 int                      The offset, for paginating results.
+limit                  int                      How many records to return in the result set when paginating.
+entity_type            string                   required, The type of the target entity.  choices=[building, space, area, device] :ref:`Complex Parameters <analytics_history_parameters_entity>`
+entities               string                   required, Comma separated list of :ref:`Building <objects_buildings>`, :ref:`Space <objects_spaces>`, :ref:`Area <objects_areas>`, or :ref:`Device <objects_devices>` IDs. :ref:`Complex Parameters <analytics_history_parameters_entity>`
+timezone               string                   A `pytz.timezone` string, i.e: `America/New_York` or "building".
+                                                :ref:`Complex Parameters <analytics_history_parameters_timezone>`
+within_business_hours  boolean                  Determines if metrics that occur within business hours are queried
+                                                exclusively. :ref:`Complex Parameters <analytics_history_parameters_wbh>`
+groupby                string                   Comma separated list of fields to group by. Currently supported
+                                                fields are `entity`, `granularity`, `dimensions`, and `fields`.
+                                                (i.e: groupby=entity,granularity)
+dimensions             string                   :ref:`Complex Parameters <analytics_dimensions>`
+transform              string                   Transform the reading value based on the operation provided, :ref:`Complex Parameters <analytics_history_parameters_transform>`
+cumulative             boolean                  Calculate the rolling total of metric data with a time window, :ref:`Complex Parameters <analytics_history_parameters_cumulative>`
+rollup_algo            string                   Indicate which method should be used when rolling up area metrics, :ref:`Complex Parameters <analytics_history_parameters_rollup_algo>`
+state                  string                   When querying the ``fault_alarm`` metric, this is used to indicate which state to filter on, :ref:`Complex Parameters <analytics_history_parameters_state>`
+from_state             string                   When querying the ``fault_alarm`` metric, this is used to indicate which `from` state to find time differences for, :ref:`Complex Parameters <analytics_history_parameters_from_to_state>`
+to_state               string                   When querying the ``fault_alarm`` metric, this is used to indicate which `to` state to find time differences for, :ref:`Complex Parameters <analytics_history_parameters_from_to_state>`
+order_by               string                   Indicate which field and direction to order the results by, :ref:`Complex Parameters <analytics_history_parameters_order_by>`
+=====================  =======================  ==============================================================
+
+.. _analytics_history_parameters_op:
+
+Op
+==
+
+The **op** parameter supports either an aggregation function (e.g. ``avg``, ``sum``, ``max``, etc.), ``raw``, or ``percentiles``.
+
+The ``raw`` value signifies that the query should return data in its raw, non-aggregated form.
+In this case, the raw value, the corresponding timestamp, and entity_id will be returned, :ref:`see example <analytics_historical_api_raw>`.
+
+The ``percentiles`` value is used to retrieve the percentile(s) for a given metric using the form ``percentiles:<COMMA SEPARATED LIST OF NUMBERS>`` (i.e: ``percentiles:0,25,50,75,100``).
+The numbers provided should be comma separated and range from 0 to 100.
+
+.. _analytics_history_parameters_entity:
+
+Entity/Entity Type
+==================
+
+Only one **entity_type** is supported per request.
+
+.. _analytics_history_parameters_timezone:
+
+Timezone
+========
+
+All **timestamps** returned from the Analytics API are **UTC** timestamps. If the **timezone** parameter is supplied,
+the Analytics API will convert the supplied **start** and **end** parameters to **UTC** by assuming that they specify
+a **date/time** with respect to the supplied **timezone**. If the supplied **timezone** is "building" (i.e. timezone=building),
+then the query shall use the timezone of the building of the given entities. If **timezone** is not supplied, the Analytics API
+will query the metric based on each entity's local timezone, :ref:`see example <analytics_historical_api_no_timezone>`.
+
+**note:** Timezones using the 2-character country code are being deprecated, therefore canonical names (e.g. America, Europe) are preferred.
+
+.. _analytics_history_parameters_start_end:
+
+Start & End
+===========
+
+The following options are supported:
+
+* ISO8601 datetime in the form of ``1985-10-25T02:31:00+04:00``
+* Relative datetimes for year, month, week, day, hour, minute, second
+    * ``-1day``
+    * ``-5hours``
+    * ``-88400seconds``
+* Macros that expand to a datetime for you
+    * ``today`` - start of today, ie `2020-01-01T01:23:45+00:00``
+    * ``this_year`` - start of this year, ie `2020-01-01T00:00:00+00:00``
+    * ``this_month`` - start of this month, ie `2020-10-01T00:00:00+00:00``
+    * ``this_hour`` - start of this hour, ie `2020-10-01T20:00:00+00:00``
+    * ``this_minute`` - start of this minute, ie `2020-10-01T10:11:00+00:00``
+    * ``this_week`` - start of this week (starting on Monday), ie `2020-07-27T00:00:00+00:00`
+    * ``yesterday`` - start of yesterday
+    * ``last_year`` - start of last year
+    * ``last_month`` - start of last month
+    * ``last_hour`` - start of last hour
+    * ``last_minute`` - start of last minute
+    * ``last_week`` - start of last week (starting on Monday)
+
+So, for "all data last week", you'd use `&start=last_week&end=this_week` since the helper variables
+are merely expansions.
+
+.. _analytics_history_parameters_granularity:
+
+Granularity
+===========
+
+If **granularity** is not specified and **op** is not ``raw``, the query will return a single value based on the aggregate function
+specified in the **op** query param. See :ref:`example <analytics_historical_api_single>`.
+
+.. _analytics_history_parameters_wbh:
+
+Within Business Hours
+=====================
+
+If **within_business_hours** is ``true``, queries only metrics that occur within :ref:`Building Operating Hours <objects_buildings_operating_hours>`.
+If ``false``, only metrics that occur outside building operating hours are queried. If **within_business_hours** is not specified,
+the query is not affected by the building's operating hours.
+
+.. _analytics_history_parameters_transform:
+
+Transform
+=========
+
+This parameter is used to transform the reading value for a given metric based on the operation and arg(s) supplied.
+The following values are currently supported:
+
+- ``cast:boolean`` - casts the reading value to 1 if > 0, otherwise 0
+
+In general, valid values for this parameter follow the format (OPERATION):(ARGS)
+
+.. _analytics_history_parameters_cumulative:
+
+Cumulative
+==========
+
+The **cumulative** parameter is used to calculate the rolling total of metric data with a time window. If **cumulative**
+is set to ``true`` the rolling total of the :ref:`Op <analytics_history_parameters_op>` function is returned. Note that
+**cumulative** cannot be used in conjunction with the ``raw`` operator. See :ref:`example <analytics_historical_api_cumulative>`.
+
+.. _analytics_history_parameters_rollup_algo:
+
+Alternative Rollup Method
+=========================
+
+The ``rollup_algo`` parameter is used to indicate which method should be used when rolling up area metrics to their respective buildings and spaces.
+The options available include:
+
+- ``area_values`` - uses raw area values as opposed to the Space/Building values from the ``pull_forward`` rollup method to compute the given metric
+- ``pull_forward`` - each Space and Building reading is the sum of the latest states of all children Areas
+
+If no option is specified, ``pull_forward`` is used by default
+
+.. _analytics_history_parameters_state:
+
+State
+=====
+
+When querying the ``fault_alarm`` metric, ``state`` is used to indicate which state to filter on. The options available include:
+
+- ``open`` - the fault alarm is opened
+- ``ack`` - the fault alarm is acknowledged
+- ``closed`` - the fault alarm is closed
+- ``initial_open`` - the first observed open state for the fault alarm
+- ``last_closed`` - the fault alarm is closed and it is the last observed state
+
+``state`` cannot be used with ``from_state`` or ``to_state``
+
+.. _analytics_history_parameters_from_to_state:
+
+From State & To State
+=====================
+
+When querying the ``fault_alarm`` metric, ``from_state`` and ``to_state`` are used to indicate which states to find time differences for. The options available include:
+
+- ``open`` - the fault alarm is opened
+- ``ack`` - the fault alarm is acknowledged
+- ``closed`` - the fault alarm is closed
+- ``initial_open`` - the first observed open state for the fault alarm
+- ``last_closed`` - the fault alarm is closed and it is the last observed state
+
+
+The available options can be used for both ``from_state`` and ``to_state``. Additionally, ``from_state`` and ``to_state`` must be different values.
+
+.. _analytics_history_parameters_order_by:
+
+Order By
+========
+
+The ``order_by`` field is used to indicate which field and direction to order by, and follows the form ``<FIELD>:<DIRECTION>`` (i.e: ``reading:asc``).
+The following fields are available:
+
+- ``reading`` - the calculated reading value from the provided query
+- ``timestamp`` - the timestamp corresponding to the reading values
+
+``asc`` and ``desc`` are the only supported options for direction.
+
+.. _analytics_dimensions:
+
+Dimensions
+==========
+
+Dimensions give a historical metric datapoint more dimensions to filter, group by, and sort on in Analytics.
+
+Supported resources that contain the ``anx_dimensions`` field:
+
+- :ref:`Area <objects_areas>`
+- :ref:`Building <objects_buildings>`
+- :ref:`Customer <objects_customers>`
+- :ref:`Partner <objects_partners>`
+- :ref:`Product <objects_products>`
+
+For now, the value of ``anx_dimensions`` is restricted to the following:
+
+- partner
+
+  - type
+
+      - Consultants
+      - FM
+      - Installation
+      - Lighting
+      - Manufacturing
+      - None
+      - Other
+      - Technology
+
+- customer
+
+  - type
+
+      - Bank / Finance
+      - Communications
+      - Council
+      - Demonstration
+      - Facilities
+      - Food Industry / Catering
+      - Manufacturing
+      - None
+      - Other
+      - Pharmaceutical
+      - Public Sector
+      - Retailer
+      - School
+      - Transport
+      - Wholesaler
+
+- building
+
+  - sq_feet: numeric
+  - sq_meters: numeric
+  - type
+
+      - Airport
+      - Arts / Museum
+      - Commercial
+      - Factory
+      - Fire Station
+      - Hospital
+      - Manufacturing
+      - Mixed Use
+      - None
+      - Office
+      - Other
+      - Petrol Station
+      - Police Station
+      - Retail
+      - School / College
+      - Sports Gym
+      - Town / Council
+      - Train / Bus Station
+      - Warehouse
+
+- product
+
+  - type
+
+      - Lighting
+      - HVAC
+      - Metering
+      - None
+      - Other
+      - Refrigeration
+
+- area
+
+  - sq_feet: numeric
+  - sq_meters: numeric
+  - type
+
+      - Bathroom
+      - Breakout Space
+      - Canteen
+      - Change Area
+      - Clean Room
+      - Communal
+      - Desk
+      - Entry/Exit
+      - Garage
+      - Gym
+      - Hot Desk
+      - Kitchen
+      - Laboratory
+      - Meeting Room
+      - None
+      - Other
+      - Plant Room
+      - Private Office
+      - Production
+      - Reception
+      - Showroom
+      - Storeroom
+      - Warehouse
+
+- space
+
+  - sq_feet: numeric
+  - sq_meters: numeric
+
+
+If the value of ``anx_dimensions`` are not set it will default to ``null``.
+
+.. todo:: The ``anx_dimensions`` field is limited to the keys and values defined here. This limitation will be removed in future release.
+
+.. _analytics_historical_api_endpoints:
+
+Historical Analytics API Endpoint
+---------------------------------
+
+.. http:GET:: /analytics/history
+
+   :statuscode 200:
+
+.. _analytics_historical_api_cumulative:
+
+   **Example request**: Get cumulative air_co2 data for a device
+
+   .. sourcecode:: http
+
+      GET /analytics/history?entities=9314f8d6-67e9-4a24-a7cc-b2d5d6e56187&entity_type=device&metrics=air_co2&cumulative=1&op=sum&start=-1days HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json
+
+      {
+        "timestamp": [
+          "2020-04-29 13:11:26",
+          "2020-04-29 13:11:30",
+          "2020-04-29 13:11:33",
+          "2020-04-29 13:11:37",
+          "2020-04-29 13:11:40",
+          "2020-04-29 13:12:11"
+        ],
+        "air_co2": [
+          10.0,
+          20.0,
+          30.0,
+          40.0,
+          50.0,
+          -50.0
+        ],
+        "cumulative_value": [
+          10.0,
+          30.0,
+          60.0,
+          100.0,
+          150.0,
+          100.0
+        ]
+      }
+
+.. _analytics_historical_api_raw:
+
+   **Example request**: Get raw energy_cost data for a building
+
+   .. sourcecode:: http
+
+      GET /analytics/history?op=raw&start=2020-03-17T08:50:00&entity_type=building&entities=775dffc3-ad42-4205-9870-e7748817e7bc&metrics=energy_cost HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json
+
+      {
+        "energy_cost": [
+            0.2222222222,
+            0.125,
+            0.0666666667,
+            0.125,
+            0.0666666667,
+            0.2222222222,
+            0.0666666667,
+            0.125,
+            0.2222222222
+        ],
+        "timestamp": [
+            "2020-03-17 08:54:16",
+            "2020-03-17 08:54:16",
+            "2020-03-17 08:54:16",
+            "2020-03-17 08:59:16",
+            "2020-03-17 08:59:16",
+            "2020-03-17 08:59:16",
+            "2020-03-17 09:04:16",
+            "2020-03-17 09:04:16",
+            "2020-03-17 09:04:16"
+        ],
+        "building": [
+            "775dffc3-ad42-4205-9870-e7748817e7bc",
+            "775dffc3-ad42-4205-9870-e7748817e7bc",
+            "775dffc3-ad42-4205-9870-e7748817e7bc",
+            "775dffc3-ad42-4205-9870-e7748817e7bc",
+            "775dffc3-ad42-4205-9870-e7748817e7bc",
+            "775dffc3-ad42-4205-9870-e7748817e7bc",
+            "775dffc3-ad42-4205-9870-e7748817e7bc",
+            "775dffc3-ad42-4205-9870-e7748817e7bc",
+            "775dffc3-ad42-4205-9870-e7748817e7bc"
+        ]
+      }
+
+
+.. _analytics_historical_api_fault_alarm:
+
+   **Example request**: Get total number of open :ref:`Fault Alarms <objects_fault_alarms>` for a device
+
+   .. sourcecode:: http
+
+      GET /analytics/history?op=count&state=open&start=2020-03-17T08:50:00&entity_type=device&entities=QEDdfbc3-ah42-3905-9870-h6048817e7bc&metrics=fault_alarm HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json
+
+      {
+          "fault_alarm": [
+              14
+          ]
+      }
+
+   **Example request**: Get average open -> closed time (in seconds) for :ref:`Fault Alarms <objects_fault_alarms>`
+
+   .. sourcecode:: http
+
+      GET /analytics/history?op=avg&from_state=open&to_state=closed&start=2020-03-17T08:50:00&entity_type=fault_alarm&entities=h6048-5039-3905-8790-34he6017e7bc&metrics=fault_alarm HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json
+
+      {
+          "fault_alarm": [
+              8543.74
+          ]
+      }
+
+.. _analytics_historical_api_single:
+
+   **Example request**: Get single, average active power number for a space over the past week
+
+   .. sourcecode:: http
+
+      GET /analytics/history?entity_type=space&entities=c4dd044f-34b4-454d-8bac-dba693353a19&op=avg&metrics=active_power&start=-1weeks HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json
+
+      {
+        "space": [
+          "c4dd044f-34b4-454d-8bac-dba693353a19",
+        ],
+        "active_power": [
+          2.4994238265166193,
+        ]
+      }
+
+.. _analytics_historical_api_multiple:
+
+   **Example request**: Retrieve average active power time-series results (grouped by month) for a space since a start date
+
+   .. sourcecode:: http
+
+      GET /analytics/history?entity_type=space&entities=c4dd044f-34b4-454d-8bac-dba693353a19&granularity=month&op=avg&metrics=active_power&start=2017-04-29%2012%3A00%3A00 HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json
+
+      {
+        "timestamp": [
+          "2017-05",
+          "2017-06",
+          "2017-07"
+        ],
+        "space": [
+          "c4dd044f-34b4-454d-8bac-dba693353a19",
+          "c4dd044f-34b4-454d-8bac-dba693353a19",
+          "c4dd044f-34b4-454d-8bac-dba693353a19"
+        ],
+        "active_power": [
+          2.6524238265166193,
+          2.4055019744483244,
+          2.467924582613701
+        ]
+      }
+
+.. _analytics_historical_api_dimensions_filter:
+
+   **Example request**: Get historical analytics with granularity and a dimensions filter applied.
+
+   .. sourcecode:: http
+
+      GET /analytics/history?op=sum&entities=c4dd044f-34b4-454d-8bac-dba693353a19&entity_type=building&groupby=dimensions,granularity&dimensions=product.type:Refrigeration,Lighting,Metering,HVAC&metrics=energy_cost&start=2019-07-03&granularity=minutes HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json
+
+      {
+          "energy_cost": [
+              0.1833333333,
+              0.0666666667,
+              0.2,
+              0.5,
+              0.0666666667,
+              0.2,
+              0.1833333333,
+              0.5
+          ],
+          "timestamp": [
+              "2019-07-03 18:28:00.000",
+              "2019-07-03 18:28:00.000",
+              "2019-07-03 18:28:00.000",
+              "2019-07-03 18:28:00.000",
+              "2019-07-03 18:33:00.000",
+              "2019-07-03 18:33:00.000",
+              "2019-07-03 18:33:00.000",
+              "2019-07-03 18:33:00.000"
+          ],
+          "dimensions_product_type": [
+              "HVAC",
+              "Metering",
+              "Refrigeration",
+              "Lighting",
+              "Metering",
+              "Refrigeration",
+              "HVAC",
+              "Lighting"
+          ],
+          "building": []
+      }
+
+   **Example request**: Get historical analytics with a dimensions filter using a ``None`` value.
+
+   .. sourcecode:: http
+
+      GET /analytics/history?snowflake=1&op=sum&entities=440ff0e8-57e4-46cc-bec5-4c3f66e3dd76&entity_type=building&groupby=dimensions&start=2019-07-25&metrics=active_power&dimensions=product.type:Lighting,Metering,None,Refrigeration,HVAC HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+   **Example response**:
+
+    .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json
+
+      {
+          "active_power": [
+              44100,
+              19466.666666662,
+              16170,
+              5880,
+              17640
+          ],
+          "dimensions_product_type": [
+              "Lighting",
+              "None",
+              "HVAC",
+              "Metering",
+              "Refrigeration"
+          ],
+          "building": []
+      }
+
+  **Example request**: Get historical analytics with a dimensions filter with multiple keys.
+
+  .. sourcecode:: http
+
+    GET /analytics/history?snowflake=1&op=sum&entities=440ff0e8-57e4-46cc-bec5-4c3f66e3dd76&entity_type=building&groupby=dimensions&start=2019-07-25&metrics=active_power&dimensions=product.type:Lighting%3Bbuilding.type HTTP/1.1
+    Host: api.gooee.io
+    Content-Type: application/json
+
+  **Example response**:
+
+  .. sourcecode:: http
+
+    HTTP/1.1 200 OK
+    Content-Type: application/json
+
+    {
+        "active_power": [
+            44400
+        ],
+        "dimensions_product_type": [
+            "Lighting"
+        ],
+        "dimensions_building_type": [
+            "Retail"
+        ],
+        "building": []
+    }
+
+  **Example request**: Get historical analytics with a dimensions filter with multiple keys and multiple values.
+
+  .. sourcecode:: http
+
+    GET /analytics/history?snowflake=1&op=sum&entities=440ff0e8-57e4-46cc-bec5-4c3f66e3dd76&entity_type=building&groupby=dimensions&start=2019-07-25&metrics=active_power&dimensions=product.type:Lighting,HVAC,Refrigeration,None%3Bbuilding.type HTTP/1.1
+    Host: api.gooee.io
+    Content-Type: application/json
+
+  **Example response**:
+
+  .. sourcecode:: http
+
+    HTTP/1.1 200 OK
+    Content-Type: application/json
+
+    {
+        "active_power": [
+            44700,
+            16390,
+            19733.333333328,
+            17880
+        ],
+        "dimensions_product_type": [
+            "Lighting",
+            "HVAC",
+            "None",
+            "Refrigeration"
+        ],
+        "dimensions_building_type": [
+            "Retail",
+            "Retail",
+            "Retail",
+            "Retail"
+        ],
+        "building": []
+    }
+
+.. _analytics_historical_api_no_timezone:
+
+  **Example request**:
+
+  dim = 10 comes in on a device in Building_A (7ca5f5fb-a0e8-40d5-b741-a612f92d5362) @ 2020-03-17T9:10:00 EST.
+
+  dim = 20 comes in on a device in Building_B (9a1f86a6-0a03-4d24-8d7c-d67a4830fe24) @ 2020-03-17T9:20:00 GMT.
+
+  dim = 30 comes in on a device in Building_C (5b17425c-6518-49c8-8f0c-a7107425e6d1) @ 2020-03-17T9:30:00 IST.
+
+  If we query all buildings for dim where timestamp between 9:00:00 and 10:00:00 we should get all values of dim.
+
+  .. sourcecode:: http
+
+    GET /analytics/history?op=sum&metrics=dim&entities=7ca5f5fb-a0e8-40d5-b741-a612f92d5362,9a1f86a6-0a03-4d24-8d7c-d67a4830fe24,5b17425c-6518-49c8-8f0c-a7107425e6d1&entity_type=building&groupby=entity&start=2020-03-17T09:00:00&end=2020-03-17T10:00:00 HTTP/1.1
+    Host: api.gooee.io
+    Content-Type: application/json
+
+  **Example response**:
+
+  .. sourcecode:: http
+
+    HTTP/1.1 200 OK
+    Content-Type: application/json
+
+    {
+        "active_power": [
+            10,
+            20,
+            30
+        ],
+        "timestamp": [
+            "2019-03-17 09:10:00.000",
+            "2019-03-17 09:20:00.000",
+            "2019-03-17 09:30:00.000"
+        ],
+        "building": [
+            "7ca5f5fb-a0e8-40d5-b741-a612f92d5362",
+            "9a1f86a6-0a03-4d24-8d7c-d67a4830fe24",
+            "5b17425c-6518-49c8-8f0c-a7107425e6d1"
+        ]
+    }
+
+Permissions and Scoping
+-----------------------
+
+Since the Analytics API returns large data sets and not specific objects, we use scopes as the
+permissions system to determine what a user `can request` before the request is made. A user is
+restricted to requesting only the data for their partner/customer.
+
+When querying the analytics service, filtering by partner or customer is handled automatically.
+That is, the Cloud API automatically determines what the proper partner/customer are for the
+requesting user and sets the proper partner/customer query parameters under the hood.
+
+If the user specifies a specific partner/customer, then the following rules apply:
+
+- The requesting user can only request data they are scoped to.
+  e.g. If a customer user requests data for another customer, the API will return 200 as long as the
+  user is scoped to the requested customer and a 403 if they are not scoped to the customer.
+  The same applies for a partner user.
+- A Gooee user can see data for all partners/customers.
+
+The API determines the user's partner/customer association directly from the user instance only
+(i.e. doesn't include scopes), and applies them as query params.
+

@@ -1,0 +1,37 @@
+.. _general_pagination:
+
+==========
+Pagination
+==========
+
+.. _rfc5988: https://tools.ietf.org/html/rfc5988
+
+The API endpoints that *list* things are almost always paginated for efficiency.
+
+Pagination information is included in the response headers per rfc5988_.
+
+The *page size* is globally set at **30** results per page, but you can manually
+adjust this number by supplying *limit* as a URL parameter. The max limit is **100**.
+
+URL Parameter Options
+---------------------
+
+We implement a cursor interface.
+
+=============  ===================================================================================
+URL Parameter  Description
+=============  ===================================================================================
+offset         Where the first result starts, within the total count of all items. ie, the cursor.
+limit          The number of results to return for a single page
+=============  ===================================================================================
+
+.. http:GET:: /buildings?offset=2&limit=10
+
+Response Headers
+----------------
+
+.. http:get:: /buildings/
+
+   :resheader X-Result-Count: The total number of results available.
+   :resheader Link: The links to the previous and next pages, should they exist.
+                    example: *<https://api.gooee.io/buildings?limit=10&offset=4>; rel="next"*

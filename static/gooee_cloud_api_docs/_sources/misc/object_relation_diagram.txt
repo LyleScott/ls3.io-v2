@@ -1,0 +1,9 @@
+.. _misc_object_relation_diagram:
+
+=======================
+Object Relation Diagram
+=======================
+
+The following illustrates the relationship between the objects offered by the API.
+
+.. image:: ../_static/object_relation_diagram.png

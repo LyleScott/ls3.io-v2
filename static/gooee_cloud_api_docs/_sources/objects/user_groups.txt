@@ -1,0 +1,382 @@
+.. _objects_user_groups:
+
+===========
+User Groups
+===========
+
+.. contents:: Quick Links
+
+Description
+===========
+
+User Groups contain :ref:`Permission Sets <objects_user_groups_permission_sets>`. They are assigned to
+:ref:`Users <objects_users>` and determine what the User is allowed to do with each resource in
+the system. Each User Group can have many Users. This allows you to conveniently group Users by
+their level of access in the system.
+
+Data Model
+==========
+
+===================  =====================================  ========================================
+Key                  Datatype                               Notes
+===================  =====================================  ========================================
+id                   ref                                    read-only
+created              datetime                               read-only
+modified             datetime                               read-only
+name                 str                                    required, max_length=80
+description          str
+type                 str                                    required, options=[gooee, partner, customer], :ref:`Complex Constraints <user_groups_complex_constraints>`
+users                array(:ref:`ref <objects_users>`)
+customer             :ref:`ref <objects_customers>`         :ref:`Complex Constraints <user_groups_complex_constraints>`
+partner              :ref:`ref <objects_partners>`          :ref:`Complex Constraints <user_groups_complex_constraints>`
+permission_sets      object(ref)                            required, see :ref:`objects_user_groups_permission_sets`
+customer_scopes      array(:ref:`ref <objects_customers>`)  see :ref:`general_scope`
+partner_scopes       array(:ref:`ref <objects_partners>`)   see :ref:`general_scope`
+tags                 array(str)                             max_length=50 per tag
+===================  =====================================  ========================================
+
+.. _user_groups_complex_constraints:
+
+Complex Constraints
+===================
+
+When a User creates a User Group, the specified permission sets must be a subset of the User's current permission sets.
+For example, a user with a ``manage_customers`` only permission set cannot create a User Group with a ``manage_partners`` permission set.
+
+If User Group type is gooee/partner, the partner field is required.
+
+If User Group type is customer, the customer field is required.
+
+If the User Group has Users associated with it, the type field cannot change.
+
+All Users associated to a User Group must have the same type as the User Group.
+
+All Partners are visible for authenticated customer users and partner users regardless of the the Permission Set configuration of the User Group.
+
+.. _objects_user_groups_permission_sets:
+
+Permission Sets
+===============
+
+Permission Sets are groups of permissions for a particular set of resources. They can be mixed and
+matched by the User to create User Groups. For example, you may create a read-only User Group
+by including view permission only.
+
+**Example**:
+
+.. sourcecode:: json
+
+  {
+     "view_buildings": [],
+     "view_customers": [],
+     "access_customer_analytics": [],
+     "access_partner_analytics": [],
+  }
+
+Each Permission Set also has a set of `dependencies`, which is
+a list of other Permission Sets which are encompassed by that one. For example, the
+`manage_buildings` Permission Set has a dependency of `control_fixtures`, therefore if a User Group
+has `manage_buildings`, it also has all the functionality of `control_fixtures`. In order
+to make the Permission Sets explicit, any omitted `dependency` key is automatically added to the
+`permission_sets` of the User Group when it is created or edited.
+
+**Example**:
+
+All the permissions that grant any sort of write access, have also view permissions as dependencies.
+Therefore saving a permission_set like:
+
+.. sourcecode:: json
+
+  {
+     "manage_buildings": ["131aab1d-e11c-fb91-a687-717af11c4444"],
+  }
+
+would return also `view_customers` and `view_buildings` in the response:
+
+.. sourcecode:: json
+
+  {
+     "view_customers": ["4318978d-e111-db91-b687-717af11c10a0"],
+     "view_buildings": ["131aab1d-e11c-fb91-a687-717af11c4444"],
+     "manage_buildings": ["131aab1d-e11c-fb91-a687-717af11c4444"],
+  }
+
+As is shown in the example, in User Groups the `permission_sets` key is expressed as an object,
+where the keys are codes of the Permission Sets and the values are arrays that can optionally
+include object ids. In this case the User Group can see only the Customer with id
+`4318978d-e111-db91-b687-717af11c10a0` and can edit only the Building with id
+`131aab1d-e11c-fb91-a687-717af11c4444`.
+
+If the user tries to see a resource (HTTP GET) for which they do not have view permissions,
+then the Cloud-API returns 404 as response code (Not Found). If the user does have view permissions
+for the resource, but instead the operation is related to creation, editing, or deletion
+of the resource for which they don't have the corresponding write permission, then the Cloud-API
+returns 403 (Forbidden).
+
+Complex Constraints
+-------------------
+
+- Object level permissions can be specified for the following objects:
+   - :ref:`Building <objects_buildings>`: through the Permission Set codes `manage_buildings`,
+     `view_buildings`, `control_fixtures`, and `manage_gateways`.
+   - :ref:`Customer <objects_customers>`: through the Permission Set codes `view_customers`,
+     `manage_customers`, `edit_customers`, and `manage_customer_users`.
+- When a permission_set code is present, but the the objects are not specified (empty list) it defaults to
+  all the objects scoped to the User.
+- Having write or read permissions for an object implies having view permissions for all the direct
+  parent objects of that object. For example, if the `view_buildings` Permission Set is added,
+  then `view_customers` is also included in the permission_sets. If
+  the necessary view permissions are not included when creating/updating the User Group, then the view permissions
+  will be automatically added.
+- All objects inside the Permission Sets of a User Group must be scoped to the Customer or Partner
+  of that User Group, depending on its `type`.
+
+
+Permission Set Data Model
+-------------------------
+
+Permission Sets are identified by their `code`. They cannot be created or modified.
+
+============  ==========
+Key           Datatype
+============  ==========
+code          ref
+name          str
+description   str
+dependencies  array(str)
+============  ==========
+
+Permission Tiers
+----------------
+
+Permission Tiers are groupings of Permission Sets that are available to each User depending on their
+account type (`partner`, `customer`, `gooee`, see :ref:`User <objects_users>`). Users created
+in their company can be assigned all or some permission sets in their tier. The tiers are ordered,
+with each tier providing all Permission Sets available in lower tiers.
+
+=========================  ========================  =====================
+Customer Tier              Partner Tier              Gooee Tier
+=========================  ========================  =====================
+edit_customers             Includes Customer Tier    Includes Partner Tier
+manage_customer_users      edit_partners             manage_partners
+manage_buildings           manage_partner_users
+control_fixtures           manage_customers
+manage_gateways            access_partner_analytics
+access_customer_analytics
+view_buildings
+view_customers
+=========================  ========================  =====================
+
+
+String Filters of Objects in Permission Sets
+--------------------------------------------
+
+The array of objects inside permission sets support only the following filters:
+
+================  ============================================
+Filter             Notes
+================  ============================================
+\__contains       Substring match
+\__contained_by   Substring match
+\__gt             Array greater than
+\__gte            Array greater than or equal to
+\__lt             Array less than
+\__lte            Array less than to
+================  ============================================
+
+**Example requests**:
+
+Get all User Groups that have `view_buildings` permission of the building with ID `f9b00304-cb6a-4566-9d49-d4f2c336a62b`:
+
+
+.. http:GET:: /user_groups?permission_sets__view_buildings__contains=a2b00304-cb6a-4566-9d49-d4f2c336a72a
+
+
+Get all User Groups that have `view_buildings` permission key defaulting to all objects ``[]``:
+
+
+.. http:GET:: /user_groups?permission_sets__view_buildings__contained_by=[]
+
+
+API Endpoints
+=============
+
+List Permission Sets
+--------------------
+
+.. http:GET:: /user_groups/permission_sets/
+
+   :statuscode 200:
+
+**Example response**:
+
+.. sourcecode:: http
+
+  HTTP/1.1 200 OK
+  Content-Type: application/json
+
+  [
+    {
+        "code": "manage_partners",
+        "name": "Manage Partners",
+        "description": "Create, edit and delete Partners",
+        "dependencies": [
+            "edit_partners",
+            "manage_partner_users"
+        ]
+    },
+    {
+        "code": "edit_partners",
+        "name": "Edit Partners",
+        "description": "Edit Partners that already exist",
+        "dependencies": []
+    },
+    {
+        "code": "manage_partner_users",
+        "name": "Manage Partner Users",
+        "description": "Create, edit, and delete Users in a Partner company",
+        "dependencies": []
+    },
+    {
+        "code": "manage_customers",
+        "name": "Manage Customers",
+        "description": "Create, edit, and delete Customers",
+        "dependencies": [
+            "edit_customers",
+            "manage_customer_users",
+            "manage_buildings"
+        ]
+    },
+    {
+        "code": "edit_customers",
+        "name": "Edit Customers",
+        "description": "Edit Customers that already exist",
+        "dependencies": [
+            "view_customers"
+        ]
+    },
+    {
+        "code": "manage_customer_users",
+        "name": "Manage Customer Users",
+        "description": "Create, edit, and delete Users in a Customer company",
+        "dependencies": [
+            "view_customers"
+        ]
+    },
+    {
+        "code": "manage_buildings",
+        "name": "Manage Buildings",
+        "description": "Create, edit and delete Buildings and their resources",
+        "dependencies": [
+            "manage_gateways",
+            "control_fixtures",
+            "view_buildings"
+        ]
+    },
+    {
+        "code": "control_fixtures",
+        "name": "Control Fixtures",
+        "description": "Control lighting fixtures",
+        "dependencies": [
+            "view_buildings"
+        ]
+    },
+    {
+        "code": "manage_gateways",
+        "name": "Manage Gateways",
+        "description": "Create Actions for Gateways",
+        "dependencies": [
+            "control_fixtures"
+        ]
+    },
+    {
+        "code": "access_partner_analytics",
+        "name": "Access Partner Analytics",
+        "description": "View partner analytics",
+        "dependencies": []
+    },
+    {
+        "code": "access_customer_analytics",
+        "name": "Access Customer Analytics",
+        "description": "View customer analytics",
+        "dependencies": [
+            "view_customers"
+        ]
+    },
+    {
+        "code": "view_buildings",
+        "name": "View Buildings",
+        "description": "View access to buildings and all the entities in the buildings",
+        "dependencies": [
+            "view_customers"
+        ]
+    },
+    {
+        "code": "view_customers",
+        "name": "View Customers",
+        "description": "View access to customers",
+        "dependencies": []
+    }
+  ]
+
+Create a User Group
+-------------------
+
+.. http:POST:: /user_groups/
+
+   :statuscode 201:
+
+**Example request body**:
+
+.. sourcecode:: json
+
+  {
+    "name": "Admin Partner",
+    "permission_sets": {
+        "edit_partners": [],
+        "view_buildings": [],
+        "view_customers": [],
+        "manage_buildings": [],
+        "manage_customers": []
+    },
+    "users": [
+        "f9b00304-cb6a-4566-9d49-d4f2c336a62b"
+    ],
+    "type": "partner",
+    "partner": "a2f70a98-1110-b00f-0000-444400002340"
+  }
+
+List User Group
+---------------
+
+.. http:GET:: /user_groups/
+
+   :statuscode 200:
+
+Update a User Group
+-------------------
+
+.. http:PUT:: /user_groups/(id)/
+
+   :statuscode 200:
+
+Partially Update a User Group
+-----------------------------
+
+.. http:PATCH:: /user_groups/(id)/
+
+   :statuscode 200:
+
+Retrieve a User Group
+---------------------
+
+.. http:GET:: /user_groups/(id)/
+
+   :statuscode 200:
+
+Delete a User Group
+-------------------
+
+.. http:DELETE:: /user_groups/(id)/
+
+   :statuscode 204:

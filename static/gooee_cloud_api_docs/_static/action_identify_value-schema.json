@@ -1,0 +1,18 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "onoff": {
+      "type": "boolean"
+    },
+    "timeout_on": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    }
+  },
+  "required": [
+    "onoff"
+  ],
+  "additionalProperties": false
+}

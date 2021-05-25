@@ -1,0 +1,71 @@
+.. _objects_timezones:
+
+=========
+Timezones
+=========
+
+.. contents:: Quick Links
+
+Description
+===========
+
+Timezones are identified by a 2-digit country code followed by unique identifier, which is in most
+cases in a well-known city in that time zone. For example, Great Britain's timezone is identified as
+`GB/London`. Country codes are defined in the `ISO 3166`_ International Standard for country codes.
+
+Data Model
+==========
+
+============== ============ =====
+Key            Datatype     Notes
+============== ============ =====
+name           string (ref)
+display_name   string
+olson_name     string       see the `IANA Time Zone Database`_
+utc_offset     number       +/- minutes from Coordinated Universal Time (UTC)
+current_offset number       same as `utc_offset`, but aware of Daylight Savings Time
+country        string
+country_code   string       see `ISO 3166`_
+============== ============ =====
+
+API Endpoints
+=============
+
+List All Timezones
+------------------
+
+.. http:GET:: /timezones
+
+   :statuscode 200:
+
+Retrieve a Specific Timezone
+----------------------------
+
+.. http:GET:: /timezones/(name)
+
+   :statuscode 200:
+
+
+List of Supported Timezones
+===========================
+
+Here is the list of timezones that our system accepts. Make sure that the timezone you are using is
+included in this list. Note that each Timezone is _identified_ in our system by the `name` column
+below.
+
+Every timezone listed here is a valid timezone from the `IANA Time Zone Database`_ (also
+known as the Olson Time Zone Database).  See the `Olson name` column for the name used in the
+corresponding database entry.
+
+.. note::
+   We update our copy of this list manually to avoid conflicts, so we may not be using the
+   most recent version of the global time zone data at any given time. In most parts of the world
+   this is unlikely to affect you.
+
+.. csv-table:: Timezones
+   :file: ../_static/timezones.csv
+   :delim: ,
+   :header-rows: 1
+
+.. _ISO 3166: https://www.iso.org/obp/ui/#search
+.. _IANA Time Zone Database: https://www.iana.org/time-zones

@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "title": "Reported Metas",
+  "description": "Meta Values reported by external sensors",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "name": {
+        "type": "string",
+        "title": "Name",
+        "description": "Meta name.",
+        "minLength": 1,
+        "maxLength": 100,
+        "pattern": "^[a-z0-9_]+$"
+      },
+      "path": {
+        "type": "string",
+        "title": "Path",
+        "description": "JsonPath to obtain the value from the incoming payload."
+      },
+      "default_value": {
+        "type": [
+          "number",
+          "string",
+          "boolean",
+          "array"
+        ],
+        "title": "Default Value",
+        "description": "Default value."
+      }
+    },
+    "required": [
+      "name",
+      "default_value",
+      "path"
+    ]
+  }
+}

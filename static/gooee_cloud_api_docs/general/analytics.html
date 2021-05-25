@@ -1,0 +1,1103 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Analytics &mdash; Documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/navtree.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Documentation" href="../index.html"/>
+        <link rel="up" title="General" href="../general.html"/>
+        <link rel="next" title="API Tokens" href="api_tokens.html"/>
+        <link rel="prev" title="General" href="../general.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Cloud API
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="link caption"><span class="link caption-text"><a class="reference internal" href="../misc.html">Misc</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/change_log.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/object_relation_diagram.html">Object Relation Diagram</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../general.html">General</a></span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Analytics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#historical-analytics">Historical Analytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#historical-analytics-url-parameters">Historical Analytics URL Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#historical-analytics-api-endpoint">Historical Analytics API Endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#permissions-and-scoping">Permissions and Scoping</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api_tokens.html">API Tokens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clearing_field_values.html">Clearing Field Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="device_counts.html">Device Counts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exclude_include_fields.html">Include/Exclude Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filtering.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ordering.html">Ordering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meta.html">Meta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meta_groups.html">Meta Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pagination.html">Pagination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pubsub.html">PubSub Message Broker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search.html">Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scope.html">Scope</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../objects.html">Objects</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../objects/action_types.html">Action Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/actions.html">Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/analytics_export.html">Analytics Export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/analytics_query.html">Analytics Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/areas.html">Areas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/buildings.html">Buildings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/connected_products.html">Connected Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/currency.html">Currency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/customers.html">Customers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/dashboards.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/devices.html">Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/fault_alarms.html">Fault Alarms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/local_rules.html">Local Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/locations.html">Locations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/partners.html">Partners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/product_files.html">Product Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/product_types.html">Product Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/products.html">Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/rules_v2.html">Rules V2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/rule_groups.html">Rule Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/scenes.html">Scenes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/schedules.html">Schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/spaces.html">Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/timezones.html">Timezones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/user_features.html">User Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/user_groups.html">User Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/user_preferences.html">User Preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/users.html">Users</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../integrations.html">Integrations</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/als2lux.html">Als-to-Lux Correlation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/external_sensor.html">External Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/gateway_lite.html">Gateway Lite</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cloud API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../general.html">General</a> &raquo;</li>
+        
+      <li>Analytics</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/general/analytics.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="analytics">
+<span id="general-analytics"></span><h1>Analytics<a class="headerlink" href="#analytics" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="historical-analytics">
+<span id="analytics-historical"></span><h2>Historical Analytics<a class="headerlink" href="#historical-analytics" title="Permalink to this headline">¶</a></h2>
+<p>Query selected historical values for <a class="reference internal" href="../objects/areas.html#objects-areas"><span class="std std-ref">Areas</span></a>, <a class="reference internal" href="../objects/devices.html#objects-devices"><span class="std std-ref">Devices</span></a>,
+and <a class="reference internal" href="../objects/fault_alarms.html#objects-fault-alarms"><span class="std std-ref">Fault Alarms</span></a> with options for aggregations, grouping, filtering per
+the entitys&#8217; higher-order relations, and many other filtering, sorting, and ordering options.</p>
+</div>
+<div class="section" id="historical-analytics-url-parameters">
+<span id="analytics-historical-parameters"></span><h2>Historical Analytics URL Parameters<a class="headerlink" href="#historical-analytics-url-parameters" title="Permalink to this headline">¶</a></h2>
+<p>The following parameters are passed as URL querystring parameters:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="84%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>start</td>
+<td>iso8601 datetime/string
+or a string
+representing a relative
+date</td>
+<td>required, The start of the time period. <a class="reference internal" href="#analytics-history-parameters-start-end"><span class="std std-ref">Complex Parameters</span></a></td>
+</tr>
+<tr class="row-odd"><td>end</td>
+<td>iso8601 datetime/string
+or a string
+representing a relative
+date</td>
+<td>The end of the time period. <a class="reference internal" href="#analytics-history-parameters-start-end"><span class="std std-ref">Complex Parameters</span></a></td>
+</tr>
+<tr class="row-even"><td>metrics</td>
+<td>string</td>
+<td>required, The property to get data for (i.e: <strong>active_power</strong>).</td>
+</tr>
+<tr class="row-odd"><td>metrics_per</td>
+<td>string</td>
+<td>The field to be used as a divisor for metrics. Supported values are (entity_type):(surface area metric) (i.e.: building:sq_feet)</td>
+</tr>
+<tr class="row-even"><td>granularity</td>
+<td>string</td>
+<td>The time period. choices=[seconds, minutes, hours, days, weeks, months, years] <a class="reference internal" href="#analytics-history-parameters-granularity"><span class="std std-ref">Complex Parameters</span></a></td>
+</tr>
+<tr class="row-odd"><td>op</td>
+<td>string</td>
+<td>required, The metric statistic. choices=[avg, count, max, median, min, mode, percentiles, raw, std, sum] <a class="reference internal" href="#analytics-history-parameters-op"><span class="std std-ref">Complex Parameters</span></a></td>
+</tr>
+<tr class="row-even"><td>offset</td>
+<td>int</td>
+<td>The offset, for paginating results.</td>
+</tr>
+<tr class="row-odd"><td>limit</td>
+<td>int</td>
+<td>How many records to return in the result set when paginating.</td>
+</tr>
+<tr class="row-even"><td>entity_type</td>
+<td>string</td>
+<td>required, The type of the target entity.  choices=[building, space, area, device] <a class="reference internal" href="#analytics-history-parameters-entity"><span class="std std-ref">Complex Parameters</span></a></td>
+</tr>
+<tr class="row-odd"><td>entities</td>
+<td>string</td>
+<td>required, Comma separated list of <a class="reference internal" href="../objects/buildings.html#objects-buildings"><span class="std std-ref">Building</span></a>, <a class="reference internal" href="../objects/spaces.html#objects-spaces"><span class="std std-ref">Space</span></a>, <a class="reference internal" href="../objects/areas.html#objects-areas"><span class="std std-ref">Area</span></a>, or <a class="reference internal" href="../objects/devices.html#objects-devices"><span class="std std-ref">Device</span></a> IDs. <a class="reference internal" href="#analytics-history-parameters-entity"><span class="std std-ref">Complex Parameters</span></a></td>
+</tr>
+<tr class="row-even"><td>timezone</td>
+<td>string</td>
+<td>A <cite>pytz.timezone</cite> string, i.e: <cite>America/New_York</cite> or &#8220;building&#8221;.
+<a class="reference internal" href="#analytics-history-parameters-timezone"><span class="std std-ref">Complex Parameters</span></a></td>
+</tr>
+<tr class="row-odd"><td>within_business_hours</td>
+<td>boolean</td>
+<td>Determines if metrics that occur within business hours are queried
+exclusively. <a class="reference internal" href="#analytics-history-parameters-wbh"><span class="std std-ref">Complex Parameters</span></a></td>
+</tr>
+<tr class="row-even"><td>groupby</td>
+<td>string</td>
+<td>Comma separated list of fields to group by. Currently supported
+fields are <cite>entity</cite>, <cite>granularity</cite>, <cite>dimensions</cite>, and <cite>fields</cite>.
+(i.e: groupby=entity,granularity)</td>
+</tr>
+<tr class="row-odd"><td>dimensions</td>
+<td>string</td>
+<td><a class="reference internal" href="#analytics-dimensions"><span class="std std-ref">Complex Parameters</span></a></td>
+</tr>
+<tr class="row-even"><td>transform</td>
+<td>string</td>
+<td>Transform the reading value based on the operation provided, <a class="reference internal" href="#analytics-history-parameters-transform"><span class="std std-ref">Complex Parameters</span></a></td>
+</tr>
+<tr class="row-odd"><td>cumulative</td>
+<td>boolean</td>
+<td>Calculate the rolling total of metric data with a time window, <a class="reference internal" href="#analytics-history-parameters-cumulative"><span class="std std-ref">Complex Parameters</span></a></td>
+</tr>
+<tr class="row-even"><td>rollup_algo</td>
+<td>string</td>
+<td>Indicate which method should be used when rolling up area metrics, <a class="reference internal" href="#analytics-history-parameters-rollup-algo"><span class="std std-ref">Complex Parameters</span></a></td>
+</tr>
+<tr class="row-odd"><td>state</td>
+<td>string</td>
+<td>When querying the <code class="docutils literal"><span class="pre">fault_alarm</span></code> metric, this is used to indicate which state to filter on, <a class="reference internal" href="#analytics-history-parameters-state"><span class="std std-ref">Complex Parameters</span></a></td>
+</tr>
+<tr class="row-even"><td>from_state</td>
+<td>string</td>
+<td>When querying the <code class="docutils literal"><span class="pre">fault_alarm</span></code> metric, this is used to indicate which <cite>from</cite> state to find time differences for, <a class="reference internal" href="#analytics-history-parameters-from-to-state"><span class="std std-ref">Complex Parameters</span></a></td>
+</tr>
+<tr class="row-odd"><td>to_state</td>
+<td>string</td>
+<td>When querying the <code class="docutils literal"><span class="pre">fault_alarm</span></code> metric, this is used to indicate which <cite>to</cite> state to find time differences for, <a class="reference internal" href="#analytics-history-parameters-from-to-state"><span class="std std-ref">Complex Parameters</span></a></td>
+</tr>
+<tr class="row-even"><td>order_by</td>
+<td>string</td>
+<td>Indicate which field and direction to order the results by, <a class="reference internal" href="#analytics-history-parameters-order-by"><span class="std std-ref">Complex Parameters</span></a></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="op">
+<span id="analytics-history-parameters-op"></span><h3>Op<a class="headerlink" href="#op" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>op</strong> parameter supports either an aggregation function (e.g. <code class="docutils literal"><span class="pre">avg</span></code>, <code class="docutils literal"><span class="pre">sum</span></code>, <code class="docutils literal"><span class="pre">max</span></code>, etc.), <code class="docutils literal"><span class="pre">raw</span></code>, or <code class="docutils literal"><span class="pre">percentiles</span></code>.</p>
+<p>The <code class="docutils literal"><span class="pre">raw</span></code> value signifies that the query should return data in its raw, non-aggregated form.
+In this case, the raw value, the corresponding timestamp, and entity_id will be returned, <a class="reference internal" href="#analytics-historical-api-raw"><span class="std std-ref">see example</span></a>.</p>
+<p>The <code class="docutils literal"><span class="pre">percentiles</span></code> value is used to retrieve the percentile(s) for a given metric using the form <code class="docutils literal"><span class="pre">percentiles:&lt;COMMA</span> <span class="pre">SEPARATED</span> <span class="pre">LIST</span> <span class="pre">OF</span> <span class="pre">NUMBERS&gt;</span></code> (i.e: <code class="docutils literal"><span class="pre">percentiles:0,25,50,75,100</span></code>).
+The numbers provided should be comma separated and range from 0 to 100.</p>
+</div>
+<div class="section" id="entity-entity-type">
+<span id="analytics-history-parameters-entity"></span><h3>Entity/Entity Type<a class="headerlink" href="#entity-entity-type" title="Permalink to this headline">¶</a></h3>
+<p>Only one <strong>entity_type</strong> is supported per request.</p>
+</div>
+<div class="section" id="timezone">
+<span id="analytics-history-parameters-timezone"></span><h3>Timezone<a class="headerlink" href="#timezone" title="Permalink to this headline">¶</a></h3>
+<p>All <strong>timestamps</strong> returned from the Analytics API are <strong>UTC</strong> timestamps. If the <strong>timezone</strong> parameter is supplied,
+the Analytics API will convert the supplied <strong>start</strong> and <strong>end</strong> parameters to <strong>UTC</strong> by assuming that they specify
+a <strong>date/time</strong> with respect to the supplied <strong>timezone</strong>. If the supplied <strong>timezone</strong> is &#8220;building&#8221; (i.e. timezone=building),
+then the query shall use the timezone of the building of the given entities. If <strong>timezone</strong> is not supplied, the Analytics API
+will query the metric based on each entity&#8217;s local timezone, <a class="reference internal" href="#analytics-historical-api-no-timezone"><span class="std std-ref">see example</span></a>.</p>
+<p><strong>note:</strong> Timezones using the 2-character country code are being deprecated, therefore canonical names (e.g. America, Europe) are preferred.</p>
+</div>
+<div class="section" id="start-end">
+<span id="analytics-history-parameters-start-end"></span><h3>Start &amp; End<a class="headerlink" href="#start-end" title="Permalink to this headline">¶</a></h3>
+<p>The following options are supported:</p>
+<ul class="simple">
+<li>ISO8601 datetime in the form of <code class="docutils literal"><span class="pre">1985-10-25T02:31:00+04:00</span></code></li>
+<li><dl class="first docutils">
+<dt>Relative datetimes for year, month, week, day, hour, minute, second</dt>
+<dd><ul class="first last">
+<li><code class="docutils literal"><span class="pre">-1day</span></code></li>
+<li><code class="docutils literal"><span class="pre">-5hours</span></code></li>
+<li><code class="docutils literal"><span class="pre">-88400seconds</span></code></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Macros that expand to a datetime for you</dt>
+<dd><ul class="first last">
+<li><code class="docutils literal"><span class="pre">today</span></code> - start of today, ie <cite>2020-01-01T01:23:45+00:00`</cite></li>
+<li><code class="docutils literal"><span class="pre">this_year</span></code> - start of this year, ie <cite>2020-01-01T00:00:00+00:00`</cite></li>
+<li><code class="docutils literal"><span class="pre">this_month</span></code> - start of this month, ie <cite>2020-10-01T00:00:00+00:00`</cite></li>
+<li><code class="docutils literal"><span class="pre">this_hour</span></code> - start of this hour, ie <cite>2020-10-01T20:00:00+00:00`</cite></li>
+<li><code class="docutils literal"><span class="pre">this_minute</span></code> - start of this minute, ie <cite>2020-10-01T10:11:00+00:00`</cite></li>
+<li><code class="docutils literal"><span class="pre">this_week</span></code> - start of this week (starting on Monday), ie <cite>2020-07-27T00:00:00+00:00</cite></li>
+<li><code class="docutils literal"><span class="pre">yesterday</span></code> - start of yesterday</li>
+<li><code class="docutils literal"><span class="pre">last_year</span></code> - start of last year</li>
+<li><code class="docutils literal"><span class="pre">last_month</span></code> - start of last month</li>
+<li><code class="docutils literal"><span class="pre">last_hour</span></code> - start of last hour</li>
+<li><code class="docutils literal"><span class="pre">last_minute</span></code> - start of last minute</li>
+<li><code class="docutils literal"><span class="pre">last_week</span></code> - start of last week (starting on Monday)</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>So, for &#8220;all data last week&#8221;, you&#8217;d use <cite>&amp;start=last_week&amp;end=this_week</cite> since the helper variables
+are merely expansions.</p>
+</div>
+<div class="section" id="granularity">
+<span id="analytics-history-parameters-granularity"></span><h3>Granularity<a class="headerlink" href="#granularity" title="Permalink to this headline">¶</a></h3>
+<p>If <strong>granularity</strong> is not specified and <strong>op</strong> is not <code class="docutils literal"><span class="pre">raw</span></code>, the query will return a single value based on the aggregate function
+specified in the <strong>op</strong> query param. See <a class="reference internal" href="#analytics-historical-api-single"><span class="std std-ref">example</span></a>.</p>
+</div>
+<div class="section" id="within-business-hours">
+<span id="analytics-history-parameters-wbh"></span><h3>Within Business Hours<a class="headerlink" href="#within-business-hours" title="Permalink to this headline">¶</a></h3>
+<p>If <strong>within_business_hours</strong> is <code class="docutils literal"><span class="pre">true</span></code>, queries only metrics that occur within <a class="reference internal" href="../objects/buildings.html#objects-buildings-operating-hours"><span class="std std-ref">Building Operating Hours</span></a>.
+If <code class="docutils literal"><span class="pre">false</span></code>, only metrics that occur outside building operating hours are queried. If <strong>within_business_hours</strong> is not specified,
+the query is not affected by the building&#8217;s operating hours.</p>
+</div>
+<div class="section" id="transform">
+<span id="analytics-history-parameters-transform"></span><h3>Transform<a class="headerlink" href="#transform" title="Permalink to this headline">¶</a></h3>
+<p>This parameter is used to transform the reading value for a given metric based on the operation and arg(s) supplied.
+The following values are currently supported:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">cast:boolean</span></code> - casts the reading value to 1 if &gt; 0, otherwise 0</li>
+</ul>
+<p>In general, valid values for this parameter follow the format (OPERATION):(ARGS)</p>
+</div>
+<div class="section" id="cumulative">
+<span id="analytics-history-parameters-cumulative"></span><h3>Cumulative<a class="headerlink" href="#cumulative" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>cumulative</strong> parameter is used to calculate the rolling total of metric data with a time window. If <strong>cumulative</strong>
+is set to <code class="docutils literal"><span class="pre">true</span></code> the rolling total of the <a class="reference internal" href="#analytics-history-parameters-op"><span class="std std-ref">Op</span></a> function is returned. Note that
+<strong>cumulative</strong> cannot be used in conjunction with the <code class="docutils literal"><span class="pre">raw</span></code> operator. See <a class="reference internal" href="#analytics-historical-api-cumulative"><span class="std std-ref">example</span></a>.</p>
+</div>
+<div class="section" id="alternative-rollup-method">
+<span id="analytics-history-parameters-rollup-algo"></span><h3>Alternative Rollup Method<a class="headerlink" href="#alternative-rollup-method" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal"><span class="pre">rollup_algo</span></code> parameter is used to indicate which method should be used when rolling up area metrics to their respective buildings and spaces.
+The options available include:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">area_values</span></code> - uses raw area values as opposed to the Space/Building values from the <code class="docutils literal"><span class="pre">pull_forward</span></code> rollup method to compute the given metric</li>
+<li><code class="docutils literal"><span class="pre">pull_forward</span></code> - each Space and Building reading is the sum of the latest states of all children Areas</li>
+</ul>
+<p>If no option is specified, <code class="docutils literal"><span class="pre">pull_forward</span></code> is used by default</p>
+</div>
+<div class="section" id="state">
+<span id="analytics-history-parameters-state"></span><h3>State<a class="headerlink" href="#state" title="Permalink to this headline">¶</a></h3>
+<p>When querying the <code class="docutils literal"><span class="pre">fault_alarm</span></code> metric, <code class="docutils literal"><span class="pre">state</span></code> is used to indicate which state to filter on. The options available include:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">open</span></code> - the fault alarm is opened</li>
+<li><code class="docutils literal"><span class="pre">ack</span></code> - the fault alarm is acknowledged</li>
+<li><code class="docutils literal"><span class="pre">closed</span></code> - the fault alarm is closed</li>
+<li><code class="docutils literal"><span class="pre">initial_open</span></code> - the first observed open state for the fault alarm</li>
+<li><code class="docutils literal"><span class="pre">last_closed</span></code> - the fault alarm is closed and it is the last observed state</li>
+</ul>
+<p><code class="docutils literal"><span class="pre">state</span></code> cannot be used with <code class="docutils literal"><span class="pre">from_state</span></code> or <code class="docutils literal"><span class="pre">to_state</span></code></p>
+</div>
+<div class="section" id="from-state-to-state">
+<span id="analytics-history-parameters-from-to-state"></span><h3>From State &amp; To State<a class="headerlink" href="#from-state-to-state" title="Permalink to this headline">¶</a></h3>
+<p>When querying the <code class="docutils literal"><span class="pre">fault_alarm</span></code> metric, <code class="docutils literal"><span class="pre">from_state</span></code> and <code class="docutils literal"><span class="pre">to_state</span></code> are used to indicate which states to find time differences for. The options available include:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">open</span></code> - the fault alarm is opened</li>
+<li><code class="docutils literal"><span class="pre">ack</span></code> - the fault alarm is acknowledged</li>
+<li><code class="docutils literal"><span class="pre">closed</span></code> - the fault alarm is closed</li>
+<li><code class="docutils literal"><span class="pre">initial_open</span></code> - the first observed open state for the fault alarm</li>
+<li><code class="docutils literal"><span class="pre">last_closed</span></code> - the fault alarm is closed and it is the last observed state</li>
+</ul>
+<p>The available options can be used for both <code class="docutils literal"><span class="pre">from_state</span></code> and <code class="docutils literal"><span class="pre">to_state</span></code>. Additionally, <code class="docutils literal"><span class="pre">from_state</span></code> and <code class="docutils literal"><span class="pre">to_state</span></code> must be different values.</p>
+</div>
+<div class="section" id="order-by">
+<span id="analytics-history-parameters-order-by"></span><h3>Order By<a class="headerlink" href="#order-by" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal"><span class="pre">order_by</span></code> field is used to indicate which field and direction to order by, and follows the form <code class="docutils literal"><span class="pre">&lt;FIELD&gt;:&lt;DIRECTION&gt;</span></code> (i.e: <code class="docutils literal"><span class="pre">reading:asc</span></code>).
+The following fields are available:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">reading</span></code> - the calculated reading value from the provided query</li>
+<li><code class="docutils literal"><span class="pre">timestamp</span></code> - the timestamp corresponding to the reading values</li>
+</ul>
+<p><code class="docutils literal"><span class="pre">asc</span></code> and <code class="docutils literal"><span class="pre">desc</span></code> are the only supported options for direction.</p>
+</div>
+<div class="section" id="dimensions">
+<span id="analytics-dimensions"></span><h3>Dimensions<a class="headerlink" href="#dimensions" title="Permalink to this headline">¶</a></h3>
+<p>Dimensions give a historical metric datapoint more dimensions to filter, group by, and sort on in Analytics.</p>
+<p>Supported resources that contain the <code class="docutils literal"><span class="pre">anx_dimensions</span></code> field:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../objects/areas.html#objects-areas"><span class="std std-ref">Area</span></a></li>
+<li><a class="reference internal" href="../objects/buildings.html#objects-buildings"><span class="std std-ref">Building</span></a></li>
+<li><a class="reference internal" href="../objects/customers.html#objects-customers"><span class="std std-ref">Customer</span></a></li>
+<li><a class="reference internal" href="../objects/partners.html#objects-partners"><span class="std std-ref">Partner</span></a></li>
+<li><a class="reference internal" href="../objects/products.html#objects-products"><span class="std std-ref">Product</span></a></li>
+</ul>
+<p>For now, the value of <code class="docutils literal"><span class="pre">anx_dimensions</span></code> is restricted to the following:</p>
+<ul>
+<li><p class="first">partner</p>
+<ul>
+<li><p class="first">type</p>
+<blockquote>
+<div><ul class="simple">
+<li>Consultants</li>
+<li>FM</li>
+<li>Installation</li>
+<li>Lighting</li>
+<li>Manufacturing</li>
+<li>None</li>
+<li>Other</li>
+<li>Technology</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</li>
+<li><p class="first">customer</p>
+<ul>
+<li><p class="first">type</p>
+<blockquote>
+<div><ul class="simple">
+<li>Bank / Finance</li>
+<li>Communications</li>
+<li>Council</li>
+<li>Demonstration</li>
+<li>Facilities</li>
+<li>Food Industry / Catering</li>
+<li>Manufacturing</li>
+<li>None</li>
+<li>Other</li>
+<li>Pharmaceutical</li>
+<li>Public Sector</li>
+<li>Retailer</li>
+<li>School</li>
+<li>Transport</li>
+<li>Wholesaler</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</li>
+<li><p class="first">building</p>
+<ul>
+<li><p class="first">sq_feet: numeric</p>
+</li>
+<li><p class="first">sq_meters: numeric</p>
+</li>
+<li><p class="first">type</p>
+<blockquote>
+<div><ul class="simple">
+<li>Airport</li>
+<li>Arts / Museum</li>
+<li>Commercial</li>
+<li>Factory</li>
+<li>Fire Station</li>
+<li>Hospital</li>
+<li>Manufacturing</li>
+<li>Mixed Use</li>
+<li>None</li>
+<li>Office</li>
+<li>Other</li>
+<li>Petrol Station</li>
+<li>Police Station</li>
+<li>Retail</li>
+<li>School / College</li>
+<li>Sports Gym</li>
+<li>Town / Council</li>
+<li>Train / Bus Station</li>
+<li>Warehouse</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</li>
+<li><p class="first">product</p>
+<ul>
+<li><p class="first">type</p>
+<blockquote>
+<div><ul class="simple">
+<li>Lighting</li>
+<li>HVAC</li>
+<li>Metering</li>
+<li>None</li>
+<li>Other</li>
+<li>Refrigeration</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</li>
+<li><p class="first">area</p>
+<ul>
+<li><p class="first">sq_feet: numeric</p>
+</li>
+<li><p class="first">sq_meters: numeric</p>
+</li>
+<li><p class="first">type</p>
+<blockquote>
+<div><ul class="simple">
+<li>Bathroom</li>
+<li>Breakout Space</li>
+<li>Canteen</li>
+<li>Change Area</li>
+<li>Clean Room</li>
+<li>Communal</li>
+<li>Desk</li>
+<li>Entry/Exit</li>
+<li>Garage</li>
+<li>Gym</li>
+<li>Hot Desk</li>
+<li>Kitchen</li>
+<li>Laboratory</li>
+<li>Meeting Room</li>
+<li>None</li>
+<li>Other</li>
+<li>Plant Room</li>
+<li>Private Office</li>
+<li>Production</li>
+<li>Reception</li>
+<li>Showroom</li>
+<li>Storeroom</li>
+<li>Warehouse</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</li>
+<li><p class="first">space</p>
+<ul class="simple">
+<li>sq_feet: numeric</li>
+<li>sq_meters: numeric</li>
+</ul>
+</li>
+</ul>
+<p>If the value of <code class="docutils literal"><span class="pre">anx_dimensions</span></code> are not set it will default to <code class="docutils literal"><span class="pre">null</span></code>.</p>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">The <code class="docutils literal"><span class="pre">anx_dimensions</span></code> field is limited to the keys and values defined here. This limitation will be removed in future release.</p>
+</div>
+</div>
+</div>
+<div class="section" id="historical-analytics-api-endpoint">
+<span id="analytics-historical-api-endpoints"></span><h2>Historical Analytics API Endpoint<a class="headerlink" href="#historical-analytics-api-endpoint" title="Permalink to this headline">¶</a></h2>
+<dl class="get">
+<dt id="get--analytics-history">
+<code class="descname">GET </code><code class="descname">/analytics/history</code><a class="headerlink" href="#get--analytics-history" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<blockquote id="analytics-historical-api-cumulative">
+<div><p><strong>Example request</strong>: Get cumulative air_co2 data for a device</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/analytics/history?entities=9314f8d6-67e9-4a24-a7cc-b2d5d6e56187&amp;entity_type=device&amp;metrics=air_co2&amp;cumulative=1&amp;op=sum&amp;start=-1days</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+  <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;2020-04-29 13:11:26&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;2020-04-29 13:11:30&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;2020-04-29 13:11:33&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;2020-04-29 13:11:37&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;2020-04-29 13:11:40&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;2020-04-29 13:12:11&quot;</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;air_co2&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="mf">10.0</span><span class="p">,</span>
+    <span class="mf">20.0</span><span class="p">,</span>
+    <span class="mf">30.0</span><span class="p">,</span>
+    <span class="mf">40.0</span><span class="p">,</span>
+    <span class="mf">50.0</span><span class="p">,</span>
+    <span class="mf">-50.0</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;cumulative_value&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="mf">10.0</span><span class="p">,</span>
+    <span class="mf">30.0</span><span class="p">,</span>
+    <span class="mf">60.0</span><span class="p">,</span>
+    <span class="mf">100.0</span><span class="p">,</span>
+    <span class="mf">150.0</span><span class="p">,</span>
+    <span class="mf">100.0</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<blockquote id="analytics-historical-api-raw">
+<div><p><strong>Example request</strong>: Get raw energy_cost data for a building</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/analytics/history?op=raw&amp;start=2020-03-17T08:50:00&amp;entity_type=building&amp;entities=775dffc3-ad42-4205-9870-e7748817e7bc&amp;metrics=energy_cost</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+  <span class="nt">&quot;energy_cost&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="mf">0.2222222222</span><span class="p">,</span>
+      <span class="mf">0.125</span><span class="p">,</span>
+      <span class="mf">0.0666666667</span><span class="p">,</span>
+      <span class="mf">0.125</span><span class="p">,</span>
+      <span class="mf">0.0666666667</span><span class="p">,</span>
+      <span class="mf">0.2222222222</span><span class="p">,</span>
+      <span class="mf">0.0666666667</span><span class="p">,</span>
+      <span class="mf">0.125</span><span class="p">,</span>
+      <span class="mf">0.2222222222</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;2020-03-17 08:54:16&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;2020-03-17 08:54:16&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;2020-03-17 08:54:16&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;2020-03-17 08:59:16&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;2020-03-17 08:59:16&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;2020-03-17 08:59:16&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;2020-03-17 09:04:16&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;2020-03-17 09:04:16&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;2020-03-17 09:04:16&quot;</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;building&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;775dffc3-ad42-4205-9870-e7748817e7bc&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;775dffc3-ad42-4205-9870-e7748817e7bc&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;775dffc3-ad42-4205-9870-e7748817e7bc&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;775dffc3-ad42-4205-9870-e7748817e7bc&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;775dffc3-ad42-4205-9870-e7748817e7bc&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;775dffc3-ad42-4205-9870-e7748817e7bc&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;775dffc3-ad42-4205-9870-e7748817e7bc&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;775dffc3-ad42-4205-9870-e7748817e7bc&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;775dffc3-ad42-4205-9870-e7748817e7bc&quot;</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<blockquote id="analytics-historical-api-fault-alarm">
+<div><p><strong>Example request</strong>: Get total number of open <a class="reference internal" href="../objects/fault_alarms.html#objects-fault-alarms"><span class="std std-ref">Fault Alarms</span></a> for a device</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/analytics/history?op=count&amp;state=open&amp;start=2020-03-17T08:50:00&amp;entity_type=device&amp;entities=QEDdfbc3-ah42-3905-9870-h6048817e7bc&amp;metrics=fault_alarm</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+    <span class="nt">&quot;fault_alarm&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="mi">14</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example request</strong>: Get average open -&gt; closed time (in seconds) for <a class="reference internal" href="../objects/fault_alarms.html#objects-fault-alarms"><span class="std std-ref">Fault Alarms</span></a></p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/analytics/history?op=avg&amp;from_state=open&amp;to_state=closed&amp;start=2020-03-17T08:50:00&amp;entity_type=fault_alarm&amp;entities=h6048-5039-3905-8790-34he6017e7bc&amp;metrics=fault_alarm</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+    <span class="nt">&quot;fault_alarm&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="mf">8543.74</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<blockquote id="analytics-historical-api-single">
+<div><p><strong>Example request</strong>: Get single, average active power number for a space over the past week</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/analytics/history?entity_type=space&amp;entities=c4dd044f-34b4-454d-8bac-dba693353a19&amp;op=avg&amp;metrics=active_power&amp;start=-1weeks</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+  <span class="nt">&quot;space&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;c4dd044f-34b4-454d-8bac-dba693353a19&quot;</span><span class="p">,</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;active_power&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="mf">2.4994238265166193</span><span class="p">,</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<blockquote id="analytics-historical-api-multiple">
+<div><p><strong>Example request</strong>: Retrieve average active power time-series results (grouped by month) for a space since a start date</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/analytics/history?entity_type=space&amp;entities=c4dd044f-34b4-454d-8bac-dba693353a19&amp;granularity=month&amp;op=avg&amp;metrics=active_power&amp;start=2017-04-29%2012%3A00%3A00</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+  <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;2017-05&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;2017-06&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;2017-07&quot;</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;space&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;c4dd044f-34b4-454d-8bac-dba693353a19&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;c4dd044f-34b4-454d-8bac-dba693353a19&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;c4dd044f-34b4-454d-8bac-dba693353a19&quot;</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;active_power&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="mf">2.6524238265166193</span><span class="p">,</span>
+    <span class="mf">2.4055019744483244</span><span class="p">,</span>
+    <span class="mf">2.467924582613701</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<blockquote id="analytics-historical-api-dimensions-filter">
+<div><blockquote>
+<div><p><strong>Example request</strong>: Get historical analytics with granularity and a dimensions filter applied.</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/analytics/history?op=sum&amp;entities=c4dd044f-34b4-454d-8bac-dba693353a19&amp;entity_type=building&amp;groupby=dimensions,granularity&amp;dimensions=product.type:Refrigeration,Lighting,Metering,HVAC&amp;metrics=energy_cost&amp;start=2019-07-03&amp;granularity=minutes</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+    <span class="nt">&quot;energy_cost&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="mf">0.1833333333</span><span class="p">,</span>
+        <span class="mf">0.0666666667</span><span class="p">,</span>
+        <span class="mf">0.2</span><span class="p">,</span>
+        <span class="mf">0.5</span><span class="p">,</span>
+        <span class="mf">0.0666666667</span><span class="p">,</span>
+        <span class="mf">0.2</span><span class="p">,</span>
+        <span class="mf">0.1833333333</span><span class="p">,</span>
+        <span class="mf">0.5</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;2019-07-03 18:28:00.000&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;2019-07-03 18:28:00.000&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;2019-07-03 18:28:00.000&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;2019-07-03 18:28:00.000&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;2019-07-03 18:33:00.000&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;2019-07-03 18:33:00.000&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;2019-07-03 18:33:00.000&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;2019-07-03 18:33:00.000&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;dimensions_product_type&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;HVAC&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Metering&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Refrigeration&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Lighting&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Metering&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Refrigeration&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;HVAC&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Lighting&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;building&quot;</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example request</strong>: Get historical analytics with a dimensions filter using a <code class="docutils literal"><span class="pre">None</span></code> value.</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/analytics/history?snowflake=1&amp;op=sum&amp;entities=440ff0e8-57e4-46cc-bec5-4c3f66e3dd76&amp;entity_type=building&amp;groupby=dimensions&amp;start=2019-07-25&amp;metrics=active_power&amp;dimensions=product.type:Lighting,Metering,None,Refrigeration,HVAC</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+    <span class="nt">&quot;active_power&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="mi">44100</span><span class="p">,</span>
+        <span class="mf">19466.666666662</span><span class="p">,</span>
+        <span class="mi">16170</span><span class="p">,</span>
+        <span class="mi">5880</span><span class="p">,</span>
+        <span class="mi">17640</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;dimensions_product_type&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Lighting&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;None&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;HVAC&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Metering&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Refrigeration&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;building&quot;</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<p><strong>Example request</strong>: Get historical analytics with a dimensions filter with multiple keys.</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/analytics/history?snowflake=1&amp;op=sum&amp;entities=440ff0e8-57e4-46cc-bec5-4c3f66e3dd76&amp;entity_type=building&amp;groupby=dimensions&amp;start=2019-07-25&amp;metrics=active_power&amp;dimensions=product.type:Lighting%3Bbuilding.type</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+    <span class="nt">&quot;active_power&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="mi">44400</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;dimensions_product_type&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Lighting&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;dimensions_building_type&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Retail&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;building&quot;</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example request</strong>: Get historical analytics with a dimensions filter with multiple keys and multiple values.</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/analytics/history?snowflake=1&amp;op=sum&amp;entities=440ff0e8-57e4-46cc-bec5-4c3f66e3dd76&amp;entity_type=building&amp;groupby=dimensions&amp;start=2019-07-25&amp;metrics=active_power&amp;dimensions=product.type:Lighting,HVAC,Refrigeration,None%3Bbuilding.type</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+    <span class="nt">&quot;active_power&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="mi">44700</span><span class="p">,</span>
+        <span class="mi">16390</span><span class="p">,</span>
+        <span class="mf">19733.333333328</span><span class="p">,</span>
+        <span class="mi">17880</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;dimensions_product_type&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Lighting&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;HVAC&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;None&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Refrigeration&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;dimensions_building_type&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Retail&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Retail&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Retail&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Retail&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;building&quot;</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<blockquote id="analytics-historical-api-no-timezone">
+<div><p><strong>Example request</strong>:</p>
+<p>dim = 10 comes in on a device in Building_A (7ca5f5fb-a0e8-40d5-b741-a612f92d5362) &#64; 2020-03-17T9:10:00 EST.</p>
+<p>dim = 20 comes in on a device in Building_B (9a1f86a6-0a03-4d24-8d7c-d67a4830fe24) &#64; 2020-03-17T9:20:00 GMT.</p>
+<p>dim = 30 comes in on a device in Building_C (5b17425c-6518-49c8-8f0c-a7107425e6d1) &#64; 2020-03-17T9:30:00 IST.</p>
+<p>If we query all buildings for dim where timestamp between 9:00:00 and 10:00:00 we should get all values of dim.</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/analytics/history?op=sum&amp;metrics=dim&amp;entities=7ca5f5fb-a0e8-40d5-b741-a612f92d5362,9a1f86a6-0a03-4d24-8d7c-d67a4830fe24,5b17425c-6518-49c8-8f0c-a7107425e6d1&amp;entity_type=building&amp;groupby=entity&amp;start=2020-03-17T09:00:00&amp;end=2020-03-17T10:00:00</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+    <span class="nt">&quot;active_power&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="mi">10</span><span class="p">,</span>
+        <span class="mi">20</span><span class="p">,</span>
+        <span class="mi">30</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;2019-03-17 09:10:00.000&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;2019-03-17 09:20:00.000&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;2019-03-17 09:30:00.000&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;building&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;7ca5f5fb-a0e8-40d5-b741-a612f92d5362&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;9a1f86a6-0a03-4d24-8d7c-d67a4830fe24&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;5b17425c-6518-49c8-8f0c-a7107425e6d1&quot;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="permissions-and-scoping">
+<h2>Permissions and Scoping<a class="headerlink" href="#permissions-and-scoping" title="Permalink to this headline">¶</a></h2>
+<p>Since the Analytics API returns large data sets and not specific objects, we use scopes as the
+permissions system to determine what a user <cite>can request</cite> before the request is made. A user is
+restricted to requesting only the data for their partner/customer.</p>
+<p>When querying the analytics service, filtering by partner or customer is handled automatically.
+That is, the Cloud API automatically determines what the proper partner/customer are for the
+requesting user and sets the proper partner/customer query parameters under the hood.</p>
+<p>If the user specifies a specific partner/customer, then the following rules apply:</p>
+<ul class="simple">
+<li>The requesting user can only request data they are scoped to.
+e.g. If a customer user requests data for another customer, the API will return 200 as long as the
+user is scoped to the requested customer and a 403 if they are not scoped to the customer.
+The same applies for a partner user.</li>
+<li>A Gooee user can see data for all partners/customers.</li>
+</ul>
+<p>The API determines the user&#8217;s partner/customer association directly from the user instance only
+(i.e. doesn&#8217;t include scopes), and applies them as query params.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="api_tokens.html" class="btn btn-neutral float-right" title="API Tokens" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../general.html" class="btn btn-neutral" title="General" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Gooee, LLC.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/tabs.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

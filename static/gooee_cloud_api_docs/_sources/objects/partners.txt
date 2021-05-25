@@ -1,0 +1,210 @@
+.. _objects_partners:
+
+========
+Partners
+========
+
+.. contents:: Quick Links
+
+Description
+===========
+
+Partners are created by Gooee and contain their own :ref:`Users <objects_users>` that can create
+:ref:`Customers <objects_customers>`. A Partner is also responsible for a creating many of the
+:ref:`Products <objects_products>` available to a :ref:`Customer <objects_customers>`.
+
+Data Model
+==========
+
+========================  ======================================  ========================
+Key                       Datatype                                 Notes
+========================  ======================================  ========================
+id                        ref                                     read-only
+created                   datetime                                read-only
+modified                  datetime                                read-only
+name                      string                                  required, max_length=100, unique
+description               string
+location                  :ref:`location <objects_locations>`
+products                  array(:ref:`ref <objects_products>`)
+customers                 array(:ref:`ref <objects_customers>`)
+users                     array(:ref:`ref <objects_users>`)
+favicon                   base64_image
+logo                      base64_image
+devices_total             integer                                 see :ref:`Partner Devices Total <partner_devices_total>`
+is_manufacturer           boolean                                 default=false, see :ref:`Complex Constraints <partner_complex_constraints>`
+is_service_provider       boolean                                 default=false
+is_gateway_lite_provider  boolean                                 default=false
+anx_dimensions            array(str)                              see :ref:`analytics_dimensions`
+customer_scopes           array(:ref:`ref <objects_customers>`)   see :ref:`general_scope`
+partner_scopes            array(:ref:`ref <objects_partners>`)    see :ref:`general_scope`
+tags                      array(str)                              max_length=50 per tag
+preferences               json
+css                       url                                     max_length=512
+privacy_policy_url        url                                     max_length=1000
+google_homegraph_api_key  string                                  max_length=256, write-only
+========================  ======================================  ========================
+
+
+.. _partner_complex_constraints:
+
+Complex Constraints
+===================
+
+Partners with `products` must have `is_manufacturer` set to `true`.
+
+Only Gooee users can change the `is_gateway_lite_provider` on a Partner.
+
+.. _partner_devices_total:
+
+Partner Devices Total
+=====================
+
+This is the total number of :ref:`Devices <objects_devices>` that are associated with a
+:ref:`Product <objects_products>` of the :ref:`Partner <objects_partners>`.
+
+Partner Preferences Model
+=========================
+
+These are portal theme color preferences associated with a partner. They can be included in the
+request body when creating/updating/patching a partner.
+
+:download:`schema <../_static/partner_preferences-schema.json>`
+
+.. sourcecode:: javascript
+
+    "preferences" : {
+        'header-bg-color': '#0E1A35',
+        'header-text-color': '#FFFFFF',
+        'sidemenu-bg-color': '#15254A',
+        'sidemenu-text-color': '#FFFFFF',
+        'primary-button-color': '#38AECE',
+        'primary-button-text-color': '#FFFFFF',
+        'accent-color': '#D7007f',
+    }
+
+Customer Management
+===================
+
+A Partner can be granted access to manage a :ref:`Customer's <objects_customers>` resources.
+For information on how to do this, see :ref:`Partner Access <objects_customers_partner_access>`.
+
+Note that in order to allow :ref:`Customer <objects_customers>` to grant access, Partners are
+visible to *all* :ref:`Customers <objects_customers>`, regardless of :ref:`scoping <general_scope>`.
+
+API Endpoints
+=============
+
+Create a Partner
+----------------
+
+.. http:POST:: /partners/
+
+   :statuscode 201:
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      POST /partners/ HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+      {
+        "name": "Example Partner",
+        "location": {
+          "addr1": "7711 East Pleasant Valley Rd.",
+          "addr2": "P.O. Box 318010",
+          "city": "Cleveland",
+          "state": "OH",
+          "postal_code": "44131",
+          "country": "US"
+        },
+        "is_manufacturer": true,
+        "is_gateway_lite_provider": false,
+        "tags": ["Example1234"]
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json
+
+      {
+        "id": "bb016810-f46b-4623-ad2b-e9b79b61df29",
+        "created": "2020-03-13T20:17:27.165190Z",
+        "modified": "2020-03-13T20:17:27.165218Z",
+        "name": "Example Partner",
+        "description": "",
+        "customers": [],
+        "users": [],
+        "products": [],
+        "logo": null,
+        "is_manufacturer": true,
+        "is_service_provider": false,
+        "is_gateway_lite_provider": true,
+        "tags": [
+          "Example1234"
+        ],
+        "favicon": null,
+        "preferences": {
+          "header-bg-color": "#0E1A35",
+          "header-text-color": "#FFFFFF",
+          "sidemenu-bg-color": "#15254A",
+          "sidemenu-text-color": "#FFFFFF",
+          "sidemenu-icon-color": "#FFFFFF",
+          "primary-button-color": "#38AECE",
+          "primary-button-text-color": "#FFFFFF",
+          "accent-color": "#D7007f"
+        },
+        "css": "",
+        "privacy_policy_url": "",
+        "anx_dimensions": null,
+        "location": {
+          "addr1": "7711 East Pleasant Valley Rd.",
+          "addr2": "P.O. Box 318010",
+          "city": "Cleveland",
+          "state": "OH",
+          "postal_code": "44131",
+          "country": "US",
+          "phone_number": "",
+          "lat": 41.362875,
+          "lng": -81.62697
+        }
+      }
+
+List Partners
+-------------
+
+.. http:GET:: /partners/
+
+   :statuscode 200:
+
+Update a Partner
+----------------
+
+.. http:PUT:: /partners/(id)/
+
+   :statuscode 200:
+
+Partially Update a Partner
+--------------------------
+
+.. http:PATCH:: /partners/(id)/
+
+   :statuscode 200:
+
+Retrieve a Partner
+------------------
+
+.. http:GET:: /partners/(id)/
+
+   :statuscode 200:
+
+Delete a Partner
+----------------
+
+.. http:DELETE:: /partners/(id)/
+
+   :statuscode 204:

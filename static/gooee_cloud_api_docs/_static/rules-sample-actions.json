@@ -1,0 +1,30 @@
+{
+  "device": "$device_id",
+  "name": "A sample rule",
+  "conditions": [
+    {
+      "action": "dim",
+      "parameters": {
+          "variable": "level",
+          "operator": ">",
+          "value": 10
+      },
+      "logical_operator": null
+    }
+  ],
+  "operations": [
+    {
+      "spaces": [
+        "$space_id"
+      ],
+      "actions": [
+        {
+          "name": "dim",
+          "parameters": {
+            "level": 5
+          }
+        }
+      ]
+    }
+  ]
+}

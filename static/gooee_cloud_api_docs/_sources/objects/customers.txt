@@ -1,0 +1,222 @@
+.. _objects_customers:
+
+=========
+Customers
+=========
+
+.. contents:: Quick Links
+
+Description
+===========
+
+Customers are created by a :ref:`Partner <objects_partners>` and represent the root of the
+logical and control structures. For example, a Customer has :ref:`Buildings <objects_buildings>`
+with :ref:`Spaces <objects_spaces>` and :ref:`Devices <objects_devices>` under it.
+In some circumstances, objects under a Customer may be managed by it's
+:ref:`Partner <objects_partners>`.
+
+.. note:: For API token documentation, please see :ref:`API Tokens <general_api_tokens>`.
+
+Data Model
+==========
+
+===================  ===================================================  ========================================
+Key                  Datatype                                             Notes
+===================  ===================================================  ========================================
+id                   ref                                                  read-only
+created              datetime                                             read-only
+modified             datetime                                             read-only
+name                 string                                               required, min_length=2, max_length=100
+description          string
+partner              :ref:`ref <objects_partners>`                        required
+buildings            array(:ref:`ref <objects_buildings>`)
+logo                 base64_image
+location             :ref:`location <objects_locations>`
+data_service_id      string                                               read-only
+anx_dimensions       array(str)                                           see :ref:`analytics_dimensions`
+customer_scopes      array(:ref:`ref <objects_customers>`)                see :ref:`general_scope`
+partner_scopes       array(:ref:`ref <objects_partners>`)                 see :ref:`general_scope`
+tags                 array(str)                                           max_length=50 per tag
+is_homegraph_user    boolean                                              see :ref:`Complex Constraints <customer_complex_constraints>`
+===================  ===================================================  ========================================
+
+.. _objects_customers_annotations:
+
+Device Counts
+=============
+
+Device counts (online/total) are supported on an opt-in basis via the "_annotate" filter.
+See: :ref:`Device Counts <general_device_counts>` for reference.
+
+.. _objects_customers_partner_access:
+
+Partner Access
+==============
+
+It is possible to grant :ref:`scope access <general_scope>` to one or more
+:ref:`Partners <objects_partners>` for all of a Customer's resources. This will add each Partner to
+the ``partner_scopes`` field of every resource in the Customer's hierarchy, from its Buildings,
+through its Spaces, Devices, Connected Products, Rules, Actions, Users -- everything.
+
+In order to allow this, :ref:`Partners <objects_partners>` are always visible to Customers,
+regardless of :ref:`scoping <general_scope>`.
+
+Here is an example payload for granting scope access to a single Partner:
+
+.. sourcecode:: json
+
+    {
+      "partners": ["c82a0a95-df00-49ac-8631-cbffdc8037a5"]
+    }
+
+Note that any Partners not present in the payload will have their scope access revoked, if any. For
+example, the following payload would clear *all* Partner access:
+
+.. sourcecode:: json
+
+    {
+      "partners": []
+    }
+
+See the API Endpoints section below for more information on how to do this.
+
+.. _customer_complex_constraints:
+
+Complex Constraints
+===================
+
+Customer with `is_homegraph_user` set to `true` must have :ref:`Partner <objects_partners>` with a
+`google_homegraph_api_key` set.
+
+
+API Endpoints
+=============
+
+Create a Customer
+-----------------
+
+.. http:POST:: /customers/
+
+   :statuscode 201:
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      POST /customers/ HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+      {
+        "name": "Example Customer",
+        "partner": "c82a0a95-df00-49ac-8631-cbffdc8037a5",
+        "location": {
+          "addr1": "7601 Penn Ave S",
+          "city": "Minneapolis",
+          "state": "MN",
+          "postal_code": "55423",
+          "country": "US"
+        },
+        "tags": ["Example1234"]
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 201 OK
+      Content-Type: application/json
+
+      {
+        "id": "6483e0ad-58d7-42ac-a337-9bb682e7afb4",
+        "created": "2020-03-13T20:17:35.032898Z",
+        "modified": "2020-03-13T20:17:35.032926Z",
+        "name": "Example Customer",
+        "description": "",
+        "buildings": [],
+        "logo": null,
+        "data_service_id": "U8DK8nC8CctHt9aaakGs5Gfk",
+        "tags": [
+          "Example1234"
+        ],
+        "partner": "bb016810-f46b-4623-ad2b-e9b79b61df29",
+        "anx_dimensions": null,
+        "is_homegraph_user": false,
+        "location": {
+          "addr1": "7601 Penn Ave S",
+          "addr2": "",
+          "city": "Minneapolis",
+          "state": "MN",
+          "postal_code": "55423",
+          "country": "US",
+          "phone_number": "",
+          "lat": 44.8645052,
+          "lng": -93.305217
+        }
+      }
+
+List Customers
+--------------
+
+.. http:GET:: /customers/
+
+   :statuscode 200:
+
+Update a Customer
+-----------------
+
+.. http:PUT:: /customers/(id)/
+
+   :statuscode 200:
+
+Partially Update a Customer
+---------------------------
+
+.. http:PATCH:: /customers/(id)/
+
+   :statuscode 200:
+
+Retrieve a Customer
+-------------------
+
+.. http:GET:: /customers/(id)/
+
+   :statuscode 200:
+
+Delete a Customer
+-----------------
+
+.. http:DELETE:: /customers/(id)/
+
+   :statuscode 204:
+
+Grant Scope Access to a Partner
+-------------------------------
+
+.. http:PUT:: /customers/(id)/access/
+
+    :statuscode 200:
+
+    **Example request**:
+
+    .. sourcecode:: http
+
+        PUT /customers/93378718-b2ad-4b6c-a1bb-39c5436bf3e6/access HTTP/1.1
+        Host: api.gooee.io
+        Content-Type: application/json
+
+        {
+          "partners": ["c82a0a95-df00-49ac-8631-cbffdc8037a5"]
+        }
+
+    **Example response**:
+
+    .. sourcecode:: http
+
+        HTTP/1.1 200 OK
+        Content-Type: application/json
+
+        {
+          "partners": ["c82a0a95-df00-49ac-8631-cbffdc8037a5"]
+        }
+

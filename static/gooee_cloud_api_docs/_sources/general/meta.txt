@@ -1,0 +1,416 @@
+.. _general_meta:
+
+====
+Meta
+====
+
+.. contents:: Quick Links
+
+Description
+===========
+
+Meta is a generic key/value store that can be used to store user-defined data for a parent object.
+
+The Meta list endpoint supports bulk creating and updating.
+
+Data Model
+==========
+
+==================  ==========  ==========================================================
+Key                 Datatype    Notes
+==================  ==========  ==========================================================
+name                string      primary key, read-only,
+                                :ref:`Complex Constraints <meta_complex_constraints_name>`
+display_name        string      :ref:`Complex Constraints <meta_complex_constraints_name>`
+value               any*        required, * :ref:`Complex Constraints <meta_complex_constraints_value>`
+value_display_name  object      :ref:`Complex Constraints <meta_complex_constraints_value_display_name>`
+json_schema         object      :ref:`Complex Constraints <meta_complex_constraints_json_schema>`
+groups              array(str)  Array of :ref:`Meta Groups <general_meta_groups>` names.
+                                Only available on supported objects.
+unit_of_measure     string
+modified            datetime    read-only, not available on :ref:`Device <objects_devices>` meta, :ref:`Complex Constraints <meta_complex_constraints_timestamp>`
+timestamp           datetime    only available on :ref:`Device <objects_devices>` meta, :ref:`Complex Constraints <meta_complex_constraints_timestamp>`
+==================  ==========  ==========================================================
+
+Objects that use Meta values
+============================
+
+* :ref:`objects_areas`
+* :ref:`objects_buildings`
+* :ref:`objects_connected_products`
+* :ref:`objects_devices`
+* :ref:`objects_spaces`
+* :ref:`objects_products`
+* :ref:`objects_scenes`
+
+
+.. _meta_complex_constraints:
+
+Complex Constraints
+-------------------
+
+.. _meta_complex_constraints_name:
+
+Name
+~~~~
+
+You must provide either *name* or *display_name*.  The field provided during creation will be used
+to generate the alternate name if it was not already provided.
+
+- *display_name* is limited to letters, numbers, spaces, underscores (_), and percent (%).
+- *name* is limited to letters, numbers, and underscore (_).
+
+When auto-generated,
+
+- *display_name* will be auto-generated as the camel cased version of *name*. For example,
+  *power_value_one* becomes *Power Value One*.
+- *name* will be auto-generated as the lower/snake cased version of *display_name*. For example,
+  *Trending Motion Direction* would become *trending_motion_direction*. The percent (%) character
+  will be replaced with _percent_.
+
+.. warning:: Upper case letters in *name* are being deprecated.  Please use lower case only instead.
+             Support will continue for 6 months starting in June 2020.
+
+.. _meta_complex_constraints_value:
+
+Value
+~~~~~
+
+The datatype of a Meta value can be any JSON type except *null*. Its type is set upon creation, and
+cannot change over the lifetime of the Meta. Explicit typing is used to ensure that data remains
+consistent for data analysis and reporting. It is also checked against the associated ``json_schema``.
+
+If you need to use a value of a different datatype, remove/create the Meta value.
+
+.. _meta_complex_constraints_timestamp:
+
+Timestamp
+~~~~~~~~~
+
+If using the bulk interface to supply more than one Meta value at at time, each value must have a
+value for the timestamp field. Otherwise, the timestamp field value is optional.
+
+.. _meta_complex_constraints_value_display_name:
+
+value_display_name
+~~~~~~~~~~~~~~~~~~
+
+The JSON object must contain a ``type`` field containing a value ``enum|range``. If ``type`` is ``range``,
+any additional keys must begin with ``range:`` and end with a single integer, IE ``range:0`` or range of
+integers, IE ``range:1-5``. If ``type`` is ``enum``, any alphanumeric string containing dashes or
+underscores can be used as key names. Defaults to ``{}``. The payload must validate against this
+JSON Schema:
+
+:download:`value_display_name JSONSchema </_static/value_display_name-schema.json>`
+
+**Range Example**
+
+.. sourcecode:: javascript
+
+  {
+    "name": "dim",
+    "value": 25,
+    "display_name": "Dim",
+    "unit_of_measure": "%",
+    "value_display_name": {
+        "type": "range",
+        "range:0": "Off",
+        "range:100": "On",
+        "range:1-49": "Dim",
+        "range:50-99": "Bright"
+    },
+    ...meta-fields
+  }
+
+**Enum Example**
+
+.. sourcecode:: javascript
+
+  {
+    "name": "occupancy_detected",
+    "value": true,
+    "display_name": "Occupancy Detected",
+    "unit_of_measure": "%",
+    "value_display_name": {
+        "type": "enum",
+        "true": "Occupied",
+        "false": "Not Occupied"
+    },
+    ...meta-fields
+  }
+
+
+.. _meta_complex_constraints_json_schema:
+
+json_schema
+~~~~~~~~~~~
+
+Must be valid JSONSchema. Used to validate the ``value`` field. Defaults to ``{}`` which validates successfully against all data. If the meta belongs to the ``~protected`` :ref:`Meta Group <general_meta_groups>`, this field can only be modified by a Gooee Admin.
+
+Creating Meta along with the Parent Object
+==========================================
+
+  .. note:: Once the parent object is created, all further
+     creating/updating/deleting of Meta values should be done via the */meta/*
+     or */meta/<name>/* endpoints.
+
+  .. sourcecode:: http
+
+     POST /products/ HTTP/1.1
+     Host: api.gooee.io
+     Content-Type: application/json
+
+     {
+         "name": "My Product",
+         "meta": [
+             {
+                 "name": "temperature",
+                 "value": 98.7,
+                 "groups": ["~product_performance"],
+                 "unit_of_measure": "°F"
+             },
+             {
+                 "name": "is_active",
+                 "value": true
+                 "groups": ["~admin"]
+             },
+             {
+                 "name": "configuration",
+                 "value": {
+                     "hostname": "foo.bar.baz",
+                     "active": true
+                 },
+                 "groups": ["~admin"]
+             }
+         ]
+     }
+
+
+Create Meta values
+==================
+
+This endpoint creates Metas in bulk.
+
+.. http:POST:: /*/(id)/meta/
+
+  :statuscode 201: All Metas were created successfully.
+  :statuscode 400: Invalid request body.
+
+  .. sourcecode:: http
+
+    POST /products/1de83fdc-6b4b-cff8-be07-cea1a7dd6343/meta/ HTTP/1.1
+    Host: api.gooee.io
+    Content-Type: application/json
+
+    [
+        {
+            "name": "label",
+            "value": "Product One"
+        },
+        {
+            "name": "temperature",
+            "value": 45.6,
+            "groups": ["~product_performance"],
+            "unit_of_measure": "°F"
+        }
+    ]
+
+  **Query parameters**
+
+  Optionally, in the endpoints ``/devices/(id)/meta`` and ``/areas/(id)/meta``, the
+  query parameter ``ignore_errors=1|true`` can be specified to ignore invalid Metas.
+  If this parameter is set, valid objects are ingested and invalid ones are ignored and excluded from the response body.
+  Validation messages of the Meta objects are also omitted.
+
+  :statuscode 201: All Metas were created successfully.
+  :statuscode 207: At least one Meta could not be created due to one or more validation errors.
+  :statuscode 400: Invalid request body, for example, the endpoint was expecting a list and an object was submitted instead.
+
+  .. sourcecode:: http
+
+    POST /devices/a2183fdc-6b4b-ab34-be07-cea1a7dd4578/meta?ignore_errors=true HTTP/1.1
+    Host: api.gooee.io
+    Content-Type: application/json
+
+    [
+        {
+            "name": "label",
+            "value": "Product One"
+        },
+        {
+            "name": "temperature",
+            "value": 45.6,
+            "groups": ["~product_performance"],
+            "unit_of_measure": "°F"
+        }
+    ]
+
+
+.. _meta_direct_retrieve:
+
+Retrieve Meta values via direct link
+====================================
+
+.. note:: The default ``limit`` is 1.
+
+.. http:GET:: /*/(id)/meta/(name)/
+
+  .. sourcecode:: http
+
+    GET /products/1de83fdc-6b4b-cff8-be07-cea1a7dd6343/meta/temperature/ HTTP/1.1
+    Host: api.gooee.io
+    Content-Type: application/json
+
+    [
+        {
+            "display_name": "temperature",
+            "value": 87.4,
+            "unit_of_measure": "°C",
+            "groups": ["~power"]
+            "timestamp": "2017-07-31T19:59:02.314655Z"
+        }
+    ]
+
+
+Update Meta values via direct link
+==================================
+
+.. http:PUT:: /*/(id)/meta/(name)/
+.. http:PATCH:: /*/(id)/meta/(name)/
+
+  :statuscode 200: The meta was updated successfully.
+  :statuscode 400: The request body is invalid.
+
+  .. sourcecode:: http
+
+    PUT /products/1de83fdc-6b4b-cff8-be07-cea1a7dd6343/meta/temperature/ HTTP/1.1
+    Host: api.gooee.io
+    Content-Type: application/json
+
+    {
+        "value": 87.4,
+        "groups": ["~power"]
+        "unit_of_measure": "°C"
+    }
+
+Deleting Meta Values
+====================
+
+Delete Meta values by their direct links.
+
+.. http:DELETE:: /*/(id)/meta/(name)/
+
+Ordering by Meta values
+=======================
+
+See the :ref:`Ordering <general_ordering_meta>` page relating to :ref:`Meta <general_meta>` values.
+
+Filtering Devices by Meta
+=========================
+
+See the :ref:`Filtering <general_filtering_device_meta>` page relating to :ref:`Meta <general_meta>`
+values.
+
+
+.. _meta_history:
+
+
+Meta History
+============
+
+Description
+-----------
+
+Some API objects support the ability to query the history of their meta values via a paginated
+interface.  Meta History is the history of Meta values on a specific object since its creation.
+Pagination is achieved with the usual limit/offset pattern explained in the
+:ref:`general_pagination` docs.
+
+.. note:: To access Meta History set ``limit`` to a value greater than 1.
+
+Objects that support Meta History
+---------------------------------
+
+* :ref:`objects_devices`
+
+.. note:: Devices must have a `data_service_id`.
+
+Filtering
+---------
+
+Currently, filtering on history can only be done on the `timestamp` value.
+
+To filter by this value, use the `timestamp__gt` and/or `timestamp__lt` URL parameters.
+
+.. note:: Filtering by `timestamp` is exclusive to the dates provided.
+
+.. note:: Dates are ISO-8601 formatted.
+
+Example
+-------
+
+The following example will provide all of the value history for the Meta Property called dim:
+
+.. sourcecode:: http
+
+   GET /devices/fb704462-f464-4d9c-aea6-fd2c77249fb7/meta/dim/?limit=3 HTTP/1.1
+   Host: api.gooee.io
+   Content-Type: application/json
+
+   [
+        {
+            "display_name": "dim",
+            "value": "newest value",
+            "unit_of_measure": null,
+            "groups": [],
+            "timestamp": "2015-10-25T11:53:18-04:00"
+        },
+        {
+            "display_name": "dim",
+            "value": "old value",
+            "unit_of_measure": null,
+            "groups": [],
+            "timestamp": "2015-10-19T01:25:43-04:00"
+        },
+        {
+            "display_name": "dim",
+            "value": "oldest value",
+            "unit_of_measure": null,
+            "groups": [],
+            "timestamp": "2016-09-22T22:09:35-04:00"
+        }
+    ]
+
+.. _meta_manage_calculated:
+
+Managing Calculated Meta
+========================
+
+Some calculated Meta can be disabled for a Device by the User.  If a calculated Meta isn't
+normally supported by the Device then any settings to enable or disable it are ignored.  By default,
+all calculated Meta is enabled.  To explicitly enable or disable a calculated Meta update
+`custom_fields` of the Device to include its respective key/value pair:
+
+==================== ========= ====================
+Key                  Datatype  Calculated Property
+==================== ========= ====================
+occupancy_detection  boolean   occupancy_detected
+==================== ========= ====================
+
+Example
+-------
+
+The following example will disable calculation of `occupancy_detected`.  Be sure to include
+all pre-existing key/value pairs of `custom_fields` as failure to do so will discard them:
+
+.. sourcecode:: http
+
+   PATCH /devices/fb704462-f464-4d9c-aea6-fd2c77249fb7 HTTP/1.1
+   Host: api.gooee.io
+   Content-Type: application/json
+
+   {
+        "custom_fields": {
+           "occupancy_detection": false
+        }
+   }

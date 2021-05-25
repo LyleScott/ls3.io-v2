@@ -1,0 +1,26 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "sceneid": {
+      "type": "string",
+      "minLength": 36,
+      "maxLength": 36,
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+      "validate_scene": true
+    },
+    "dim": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "onoff": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "sceneid",
+    "dim"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,94 @@
+.. _objects_actions:
+
+=======
+Actions
+=======
+
+.. contents:: Quick Links
+
+Description
+===========
+
+Actions are the execution of :ref:`Action Types <objects_action_types>` against a
+target entity.  In order to
+change the state of one or more :ref:`Devices <objects_devices>` an Action is created.  Upon
+creation, the Action is executed and any future state changes require an additional Action to be
+created.
+
+Data Model
+==========
+
+===============  =====================================  ========================================================
+Key              Datatype                               Notes
+===============  =====================================  ========================================================
+id               ref                                    read-only
+created          datetime                               read-only
+modified         datetime                               read-only
+name             string                                 max_length=100
+value            object
+type             :ref:`ref <objects_action_types>`      required
+device           :ref:`ref <objects_devices>`           :ref:`Complex Constraints <action_complex_constraints>`, deprecated, filterable=false
+space            :ref:`ref <objects_spaces>`            :ref:`Complex Constraints <action_complex_constraints>`, deprecated, filterable=false
+target_type      string                                 :ref:`Complex Constraints <action_complex_constraints>`
+target_id        ref                                    :ref:`Complex Constraints <action_complex_constraints>`
+origin           string                                 max_length=32
+origin_id        ref
+data_service_id  string                                 read-only
+customer_scopes  array(:ref:`ref <objects_customers>`)  see :ref:`general_scope`
+partner_scopes   array(:ref:`ref <objects_partners>`)   see :ref:`general_scope`
+tags             array(str)                             max_length=50 per tag
+===============  =====================================  ========================================================
+
+.. _action_complex_constraints:
+
+Complex Constraints
+-------------------
+
+* An Action's target is a combination of its ``target_type`` and ``target_id`` fields.
+
+    - ``target_type`` must be valid for selected :ref:`ActionType <objects_action_types>` for example, a ``dim`` Action with a ``target_type`` set to ``propertyrule`` is invalid. See :ref:`ActionTypes <objects_action_types>` to find which Entities a action type is ``available_on``
+
+    - ``target_id`` must be a valid entity of selected ``target_type``.
+
+* ``device`` and ``space`` fields are being deprecated, use ``target_type`` and ``target_id``.
+* If the target entity is a :ref:`Device <objects_devices>`, it must have a ``commission_state`` of ``"active"``.
+* ``value`` must follow the schema defined on the corresponding :ref:`ActionType <objects_action_types>`.
+* The fields ``origin`` and ``origin_id`` are meant to track the origin of the action. Although there are no constraints
+  regarding which values can be set for the origin, the actions coming from the following sources will have their origin fields
+  automatically populated:
+
+    - Alexa Integration sets ``origin`` to ``alexa``.
+    - Google Assistant sets ``origin`` to ``google_assistant``.
+    - :ref:`PubSub Message Broker <general_pubsub>` sets ``origin`` to ``mqtt``.
+    - :ref:`Schedules <objects_schedules>` set ``origin`` to ``schedule`` and ``origin_id`` to the ID of the Schedule.
+
+API Endpoints
+=============
+
+Create an Action
+----------------
+
+.. http:POST:: /actions/
+
+   :statuscode 201:
+
+List Actions
+------------
+
+.. http:GET:: /actions/
+
+   :statuscode 200:
+
+Retrieve an Action
+------------------
+
+.. http:GET:: /actions/(id)/
+
+   :statuscode 200:
+
+Delete a Action
+---------------
+
+.. http:DELETE:: /actions/(id)/
+
+   :statuscode 204:

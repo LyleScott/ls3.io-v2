@@ -1,0 +1,1092 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Local Rules &mdash; Documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/navtree.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Documentation" href="../index.html"/>
+        <link rel="up" title="Objects" href="../objects.html"/>
+        <link rel="next" title="Locations" href="locations.html"/>
+        <link rel="prev" title="Fault Alarms" href="fault_alarms.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Cloud API
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="link caption"><span class="link caption-text"><a class="reference internal" href="../misc.html">Misc</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/change_log.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/object_relation_diagram.html">Object Relation Diagram</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../general.html">General</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/analytics.html">Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api_tokens.html">API Tokens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/authentication.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/clearing_field_values.html">Clearing Field Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/device_counts.html">Device Counts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/exclude_include_fields.html">Include/Exclude Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/filtering.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ordering.html">Ordering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/meta.html">Meta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/meta_groups.html">Meta Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/pagination.html">Pagination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/pubsub.html">PubSub Message Broker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/search.html">Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/scope.html">Scope</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../objects.html">Objects</a></span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="action_types.html">Action Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions.html">Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analytics_export.html">Analytics Export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analytics_query.html">Analytics Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="areas.html">Areas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="buildings.html">Buildings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="connected_products.html">Connected Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="currency.html">Currency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customers.html">Customers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dashboards.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="devices.html">Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fault_alarms.html">Fault Alarms</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Local Rules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#api-endpoints">API Endpoints</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="locations.html">Locations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="partners.html">Partners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="product_files.html">Product Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="product_types.html">Product Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="products.html">Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules_v2.html">Rules V2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rule_groups.html">Rule Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scenes.html">Scenes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schedules.html">Schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spaces.html">Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timezones.html">Timezones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_features.html">User Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_groups.html">User Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_preferences.html">User Preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Users</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../integrations.html">Integrations</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/als2lux.html">Als-to-Lux Correlation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/external_sensor.html">External Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/gateway_lite.html">Gateway Lite</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cloud API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../objects.html">Objects</a> &raquo;</li>
+        
+      <li>Local Rules</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/objects/local_rules.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="local-rules">
+<span id="objects-local-rules"></span><h1><a class="toc-backref" href="#id1">Local Rules</a><a class="headerlink" href="#local-rules" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="quick-links">
+<p class="topic-title first">Quick Links</p>
+<ul class="simple">
+<li><a class="reference internal" href="#local-rules" id="id1">Local Rules</a><ul>
+<li><a class="reference internal" href="#description" id="id2">Description</a></li>
+<li><a class="reference internal" href="#data-model" id="id3">Data Model</a><ul>
+<li><a class="reference internal" href="#complex-constraints" id="id4">Complex Constraints</a></li>
+<li><a class="reference internal" href="#conditions" id="id5">Conditions</a></li>
+<li><a class="reference internal" href="#operations" id="id6">Operations</a></li>
+<li><a class="reference internal" href="#locking" id="id7">Locking</a><ul>
+<li><a class="reference internal" href="#lock-condition" id="id8">Lock Condition</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#examples" id="id9">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#api-endpoints" id="id10">API Endpoints</a><ul>
+<li><a class="reference internal" href="#create-a-rule" id="id11">Create a Rule</a></li>
+<li><a class="reference internal" href="#list-rules" id="id12">List Rules</a></li>
+<li><a class="reference internal" href="#update-a-rule" id="id13">Update a Rule</a></li>
+<li><a class="reference internal" href="#retrieve-a-rule" id="id14">Retrieve a Rule</a></li>
+<li><a class="reference internal" href="#delete-a-rule" id="id15">Delete a Rule</a></li>
+<li><a class="reference internal" href="#retrieve-a-rule-activity-log" id="id16">Retrieve a Rule activity log</a></li>
+<li><a class="reference internal" href="#retrieve-meta-variables-and-operators-for-building-rules" id="id17">Retrieve Meta, Variables, and Operators for building Rules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="description">
+<h2><a class="toc-backref" href="#id2">Description</a><a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>Local Rules are composed of triggers and conditions that dictate when and how a
+<a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a> Meta change triggers a rule event.</p>
+</div>
+<div class="section" id="data-model">
+<h2><a class="toc-backref" href="#id3">Data Model</a><a class="headerlink" href="#data-model" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="47%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>ref</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>created</td>
+<td>datetime</td>
+<td>read-only</td>
+</tr>
+<tr class="row-even"><td>modified</td>
+<td>datetime</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>name</td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr class="row-even"><td>description</td>
+<td>string</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>building</td>
+<td><a class="reference internal" href="buildings.html#objects-buildings"><span class="std std-ref">ref</span></a></td>
+<td>read-only</td>
+</tr>
+<tr class="row-even"><td>customer</td>
+<td><a class="reference internal" href="customers.html#objects-customers"><span class="std std-ref">ref</span></a></td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>spaces</td>
+<td>array(<a class="reference internal" href="spaces.html#objects-spaces"><span class="std std-ref">ref</span></a>)</td>
+<td>read-only</td>
+</tr>
+<tr class="row-even"><td>device</td>
+<td>ref</td>
+<td>required</td>
+</tr>
+<tr class="row-odd"><td>conditions</td>
+<td><a class="reference internal" href="#rule-conditions"><span class="std std-ref">ref</span></a></td>
+<td>required, 5 conditions max</td>
+</tr>
+<tr class="row-even"><td>lock_condition</td>
+<td><a class="reference internal" href="#rule-lock-condition"><span class="std std-ref">ref</span></a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>operations</td>
+<td><a class="reference internal" href="#rule-operations"><span class="std std-ref">ref</span></a></td>
+<td>required</td>
+</tr>
+<tr class="row-even"><td>enabled</td>
+<td>boolean</td>
+<td>default=true</td>
+</tr>
+<tr class="row-odd"><td>customer_scopes</td>
+<td>array(<a class="reference internal" href="customers.html#objects-customers"><span class="std std-ref">ref</span></a>)</td>
+<td>see <a class="reference internal" href="../general/scope.html#general-scope"><span class="std std-ref">Scope</span></a></td>
+</tr>
+<tr class="row-even"><td>partner_scopes</td>
+<td>array(<a class="reference internal" href="partners.html#objects-partners"><span class="std std-ref">ref</span></a>)</td>
+<td>see <a class="reference internal" href="../general/scope.html#general-scope"><span class="std std-ref">Scope</span></a></td>
+</tr>
+<tr class="row-odd"><td>tags</td>
+<td>array(str)</td>
+<td>max_length=50 per tag</td>
+</tr>
+<tr class="row-even"><td>last_execution</td>
+<td>datetime</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>execution_count</td>
+<td>number</td>
+<td>read-only</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="complex-constraints">
+<span id="rules-complex-constraints"></span><h3><a class="toc-backref" href="#id4">Complex Constraints</a><a class="headerlink" href="#complex-constraints" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Rule <cite>name</cite> must be unique per Building.</li>
+<li>Rule <cite>device</cite> must have a <cite>commission_state</cite> of <cite>&#8220;active&#8221;</cite>.</li>
+<li>Rule <cite>device</cite> must not be associated with a <a class="reference internal" href="../integrations/gateway_lite.html#integrations-gateway-lite"><span class="std std-ref">Gateway Lite</span></a>.</li>
+<li>The payload must validate against a JSON schema:
+<a class="reference download internal" href="../_downloads/rules-schema.json" download=""><code class="xref download docutils literal"><span class="pre">Rules</span> <span class="pre">JSONSchema</span></code></a></li>
+</ul>
+</div>
+<div class="section" id="conditions">
+<span id="rule-conditions"></span><h3><a class="toc-backref" href="#id5">Conditions</a><a class="headerlink" href="#conditions" title="Permalink to this headline">¶</a></h3>
+<p>Conditions are JSON structures composed of <strong>and</strong> or <strong>or</strong> operations. The last condition must
+contain a <cite>logical_operator</cite> of null</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="nt">&quot;conditions&quot;</span><span class="p">:</span> <span class="p">[</span>
+     <span class="p">{</span>
+       <span class="nt">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;occupancy_detected&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+       <span class="nt">&quot;duration&quot;</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+       <span class="nt">&quot;logical_operator&quot;</span><span class="p">:</span> <span class="s2">&quot;or&quot;</span>
+     <span class="p">},</span>
+     <span class="p">{</span>
+       <span class="nt">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;button_pressed&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+         <span class="nt">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;button_number&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">2</span>
+       <span class="p">},</span>
+       <span class="nt">&quot;logical_operator&quot;</span><span class="p">:</span> <span class="s2">&quot;and&quot;</span>
+     <span class="p">},</span>
+     <span class="p">{</span>
+       <span class="nt">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;time_of_day&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;13:00:00&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;logical_operator&quot;</span><span class="p">:</span> <span class="s2">&quot;and&quot;</span>
+     <span class="p">},</span>
+     <span class="p">{</span>
+       <span class="nt">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;day_of_week&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span>
+         <span class="s2">&quot;mon&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;tue&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;wed&quot;</span>
+       <span class="p">]</span>
+     <span class="p">}</span>
+   <span class="p">]</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="operations">
+<span id="rule-operations"></span><h3><a class="toc-backref" href="#id6">Operations</a><a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h3>
+<p>When the conditions are met, a Rule executes its Operations. Operations are a set of <a class="reference internal" href="actions.html#objects-actions"><span class="std std-ref">Actions</span></a> applied over a set of <a class="reference internal" href="spaces.html#objects-spaces"><span class="std std-ref">Spaces</span></a>.</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;operations&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;spaces&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;&lt;UUID&gt;&quot;</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;actions&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;on&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dim&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="mi">50</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="locking">
+<span id="rule-locking"></span><h3><a class="toc-backref" href="#id7">Locking</a><a class="headerlink" href="#locking" title="Permalink to this headline">¶</a></h3>
+<p>Rules employ a locking mechanism to ensure that the same Rule won&#8217;t keep evaluating once the
+intended effects are achieved. A Rule will never execute more than once <em>while its conditions
+are still met</em>.</p>
+<p>Once a Rule executes, it is immediately <strong>locked</strong>. A <strong>locked</strong> Rule will not
+execute, regardless of whether its conditions are fulfilled.</p>
+<p>The lock is removed once the Rule&#8217;s conditions are no longer fulfilled, allowing the Rule to
+execute as normal again.</p>
+<p>For example, say you have a Rule with the following <code class="docutils literal"><span class="pre">conditions</span></code>:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[{</span>
+  <span class="nt">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;motion_intensity&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;&gt;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">15</span>
+<span class="p">}]</span>
+</pre></div>
+</div>
+<p>This scenario might play out:</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">&quot;motion_intensity&quot;</span></code> = <code class="docutils literal"><span class="pre">22</span></code>:
+* Rule conditions are fulfilled, and
+* Rule is not <strong>locked</strong>, so
+* execute operations, and set Rule to <strong>locked</strong>.</li>
+<li><code class="docutils literal"><span class="pre">&quot;motion_intensity&quot;</span></code> = <code class="docutils literal"><span class="pre">33</span></code>:
+* Rule conditions are fulfilled, but
+* Rule is <strong>locked</strong>, so skip execution.</li>
+<li><code class="docutils literal"><span class="pre">&quot;motion_intensity&quot;</span></code> = <code class="docutils literal"><span class="pre">10</span></code>:
+* Rule conditions are not fulfilled, so
+* remove <strong>lock</strong> from Rule.</li>
+<li><code class="docutils literal"><span class="pre">&quot;motion_intensity&quot;`</span> <span class="pre">=</span> <span class="pre">``18</span></code>
+* Rule conditions are fulfilled, and
+* Rule is not <strong>locked</strong>, so
+* execute operations, and set Rule to <strong>locked</strong>.</li>
+</ul>
+</div></blockquote>
+<div class="section" id="lock-condition">
+<span id="rule-lock-condition"></span><h4><a class="toc-backref" href="#id8">Lock Condition</a><a class="headerlink" href="#lock-condition" title="Permalink to this headline">¶</a></h4>
+<p>In some cases, the default locking behavior may not meet your needs. To change the default
+locking behavior, supply a value for the <code class="docutils literal"><span class="pre">&quot;lock_condition&quot;</span></code> parameter. The data model for
+<code class="docutils literal"><span class="pre">&quot;lock_condition&quot;</span></code> is a subset of the data model for individual <code class="docutils literal"><span class="pre">&quot;conditions&quot;</span></code>:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>variable</td>
+<td>string</td>
+</tr>
+<tr class="row-odd"><td>operator</td>
+<td>enum</td>
+</tr>
+<tr class="row-even"><td>value</td>
+<td>string | boolean | int | float | array</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="nt">&quot;lock_condition&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;als&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;&gt;=&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">55</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If a lock condition is present, the normal locking Rules will be ignored. Instead, the Rule
+will be locked when the lock condition is fulfilled, and unlocked when the lock condition is
+<em>not</em> fulfilled.</p>
+<p>This provides more flexibility and allows for a Rule to execute multiple times
+until a specific state is achieved.</p>
+</div>
+</div>
+<div class="section" id="examples">
+<h3><a class="toc-backref" href="#id9">Examples</a><a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;device&quot;</span><span class="p">:</span> <span class="s2">&quot;$device_id&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;occupancy detected&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;conditions&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;occupancy_detected&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+      <span class="s2">&quot;logical_operator&quot;</span><span class="p">:</span> <span class="n">null</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;operations&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;spaces&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;$space_id&quot;</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;actions&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dim&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;level&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+            <span class="s2">&quot;transition_time&quot;</span><span class="p">:</span> <span class="mi">3</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;device&quot;</span><span class="p">:</span> <span class="s2">&quot;$device_id&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;no occupancy detected&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;conditions&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;occupancy_detected&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+      <span class="s2">&quot;duration&quot;</span><span class="p">:</span> <span class="mi">60</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;operations&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;spaces&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;$space_id&quot;</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;actions&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;off&quot;</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;device&quot;</span><span class="p">:</span> <span class="s2">&quot;$device_id&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dim als&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;conditions&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;als&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">40</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;operations&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;spaces&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;$space_id&quot;</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;actions&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dim&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;level&quot;</span><span class="p">:</span> <span class="mi">50</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;device&quot;</span><span class="p">:</span> <span class="s2">&quot;$device_id&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;bright als&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;conditions&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;als&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;&gt;&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">55</span><span class="p">,</span>
+      <span class="s2">&quot;logical_operator&quot;</span><span class="p">:</span> <span class="n">null</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;operations&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;spaces&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;$space_id&quot;</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;actions&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dim&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;level&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+            <span class="s2">&quot;transition_time&quot;</span><span class="p">:</span> <span class="mi">3</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;device&quot;</span><span class="p">:</span> <span class="s2">&quot;$device_id&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;A sample rule&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;conditions&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;dim&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;level&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">10</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;logical_operator&quot;</span><span class="p">:</span> <span class="n">null</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;operations&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;spaces&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;$space_id&quot;</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;actions&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dim&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;level&quot;</span><span class="p">:</span> <span class="mi">5</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="api-endpoints">
+<h2><a class="toc-backref" href="#id10">API Endpoints</a><a class="headerlink" href="#api-endpoints" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="create-a-rule">
+<h3><a class="toc-backref" href="#id11">Create a Rule</a><a class="headerlink" href="#create-a-rule" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--rules">
+<code class="descname">POST </code><code class="descname">/rules</code><a class="headerlink" href="#post--rules" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2">201 Created</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="list-rules">
+<h3><a class="toc-backref" href="#id12">List Rules</a><a class="headerlink" href="#list-rules" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--rules">
+<code class="descname">GET </code><code class="descname">/rules</code><a class="headerlink" href="#get--rules" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="update-a-rule">
+<h3><a class="toc-backref" href="#id13">Update a Rule</a><a class="headerlink" href="#update-a-rule" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--rules-(id)">
+<code class="descname">PUT </code><code class="descname">/rules/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#put--rules-(id)" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="retrieve-a-rule">
+<h3><a class="toc-backref" href="#id14">Retrieve a Rule</a><a class="headerlink" href="#retrieve-a-rule" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--rules-(id)">
+<code class="descname">GET </code><code class="descname">/rules/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#get--rules-(id)" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="delete-a-rule">
+<h3><a class="toc-backref" href="#id15">Delete a Rule</a><a class="headerlink" href="#delete-a-rule" title="Permalink to this headline">¶</a></h3>
+<dl class="delete">
+<dt id="delete--rules-(id)">
+<code class="descname">DELETE </code><code class="descname">/rules/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#delete--rules-(id)" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.5">204 No Content</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="retrieve-a-rule-activity-log">
+<span id="objects-rules-activity"></span><h3><a class="toc-backref" href="#id16">Retrieve a Rule activity log</a><a class="headerlink" href="#retrieve-a-rule-activity-log" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <cite>activity_log</cite> endpoint has been decomissioned and will be available again soon after
+the intial deployment of the rules engine v2. ETA 1st quarter of 2019.</p>
+</div>
+<dl class="get">
+<dt id="get--rules-(id)-activity_log">
+<code class="descname">GET </code><code class="descname">/rules/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><code class="descname">/activity_log</code><a class="headerlink" href="#get--rules-(id)-activity_log" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/rules/93378718-b2ad-4b6c-a1bb-39c5436bf3e6/activity_log</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">[</span>
+   <span class="p">{</span>
+      <span class="nt">&quot;last_activity&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-08-23T13:59:03&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;log_level&quot;</span><span class="p">:</span> <span class="s2">&quot;warning&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;event&quot;</span><span class="p">:</span> <span class="s2">&quot;Execution timed out. Restarting...&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;last_activity&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-08-23T13:59:03&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;log_level&quot;</span><span class="p">:</span> <span class="s2">&quot;info&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;event&quot;</span><span class="p">:</span> <span class="s2">&quot;Rule created&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;last_activity&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-08-23T13:59:03&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;log_level&quot;</span><span class="p">:</span> <span class="s2">&quot;info&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;event&quot;</span><span class="p">:</span> <span class="s2">&quot;Rule executed&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;last_activity&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-08-23T13:59:03&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;log_level&quot;</span><span class="p">:</span> <span class="s2">&quot;error&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;event&quot;</span><span class="p">:</span> <span class="s2">&quot;Parse error&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="retrieve-meta-variables-and-operators-for-building-rules">
+<span id="objects-rules-meta-options"></span><h3><a class="toc-backref" href="#id17">Retrieve Meta, Variables, and Operators for building Rules</a><a class="headerlink" href="#retrieve-meta-variables-and-operators-for-building-rules" title="Permalink to this headline">¶</a></h3>
+<p>This endpoint provides a list of the currently available Rule triggers and conditions.  The default
+set of options is listed below.  However, additional options are likely to be present.  Device Meta
+that&#8217;s in the <code class="docutils literal"><span class="pre">~rule_trigger</span></code> Meta Group will also be included as long as the Meta exists.</p>
+<dl class="get">
+<dt id="get--rules-meta-options">
+<code class="descname">GET </code><code class="descname">/rules/meta/options</code><a class="headerlink" href="#get--rules-meta-options" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/rules/meta/options</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;day_of_week&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;display_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Day of week&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;data_type&quot;</span><span class="p">:</span> <span class="s2">&quot;list&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;operators&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;equal to&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;!=&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;not equal to&quot;</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;mon&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Monday&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;tue&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Tuesday&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;wed&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Wednesday&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;thu&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Thursday&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;fri&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Friday&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;sat&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Saturday&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;sun&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Sunday&quot;</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;time_of_day&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;display_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Time of day&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;data_type&quot;</span><span class="p">:</span> <span class="s2">&quot;time&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;operators&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;&gt;&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;after&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;&gt;&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;at or after&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;before&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;=&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;at or before&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;is&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;!=&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;is not&quot;</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="kc">null</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;motion_intensity&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;display_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Motion Intensity&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;data_type&quot;</span><span class="p">:</span> <span class="s2">&quot;number&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;operators&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;&gt;&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;greater than&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;&gt;=&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;greater than or equal to&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;less than&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;=&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;less than or equal to&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;equal to&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;!=&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;not equal to&quot;</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="kc">null</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;occupancy_detected&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;display_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Occupancy&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;data_type&quot;</span><span class="p">:</span> <span class="s2">&quot;bool&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;operators&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;detected&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;!=&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;not detected&quot;</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="kc">null</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dim&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;display_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Dim&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;data_type&quot;</span><span class="p">:</span> <span class="s2">&quot;number&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;operators&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;&gt;&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;greater than&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;&gt;=&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;greater than or equal to&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;less than&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;=&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;less than or equal to&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;equal to&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;!=&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;not equal to&quot;</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="kc">null</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="locations.html" class="btn btn-neutral float-right" title="Locations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="fault_alarms.html" class="btn btn-neutral" title="Fault Alarms" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Gooee, LLC.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/tabs.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,1844 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>HTTP Routing Table &mdash; Documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/sphinx_tabs/semantic-ui-2.2.7/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/sphinx_tabs/semantic-ui-2.2.7/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/navtree.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Documentation" href="index.html"/>
+ 
+
+    <script type="text/javascript">
+      DOCUMENTATION_OPTIONS.COLLAPSE_INDEX = true;
+    </script>
+
+
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Cloud API
+          
+
+          
+            
+            <img src="_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="link caption"><span class="link caption-text"><a class="reference internal" href="misc.html">Misc</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="misc/change_log.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc/object_relation_diagram.html">Object Relation Diagram</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="general.html">General</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="general/analytics.html">Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/api_tokens.html">API Tokens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/authentication.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/clearing_field_values.html">Clearing Field Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/device_counts.html">Device Counts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/exclude_include_fields.html">Include/Exclude Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/filtering.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/ordering.html">Ordering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/meta.html">Meta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/meta_groups.html">Meta Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/pagination.html">Pagination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/pubsub.html">PubSub Message Broker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/search.html">Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/scope.html">Scope</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="objects.html">Objects</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="objects/action_types.html">Action Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/actions.html">Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/analytics_export.html">Analytics Export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/analytics_query.html">Analytics Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/areas.html">Areas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/buildings.html">Buildings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/connected_products.html">Connected Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/currency.html">Currency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/customers.html">Customers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/dashboards.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/devices.html">Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/fault_alarms.html">Fault Alarms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/local_rules.html">Local Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/locations.html">Locations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/partners.html">Partners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/product_files.html">Product Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/product_types.html">Product Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/products.html">Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/rules_v2.html">Rules V2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/rule_groups.html">Rule Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/scenes.html">Scenes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/schedules.html">Schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/spaces.html">Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/timezones.html">Timezones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/user_features.html">User Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/user_groups.html">User Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/user_preferences.html">User Preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/users.html">Users</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="integrations.html">Integrations</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="integrations/als2lux.html">Als-to-Lux Correlation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrations/external_sensor.html">External Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrations/gateway_lite.html">Gateway Lite</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Cloud API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>HTTP Routing Table</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+
+   <h1>HTTP Routing Table</h1>
+
+   <div class="modindex-jumpbox">
+   <a href="#cap-/*"><strong>/*</strong></a> | 
+   <a href="#cap-/action_types"><strong>/action_types</strong></a> | 
+   <a href="#cap-/actions"><strong>/actions</strong></a> | 
+   <a href="#cap-/analytics"><strong>/analytics</strong></a> | 
+   <a href="#cap-/areas"><strong>/areas</strong></a> | 
+   <a href="#cap-/auth"><strong>/auth</strong></a> | 
+   <a href="#cap-/buildings"><strong>/buildings</strong></a> | 
+   <a href="#cap-/buildings?offset=2&limit=10"><strong>/buildings?offset=2&limit=10</strong></a> | 
+   <a href="#cap-/connected_products"><strong>/connected_products</strong></a> | 
+   <a href="#cap-/currency"><strong>/currency</strong></a> | 
+   <a href="#cap-/customers"><strong>/customers</strong></a> | 
+   <a href="#cap-/customers?_annotate=device_counts"><strong>/customers?_annotate=device_counts</strong></a> | 
+   <a href="#cap-/dashboards"><strong>/dashboards</strong></a> | 
+   <a href="#cap-/devices"><strong>/devices</strong></a> | 
+   <a href="#cap-/fault_alarms"><strong>/fault_alarms</strong></a> | 
+   <a href="#cap-/integrations"><strong>/integrations</strong></a> | 
+   <a href="#cap-/me"><strong>/me</strong></a> | 
+   <a href="#cap-/meta_groups"><strong>/meta_groups</strong></a> | 
+   <a href="#cap-/partners"><strong>/partners</strong></a> | 
+   <a href="#cap-/product_types"><strong>/product_types</strong></a> | 
+   <a href="#cap-/products"><strong>/products</strong></a> | 
+   <a href="#cap-/rules"><strong>/rules</strong></a> | 
+   <a href="#cap-/scenes"><strong>/scenes</strong></a> | 
+   <a href="#cap-/schedules"><strong>/schedules</strong></a> | 
+   <a href="#cap-/search?q=banana"><strong>/search?q=banana</strong></a> | 
+   <a href="#cap-/search?q=banana&models=device"><strong>/search?q=banana&models=device</strong></a> | 
+   <a href="#cap-/spaces"><strong>/spaces</strong></a> | 
+   <a href="#cap-/timezones"><strong>/timezones</strong></a> | 
+   <a href="#cap-/timezones?country=<country>"><strong>/timezones?country=<country></strong></a> | 
+   <a href="#cap-/user_groups"><strong>/user_groups</strong></a> | 
+   <a href="#cap-/user_groups?permission_sets__view_buildings__contained_by=[]"><strong>/user_groups?permission_sets__view_buildings__contained_by=[]</strong></a> | 
+   <a href="#cap-/user_groups?permission_sets__view_buildings__contains=a2b00304-cb6a-4566-9d49-d4f2c336a72a"><strong>/user_groups?permission_sets__view_buildings__contains=a2b00304-cb6a-4566-9d49-d4f2c336a72a</strong></a> | 
+   <a href="#cap-/users"><strong>/users</strong></a>
+   </div>
+
+   <table class="indextable modindextable" cellspacing="0" cellpadding="2">
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/*"><td></td><td>
+       <strong>/*</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/meta.html#get--*-(id)-meta-(name)-"><code class="xref">GET /*/(id)/meta/(name)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/meta.html#post--*-(id)-meta-"><code class="xref">POST /*/(id)/meta/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/meta.html#put--*-(id)-meta-(name)-"><code class="xref">PUT /*/(id)/meta/(name)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/meta.html#delete--*-(id)-meta-(name)-"><code class="xref">DELETE /*/(id)/meta/(name)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/meta.html#patch--*-(id)-meta-(name)-"><code class="xref">PATCH /*/(id)/meta/(name)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/action_types"><td></td><td>
+       <strong>/action_types</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/action_types.html#get--action_types-"><code class="xref">GET /action_types/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/action_types.html#get--action_types-(name)-"><code class="xref">GET /action_types/(name)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/actions"><td></td><td>
+       <strong>/actions</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/actions.html#get--actions-"><code class="xref">GET /actions/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/actions.html#get--actions-(id)-"><code class="xref">GET /actions/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/actions.html#post--actions-"><code class="xref">POST /actions/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/actions.html#delete--actions-(id)-"><code class="xref">DELETE /actions/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/analytics"><td></td><td>
+       <strong>/analytics</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/analytics_export.html#get--analytics-exports-"><code class="xref">GET /analytics/exports/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/analytics_export.html#get--analytics-exports-(id)-"><code class="xref">GET /analytics/exports/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/analytics.html#get--analytics-history"><code class="xref">GET /analytics/history</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/analytics_query.html#get--analytics-queries-"><code class="xref">GET /analytics/queries/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/analytics_query.html#get--analytics-queries-(id)-"><code class="xref">GET /analytics/queries/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/analytics_export.html#post--analytics-export"><code class="xref">POST /analytics/export</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/analytics_query.html#post--analytics-query"><code class="xref">POST /analytics/query</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/analytics_query.html#post--analytics-query-(id)-run"><code class="xref">POST /analytics/query/(id)/run</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/analytics_query.html#post--analytics-query-(id)-run-"><code class="xref">POST /analytics/query/(id)/run/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/analytics_query.html#put--analytics-queries-(id)-"><code class="xref">PUT /analytics/queries/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/analytics_export.html#delete--analytics-exports-(id)-"><code class="xref">DELETE /analytics/exports/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/analytics_query.html#delete--analytics-queries-(id)-"><code class="xref">DELETE /analytics/queries/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/analytics_query.html#patch--analytics-queries-(id)-"><code class="xref">PATCH /analytics/queries/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/areas"><td></td><td>
+       <strong>/areas</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/areas.html#get--areas-"><code class="xref">GET /areas/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/areas.html#get--areas-(id)-"><code class="xref">GET /areas/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/areas.html#post--areas-"><code class="xref">POST /areas/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/areas.html#post--areas-(id)-register"><code class="xref">POST /areas/(id)/register</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/areas.html#put--areas-(id)-"><code class="xref">PUT /areas/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/areas.html#delete--areas-(id)-"><code class="xref">DELETE /areas/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/areas.html#patch--areas-(id)-"><code class="xref">PATCH /areas/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/auth"><td></td><td>
+       <strong>/auth</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/authentication.html#get--auth-o-authorize-"><code class="xref">GET /auth/o/authorize/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/authentication.html#post--auth-login"><code class="xref">POST /auth/login</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/authentication.html#post--auth-o-token-"><code class="xref">POST /auth/o/token/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/authentication.html#post--auth-refresh"><code class="xref">POST /auth/refresh</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/authentication.html#post--auth-verify"><code class="xref">POST /auth/verify</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/authentication.html#put--auth-revoke-(jti)"><code class="xref">PUT /auth/revoke/(jti)</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/buildings"><td></td><td>
+       <strong>/buildings</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/buildings.html#get--buildings"><code class="xref">GET /buildings</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/pagination.html#get--buildings-"><code class="xref">GET /buildings/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/buildings.html#get--buildings-(id)"><code class="xref">GET /buildings/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/buildings.html#get--buildings-(id)-devices"><code class="xref">GET /buildings/(id)/devices</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/buildings.html#get--buildings-(id)-electrical_fee_schedule"><code class="xref">GET /buildings/(id)/electrical_fee_schedule</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/buildings.html#get--buildings-(id)-operating_hours"><code class="xref">GET /buildings/(id)/operating_hours</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/buildings.html#get--buildings-(id)-reactor"><code class="xref">GET /buildings/(id)/reactor</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/buildings.html#get--buildings-(id)-reactor_logs"><code class="xref">GET /buildings/(id)/reactor_logs</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/scope.html#get--buildings-?_annotate=customer_scopes"><code class="xref">GET /buildings/?_annotate=customer_scopes</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/locations.html#get--buildings-?in_bbox=-82.6404690742,27.7704436362,-82.6361346245,27.7725235696"><code class="xref">GET /buildings/?in_bbox=-82.6404690742,27.7704436362,-82.6361346245,27.7725235696</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/locations.html#get--buildings-?in_bbox=top_left_lat,top_left_lng,bottom_right_lat,bottom_right_lng"><code class="xref">GET /buildings/?in_bbox=top_left_lat,top_left_lng,bottom_right_lat,bottom_right_lng</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/buildings.html#post--buildings"><code class="xref">POST /buildings</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/buildings.html#post--buildings-(id)-electrical_fee_schedule"><code class="xref">POST /buildings/(id)/electrical_fee_schedule</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/buildings.html#post--buildings-(id)-operating_hours"><code class="xref">POST /buildings/(id)/operating_hours</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/buildings.html#put--buildings-(id)"><code class="xref">PUT /buildings/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/buildings.html#put--buildings-(id)-electrical_fee_schedule"><code class="xref">PUT /buildings/(id)/electrical_fee_schedule</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/buildings.html#put--buildings-(id)-operating_hours"><code class="xref">PUT /buildings/(id)/operating_hours</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/buildings.html#delete--buildings-(id)"><code class="xref">DELETE /buildings/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/buildings.html#delete--buildings-(id)-electrical_fee_schedule"><code class="xref">DELETE /buildings/(id)/electrical_fee_schedule</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/buildings.html#delete--buildings-(id)-operating_hours"><code class="xref">DELETE /buildings/(id)/operating_hours</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/buildings.html#patch--buildings-(id)"><code class="xref">PATCH /buildings/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/buildings?offset=2&limit=10"><td></td><td>
+       <strong>/buildings?offset=2&limit=10</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/pagination.html#get--buildings?offset=2&limit=10"><code class="xref">GET /buildings?offset=2&amp;limit=10</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/connected_products"><td></td><td>
+       <strong>/connected_products</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/connected_products.html#get--connected_products-"><code class="xref">GET /connected_products/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/connected_products.html#get--connected_products-(id)-"><code class="xref">GET /connected_products/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/connected_products.html#post--connected_products-"><code class="xref">POST /connected_products/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/connected_products.html#put--connected_products-(id)-"><code class="xref">PUT /connected_products/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/connected_products.html#delete--connected_products-(id)-"><code class="xref">DELETE /connected_products/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/connected_products.html#patch--connected_products-(id)-"><code class="xref">PATCH /connected_products/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/currency"><td></td><td>
+       <strong>/currency</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/currency.html#get--currency"><code class="xref">GET /currency</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/currency.html#get--currency-(code)"><code class="xref">GET /currency/(code)</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/customers"><td></td><td>
+       <strong>/customers</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/customers.html#get--customers-"><code class="xref">GET /customers/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/customers.html#get--customers-(id)-"><code class="xref">GET /customers/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/api_tokens.html#get--customers-(id)-api_tokens"><code class="xref">GET /customers/(id)/api_tokens</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/exclude_include_fields.html#get--customers-?_exclude=data_service_id"><code class="xref">GET /customers/?_exclude=data_service_id</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/exclude_include_fields.html#get--customers-?_exclude=id,data_service_id"><code class="xref">GET /customers/?_exclude=id,data_service_id</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/exclude_include_fields.html#get--customers-?_include=name"><code class="xref">GET /customers/?_include=name</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/exclude_include_fields.html#get--customers-?_include=name,description"><code class="xref">GET /customers/?_include=name,description</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/scope.html#get--customers-da8ef7cd-a442-4260-b177-d3af2058f7ec-?_annotate=partner_scopes"><code class="xref">GET /customers/da8ef7cd-a442-4260-b177-d3af2058f7ec/?_annotate=partner_scopes</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/customers.html#post--customers-"><code class="xref">POST /customers/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/api_tokens.html#post--customers-(id)-api_tokens"><code class="xref">POST /customers/(id)/api_tokens</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/api_tokens.html#post--customers-(id)-api_tokens-api_token-activate"><code class="xref">POST /customers/(id)/api_tokens/{api_token}/activate</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/api_tokens.html#post--customers-(id)-api_tokens-api_token-deactivate"><code class="xref">POST /customers/(id)/api_tokens/{api_token}/deactivate</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/customers.html#put--customers-(id)-"><code class="xref">PUT /customers/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/customers.html#put--customers-(id)-access-"><code class="xref">PUT /customers/(id)/access/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/customers.html#delete--customers-(id)-"><code class="xref">DELETE /customers/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/api_tokens.html#delete--customers-(id)-api_tokens-api_token"><code class="xref">DELETE /customers/(id)/api_tokens/{api_token}</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/customers.html#patch--customers-(id)-"><code class="xref">PATCH /customers/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/customers?_annotate=device_counts"><td></td><td>
+       <strong>/customers?_annotate=device_counts</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/device_counts.html#get--customers?_annotate=device_counts"><code class="xref">GET /customers?_annotate=device_counts</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/dashboards"><td></td><td>
+       <strong>/dashboards</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/dashboards.html#get--dashboards-"><code class="xref">GET /dashboards/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/dashboards.html#get--dashboards-(id)-"><code class="xref">GET /dashboards/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/dashboards.html#post--dashboards-"><code class="xref">POST /dashboards/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/dashboards.html#put--dashboards-(id)-"><code class="xref">PUT /dashboards/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/dashboards.html#delete--dashboards-(id)-"><code class="xref">DELETE /dashboards/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/dashboards.html#patch--dashboards-(id)-"><code class="xref">PATCH /dashboards/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/devices"><td></td><td>
+       <strong>/devices</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/devices.html#get--devices"><code class="xref">GET /devices</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/devices.html#get--devices-(id)"><code class="xref">GET /devices/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/scope.html#get--devices-?_annotate=customer_scopes,partner_scopes"><code class="xref">GET /devices/?_annotate=customer_scopes,partner_scopes</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/filtering.html#get--devices-?meta__als__isnull=false"><code class="xref">GET /devices/?meta__als__isnull=false</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/filtering.html#get--devices-?meta__dim=5"><code class="xref">GET /devices/?meta__dim=5</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/filtering.html#get--devices-?meta__is_online=True"><code class="xref">GET /devices/?meta__is_online=True</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/filtering.html#get--devices-?meta__is_online=true"><code class="xref">GET /devices/?meta__is_online=true</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/filtering.html#get--devices-?meta__META_NAME=META_VALUE"><code class="xref">GET /devices/?meta__{{META_NAME}}={{META_VALUE}}</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/filtering.html#get--devices-?meta__META_NAME__isnull=False"><code class="xref">GET /devices/?meta__{{META_NAME}}__isnull=False</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/filtering.html#get--devices-?meta__META_NAME__isnull=True"><code class="xref">GET /devices/?meta__{{META_NAME}}__isnull=True</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/ordering.html#get--devices-?order_by=-meta__dim"><code class="xref">GET /devices/?order_by=-meta__dim</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/filtering.html#get--devices-?order_by=meta__dim"><code class="xref">GET /devices/?order_by=meta__dim</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/filtering.html#get--devices-?order_by=meta__is_online"><code class="xref">GET /devices/?order_by=meta__is_online</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/filtering.html#get--devices-?order_by=meta__last_activity"><code class="xref">GET /devices/?order_by=meta__last_activity</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/filtering.html#get--devices-?order_by=meta__META_NAME"><code class="xref">GET /devices/?order_by=meta__{{META_NAME}}</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/devices.html#post--devices"><code class="xref">POST /devices</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/devices.html#post--devices-euid-check"><code class="xref">POST /devices/euid/check</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/devices.html#post--devices-ops-move-"><code class="xref">POST /devices/ops/move/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/devices.html#post--devices-ops-unassign-building-"><code class="xref">POST /devices/ops/unassign/building/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/devices.html#post--devices-ops-unassign-customer-"><code class="xref">POST /devices/ops/unassign/customer/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="integrations/gateway_lite.html#put--devices-(ID)-release-"><code class="xref">PUT /devices/(ID)/release/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/devices.html#put--devices-(id)"><code class="xref">PUT /devices/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/devices.html#put--devices-(id)-deactivate"><code class="xref">PUT /devices/(id)/deactivate</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/devices.html#delete--devices-(id)"><code class="xref">DELETE /devices/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="integrations/gateway_lite.html#patch--devices-(ID)-release-"><code class="xref">PATCH /devices/(ID)/release/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/devices.html#patch--devices-(id)"><code class="xref">PATCH /devices/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/fault_alarms"><td></td><td>
+       <strong>/fault_alarms</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/fault_alarms.html#get--fault_alarms-"><code class="xref">GET /fault_alarms/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/fault_alarms.html#get--fault_alarms-(id)-"><code class="xref">GET /fault_alarms/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/fault_alarms.html#post--fault_alarms-"><code class="xref">POST /fault_alarms/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/fault_alarms.html#post--fault_alarms-batch"><code class="xref">POST /fault_alarms/batch</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/fault_alarms.html#put--fault_alarms-(id)-"><code class="xref">PUT /fault_alarms/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/fault_alarms.html#put--fault_alarms-change_state-"><code class="xref">PUT /fault_alarms/change_state/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/fault_alarms.html#patch--fault_alarms-(id)-"><code class="xref">PATCH /fault_alarms/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/integrations"><td></td><td>
+       <strong>/integrations</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="integrations/external_sensor.html#get--integrations-external_sensor"><code class="xref">GET /integrations/external_sensor</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="integrations/external_sensor.html#get--integrations-external_sensor-(id)"><code class="xref">GET /integrations/external_sensor/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="integrations/external_sensor.html#get--integrations-external_sensor-interfaces"><code class="xref">GET /integrations/external_sensor/interfaces</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="integrations/external_sensor.html#get--integrations-external_sensor-interfaces-(id)"><code class="xref">GET /integrations/external_sensor/interfaces/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="integrations/gateway_lite.html#get--integrations-gateway_lite-fingerprints"><code class="xref">GET /integrations/gateway_lite/fingerprints</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="integrations/gateway_lite.html#get--integrations-gateway_lite-fingerprints-(id)"><code class="xref">GET /integrations/gateway_lite/fingerprints/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="integrations/gateway_lite.html#get--integrations-gateway_lite-import"><code class="xref">GET /integrations/gateway_lite/import</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="integrations/als2lux.html#post--integrations-als2lux"><code class="xref">POST /integrations/als2lux</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="integrations/external_sensor.html#post--integrations-external_sensor"><code class="xref">POST /integrations/external_sensor</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="integrations/external_sensor.html#post--integrations-external_sensor-(id)-bulk_register"><code class="xref">POST /integrations/external_sensor/(id)/bulk_register</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="integrations/external_sensor.html#post--integrations-external_sensor-(id)-export"><code class="xref">POST /integrations/external_sensor/(id)/export</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="integrations/external_sensor.html#post--integrations-external_sensor-(id)-receiver"><code class="xref">POST /integrations/external_sensor/(id)/receiver</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="integrations/external_sensor.html#post--integrations-external_sensor-interfaces"><code class="xref">POST /integrations/external_sensor/interfaces</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="integrations/gateway_lite.html#post--integrations-gateway_lite-acquire"><code class="xref">POST /integrations/gateway_lite/acquire</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="integrations/gateway_lite.html#post--integrations-gateway_lite-fingerprints"><code class="xref">POST /integrations/gateway_lite/fingerprints</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="integrations/gateway_lite.html#post--integrations-gateway_lite-fingerprints-resync"><code class="xref">POST /integrations/gateway_lite/fingerprints/resync</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="integrations/gateway_lite.html#post--integrations-gateway_lite-import"><code class="xref">POST /integrations/gateway_lite/import</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="integrations/gateway_lite.html#post--integrations-gateway_lite-users-activate-"><code class="xref">POST /integrations/gateway_lite/users/activate/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="integrations/gateway_lite.html#post--integrations-gateway_lite-users-register-"><code class="xref">POST /integrations/gateway_lite/users/register/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="integrations/external_sensor.html#put--integrations-external_sensor-(id)-"><code class="xref">PUT /integrations/external_sensor/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="integrations/external_sensor.html#put--integrations-external_sensor-(id)-regenerate_token"><code class="xref">PUT /integrations/external_sensor/(id)/regenerate_token</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="integrations/external_sensor.html#put--integrations-external_sensor-interfaces-(id)"><code class="xref">PUT /integrations/external_sensor/interfaces/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="integrations/external_sensor.html#delete--integrations-external_sensor-(id)"><code class="xref">DELETE /integrations/external_sensor/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="integrations/external_sensor.html#delete--integrations-external_sensor-interfaces-(id)"><code class="xref">DELETE /integrations/external_sensor/interfaces/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="integrations/gateway_lite.html#delete--integrations-gateway_lite-fingerprints-(id)"><code class="xref">DELETE /integrations/gateway_lite/fingerprints/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="integrations/gateway_lite.html#delete--integrations-gateway_lite-import"><code class="xref">DELETE /integrations/gateway_lite/import</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="integrations/external_sensor.html#patch--integrations-external_sensor-(id)"><code class="xref">PATCH /integrations/external_sensor/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="integrations/external_sensor.html#patch--integrations-external_sensor-interfaces-(id)"><code class="xref">PATCH /integrations/external_sensor/interfaces/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/me"><td></td><td>
+       <strong>/me</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/users.html#get--me"><code class="xref">GET /me</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/users.html#get--me-permissions"><code class="xref">GET /me/permissions</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/users.html#put--me"><code class="xref">PUT /me</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/users.html#patch--me"><code class="xref">PATCH /me</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/meta_groups"><td></td><td>
+       <strong>/meta_groups</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/meta_groups.html#get--meta_groups-"><code class="xref">GET /meta_groups/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/meta_groups.html#get--meta_groups-(id)-"><code class="xref">GET /meta_groups/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/meta_groups.html#post--meta_groups-"><code class="xref">POST /meta_groups/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/meta_groups.html#delete--meta_groups-(id)-"><code class="xref">DELETE /meta_groups/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/partners"><td></td><td>
+       <strong>/partners</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/partners.html#get--partners-"><code class="xref">GET /partners/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/partners.html#get--partners-(id)-"><code class="xref">GET /partners/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="integrations/gateway_lite.html#get--partners-(id)-integration_key-"><code class="xref">GET /partners/(id)/integration_key/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/partners.html#post--partners-"><code class="xref">POST /partners/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/partners.html#put--partners-(id)-"><code class="xref">PUT /partners/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/partners.html#delete--partners-(id)-"><code class="xref">DELETE /partners/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/partners.html#patch--partners-(id)-"><code class="xref">PATCH /partners/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/product_types"><td></td><td>
+       <strong>/product_types</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/product_types.html#get--product_types-"><code class="xref">GET /product_types/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/product_types.html#get--product_types-(name)-"><code class="xref">GET /product_types/(name)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/products"><td></td><td>
+       <strong>/products</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/products.html#get--products-"><code class="xref">GET /products/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/products.html#get--products-(id)-"><code class="xref">GET /products/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/product_files.html#get--products-(id)-files"><code class="xref">GET /products/(id)/files</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/product_files.html#get--products-(product_id)-files-(id)"><code class="xref">GET /products/(product_id)/files/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/products.html#post--products-"><code class="xref">POST /products/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/product_files.html#post--products-(id)-files"><code class="xref">POST /products/(id)/files</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/products.html#put--products-(id)-"><code class="xref">PUT /products/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/products.html#put--products-(id)-activate"><code class="xref">PUT /products/(id)/activate</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/product_files.html#put--products-(product_id)-files-(id)"><code class="xref">PUT /products/(product_id)/files/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/products.html#delete--products-(id)-"><code class="xref">DELETE /products/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/product_files.html#delete--products-(product_id)-files-(id)"><code class="xref">DELETE /products/(product_id)/files/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/products.html#patch--products-(id)-"><code class="xref">PATCH /products/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/product_files.html#patch--products-(product_id)-files-(id)"><code class="xref">PATCH /products/(product_id)/files/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/rules"><td></td><td>
+       <strong>/rules</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/local_rules.html#get--rules"><code class="xref">GET /rules</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/local_rules.html#get--rules-(id)"><code class="xref">GET /rules/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/local_rules.html#get--rules-(id)-activity_log"><code class="xref">GET /rules/(id)/activity_log</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/rules_v2.html#get--rules-meta-options"><code class="xref">GET /rules/meta/options</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/rules_v2.html#get--rules-v2-event"><code class="xref">GET /rules/v2/event</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/rules_v2.html#get--rules-v2-event-(id)"><code class="xref">GET /rules/v2/event/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/rules_v2.html#get--rules-v2-event-(id)-activity_log"><code class="xref">GET /rules/v2/event/(id)/activity_log</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/rules_v2.html#get--rules-v2-property"><code class="xref">GET /rules/v2/property</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/rules_v2.html#get--rules-v2-property-(id)"><code class="xref">GET /rules/v2/property/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/rules_v2.html#get--rules-v2-property-(id)-activity_log"><code class="xref">GET /rules/v2/property/(id)/activity_log</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/rule_groups.html#get--rules-v2-property-groups"><code class="xref">GET /rules/v2/property/groups</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/rule_groups.html#get--rules-v2-property-groups-(id)"><code class="xref">GET /rules/v2/property/groups/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/local_rules.html#post--rules"><code class="xref">POST /rules</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/rules_v2.html#post--rules-v2-event"><code class="xref">POST /rules/v2/event</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/rules_v2.html#post--rules-v2-property"><code class="xref">POST /rules/v2/property</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/rule_groups.html#post--rules-v2-property-groups"><code class="xref">POST /rules/v2/property/groups</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/local_rules.html#put--rules-(id)"><code class="xref">PUT /rules/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/rules_v2.html#put--rules-v2-event-(id)"><code class="xref">PUT /rules/v2/event/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/rules_v2.html#put--rules-v2-property-(id)"><code class="xref">PUT /rules/v2/property/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/rule_groups.html#put--rules-v2-property-groups-(id)"><code class="xref">PUT /rules/v2/property/groups/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/local_rules.html#delete--rules-(id)"><code class="xref">DELETE /rules/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/rules_v2.html#delete--rules-v2-event-(id)"><code class="xref">DELETE /rules/v2/event/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/rules_v2.html#delete--rules-v2-property-(id)"><code class="xref">DELETE /rules/v2/property/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/rule_groups.html#delete--rules-v2-property-groups-(id)"><code class="xref">DELETE /rules/v2/property/groups/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/rule_groups.html#patch--rules-v2-property-groups-(id)"><code class="xref">PATCH /rules/v2/property/groups/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/scenes"><td></td><td>
+       <strong>/scenes</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/scenes.html#get--scenes-"><code class="xref">GET /scenes/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/scenes.html#get--scenes-(id)-"><code class="xref">GET /scenes/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/scenes.html#post--scenes-"><code class="xref">POST /scenes/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/scenes.html#put--scenes-(id)-"><code class="xref">PUT /scenes/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/scenes.html#delete--scenes-(id)-"><code class="xref">DELETE /scenes/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/scenes.html#patch--scenes-(id)-"><code class="xref">PATCH /scenes/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/schedules"><td></td><td>
+       <strong>/schedules</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/schedules.html#get--schedules"><code class="xref">GET /schedules</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/schedules.html#get--schedules-(id)"><code class="xref">GET /schedules/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/schedules.html#post--schedules"><code class="xref">POST /schedules</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/schedules.html#put--schedules"><code class="xref">PUT /schedules</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/schedules.html#delete--schedules-(id)"><code class="xref">DELETE /schedules/(id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/search?q=banana"><td></td><td>
+       <strong>/search?q=banana</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/search.html#get--search?q=banana"><code class="xref">GET /search?q=banana</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/search?q=banana&models=device"><td></td><td>
+       <strong>/search?q=banana&models=device</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/search.html#get--search?q=banana&models=device"><code class="xref">GET /search?q=banana&amp;models=device</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/spaces"><td></td><td>
+       <strong>/spaces</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/spaces.html#get--spaces-"><code class="xref">GET /spaces/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/spaces.html#get--spaces-(id)-"><code class="xref">GET /spaces/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/spaces.html#get--spaces-(id)-connected_products-"><code class="xref">GET /spaces/(id)/connected_products/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/spaces.html#get--spaces-(id)-device_states"><code class="xref">GET /spaces/(id)/device_states</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/spaces.html#get--spaces-(id)-devices-"><code class="xref">GET /spaces/(id)/devices/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/spaces.html#post--spaces-"><code class="xref">POST /spaces/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/spaces.html#put--spaces-(id)-"><code class="xref">PUT /spaces/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/spaces.html#delete--spaces-(id)-"><code class="xref">DELETE /spaces/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/spaces.html#patch--spaces-(id)-"><code class="xref">PATCH /spaces/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/timezones"><td></td><td>
+       <strong>/timezones</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/timezones.html#get--timezones"><code class="xref">GET /timezones</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/timezones.html#get--timezones-(name)"><code class="xref">GET /timezones/(name)</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/timezones?country=<country>"><td></td><td>
+       <strong>/timezones?country=<country></strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/user_preferences.html#get--timezones?country=-country-"><code class="xref">GET /timezones?country=&lt;country&gt;</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/user_groups"><td></td><td>
+       <strong>/user_groups</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/user_groups.html#get--user_groups-"><code class="xref">GET /user_groups/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/user_groups.html#get--user_groups-(id)-"><code class="xref">GET /user_groups/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/user_groups.html#get--user_groups-permission_sets-"><code class="xref">GET /user_groups/permission_sets/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/user_groups.html#post--user_groups-"><code class="xref">POST /user_groups/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/user_groups.html#put--user_groups-(id)-"><code class="xref">PUT /user_groups/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/user_groups.html#delete--user_groups-(id)-"><code class="xref">DELETE /user_groups/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/user_groups.html#patch--user_groups-(id)-"><code class="xref">PATCH /user_groups/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/user_groups?permission_sets__view_buildings__contained_by=[]"><td></td><td>
+       <strong>/user_groups?permission_sets__view_buildings__contained_by=[]</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/user_groups.html#get--user_groups?permission_sets__view_buildings__contained_by=[]"><code class="xref">GET /user_groups?permission_sets__view_buildings__contained_by=[]</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/user_groups?permission_sets__view_buildings__contains=a2b00304-cb6a-4566-9d49-d4f2c336a72a"><td></td><td>
+       <strong>/user_groups?permission_sets__view_buildings__contains=a2b00304-cb6a-4566-9d49-d4f2c336a72a</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/user_groups.html#get--user_groups?permission_sets__view_buildings__contains=a2b00304-cb6a-4566-9d49-d4f2c336a72a"><code class="xref">GET /user_groups?permission_sets__view_buildings__contains=a2b00304-cb6a-4566-9d49-d4f2c336a72a</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/users"><td></td><td>
+       <strong>/users</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/users.html#get--users-"><code class="xref">GET /users/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/users.html#get--users-(id)-"><code class="xref">GET /users/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/api_tokens.html#get--users-(id)-api_token"><code class="xref">GET /users/(id)/api_token</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/users.html#get--users-(id)-permissions"><code class="xref">GET /users/(id)/permissions</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/users.html#get--users-(id)-preferences"><code class="xref">GET /users/(id)/preferences</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/users.html#get--users-(id)-two_factor"><code class="xref">GET /users/(id)/two_factor</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/filtering.html#get--users-?created=2016-01-26T14-22-26-05-00"><code class="xref">GET /users/?created=2016-01-26T14:22:26-05:00</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/filtering.html#get--users-?created__isnull=True"><code class="xref">GET /users/?created__isnull=True</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/filtering.html#get--users-?created__lt=2016-01-26T19-23-21+00-00"><code class="xref">GET /users/?created__lt=2016-01-26T19:23:21+00:00</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/filtering.html#get--users-?created__year=2016&created__day=20"><code class="xref">GET /users/?created__year=2016&amp;created__day=20</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/filtering.html#get--users-?id=0123963e-d50b-4e02-830e-cd2d4b22573b"><code class="xref">GET /users/?id=0123963e-d50b-4e02-830e-cd2d4b22573b</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/filtering.html#get--users-?is_active=True"><code class="xref">GET /users/?is_active=True</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/filtering.html#get--users-?name=Lyle"><code class="xref">GET /users/?name=Lyle</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/filtering.html#get--users-?name__contains=sylv"><code class="xref">GET /users/?name__contains=sylv</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/filtering.html#get--users-?name__iendswith=le"><code class="xref">GET /users/?name__iendswith=le</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/filtering.html#get--users-?name__iexact=lyle"><code class="xref">GET /users/?name__iexact=lyle</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/ordering.html#get--users-?order_by=-name"><code class="xref">GET /users/?order_by=-name</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/ordering.html#get--users-?order_by=created,name"><code class="xref">GET /users/?order_by=created,name</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/ordering.html#get--users-?order_by=name"><code class="xref">GET /users/?order_by=name</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/filtering.html#get--users-?tags=vip,etc"><code class="xref">GET /users/?tags=vip,etc</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/filtering.html#get--users-?user_role=02ec4289-8e03-4a61-9829-e9ba512468b8"><code class="xref">GET /users/?user_role=02ec4289-8e03-4a61-9829-e9ba512468b8</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/filtering.html#get--users-?user_role__created__gt=2016-01-26T14-34-25-05-00"><code class="xref">GET /users/?user_role__created__gt=2016-01-26T14:34:25-05:00</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="general/filtering.html#get--users-?user_role__name__iexact=admin"><code class="xref">GET /users/?user_role__name__iexact=admin</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/users.html#post--users-"><code class="xref">POST /users/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/users.html#post--users-(id)-activate-"><code class="xref">POST /users/(id)/activate/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/users.html#post--users-(id)-deactivate-"><code class="xref">POST /users/(id)/deactivate/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/users.html#post--users-(id)-resend_invitation-"><code class="xref">POST /users/(id)/resend_invitation/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/users.html#post--users-(id)-two_factor-disable"><code class="xref">POST /users/(id)/two_factor/disable</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/users.html#post--users-(id)-two_factor-setup"><code class="xref">POST /users/(id)/two_factor/setup</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/users.html#post--users-(id)-two_factor-verify"><code class="xref">POST /users/(id)/two_factor/verify</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/users.html#post--users-password-change-"><code class="xref">POST /users/password/change/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/users.html#post--users-password-request-change-"><code class="xref">POST /users/password/request/change/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/users.html#post--users-register-"><code class="xref">POST /users/register/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/users.html#post--users-update_email"><code class="xref">POST /users/update_email</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/users.html#put--users-(id)-"><code class="xref">PUT /users/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/user_features.html#put--users-(id)-features"><code class="xref">PUT /users/(id)/features</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/users.html#put--users-(id)-preferences"><code class="xref">PUT /users/(id)/preferences</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/users.html#delete--users-(id)-"><code class="xref">DELETE /users/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/users.html#patch--users-(id)-"><code class="xref">PATCH /users/(id)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/user_features.html#patch--users-(id)-features"><code class="xref">PATCH /users/(id)/features</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="objects/users.html#patch--users-(id)-preferences"><code class="xref">PATCH /users/(id)/preferences</code></a></td><td>
+       <em></em></td></tr>
+   </table>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Gooee, LLC.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/sphinx_tabs/tabs.js"></script>
+      <script type="text/javascript" src="_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

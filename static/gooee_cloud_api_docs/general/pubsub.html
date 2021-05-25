@@ -1,0 +1,962 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>PubSub Message Broker &mdash; Documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/navtree.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Documentation" href="../index.html"/>
+        <link rel="up" title="General" href="../general.html"/>
+        <link rel="next" title="Search" href="search.html"/>
+        <link rel="prev" title="Pagination" href="pagination.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Cloud API
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="link caption"><span class="link caption-text"><a class="reference internal" href="../misc.html">Misc</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/change_log.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/object_relation_diagram.html">Object Relation Diagram</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../general.html">General</a></span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="analytics.html">Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_tokens.html">API Tokens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clearing_field_values.html">Clearing Field Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="device_counts.html">Device Counts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exclude_include_fields.html">Include/Exclude Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filtering.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ordering.html">Ordering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meta.html">Meta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meta_groups.html">Meta Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pagination.html">Pagination</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">PubSub Message Broker</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#protocol-support">Protocol Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hosts">Hosts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#security">Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#topics">Topics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rejected-topics">Rejected Topics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#messages">Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#connecting-to-the-message-broker">Connecting to the Message Broker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#code-examples">Code Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="search.html">Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scope.html">Scope</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../objects.html">Objects</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../objects/action_types.html">Action Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/actions.html">Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/analytics_export.html">Analytics Export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/analytics_query.html">Analytics Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/areas.html">Areas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/buildings.html">Buildings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/connected_products.html">Connected Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/currency.html">Currency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/customers.html">Customers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/dashboards.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/devices.html">Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/fault_alarms.html">Fault Alarms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/local_rules.html">Local Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/locations.html">Locations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/partners.html">Partners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/product_files.html">Product Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/product_types.html">Product Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/products.html">Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/rules_v2.html">Rules V2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/rule_groups.html">Rule Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/scenes.html">Scenes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/schedules.html">Schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/spaces.html">Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/timezones.html">Timezones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/user_features.html">User Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/user_groups.html">User Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/user_preferences.html">User Preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/users.html">Users</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../integrations.html">Integrations</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/als2lux.html">Als-to-Lux Correlation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/external_sensor.html">External Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/gateway_lite.html">Gateway Lite</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cloud API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../general.html">General</a> &raquo;</li>
+        
+      <li>PubSub Message Broker</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/general/pubsub.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pubsub-message-broker">
+<span id="general-pubsub"></span><h1>PubSub Message Broker<a class="headerlink" href="#pubsub-message-broker" title="Permalink to this headline">¶</a></h1>
+<p>We use a publish/subscribe broker that enables for near real-time bi-directional communication between our Cloud API
+and Clients (Hardware, Apps, Users). A client (Publisher) sends a message to a topic like:</p>
+<p><strong>devices/1de83fdc-6b4b-cff8-be07-cea1a7dd6343/meta</strong></p>
+<p>The message broker will take care of delivering that message to all the Clients (Subscribers) on this topic that are actually connected.</p>
+<div class="section" id="protocol-support">
+<h2>Protocol Support<a class="headerlink" href="#protocol-support" title="Permalink to this headline">¶</a></h2>
+<p>The message broker supports the <a class="reference external" href="http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/mqtt-v3.1.1.html">MQTT protocol v3.1.1</a> and also MQTT over the
+<a class="reference external" href="https://tools.ietf.org/html/rfc6455">WebSockets protocol</a>. MQTT is a lightweight messaging protocol that is suitable
+for IoT messaging, since it is bandwidth-efficient and uses little battery power. To learn more about the MQTT protocol, see the <a class="reference external" href="https://mqtt.org/documentation">MQTT documentation</a>.</p>
+</div>
+<div class="section" id="hosts">
+<h2>Hosts<a class="headerlink" href="#hosts" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="9%" />
+<col width="62%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Host</th>
+<th class="head">Port</th>
+<th class="head">Protocol</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>mqtt.gooee.io</td>
+<td>8883</td>
+<td>MQTT with TLS(secure)</td>
+</tr>
+<tr class="row-odd"><td>ws.gooee.io</td>
+<td>443</td>
+<td>Websockets with SSL(secure)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="security">
+<h2>Security<a class="headerlink" href="#security" title="Permalink to this headline">¶</a></h2>
+<p>The use of the TLS/SSL is <strong>enabled</strong> by default to secure communications. To establish TLS connections you need to connect using
+the client certificate that can be downloaded <a class="reference download internal" href="../_downloads/client.pem" download=""><code class="xref download docutils literal"><span class="pre">here</span></code></a>.</p>
+</div>
+<div class="section" id="authentication">
+<h2>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h2>
+<p>An MQTT session needs to be established between a client and Gooee MQTT. Once the client is authenticated,
+it can publish/subscribe messages within this session. In order to authenticate on the MQTT server, the client needs
+to provide <strong>authorization</strong> as the username in the connection with the <a class="reference internal" href="api_tokens.html#general-api-tokens"><span class="std std-ref">User API Token</span></a> as the password.</p>
+</div>
+<div class="section" id="topics">
+<h2>Topics<a class="headerlink" href="#topics" title="Permalink to this headline">¶</a></h2>
+<p>The message broker uses topics to route messages from publishers to subscribers. The forward slash (/) is used to delimit
+the topic hierarchy, like if we were using a URL. The following table lists topics that can be used when you publish/subscribe;
+any other topic you attempt to use will result in a dropped connection from the broker:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="3%" />
+<col width="3%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Topic</th>
+<th class="head">Pub</th>
+<th class="head">Sub</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>devices/(:id)/meta</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>All Meta values for a Device.</td>
+</tr>
+<tr class="row-odd"><td>devices/(:id)/meta/(:name)</td>
+<td>No</td>
+<td>Yes</td>
+<td>A specific Meta value for a Device.</td>
+</tr>
+<tr class="row-even"><td>devices/(:id)/actions</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>All the Actions for a Device.</td>
+</tr>
+<tr class="row-odd"><td>devices/(:id)/actions/(:type)</td>
+<td>No</td>
+<td>Yes</td>
+<td>A specific Action on a Device.</td>
+</tr>
+<tr class="row-even"><td>devices/(:id)/fault_alarms</td>
+<td>Yes</td>
+<td>Yes</td>
+<td><a class="reference internal" href="../objects/fault_alarms.html#objects-fault-alarms"><span class="std std-ref">Fault Alarms</span></a> for a Device.</td>
+</tr>
+<tr class="row-odd"><td>areas/(:id)/meta/head_count</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>head_count Meta value for an Area.</td>
+</tr>
+<tr class="row-even"><td>areas/(:id)/meta/headcount_in</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>headcount_in Meta value for an Area.</td>
+</tr>
+<tr class="row-odd"><td>areas/(:id)/meta/headcount_out</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>headcount_out Meta value for an Area.</td>
+</tr>
+<tr class="row-even"><td>spaces/(:id)/actions</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>All the Actions for a Space.</td>
+</tr>
+<tr class="row-odd"><td>spaces/(:id)/actions/(:type)</td>
+<td>No</td>
+<td>Yes</td>
+<td>A specific Action on a Space.</td>
+</tr>
+<tr class="row-even"><td>spaces/(:id)/meta/head_count</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>head_count Meta value for a Space.</td>
+</tr>
+<tr class="row-odd"><td>spaces/(:id)/meta/headcount_in</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>headcount_in Meta value for a Space.</td>
+</tr>
+<tr class="row-even"><td>spaces/(:id)/meta/headcount_out</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>headcount_out Meta value for a Space.</td>
+</tr>
+<tr class="row-odd"><td>buildings/(:id)/actions</td>
+<td>No</td>
+<td>Yes</td>
+<td>All the Actions for Devices under the Building.</td>
+</tr>
+<tr class="row-even"><td>buildings/(:id)/actions/(:type)</td>
+<td>No</td>
+<td>Yes</td>
+<td>Specific Actions for Devices under the Building.</td>
+</tr>
+<tr class="row-odd"><td>buildings/(:id)/fault_alarms</td>
+<td>Yes</td>
+<td>Yes</td>
+<td><a class="reference internal" href="../objects/fault_alarms.html#objects-fault-alarms"><span class="std std-ref">Fault Alarms</span></a> for a Building.</td>
+</tr>
+<tr class="row-even"><td>buildings/(:id)/meta/head_count</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>head_count Meta value for a Building.</td>
+</tr>
+<tr class="row-odd"><td>buildings/(:id)/meta/headcount_in</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>headcount_in Meta value for a Building.</td>
+</tr>
+<tr class="row-even"><td>buildings/(:id)/meta/headcount_out</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>headcount_out Meta value for a Building.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="rejected-topics">
+<h2>Rejected Topics<a class="headerlink" href="#rejected-topics" title="Permalink to this headline">¶</a></h2>
+<p>Published messages may be rejected if they&#8217;re malformed or otherwise violate constraints of the API.
+For example, a violation of one of the <a class="reference internal" href="meta.html#meta-complex-constraints"><span class="std std-ref">Meta Constraints</span></a> would
+result in a rejected Device Meta message. The following topics can be subscribed to for monitoring
+newly rejected publishes:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="3%" />
+<col width="3%" />
+<col width="62%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Topic</th>
+<th class="head">Pub</th>
+<th class="head">Sub</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>devices/(:id)/meta/rejected</td>
+<td>No</td>
+<td>Yes</td>
+<td>All rejected Meta values for a Device.</td>
+</tr>
+<tr class="row-odd"><td>devices/(:id)/fault_alarms/rejected</td>
+<td>No</td>
+<td>Yes</td>
+<td>All rejected <a class="reference internal" href="../objects/fault_alarms.html#objects-fault-alarms"><span class="std std-ref">Fault Alarms</span></a> for a Device.</td>
+</tr>
+<tr class="row-even"><td>buildings/(:id)/fault_alarms/rejected</td>
+<td>No</td>
+<td>Yes</td>
+<td>All rejected <a class="reference internal" href="../objects/fault_alarms.html#objects-fault-alarms"><span class="std std-ref">Fault Alarms</span></a> for a Building.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p>Due to the stateless nature of the MQTT protocol, there is no feedback to the clients when data is
+incorrect or not accepted in our data storage. MQTT clients must subscribe to the <strong>(:prefix)/rejected</strong>
+topics (at least on the testing or initial integration phase with our platform).
+These topics will inform the client if the desired update was unsuccessful (usually due to unexpected
+data format), so the client could act and update the format of the data they report.
+The <strong>(:prefix)/rejected</strong> topics will contain the data that failed along with the error message and
+context explaining why it failed. For example:</p>
+<div class="last highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Invalid payload due to regex pattern not matching.  Position: [0]/name. Value: \&quot;Meta_New\&quot;.&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;context&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Name&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;pattern&quot;</span><span class="p">:</span> <span class="s2">&quot;^(~?)(?!.*__.*)[a-z][a-z0-9_]+$&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;minLength&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="nt">&quot;maxLength&quot;</span><span class="p">:</span> <span class="mi">100</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Meta_New&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;display_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Meta New&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;unit_of_measure&quot;</span><span class="p">:</span> <span class="s2">&quot;Meters&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">10</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="messages">
+<h2>Messages<a class="headerlink" href="#messages" title="Permalink to this headline">¶</a></h2>
+<p>The content of a MQTT or Websockets message is a JSON object with the same structure as its equivalent Cloud API payload.</p>
+<div class="section" id="example-payloads">
+<h3>Example Payloads:<a class="headerlink" href="#example-payloads" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="38%" />
+<col width="62%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Topic</th>
+<th class="head">Example Payload</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>devices/(:id)/meta</td>
+<td><div class="first last highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;temperature&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;display_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Temperature&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mf">87.4</span><span class="p">,</span>
+        <span class="nt">&quot;unit_of_measure&quot;</span><span class="p">:</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-08-09T20:00:47.539000Z&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;als&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">87</span><span class="p">,</span>
+        <span class="nt">&quot;unit_of_measure&quot;</span><span class="p">:</span> <span class="s2">&quot;K&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-08-09T20:00:47.539000Z&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>devices/(:id)/meta/(:name)</td>
+<td><div class="first last highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;temperature&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mf">87.4</span><span class="p">,</span>
+    <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-08-09T20:00:47.539000Z&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>devices/(:id)/actions</td>
+<td><div class="first last highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Dim Device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;dim&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;8551e830-eab3-4de4-84d4-bd9ff6615b7f&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span> <span class="nt">&quot;transition_time&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span>
+    <span class="nt">&quot;created&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-08-09T20:00:47.539000Z&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>devices/(:id)/actions/(:type)</td>
+<td><div class="first last highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Dim Device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;8551e830-eab3-4de4-84d4-bd9ff6615b7f&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span> <span class="nt">&quot;transition_time&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span>
+    <span class="nt">&quot;created&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-08-09T20:00:47.539000Z&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>devices/(:id)/fault_alarms</td>
+<td><div class="first last highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;330de737-0f36-4b33-bc91-c4be5ddd4442&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span> <span class="s2">&quot;2020-02-17T15:47:53.046570Z&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;priority&quot;</span><span class="p">:</span> <span class="mi">255</span><span class="p">,</span>
+    <span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="s2">&quot;info&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;high_temperature&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;device&quot;</span><span class="p">:</span> <span class="s2">&quot;b87fd763-0292-469e-8237-fc82a9f50d8c&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;notes&quot;</span><span class="p">:</span> <span class="s2">&quot;Additional notes&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;temp&quot;</span><span class="p">:</span> <span class="mi">100</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Temperature is above 90°F.&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>areas/(:id)/meta/head_count</td>
+<td><div class="first last highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;headcount&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>areas/(:id)/meta/headcount_in</td>
+<td><div class="first last highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;headcount_in&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>areas/(:id)/meta/headcount_out</td>
+<td><div class="first last highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;headcount_out&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>spaces/(:id)/actions</td>
+<td><div class="first last highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Turn Off the Office&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;off&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;space&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;6f00fb32-2b3d-44c8-90cf-e526c252f6d5&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;transition_time&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span>
+    <span class="nt">&quot;created&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-08-09T20:00:47.539000Z&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>spaces/(:id)/actions/(:type)</td>
+<td><div class="first last highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Turn Off the Office&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;space&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;6f00fb32-2b3d-44c8-90cf-e526c252f6d5&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;transition_time&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span>
+    <span class="nt">&quot;created&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-08-09T20:00:47.539000Z&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>spaces/(:id)/meta/head_count</td>
+<td><div class="first last highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;headcount&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">5</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>spaces/(:id)/meta/headcount_in</td>
+<td><div class="first last highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;headcount_in&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">5</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>spaces/(:id)/meta/headcount_out</td>
+<td><div class="first last highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;headcount_out&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">5</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>buildings/(:id)/actions</td>
+<td><div class="first last highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Dim Device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;dim&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;deb13bee-b69c-4b1d-a60b-c77ab53e3eb3&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span> <span class="nt">&quot;transition_time&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span>
+    <span class="nt">&quot;created&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-08-09T20:00:47.539000Z&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>buildings/(:id)/actions/(:type)</td>
+<td><div class="first last highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Dim Device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;deb13bee-b69c-4b1d-a60b-c77ab53e3eb3&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span> <span class="nt">&quot;transition_time&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span>
+    <span class="nt">&quot;created&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-08-09T20:00:47.539000Z&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>buildings/(:id)/fault_alarms</td>
+<td><div class="first last highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span> <span class="s2">&quot;2020-02-17T15:47:53.046570Z&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;priority&quot;</span><span class="p">:</span> <span class="mi">255</span><span class="p">,</span>
+    <span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="s2">&quot;info&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;high_temperature&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;device&quot;</span><span class="p">:</span> <span class="s2">&quot;b87fd763-0292-469e-8237-fc82a9f50d8c&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;notes&quot;</span><span class="p">:</span> <span class="s2">&quot;Additional notes&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;temp&quot;</span><span class="p">:</span> <span class="mi">100</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Temperature is above 90°F.&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>buildings/(:id)/meta/head_count</td>
+<td><div class="first last highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;headcount&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">20</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>buildings/(:id)/meta/headcount_in</td>
+<td><div class="first last highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;headcount_in&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">20</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>buildings/(:id)/meta/headcount_out</td>
+<td><div class="first last highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;headcount_out&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">20</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="connecting-to-the-message-broker">
+<h2>Connecting to the Message Broker<a class="headerlink" href="#connecting-to-the-message-broker" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://mqttfx.org">MQTT.fx</a> is a free, GUI-based MQTT client to use for testing the Gooee Message Broker.
+It supports any operating system that can run Java. Once downloaded, run it and create a new connection using
+the settings as shown below:</p>
+<img alt="../_images/mqtt_connection.png" src="../_images/mqtt_connection.png" />
+<p>If you want to establish a secure connection go to the <strong>SSL/TLS</strong> tab and select the certificate:</p>
+<img alt="../_images/mqtt_tls.png" src="../_images/mqtt_tls.png" />
+<p>After the connection is created, from the main MQTT.fx window, select &#8220;Gooee MQTT&#8221;, and click Connect, the green light on
+the top right corner will indicate that connection was established:</p>
+<img alt="../_images/mqtt_connect.gif" src="../_images/mqtt_connect.gif" />
+<p>Once connected, you can use the publish and subscribe buttons in MQTT.fx to send and receive messages. We will use a
+Device with ID: <strong>120e54bb-0fdc-4929-a7f4-7fab08cb0469</strong>:</p>
+<div class="section" id="example-1-publish-device-s-meta-updates">
+<h3>Example 1: Publish Device&#8217;s Meta updates<a class="headerlink" href="#example-1-publish-device-s-meta-updates" title="Permalink to this headline">¶</a></h3>
+<img alt="../_images/mqtt_publish_device_meta.png" src="../_images/mqtt_publish_device_meta.png" />
+</div>
+<div class="section" id="example-2-subscribe-to-a-device-s-meta-updates">
+<h3>Example 2: Subscribe to a Device&#8217;s Meta updates<a class="headerlink" href="#example-2-subscribe-to-a-device-s-meta-updates" title="Permalink to this headline">¶</a></h3>
+<img alt="../_images/mqtt_subscribe_device_meta.png" src="../_images/mqtt_subscribe_device_meta.png" />
+</div>
+<div class="section" id="example-3-publish-action-on-space">
+<h3>Example 3: Publish Action on Space<a class="headerlink" href="#example-3-publish-action-on-space" title="Permalink to this headline">¶</a></h3>
+<img alt="../_images/mqtt_publish_space_action.png" src="../_images/mqtt_publish_space_action.png" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For a more extensive list of MQTT clients and tools check: <a class="reference external" href="http://www.hivemq.com/blog/seven-best-mqtt-client-tools">http://www.hivemq.com/blog/seven-best-mqtt-client-tools</a></p>
+</div>
+</div>
+</div>
+<div class="section" id="code-examples">
+<h2>Code Examples<a class="headerlink" href="#code-examples" title="Permalink to this headline">¶</a></h2>
+<p>The examples below show how to authenticate and publish Meta updates on a Device with the authenticated User:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-0 docutils container">
+NodeJS</div>
+<div class="item sphinx-data-tab-1 docutils container">
+Python</div>
+<div class="item sphinx-data-tab-2 docutils container">
+C</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$ </span>npm install mqtt
+</pre></div>
+</div>
+<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">mqtt</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;mqtt&#39;</span><span class="p">);</span>
+
+<span class="o">//</span> <span class="n">Define</span> <span class="n">Device</span> <span class="n">Meta</span> <span class="n">topic</span>
+<span class="n">var</span> <span class="n">deviceTopic</span> <span class="o">=</span> <span class="s1">&#39;devices/1de83fdc-6b4b-cff8-be07-cea1a7dd6343/meta&#39;</span><span class="p">;</span>
+<span class="n">var</span> <span class="n">options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">host</span><span class="p">:</span> <span class="s2">&quot;mqtt.gooee.io&quot;</span><span class="p">,</span>
+    <span class="n">port</span><span class="p">:</span> <span class="mi">8883</span><span class="p">,</span>
+    <span class="n">username</span><span class="p">:</span> <span class="s2">&quot;authorization&quot;</span><span class="p">,</span>
+    <span class="n">password</span><span class="p">:</span> <span class="s2">&quot;0011223344556677b1c2bcaa625fefc5469ca43caa121ca7f0ced65cdc2bdf2a&quot;</span><span class="p">,</span>
+    <span class="n">ca</span><span class="p">:</span> <span class="s2">&quot;client.pem&quot;</span>
+<span class="p">};</span>
+
+<span class="n">var</span> <span class="n">client</span> <span class="o">=</span> <span class="n">mqtt</span><span class="o">.</span><span class="n">createSecureClient</span><span class="p">(</span><span class="n">options</span><span class="p">);</span>
+
+<span class="n">client</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s1">&#39;connect&#39;</span><span class="p">,</span> <span class="n">function</span> <span class="p">()</span> <span class="p">{</span> <span class="o">//</span> <span class="n">Called</span> <span class="n">once</span> <span class="n">when</span> <span class="n">connected</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;Connected successfully!&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="o">//</span> <span class="n">update</span> <span class="n">a</span> <span class="n">Device</span> <span class="n">Meta</span><span class="p">(</span><span class="n">Set</span> <span class="n">dim</span> <span class="n">to</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">deviceTopic</span><span class="p">,</span> <span class="s1">&#39;[{&quot;name&quot;: &quot;dim&quot;, &quot;value&quot;: 50}]&#39;</span><span class="p">);</span>
+
+<span class="o">//</span> <span class="n">Let</span><span class="s1">&#39;s close the connection.</span>
+<span class="n">client</span><span class="o">.</span><span class="n">end</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 docutils container">
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip install paho-mqtt
+</pre></div>
+</div>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+
+<span class="kn">import</span> <span class="nn">paho.mqtt.client</span> <span class="k">as</span> <span class="nn">mqtt</span>
+
+<span class="c1"># The user Api Token</span>
+<span class="n">API_TOKEN</span> <span class="o">=</span> <span class="s2">&quot;0011223344556677b1c2bcaa625fefc5469ca43caa1&quot;</span>
+
+<span class="c1"># Topic to publish to(Device&#39;s Meta)</span>
+<span class="n">MQTT_TOPIC</span> <span class="o">=</span> <span class="s2">&quot;devices/1de83fdc-6b4b-cff8-be07-cea1a7dd6343/meta&quot;</span>
+
+<span class="c1"># Message to Send(Meta Updates)</span>
+<span class="n">MQTT_MSG</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;als&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">87</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;temperature&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">35</span><span class="p">}]</span>
+
+<span class="c1"># Initiate MQTT Client</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">mqtt</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
+
+<span class="c1"># Set TLS secure connection</span>
+<span class="n">client</span><span class="o">.</span><span class="n">tls_set</span><span class="p">(</span><span class="s2">&quot;/home/gooee/client.pem&quot;</span><span class="p">)</span>
+
+<span class="c1"># Authenticate</span>
+<span class="n">client</span><span class="o">.</span><span class="n">username_pw_set</span><span class="p">(</span><span class="s2">&quot;authorization&quot;</span><span class="p">,</span> <span class="n">API_TOKEN</span><span class="p">)</span>
+
+<span class="c1"># Connect to the MQTT Broker</span>
+<span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;mqtt.gooee.io&quot;</span><span class="p">,</span> <span class="mi">8883</span><span class="p">)</span>
+
+<span class="c1"># Publish message to MQTT Broker</span>
+<span class="n">client</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">MQTT_TOPIC</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">MQTT_MSG</span><span class="p">))</span>
+
+<span class="c1"># Disconnect from MQTT_Broker</span>
+<span class="n">client</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 docutils container">
+<div class="code c highlight-default"><div class="highlight"><pre><span></span><span class="c1">#include &quot;stdio.h&quot;</span>
+<span class="c1">#include &quot;stdlib.h&quot;</span>
+<span class="c1">#include &quot;string.h&quot;</span>
+<span class="c1">#include &quot;MQTTClient.h&quot;</span>
+
+<span class="c1">#define ADDRESS &quot;ssl://mqtt.gooee.io:8883&quot;</span>
+<span class="c1">#define CLIENTID &quot;sample_gooee_client&quot;</span>
+<span class="c1">#define API_TOKEN &quot;0011223344556677b1c2bcaa625fefc5469ca43caa1&quot;</span>
+<span class="c1">#define TOPIC &quot;devices/1de83fdc-6b4b-cff8-be07-cea1a7dd6343/meta&quot;</span>
+<span class="c1">#define PAYLOAD &quot;[{\&quot;name\&quot;: \&quot;als\&quot;, \&quot;value\&quot;: 37}]&quot;</span>
+<span class="c1">#define QOS 1</span>
+<span class="c1">#define SERVER_CA_FILE &quot;client.pem&quot;</span>
+<span class="c1">#define TIMEOUT 10000L</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">(</span><span class="nb">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+    <span class="n">MQTTClient</span> <span class="n">client</span><span class="p">;</span>
+    <span class="n">MQTTClient_connectOptions</span> <span class="n">conn_opts</span> <span class="o">=</span> <span class="n">MQTTClient_connectOptions_initializer</span><span class="p">;</span>
+    <span class="n">MQTTClient_message</span> <span class="n">pubmsg</span> <span class="o">=</span> <span class="n">MQTTClient_message_initializer</span><span class="p">;</span>
+    <span class="n">MQTTClient_deliveryToken</span> <span class="n">token</span><span class="p">;</span>
+    <span class="nb">int</span> <span class="n">rc</span><span class="p">;</span>
+    <span class="nb">int</span> <span class="n">status</span><span class="p">;</span>
+
+    <span class="n">MQTTClient_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">client</span><span class="p">,</span> <span class="n">ADDRESS</span><span class="p">,</span> <span class="n">CLIENTID</span><span class="p">,</span> <span class="n">MQTTCLIENT_PERSISTENCE_NONE</span><span class="p">,</span> <span class="n">NULL</span><span class="p">);</span>
+    <span class="n">MQTTClient_SSLOptions</span> <span class="n">ssl_opts</span> <span class="o">=</span> <span class="n">MQTTClient_SSLOptions_initializer</span><span class="p">;</span>
+    <span class="n">ssl_opts</span><span class="o">.</span><span class="n">trustStore</span> <span class="o">=</span> <span class="n">SERVER_CA_FILE</span><span class="p">;</span>
+    <span class="n">ssl_opts</span><span class="o">.</span><span class="n">enableServerCertAuth</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="n">conn_opts</span><span class="o">.</span><span class="n">keepAliveInterval</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+    <span class="n">conn_opts</span><span class="o">.</span><span class="n">cleansession</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">conn_opts</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="s2">&quot;authorization&quot;</span><span class="p">;</span>
+    <span class="n">conn_opts</span><span class="o">.</span><span class="n">password</span> <span class="o">=</span> <span class="n">API_TOKEN</span><span class="p">;</span>
+    <span class="n">conn_opts</span><span class="o">.</span><span class="n">ssl</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">ssl_opts</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">((</span><span class="n">rc</span> <span class="o">=</span> <span class="n">MQTTClient_connect</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">conn_opts</span><span class="p">))</span> <span class="o">!=</span> <span class="n">MQTTCLIENT_SUCCESS</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;Failed to connect, return code </span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">rc</span><span class="p">);</span>
+        <span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">pubmsg</span><span class="o">.</span><span class="n">payload</span> <span class="o">=</span> <span class="n">PAYLOAD</span><span class="p">;</span>
+    <span class="n">pubmsg</span><span class="o">.</span><span class="n">payloadlen</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">PAYLOAD</span><span class="p">);</span>
+    <span class="n">pubmsg</span><span class="o">.</span><span class="n">qos</span> <span class="o">=</span> <span class="n">QOS</span><span class="p">;</span>
+    <span class="n">pubmsg</span><span class="o">.</span><span class="n">retained</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="n">status</span><span class="o">=</span><span class="n">MQTTClient_publishMessage</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">TOPIC</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">pubmsg</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">token</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;status is </span><span class="si">%d</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">status</span><span class="p">);</span>
+    <span class="n">rc</span> <span class="o">=</span> <span class="n">MQTTClient_waitForCompletion</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">token</span><span class="p">,</span> <span class="n">TIMEOUT</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;Message with delivery token </span><span class="si">%d</span><span class="s2"> delivered</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">token</span><span class="p">);</span>
+    <span class="n">MQTTClient_disconnect</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="mi">10000</span><span class="p">);</span>
+    <span class="n">MQTTClient_destroy</span><span class="p">(</span><span class="o">&amp;</span><span class="n">client</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">rc</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="search.html" class="btn btn-neutral float-right" title="Search" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="pagination.html" class="btn btn-neutral" title="Pagination" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Gooee, LLC.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/tabs.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

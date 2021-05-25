@@ -1,0 +1,62 @@
+.. _objects_locations:
+
+=========
+Locations
+=========
+
+.. contents:: Quick Links
+
+Description
+===========
+
+Locations are used to represent the geographical position of a variety of objects.
+
+.. note:: `lat` and `lng` are auto-calculated from the address.
+
+Data Model
+==========
+
+=============  ========  =======================================
+Key            Datatype  Notes
+=============  ========  =======================================
+addr1          string    max_length=100
+addr2          string    max_length=100
+city           string    max_length=100
+state          string    max_length=100
+postal_code    string    max_length=50
+country        string    max_length=2, see `ISO 3166`_
+phone_number   string    max_length=20
+lat            float     read-only
+lng            float     read-only
+=============  ========  =======================================
+
+
+Example:
+~~~~~~~~~~~~~~~~
+
+.. sourcecode:: javascript
+
+    "location": {
+      "addr1": "7711 East Pleasant Valley Rd.",
+      "addr2": "P.O. Box 318010",
+      "city": "Cleveland",
+      "state": "OH",
+      "postal_code": "44131",
+      "country": "US",
+      "phone_number": "",
+      "lat": 41.362875,
+      "lng": -81.62697
+    }
+
+.. _objects_locations_complex_constraints:
+
+Filtering by Latitude (lat) / Longitude (lng)
+=============================================
+
+You may filter for entities that have a `lat`/`lng` within a "bounding box" of coordinates.
+To do this, use the `in_bbox` URL parameter as a filter.
+
+.. http:get:: /buildings/?in_bbox=top_left_lat,top_left_lng,bottom_right_lat,bottom_right_lng
+.. http:get:: /buildings/?in_bbox=-82.6404690742,27.7704436362,-82.6361346245,27.7725235696
+
+.. _ISO 3166: https://www.iso.org/obp/ui/#search

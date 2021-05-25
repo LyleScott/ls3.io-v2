@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "color_temp": {
+      "type": "number",
+      "minimum": 133,
+      "maximum": 550
+    },
+    "transition_time": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    }
+  },
+  "required": [
+    "color_temp"
+  ],
+  "additionalProperties": false
+}

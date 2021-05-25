@@ -1,0 +1,40 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "priority": {
+      "title": "Priority",
+      "description": "The alarm priority 0-255.",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 255
+    },
+    "rule": {
+      "title": "Rule",
+      "description": "UUID of the rule.",
+      "type": "string",
+      "minLength": 32,
+      "maxLength": 36,
+      "pattern": "^([A-Za-z0-9]{8})(-)?([A-Za-z0-9]{4})(-)?([A-Za-z0-9]{4})(-)?([A-Za-z0-9]{4})(-)?([A-Za-z0-9]{12})$"
+    },
+    "description": {
+      "title": "Description",
+      "description": "Description of the Fault Alarm.",
+      "type": ["string", "null"]
+    },
+    "level": {
+      "title": "Level",
+      "description": "Alarm level (e.g. info, fault).",
+      "type": "string"
+    },
+    "tags": {
+      "title": "Tags",
+      "description": "Array of tags.",
+      "type": "array"
+    }
+  },
+  "required": [
+    "priority", "level"
+  ],
+  "additionalProperties": false
+}

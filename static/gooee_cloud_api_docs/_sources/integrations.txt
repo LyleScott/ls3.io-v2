@@ -1,0 +1,10 @@
+.. _integrations:
+
+Integrations
+============
+
+.. toctree::
+
+   integrations/als2lux
+   integrations/external_sensor
+   integrations/gateway_lite

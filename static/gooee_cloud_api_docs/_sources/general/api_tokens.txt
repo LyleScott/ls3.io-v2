@@ -1,0 +1,154 @@
+.. _general_api_tokens:
+
+==========
+API Tokens
+==========
+
+Requests can be made directly to the Gooee Cloud API through the use of API tokens. Data can be accessed
+programmatically, rather than relying on visiting the Gooee Cloud Portal.
+
+.. note:: A default API token is generated automatically for each Customer.
+
+.. note:: **Coming soon:** granting each token a specific set of permissions.
+
+Data Model
+==========
+
+==============  ========  =====================================
+Key             Datatype  Notes
+==============  ========  =====================================
+created         datetime  read-only
+description     string    required, only visible for Customer API tokens.
+api_token       string    read-only
+account_status  string    read-only
+usage           json      read-only
+==============  ========  =====================================
+
+Permissions and Scoping
+=======================
+
+You must have the ``edit_customer`` :ref:`permission set <objects_user_groups_permission_sets>` to manage
+Customer API Tokens.
+
+You must be :ref:`scoped <general_scope>` to the parent :ref:`Customer <objects_customers>` in
+order to access a Customer API Token instance.
+
+API Endpoints
+=============
+
+List Customer API Tokens
+------------------------
+
+.. http:GET:: /customers/(id)/api_tokens
+
+   :statuscode 200:
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /customers/93378718-b2ad-4b6c-a1bb-39c5436bf3e6/api_tokens HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json
+
+      [
+        {
+          "created": "2016-11-09T04:04:07.007725Z",
+          "description": "Default API Token",
+          "api_token": "0011223344556677b1c2bcaa625fefc5469ca43caa121ca7f0ced65cdc2bdf2a",
+          "usage": {
+            "now": "2016-11-09T05:03:51Z",
+            "api": {
+              "day": {
+                "2016-10-025T00:00:00Z": 8,
+                "2016-11-09T00:00:00Z": 5,
+                "2016-11-08T00:00:00Z": 3
+              },
+              "month": {
+                "2016-10-01T00:00:00Z": 11,
+                "2016-11-01T00:00:00Z": 8
+              }
+            },
+            "mqtt": {
+              "day": {},
+              "month": {}
+            }
+          },
+          "account_status": "active"
+        }
+      ]
+
+
+Create a Customer API Token
+---------------------------
+
+.. http:POST:: /customers/(id)/api_tokens
+
+   :statuscode 201:
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      POST /customers/93378718-b2ad-4b6c-a1bb-39c5436bf3e6/api_tokens HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+      {
+        "description": "testing api token"
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 201 OK
+      Content-Type: application/json
+
+
+      {
+        "created": "2020-03-13T20:19:11.869809Z",
+        "description": "testing api token",
+        "api_token": "24c355c8ed563c0075371059d2a1057fe38b3919fff13bdebfd3007317fe8408b40ed340",
+        "account_status": "active",
+        "usage": "This feature is unavailable at this time."
+      }
+
+Activate a Customer API Token
+-----------------------------
+
+.. http:POST:: /customers/(id)/api_tokens/{api_token}/activate
+
+   :statuscode 204:
+
+
+Deactivate a Customer API Token
+-------------------------------
+
+.. http:POST:: /customers/(id)/api_tokens/{api_token}/deactivate
+
+   :statuscode 204:
+
+
+Delete a Customer API Token
+---------------------------
+
+.. http:DELETE:: /customers/(id)/api_tokens/{api_token}
+
+   :statuscode 201:
+
+
+View User API Token
+-------------------
+
+.. http:GET:: /users/(id)/api_token
+
+   :statuscode 200:
+

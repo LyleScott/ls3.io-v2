@@ -1,0 +1,28 @@
+{
+  "device": "$device_id",
+  "name": "occupancy detected",
+  "conditions": [
+    {
+      "variable": "occupancy_detected",
+      "operator": "=",
+      "value": true,
+      "logical_operator": null
+    }
+  ],
+  "operations": [
+    {
+      "spaces": [
+        "$space_id"
+      ],
+      "actions": [
+        {
+          "name": "dim",
+          "parameters": {
+            "level": 5,
+            "transition_time": 3
+          }
+        }
+      ]
+    }
+  ]
+}

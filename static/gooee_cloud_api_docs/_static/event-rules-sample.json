@@ -1,0 +1,23 @@
+{
+  "device": "$device_id",
+  "name": "A sample rule",
+  "condition": {
+    "action": "dim",
+    "variable": "level",
+    "operator": "<",
+    "value": 70
+  },
+  "actions": [
+    [
+      {
+        "type": "adjust",
+        "target_type": "space",
+        "target_id": "$space_id",
+        "value": {
+          "delta": 20,
+          "transition_time": 3
+        }
+      }
+    ]
+  ]
+}

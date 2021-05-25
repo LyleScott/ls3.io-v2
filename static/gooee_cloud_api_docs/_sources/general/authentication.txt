@@ -1,0 +1,557 @@
+.. _general_authentication:
+
+==============
+Authentication
+==============
+
+Upon supplying the correct `username` and `password` combination, a response is returned containing
+a portal theme and a JWT token that will be used for authenticating future requests on the behalf
+of the :ref:`User <objects_users>` until it expires.
+
+You'll then be able to make authenticated requests to the API service by supplying either the JWT
+token in the headers of future requests:
+
+**Authorization: JWT $JWT_TOKEN**
+
+Before the token expires, the token may be refreshed until the *ttl* is met. This allows short
+lived *exp* times on JWT tokens to be extended so that the user does not have to reauthenticate.
+
+For utility, there is also an endpoint for verifying that a token is valid.
+
+JWT Tokens
+----------
+
+The `token` in the authorization response is a JWT_Token_. If you decode it at jwt.io_, you'll see
+something like the following structure:
+
+=====  ================================================================================
+Claim  Description
+=====  ================================================================================
+sub    The subject of the token. Often, the username of the user that the token is for.
+iat    Issued At Time. The time that the token was issued.
+exp    Expiration. Once exceeded, the token is invalid and can no longer be refreshed.
+ttl    Time To Live. Once exceeded, the token can no longer be refreshed.
+iss    The issuer of the token.
+aud    The resource for which the token is for.
+jti    A unique identifier to prevent replay attacks.
+=====  ================================================================================
+
+.. _jwt.io: https://jwt.io
+.. _JWT_Token: https://en.wikipedia.org/wiki/JSON_Web_Token
+
+.. sourcecode:: json
+
+   {
+     "sub": "lyle@gooee.com",
+     "iat": 1459964702,
+     "exp": 1459965002,
+     "ttl": 1460569502,
+     "iss": "https://dev-portal.gooee.com/",
+     "aud": "portal",
+     "jti": "b48d2d1f-f5bf-432f-bdc5-32dbd8ed7eeb",
+     "user_id": "d7b011c9-4d19-4c97-a29b-d21b91d2e876",
+     "account_type": "customer",
+     "api_token": "5377b1c628a1bc3760f342b2046c8fae"
+   }
+
+This token was issued at `iat` and expires at `exp`.
+
+.. _general_authentication_login:
+
+Logging In
+----------
+
+Simply supply the ``username`` and ``password`` to receive the JWT token to use in further requests. If the User has
+Two-Factor Authentication enabled and verified, the ``two_factor_auth_code`` (received via the method configured in the
+``two_factor_auth_method``) also needs to be supplied in a second request to obtain a JWT token.
+
+ **Request Model**
+
+ ====================  ========  ========
+ Key                   Datatype  Notes
+ ====================  ========  ========
+ username              string    required
+ password              string    required
+ two_factor_auth_code  string
+ ====================  ========  ========
+
+ **Response Model**
+
+ ===================  ========  =====
+ Key                  Datatype  Notes
+ ===================  ========  =====
+ token                string
+ theme                object
+ preferences          object
+ ===================  ========  =====
+
+
+Login without Two-Factor Authentication
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. http:POST:: /auth/login
+
+   **Request**
+
+   .. sourcecode:: http
+
+      POST /auth/login HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+      {
+          "username": "$username",
+          "password": "$password"
+      }
+
+   **Response**
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json
+
+      {
+        "token": "abcdefg.hijklmnop.qrstuvwxyz",
+        "preferences": {
+          "date_format": "YYYY-MM-DD",
+          "datetime_format": "YYYY-MM-DD HH:mm:ss",
+          "locale": "fr_FR",
+          "time_format": "HH:mm:ss",
+          "timezone": "UTC"
+        },
+        "theme": {
+          "favicon": "<image_url>",
+          "css": "https://s3.amazonaws.com/gc-portal-theme-builder/<ENV>/49d95f5d333fc2faa666811a8307d557.css",
+          "logo": "<image_url>"
+        },
+      }
+
+   :statuscode 200: User logged in successfully.
+   :statuscode 400: Invalid username and/or password was submitted.
+
+
+Login with Two-Factor Authentication
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This requires first that Two-Factor Authentication is setup for your user. For setup, please
+reference :ref:`Two-Factor Authentication <users_two_factor>`. Once setup, then follow these steps:
+
+Make a first request to the login endpoint and it will return a **423** response code indicating that
+the Two-Factor Authentication code (``two_factor_auth_code``) is required.
+
+.. http:POST:: /auth/login
+
+   **Request**
+
+   .. sourcecode:: http
+
+      POST /auth/login HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+      {
+          "username": "$username",
+          "password": "$password"
+      }
+
+   **Response**
+
+   .. sourcecode:: http
+
+      HTTP/1.1 423 LOCKED
+      Content-Type: application/json
+
+      {
+        "two_factor_auth_code": "You need to provide the Two-Factor Authentication code to login.",
+        "two_factor_auth_method": "app"
+      }
+
+   :statuscode 400: Invalid username and/or password was submitted.
+
+Check E-Mail, SMS or the App ( e.g `Google Authenticator <https://support.google.com/accounts/answer/1066447?hl=en>`_
+or `Authy 2-Factor Authentication <https://authy.com>`_ ) according to the
+``two_factor_auth_method``, then make a second request providing the received or generated code.
+If the code is correct, you can obtain the JWT token, otherwise you can try again. You can repeat
+the first step again if the code has expired to send a new one (in case email or SMS is used).
+
+.. http:POST:: /auth/login
+
+   **Request**
+
+   .. sourcecode:: http
+
+      POST /auth/login HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+      {
+          "username": "$username",
+          "password": "$password",
+          "two_factor_auth_code": "$code"
+      }
+
+   **Response**
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json
+
+      {
+        "token": "abcdefg.hijklmnop.qrstuvwxyz",
+        "preferences": {
+          "date_format": "YYYY-MM-DD",
+          "number_format": "fr_FR",
+          "timezone": "UTC",
+          "use_24": false,
+          "use_local": true
+        },
+        "theme": {
+          "favicon": "<image_url>",
+          "css": "https://s3.amazonaws.com/gc-portal-theme-builder/<ENV>/49d95f5d333fc2faa666811a8307d557.css",
+          "logo": "<image_url>"
+        },
+      }
+
+   :statuscode 200: User logged in successfully.
+   :statuscode 400: Invalid username and/or password was submitted.
+   :statuscode 400: The code is incorrect or expired.
+
+Refresh a Token
+---------------
+
+Refreshing a token extends the *exp* time for an existing token. This can be done until the *ttl*
+is exceeded.
+
+For example, this is handy for extending a user's session that is active on a website. You could
+have logic to extend the token rather than log the user out after the token expires and make them
+reenter their credentials.
+
+.. warning:: This will not work on tokens that are expired (now > *exp*)
+
+.. http:POST:: /auth/refresh
+
+   **Request Model**
+
+   =====  ========  ========
+   Key    Datatype  Notes
+   =====  ========  ========
+   token  string    required
+   =====  ========  ========
+
+   **Response Model**
+
+   =====  ========  =====
+   Key    Datatype  Notes
+   =====  ========  =====
+   token  string
+   user   string
+   =====  ========  =====
+
+   **Request**
+
+   .. sourcecode:: http
+
+      POST /auth/refresh HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+      {
+        "token": "abcdefg.hijklmnop.qrstuvqxyz"
+      }
+
+   **Response**
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json
+
+      {
+        "token": "some.new.token",
+        "username": "user@gmail.com"
+      }
+
+   :statuscode 200: `token` is valid
+   :statuscode 400: `token` is invalid
+
+Verify Token
+------------
+
+Verify that an existing token is still valid.
+
+.. http:POST:: /auth/verify
+
+   **Request Model**
+
+   =====  ========  ========
+   Key    Datatype  Notes
+   =====  ========  ========
+   token  string    required
+   =====  ========  ========
+
+   **Response Model**
+
+   =====  ========  =====
+   Key    Datatype  Notes
+   =====  ========  =====
+   token  string
+   user   string
+   =====  ========  =====
+
+   **Request**
+
+   .. sourcecode:: http
+
+      POST /auth/verify HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+      {
+        "token": "abcdefg.hijklmnop.qrstuvqxyz"
+      }
+
+   **Response**
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json
+
+      {
+        "token": "some.new.token",
+        "username": "user@gmail.com"
+      }
+
+   :statuscode 200: `token` is valid
+   :statuscode 400: `token` is invalid
+
+Revoke Token
+------------
+
+Revoke all access for a token that has not expired.
+
+.. http:PUT:: /auth/revoke/(jti)
+
+   **Response Model**
+
+   ========  ========
+   Key       Datatype
+   ========  ========
+   user      string
+   aud       string
+   jti       string
+   exp       datetime
+   revoked   boolean
+   created   datetime
+   modified  datetime
+   ========  ========
+
+   **Response**
+
+   .. sourcecode:: http
+
+       HTTP/1.1 200 OK
+       Content-Type: application/json
+
+       {
+        "user": "9bd931ce-60f4-403f-911c-4ccc2a22a2b3",
+        "aud": "portal",
+        "jti": "cdc56d4d-df34-8c35-f1c5-a94a26a97dad",
+        "exp": "2016-05-11T13:46:43.563480Z",
+        "revoked": true,
+        "created": "2016-05-11T13:41:43.600127Z",
+        "modified": "2016-05-11T13:42:53.104869Z"
+       }
+
+   :statuscode 200: valid `jti` was revoked
+   :statuscode 404: invalid `jti` was provided
+
+
+.. _general_authentication_oauth2:
+
+OAuth2 Tokens
+-------------
+
+For App developers needing access to a Gooee :ref:`User <objects_users>`'s resources, send an email to cloud-backend@gooee.com.
+Provide any Redirect URIs for your OAuth2 implementation. We will respond with a Client ID and Client Secret.
+The work-flow is outlined below but follows the `OAuth 2.0 Authorization Framework Standard <https://tools.ietf.org/html/rfc6749>`_.
+
+An example `Docker-ized <https://www.docker.com/get-docker>`_ `Flask <http://flask.pocoo.org/>`_ app that shows this work-flow can be found in the `cloud-examples repo <https://github.com/GooeeIOT/cloud-examples/tree/master/oauth2-test-client>`_.
+
+
+.. http:GET:: /auth/o/authorize/
+
+   **Request Model: as query parameters**
+
+   =============  ========  ==============================================================================
+   Key            Datatype  Notes
+   =============  ========  ==============================================================================
+   client_id      string    provided by Gooee via email
+   response_type  string    value must be ``code``
+   state          string    a random string you must generate, used for verification in your app
+   redirect_uri   string    URI that the Authentication server will send the user after successful Auth
+   scope          string    space separated scopes for the token, see available :ref:`scopes <general_authentication_oauth2_token_scope>` below
+   =============  ========  ==============================================================================
+
+.. _general_authentication_oauth2_token_scope:
+
+   ==============  ====================
+   Token Scope     Description
+   ==============  ====================
+   product:read    Product Read scope
+   product:write   Product Write scope
+   partner:read    Partner Read scope
+   partner:write   Partner Write scope
+   customer:read   Customer Read scope
+   customer:write  Customer Write scope
+   building:read   Building Read scope
+   building:write  Building Write scope
+   space:read      Space Read scope
+   space:write     Space Write scope
+   device:read     Device Read scope
+   device:write    Device Write scope
+   action:read     Action Read scope
+   action:write    Action Write scope
+   schedule:read   Schedule Read scope
+   schedule:write  Schedule Write scope
+   scene:read      Scene Read scope
+   scene:write     Scene Write scope
+   rule:read       Rule Read scope
+   rule:write      Rule Write scope
+   user:read       User Read scope
+   user:write      User Write scope
+   ==============  ====================
+
+
+   Upon successful authentication of the user, they will be redirected to the ``redirect_uri`` with query
+   parameters containing the Authentication ``code``, and the same ``state`` string your application
+   generated (*which you should verify within your application*).
+
+   **Response Model: as query parameters**
+
+   ============  ========  ==============================================================================
+   Key           Datatype  Notes
+   ============  ========  ==============================================================================
+   code          string    authorization Code used for aquiring tokens from the ``/auth/o/token/`` endpoint
+   state         string    should always be the same string passed in the request, used for verification
+   ============  ========  ==============================================================================
+
+.. http:POST:: /auth/o/token/
+
+   **Request Model: as json payload or x-www-form-urlencoded or URL params**
+
+   =============  ========  ==============================================================================
+   Key            Datatype  Notes
+   =============  ========  ==============================================================================
+   grant_type     string    ``authorization_code`` or ``refresh_token``
+   code           string    **Optional** the Authentication ``code`` received from the prior response.
+                            Provide this if ``grant_type`` is ``authorization_code``
+   refresh_token  string    **Optional** the ``refresh_token`` received from the request for a token.
+                            Provide this if ``grant_type`` is ``refresh_token``
+   redirect_uri   string    **Optional** the redirect_uri sent in the initial request as a means of verification
+                            Provide this if ``grant_type`` is ``authorization_code``
+   scope          string    **Optional** list of space separated :ref:`scopes <general_authentication_oauth2_token_scope>` that the token can access.
+                            Can be a subset of the original token's scopes.
+   =============  ========  ==============================================================================
+
+   **Response Model: as json payload**
+
+   =============  ========  ==============================================================================
+   Key            Datatype  Notes
+   =============  ========  ==============================================================================
+   access_token   string    access token to be user in ``Authorization: Bearer <TOKEN-GOES-HERE>`` headers
+   expires_in     int       time in seconds before access token expires
+   token_type     string    value will be ``Bearer``. Message Auth Code (mac) types not supported
+   scope          string    list of space separated :ref:`scopes <general_authentication_oauth2_token_scope>` that the token can access
+   refresh_token  string    token used to retrieve another valid token
+   =============  ========  ==============================================================================
+
+
+   Using `Basic and Digest Access Authentication <https://tools.ietf.org/html/rfc2617>`_ with the user as the client_id
+   of your app and the password as the client_secret (*both contained in the email from Gooee*), send the
+   above JSON payload to retrieve an ``access_token``. Use this token to make requests on behalf of your
+   users by appending the following HTTP header to all requests.
+
+   **Example token request**
+
+   .. sourcecode:: http
+
+      POST /auth/o/token/ HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+      Authorization: Basic am9objpzbWl0aA==
+
+      {
+        "grant_type": "authorization_code",
+        "code": "<AUTHENTICATION-CODE-GOES-HERE>",
+        "scope": "building:read building:write"
+      }
+
+   :statuscode 200: valid request
+   :statuscode 401: invalid refresh token or scope
+
+   **Example token response**
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json
+
+      {
+        "access_token": "v8OUyyNcn3gqjB6KSPteqpc74XZI5w",
+        "expires_in": 36000,
+        "token_type": "Bearer",
+        "scope": "building:read building:write",
+        "refresh_token" "4iHDmXT3RKmwNDZABagaBhRqxXNmFf"
+      }
+
+   .. IMPORTANT::
+      The available data will be :ref:`scoped to the users resources <general_scope>` and further scoped based on the :ref:`token scope <general_authentication_oauth2_token_scope>` above.
+
+   **Example request using OAuth Bearer access token**
+
+   .. sourcecode:: http
+
+      POST /actions HTTP/1.1
+      Host: api.gooee.io
+      Authorization: Bearer <ACCESS-TOKEN-GOES-HERE>
+      Content-Type: application/json
+
+      {
+        "name": "dimming",
+        "type": "dim",
+        "device": "09e1e84c-2b8b-4e93-85ce-ee6f70eebac4",
+        "value": {"level":10}
+      }
+
+   :statuscode 200: valid request
+   :statuscode 401: invalid token or scope
+
+
+Refresh an OAuth2 Token
+-----------------------
+
+   To refresh tokens, use the ``refresh_token`` from the ``/auth/o/token/`` response. Make another request to
+   ``/auth/o/token/`` with a grant_type of ``refresh_token`` and provide the refresh_token as the value
+   of ``refresh_token``. You can optionally provide a ``scope`` that **must** be a subset of the original token's
+   :ref:`scope <general_authentication_oauth2_token_scope>`.
+
+   **Example**
+
+   .. sourcecode:: http
+
+       POST /auth/o/token/ HTTP/1.1
+       Host: api.gooee.io
+       Content-Type: application/json
+       Authorization: Basic am9objpzbWl0aA==
+
+       {
+         "grant_type": "refresh_token",
+         "refresh_token": "<REFRESH-TOKEN-GOES-HERE>",
+         "scope": "building:read"
+       }
+
+   :statuscode 200: valid request
+   :statuscode 401: invalid refresh token or scope

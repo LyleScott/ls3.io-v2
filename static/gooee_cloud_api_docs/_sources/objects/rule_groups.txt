@@ -1,0 +1,93 @@
+.. _objects_rule_groups:
+
+===========
+Rule Groups
+===========
+
+.. contents:: Quick Links
+
+
+Description
+===========
+
+Rule Groups are provided as a mechanism for linking related :ref:`Property-based Rules
+<objects_property_rules>` and enforcing consistency between linked Rules (see
+:ref:`Complex Constraints <rule_group_complex_constraints>` and :ref:`Property-based Rules docs
+<objects_property_rules>`). This feature exists purely to satisfy frontend apps that have a need
+for such constraints.
+
+
+Data Model
+==========
+
+=====================  ===========================================  ================================
+Key                    Datatype                                     Notes
+=====================  ===========================================  ================================
+id                     ref                                          read-only
+created                datetime                                     read-only
+modified               datetime                                     read-only
+name                   string                                       required, max_length=100
+description            string
+tags                   array(str)                                   max_length=50 per tag
+property_rules         array(:ref:`ref <objects_property_rules>`)   required, create-only, min_length=2, :ref:`Complex Constraints <rule_group_complex_constraints>`
+space                  :ref:`ref <objects_spaces>`                  required, :ref:`Complex Constraints <rule_group_complex_constraints>`
+enabled                boolean                                      required, :ref:`Complex Constraints <rule_group_complex_constraints>`
+execution_origin       enum                                         required, options=[``"cloud"``, ``"gateway"``], :ref:`Complex Constraints <rule_group_complex_constraints>`
+=====================  ===========================================  ================================
+
+
+.. _rule_group_complex_constraints:
+
+Complex Constraints
+===================
+
+- ``name`` and ``space`` must form a unique pair.
+- All ``property_rules`` must have the same values as the Rule Group for ``space``, ``enabled``, and
+  ``execution_origin``.
+- Changes to ``enabled`` or ``execution_origin`` are propagated to all ``property_rules``.
+
+
+API Endpoints
+=============
+
+Create a Rule Group
+-------------------
+
+.. http:POST:: /rules/v2/property/groups
+
+   :statuscode 201:
+
+List all Rule Groups
+--------------------
+
+.. http:GET:: /rules/v2/property/groups
+
+   :statuscode 200:
+
+Retrieve a Rule Group
+---------------------
+
+.. http:GET:: /rules/v2/property/groups/(id)
+
+   :statuscode 200:
+
+Update a Rule Group
+-------------------
+
+.. http:PUT:: /rules/v2/property/groups/(id)
+
+   :statuscode 200:
+
+Partially Update a Rule Group
+-----------------------------
+
+.. http:PATCH:: /rules/v2/property/groups/(id)
+
+   :statuscode 200:
+
+Delete a Rule Group
+-------------------
+
+.. http:DELETE:: /rules/v2/property/groups/(id)
+
+   :statuscode 204:

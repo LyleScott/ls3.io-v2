@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "Scene States Schema",
+  "description": "Schema used to validate Scene States.",
+  "patternProperties": {
+    "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$": {
+      "properties": {
+        "dim": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100,
+          "title": "Dim",
+          "description": "Set the dim level of the Device."
+        },
+        "onoff": {
+          "type": "boolean",
+          "title": "On/Off",
+          "description": "Turn the Device on or off."
+        }
+      },
+      "required": [
+        "dim"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,11 +1,11 @@
 [
     {
         "ParameterKey": "Domain",
-        "ParameterValue": ""
+        "ParameterValue": "ls3.io"
     },
     {
         "ParameterKey": "AcmCertArn",
-        "ParameterValue": ""
+        "ParameterValue": " arn:aws:acm:us-east-1:975070732459:certificate/cb8d040a-027c-468c-a67e-4fa62f4f6123"
     },
     {
         "ParameterKey": "PriceClass",

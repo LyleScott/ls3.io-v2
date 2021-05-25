@@ -1,0 +1,399 @@
+.. _general_pubsub:
+
+=====================
+PubSub Message Broker
+=====================
+
+We use a publish/subscribe broker that enables for near real-time bi-directional communication between our Cloud API
+and Clients (Hardware, Apps, Users). A client (Publisher) sends a message to a topic like:
+
+**devices/1de83fdc-6b4b-cff8-be07-cea1a7dd6343/meta**
+
+The message broker will take care of delivering that message to all the Clients (Subscribers) on this topic that are actually connected.
+
+
+Protocol Support
+================
+
+The message broker supports the `MQTT protocol v3.1.1 <http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/mqtt-v3.1.1.html>`_ and also MQTT over the
+`WebSockets protocol <https://tools.ietf.org/html/rfc6455>`_. MQTT is a lightweight messaging protocol that is suitable
+for IoT messaging, since it is bandwidth-efficient and uses little battery power. To learn more about the MQTT protocol, see the `MQTT documentation <https://mqtt.org/documentation>`_.
+
+Hosts
+=====
+
+=============  ====  ============================
+Host           Port  Protocol
+=============  ====  ============================
+mqtt.gooee.io  8883  MQTT with TLS(secure)
+ws.gooee.io    443   Websockets with SSL(secure)
+=============  ====  ============================
+
+Security
+========
+
+The use of the TLS/SSL is **enabled** by default to secure communications. To establish TLS connections you need to connect using
+the client certificate that can be downloaded :download:`here </_static/client.pem>`.
+
+
+Authentication
+==============
+
+An MQTT session needs to be established between a client and Gooee MQTT. Once the client is authenticated,
+it can publish/subscribe messages within this session. In order to authenticate on the MQTT server, the client needs
+to provide **authorization** as the username in the connection with the :ref:`User API Token <general_api_tokens>` as the password.
+
+
+Topics
+======
+
+The message broker uses topics to route messages from publishers to subscribers. The forward slash (/) is used to delimit
+the topic hierarchy, like if we were using a URL. The following table lists topics that can be used when you publish/subscribe;
+any other topic you attempt to use will result in a dropped connection from the broker:
+
+
+===================================  ===  ===  ========================================
+Topic                                Pub  Sub  Description
+===================================  ===  ===  ========================================
+devices/(:id)/meta                   Yes  Yes  All Meta values for a Device.
+devices/(:id)/meta/(:name)           No   Yes  A specific Meta value for a Device.
+devices/(:id)/actions                Yes  Yes  All the Actions for a Device.
+devices/(:id)/actions/(:type)        No   Yes  A specific Action on a Device.
+devices/(:id)/fault_alarms           Yes  Yes  :ref:`Fault Alarms <objects_fault_alarms>` for a Device.
+areas/(:id)/meta/head_count          Yes  Yes  head_count Meta value for an Area.
+areas/(:id)/meta/headcount_in        Yes  Yes  headcount_in Meta value for an Area.
+areas/(:id)/meta/headcount_out       Yes  Yes  headcount_out Meta value for an Area.
+spaces/(:id)/actions                 Yes  Yes  All the Actions for a Space.
+spaces/(:id)/actions/(:type)         No   Yes  A specific Action on a Space.
+spaces/(:id)/meta/head_count         Yes  Yes  head_count Meta value for a Space.
+spaces/(:id)/meta/headcount_in       Yes  Yes  headcount_in Meta value for a Space.
+spaces/(:id)/meta/headcount_out      Yes  Yes  headcount_out Meta value for a Space.
+buildings/(:id)/actions              No   Yes  All the Actions for Devices under the Building.
+buildings/(:id)/actions/(:type)      No   Yes  Specific Actions for Devices under the Building.
+buildings/(:id)/fault_alarms         Yes  Yes  :ref:`Fault Alarms <objects_fault_alarms>` for a Building.
+buildings/(:id)/meta/head_count      Yes  Yes  head_count Meta value for a Building.
+buildings/(:id)/meta/headcount_in    Yes  Yes  headcount_in Meta value for a Building.
+buildings/(:id)/meta/headcount_out   Yes  Yes  headcount_out Meta value for a Building.
+===================================  ===  ===  ========================================
+
+Rejected Topics
+===============
+
+Published messages may be rejected if they're malformed or otherwise violate constraints of the API.
+For example, a violation of one of the :ref:`Meta Constraints <meta_complex_constraints>` would
+result in a rejected Device Meta message. The following topics can be subscribed to for monitoring
+newly rejected publishes:
+
+
+=====================================  ===  ===  ========================================
+Topic                                  Pub  Sub  Description
+=====================================  ===  ===  ========================================
+devices/(:id)/meta/rejected            No   Yes  All rejected Meta values for a Device.
+devices/(:id)/fault_alarms/rejected    No   Yes  All rejected :ref:`Fault Alarms <objects_fault_alarms>` for a Device.
+buildings/(:id)/fault_alarms/rejected  No   Yes  All rejected :ref:`Fault Alarms <objects_fault_alarms>` for a Building.
+=====================================  ===  ===  ========================================
+
+.. important::
+  Due to the stateless nature of the MQTT protocol, there is no feedback to the clients when data is
+  incorrect or not accepted in our data storage. MQTT clients must subscribe to the **(:prefix)/rejected**
+  topics (at least on the testing or initial integration phase with our platform).
+  These topics will inform the client if the desired update was unsuccessful (usually due to unexpected
+  data format), so the client could act and update the format of the data they report.
+  The **(:prefix)/rejected** topics will contain the data that failed along with the error message and
+  context explaining why it failed. For example:
+
+  .. sourcecode:: json
+
+    {
+      "error": {
+        "message": "Invalid payload due to regex pattern not matching.  Position: [0]/name. Value: \"Meta_New\".",
+        "context": {
+          "type": "string",
+          "title": "Name",
+          "pattern": "^(~?)(?!.*__.*)[a-z][a-z0-9_]+$",
+          "minLength": 1,
+          "maxLength": 100
+        }
+      },
+      "data": [
+        {
+          "name": "Meta_New",
+          "display_name": "Meta New",
+          "unit_of_measure": "Meters",
+          "value": 10
+        }
+      ]
+    }
+
+
+Messages
+========
+
+The content of a MQTT or Websockets message is a JSON object with the same structure as its equivalent Cloud API payload.
+
+Example Payloads:
+-----------------
+
+
+===================================  ======================================================
+Topic                                Example Payload
+===================================  ======================================================
+devices/(:id)/meta                   .. sourcecode:: json
+
+                                      [
+                                          {
+                                              "name": "temperature",
+                                              "display_name": "Temperature",
+                                              "value": 87.4,
+                                              "unit_of_measure": "C",
+                                              "timestamp": "2016-08-09T20:00:47.539000Z"
+                                          },
+                                          {
+                                              "name": "als",
+                                              "value": 87,
+                                              "unit_of_measure": "K",
+                                              "timestamp": "2016-08-09T20:00:47.539000Z"
+                                          }
+                                      ]
+
+devices/(:id)/meta/(:name)           .. sourcecode:: json
+
+                                      {
+                                          "name": "temperature",
+                                          "value": 87.4,
+                                          "timestamp": "2016-08-09T20:00:47.539000Z"
+                                      }
+
+devices/(:id)/actions                .. sourcecode:: json
+
+                                      {
+                                          "name": "Dim Device",
+                                          "type": "dim",
+                                          "target_type": "device",
+                                          "target_id": "8551e830-eab3-4de4-84d4-bd9ff6615b7f",
+                                          "value": {"level": 80, "transition_time": 5},
+                                          "created": "2016-08-09T20:00:47.539000Z"
+                                      }
+
+devices/(:id)/actions/(:type)        .. sourcecode:: json
+
+                                      {
+                                          "name": "Dim Device",
+                                          "target_type": "device",
+                                          "target_id": "8551e830-eab3-4de4-84d4-bd9ff6615b7f",
+                                          "value": {"level": 80, "transition_time": 5},
+                                          "created": "2016-08-09T20:00:47.539000Z"
+                                      }
+
+devices/(:id)/fault_alarms           .. sourcecode:: json
+
+                                        {
+                                            "id": "330de737-0f36-4b33-bc91-c4be5ddd4442",
+                                            "timestamp": "2020-02-17T15:47:53.046570Z",
+                                            "priority": 255,
+                                            "level": "info",
+                                            "type": "high_temperature",
+                                            "device": "b87fd763-0292-469e-8237-fc82a9f50d8c",
+                                            "notes": "Additional notes",
+                                            "value": {
+                                                "temp": 100
+                                            },
+                                            "description": "Temperature is above 90°F."
+                                        }
+
+areas/(:id)/meta/head_count          .. sourcecode:: json
+
+                                      {
+                                          "name": "headcount",
+                                          "value": 2
+                                      }
+
+areas/(:id)/meta/headcount_in        .. sourcecode:: json
+
+                                      {
+                                          "name": "headcount_in",
+                                          "value": 2
+                                      }
+
+areas/(:id)/meta/headcount_out       .. sourcecode:: json
+
+                                      {
+                                          "name": "headcount_out",
+                                          "value": 2
+                                      }
+
+spaces/(:id)/actions                 .. sourcecode:: json
+
+                                      {
+                                          "name": "Turn Off the Office",
+                                          "type": "off",
+                                          "target_type": "space",
+                                          "target_id": "6f00fb32-2b3d-44c8-90cf-e526c252f6d5",
+                                          "value": {"transition_time": 5},
+                                          "created": "2016-08-09T20:00:47.539000Z"
+                                      }
+
+spaces/(:id)/actions/(:type)         .. sourcecode:: json
+
+                                      {
+                                          "name": "Turn Off the Office",
+                                          "target_type": "space",
+                                          "target_id": "6f00fb32-2b3d-44c8-90cf-e526c252f6d5",
+                                          "value": {"transition_time": 5},
+                                          "created": "2016-08-09T20:00:47.539000Z"
+                                      }
+
+spaces/(:id)/meta/head_count         .. sourcecode:: json
+
+                                      {
+                                          "name": "headcount",
+                                          "value": 5
+                                      }
+
+spaces/(:id)/meta/headcount_in       .. sourcecode:: json
+
+                                      {
+                                          "name": "headcount_in",
+                                          "value": 5
+                                      }
+
+spaces/(:id)/meta/headcount_out      .. sourcecode:: json
+
+                                      {
+                                          "name": "headcount_out",
+                                          "value": 5
+                                      }
+buildings/(:id)/actions              .. sourcecode:: json
+
+                                      {
+                                          "name": "Dim Device",
+                                          "type": "dim",
+                                          "target_type": "device",
+                                          "target_id": "deb13bee-b69c-4b1d-a60b-c77ab53e3eb3",
+                                          "value": {"level": 80, "transition_time": 5},
+                                          "created": "2016-08-09T20:00:47.539000Z"
+                                      }
+
+buildings/(:id)/actions/(:type)      .. sourcecode:: json
+
+                                      {
+                                          "name": "Dim Device",
+                                          "target_type": "device",
+                                          "target_id": "deb13bee-b69c-4b1d-a60b-c77ab53e3eb3",
+                                          "value": {"level": 80, "transition_time": 5},
+                                          "created": "2016-08-09T20:00:47.539000Z"
+                                      }
+
+buildings/(:id)/fault_alarms         .. sourcecode:: json
+
+                                        {
+                                            "timestamp": "2020-02-17T15:47:53.046570Z",
+                                            "priority": 255,
+                                            "level": "info",
+                                            "type": "high_temperature",
+                                            "device": "b87fd763-0292-469e-8237-fc82a9f50d8c",
+                                            "notes": "Additional notes",
+                                            "value": {
+                                                "temp": 100
+                                            },
+                                            "description": "Temperature is above 90°F."
+                                        }
+
+buildings/(:id)/meta/head_count      .. sourcecode:: json
+
+                                      {
+                                          "name": "headcount",
+                                          "value": 20
+                                      }
+
+buildings/(:id)/meta/headcount_in    .. sourcecode:: json
+
+                                      {
+                                          "name": "headcount_in",
+                                          "value": 20
+                                      }
+
+buildings/(:id)/meta/headcount_out   .. sourcecode:: json
+
+                                      {
+                                          "name": "headcount_out",
+                                          "value": 20
+                                      }
+
+===================================  ======================================================
+
+
+Connecting to the Message Broker
+================================
+
+`MQTT.fx <http://mqttfx.org>`_ is a free, GUI-based MQTT client to use for testing the Gooee Message Broker.
+It supports any operating system that can run Java. Once downloaded, run it and create a new connection using
+the settings as shown below:
+
+.. image:: ../_static/mqtt_connection.png
+
+If you want to establish a secure connection go to the **SSL/TLS** tab and select the certificate:
+
+.. image:: ../_static/mqtt_tls.png
+
+After the connection is created, from the main MQTT.fx window, select "Gooee MQTT", and click Connect, the green light on
+the top right corner will indicate that connection was established:
+
+.. image:: ../_static/mqtt_connect.gif
+
+Once connected, you can use the publish and subscribe buttons in MQTT.fx to send and receive messages. We will use a
+Device with ID: **120e54bb-0fdc-4929-a7f4-7fab08cb0469**:
+
+Example 1: Publish Device's Meta updates
+----------------------------------------
+
+.. image:: ../_static/mqtt_publish_device_meta.png
+
+
+Example 2: Subscribe to a Device's Meta updates
+-----------------------------------------------
+
+.. image:: ../_static/mqtt_subscribe_device_meta.png
+
+
+Example 3: Publish Action on Space
+----------------------------------
+
+.. image:: ../_static/mqtt_publish_space_action.png
+
+
+.. note::
+
+   For a more extensive list of MQTT clients and tools check: http://www.hivemq.com/blog/seven-best-mqtt-client-tools
+
+
+Code Examples
+=============
+
+The examples below show how to authenticate and publish Meta updates on a Device with the authenticated User:
+
+
+.. tabs::
+
+   .. tab:: NodeJS
+
+      .. code-block:: console
+
+          $ npm install mqtt
+
+      .. include:: ../_static/mqtt_example_js.js
+         :code: javascript
+
+   .. tab:: Python
+
+      .. code-block:: console
+
+          $ pip install paho-mqtt
+
+      .. include:: ../_static/mqtt_example_py.py
+         :code: python
+
+   .. tab:: C
+
+      .. include:: ../_static/mqtt_example_c.c
+         :code: c

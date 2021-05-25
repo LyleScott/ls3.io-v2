@@ -1,0 +1,2096 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Action Types &mdash; Documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/navtree.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Documentation" href="../index.html"/>
+        <link rel="up" title="Objects" href="../objects.html"/>
+        <link rel="next" title="Actions" href="actions.html"/>
+        <link rel="prev" title="Objects" href="../objects.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Cloud API
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="link caption"><span class="link caption-text"><a class="reference internal" href="../misc.html">Misc</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/change_log.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/object_relation_diagram.html">Object Relation Diagram</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../general.html">General</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/analytics.html">Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api_tokens.html">API Tokens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/authentication.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/clearing_field_values.html">Clearing Field Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/device_counts.html">Device Counts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/exclude_include_fields.html">Include/Exclude Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/filtering.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ordering.html">Ordering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/meta.html">Meta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/meta_groups.html">Meta Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/pagination.html">Pagination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/pubsub.html">PubSub Message Broker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/search.html">Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/scope.html">Scope</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../objects.html">Objects</a></span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Action Types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gooee-defined-action-types">Gooee Defined Action Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#api-endpoints">API Endpoints</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="actions.html">Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analytics_export.html">Analytics Export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analytics_query.html">Analytics Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="areas.html">Areas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="buildings.html">Buildings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="connected_products.html">Connected Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="currency.html">Currency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customers.html">Customers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dashboards.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="devices.html">Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fault_alarms.html">Fault Alarms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="local_rules.html">Local Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="locations.html">Locations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="partners.html">Partners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="product_files.html">Product Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="product_types.html">Product Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="products.html">Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules_v2.html">Rules V2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rule_groups.html">Rule Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scenes.html">Scenes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schedules.html">Schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spaces.html">Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timezones.html">Timezones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_features.html">User Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_groups.html">User Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_preferences.html">User Preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Users</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../integrations.html">Integrations</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/als2lux.html">Als-to-Lux Correlation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/external_sensor.html">External Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/gateway_lite.html">Gateway Lite</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cloud API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../objects.html">Objects</a> &raquo;</li>
+        
+      <li>Action Types</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/objects/action_types.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="action-types">
+<span id="objects-action-types"></span><h1><a class="toc-backref" href="#id1">Action Types</a><a class="headerlink" href="#action-types" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="quick-links">
+<p class="topic-title first">Quick Links</p>
+<ul class="simple">
+<li><a class="reference internal" href="#action-types" id="id1">Action Types</a><ul>
+<li><a class="reference internal" href="#description" id="id2">Description</a></li>
+<li><a class="reference internal" href="#data-model" id="id3">Data Model</a><ul>
+<li><a class="reference internal" href="#complex-constraints" id="id4">Complex Constraints</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#gooee-defined-action-types" id="id5">Gooee Defined Action Types</a><ul>
+<li><a class="reference internal" href="#on" id="id6">on</a></li>
+<li><a class="reference internal" href="#off" id="id7">off</a></li>
+<li><a class="reference internal" href="#dim" id="id8">dim</a></li>
+<li><a class="reference internal" href="#adjust" id="id9">adjust</a></li>
+<li><a class="reference internal" href="#identify" id="id10">identify</a></li>
+<li><a class="reference internal" href="#scene-set" id="id11">scene_set</a></li>
+<li><a class="reference internal" href="#scene-activate" id="id12">scene_activate</a></li>
+<li><a class="reference internal" href="#reboot" id="id13">reboot</a></li>
+<li><a class="reference internal" href="#reset-fingerprints" id="id14">reset_fingerprints</a></li>
+<li><a class="reference internal" href="#set-beacon" id="id15">set_beacon</a></li>
+<li><a class="reference internal" href="#set-fault-alarm" id="id16">set_fault_alarm</a></li>
+<li><a class="reference internal" href="#clear-beacon" id="id17">clear_beacon</a></li>
+<li><a class="reference internal" href="#adjust-beacon" id="id18">adjust_beacon</a></li>
+<li><a class="reference internal" href="#beacon-detected" id="id19">beacon_detected</a></li>
+<li><a class="reference internal" href="#beacons-exited" id="id20">beacons_exited</a></li>
+<li><a class="reference internal" href="#button-pressed" id="id21">button_pressed</a></li>
+<li><a class="reference internal" href="#button-released" id="id22">button_released</a></li>
+<li><a class="reference internal" href="#ct-change" id="id23">ct_change</a></li>
+<li><a class="reference internal" href="#rgb-change" id="id24">rgb_change</a></li>
+<li><a class="reference internal" href="#blacklist" id="id25">blacklist</a></li>
+<li><a class="reference internal" href="#wait" id="id26">wait</a></li>
+<li><a class="reference internal" href="#co2-setpoint" id="id27">co2_setpoint</a></li>
+<li><a class="reference internal" href="#extractfan-pressure-setpoint" id="id28">extractfan_pressure_setpoint</a></li>
+<li><a class="reference internal" href="#extractfan-speed-setpoint" id="id29">extractfan_speed_setpoint</a></li>
+<li><a class="reference internal" href="#extracttemp-setpoint" id="id30">extracttemp_setpoint</a></li>
+<li><a class="reference internal" href="#fan-mode" id="id31">fan_mode</a></li>
+<li><a class="reference internal" href="#flowpressure-setpoint" id="id32">flowpressure_setpoint</a></li>
+<li><a class="reference internal" href="#flowtemp-setpoint" id="id33">flowtemp_setpoint</a></li>
+<li><a class="reference internal" href="#humidity-setpoint" id="id34">humidity_setpoint</a></li>
+<li><a class="reference internal" href="#louvers" id="id35">louvers</a></li>
+<li><a class="reference internal" href="#mode" id="id36">mode</a></li>
+<li><a class="reference internal" href="#returntemp-setpoint" id="id37">returntemp_setpoint</a></li>
+<li><a class="reference internal" href="#set-state" id="id38">set_state</a></li>
+<li><a class="reference internal" href="#speed-setpoint" id="id39">speed_setpoint</a></li>
+<li><a class="reference internal" href="#supplyfan-pressure-setpoint" id="id40">supplyfan_pressure_setpoint</a></li>
+<li><a class="reference internal" href="#supplyfan-speed-setpoint" id="id41">supplyfan_speed_setpoint</a></li>
+<li><a class="reference internal" href="#supplytemp-setpoint" id="id42">supplytemp_setpoint</a></li>
+<li><a class="reference internal" href="#temperature-setpoint" id="id43">temperature_setpoint</a></li>
+<li><a class="reference internal" href="#x1-setpoint" id="id44">x1_setpoint</a></li>
+<li><a class="reference internal" href="#x2-setpoint" id="id45">x2_setpoint</a></li>
+<li><a class="reference internal" href="#y1-setpoint" id="id46">y1_setpoint</a></li>
+<li><a class="reference internal" href="#y2-setpoint" id="id47">y2_setpoint</a></li>
+<li><a class="reference internal" href="#send-sms" id="id48">send_sms</a></li>
+<li><a class="reference internal" href="#send-email" id="id49">send_email</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#api-endpoints" id="id50">API Endpoints</a><ul>
+<li><a class="reference internal" href="#list-action-types" id="id51">List Action Types</a></li>
+<li><a class="reference internal" href="#retrieve-an-action-type" id="id52">Retrieve an Action Type</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="description">
+<h2><a class="toc-backref" href="#id2">Description</a><a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>An Action Type is executed via an <a class="reference internal" href="actions.html#objects-actions"><span class="std std-ref">Action</span></a> against a target entity.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Currently, these objects are <em>read-only</em> and controlled by Gooee.</p>
+</div>
+</div>
+<div class="section" id="data-model">
+<h2><a class="toc-backref" href="#id3">Data Model</a><a class="headerlink" href="#data-model" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="24%" />
+<col width="62%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>created</td>
+<td>datetime</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>modified</td>
+<td>datetime</td>
+<td>read-only</td>
+</tr>
+<tr class="row-even"><td>name</td>
+<td>string/ref</td>
+<td>required, max_length=100, <a class="reference internal" href="#action-type-complex-constraints"><span class="std std-ref">Complex Constraints</span></a></td>
+</tr>
+<tr class="row-odd"><td>display_name</td>
+<td>string</td>
+<td>max_length=100, Defaults to a camel cased version of &#8220;name&#8221;.</td>
+</tr>
+<tr class="row-even"><td>description</td>
+<td>string</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>data_service_id</td>
+<td>string</td>
+<td>read-only</td>
+</tr>
+<tr class="row-even"><td>rules_support</td>
+<td>boolean</td>
+<td>read-only, default=true</td>
+</tr>
+<tr class="row-odd"><td>available_on</td>
+<td>array(str)</td>
+<td>read-only</td>
+</tr>
+<tr class="row-even"><td>feature</td>
+<td>str</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>value_schema</td>
+<td>object</td>
+<td>read-only</td>
+</tr>
+<tr class="row-even"><td>tags</td>
+<td>array(str)</td>
+<td>max_length=50 per tag</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="complex-constraints">
+<span id="action-type-complex-constraints"></span><h3><a class="toc-backref" href="#id4">Complex Constraints</a><a class="headerlink" href="#complex-constraints" title="Permalink to this headline">¶</a></h3>
+<p><cite>name</cite> may only contain letters, numbers, underscores, and spaces</p>
+</div>
+</div>
+<div class="section" id="gooee-defined-action-types">
+<h2><a class="toc-backref" href="#id5">Gooee Defined Action Types</a><a class="headerlink" href="#gooee-defined-action-types" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="actions.html#objects-actions"><span class="std std-ref">Actions</span></a> typically require a value object.  The Action Type used on the
+Action determines the fields that are supported and they are validated against a <a class="reference external" href="http://json-schema.org">JSON Schema</a>
+defined in the <cite>value_schema</cite> field as well as any Action constraints defined by target Device&#8217;s <a class="reference internal" href="product_types.html#product-type-specs"><span class="std std-ref">Product Specs</span></a>.
+Below are the supported Action Types and the fields that are expected in the value:</p>
+<div class="section" id="on">
+<h3><a class="toc-backref" href="#id6">on</a><a class="headerlink" href="#on" title="Permalink to this headline">¶</a></h3>
+<p>Sends a command to a <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a> or <a class="reference internal" href="spaces.html#objects-spaces"><span class="std std-ref">Space</span></a>
+to power on.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>transition_time</td>
+<td>Time to fade in (decimal seconds, optional)</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;on&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;space&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;53d81d80-369e-4a84-af26-e3b9d8aa9d1f&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;transition_time&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>If the command is to a Device and the Device has a previous [dim]; then it will turn on at this %,
+otherwise it will default to 100%.</p>
+<p>If the command is to a <a class="reference internal" href="spaces.html#objects-spaces"><span class="std std-ref">Space</span></a>, then  all Devices in the group should switch on
+to the last dimming value of each <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a>. If a <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a>
+does not have a previous [dim], then it will be dimmed to 100%.</p>
+<p>Meta values that are updated as a result of this action:</p>
+<ul class="simple">
+<li>onoff</li>
+<li>dim</li>
+</ul>
+</div>
+<div class="section" id="off">
+<h3><a class="toc-backref" href="#id7">off</a><a class="headerlink" href="#off" title="Permalink to this headline">¶</a></h3>
+<p>Sends a command to a <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a> or <a class="reference internal" href="spaces.html#objects-spaces"><span class="std std-ref">Space</span></a>
+to power off.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>transition_time</td>
+<td>Time to fade in (decimal seconds, optional)</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;off&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;4d64273a-59ce-4f65-9b05-35804c965888&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;transition_time&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Meta values that are updated as a result of this action:</p>
+<ul class="simple">
+<li>onoff</li>
+</ul>
+</div>
+<div class="section" id="dim">
+<h3><a class="toc-backref" href="#id8">dim</a><a class="headerlink" href="#dim" title="Permalink to this headline">¶</a></h3>
+<p>Sends a command to a <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a> or <a class="reference internal" href="spaces.html#objects-spaces"><span class="std std-ref">Space</span></a>
+to move to the specified dimming level.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>level</td>
+<td>Dim value (range 0 to 100)</td>
+</tr>
+<tr class="row-odd"><td>transition_time</td>
+<td>Time to transition to dim level (decimal seconds, optional)</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;dim&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;space&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;53d81d80-369e-4a84-af26-e3b9d8aa9d1f&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="mi">75</span><span class="p">,</span> <span class="nt">&quot;transition_time&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Meta values that are updated as a result of this action:</p>
+<ul class="simple">
+<li>onoff</li>
+<li>dim</li>
+</ul>
+</div>
+<div class="section" id="adjust">
+<h3><a class="toc-backref" href="#id9">adjust</a><a class="headerlink" href="#adjust" title="Permalink to this headline">¶</a></h3>
+<p>Sends a command to a <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a> or <a class="reference internal" href="spaces.html#objects-spaces"><span class="std std-ref">Space</span></a>
+to adjust the dimming level by the <cite>delta</cite>.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>delta</td>
+<td>+/- % adjustment of existing dimming value (range -100 to 100)</td>
+</tr>
+<tr class="row-odd"><td>transition_time</td>
+<td>Time to transition to dim level (decimal seconds, optional)</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;adjust&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;4d64273a-59ce-4f65-9b05-35804c965888&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;delta&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="nt">&quot;transition_time&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Meta values that are updated as a result of this action:</p>
+<ul class="simple">
+<li>onoff</li>
+<li>dim</li>
+</ul>
+</div>
+<div class="section" id="identify">
+<h3><a class="toc-backref" href="#id10">identify</a><a class="headerlink" href="#identify" title="Permalink to this headline">¶</a></h3>
+<p>Sends a command to the <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a> to blink on and off. This allows
+for easily identification.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="81%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>onoff</td>
+<td>A boolean representing on with <cite>true</cite> and off with <cite>false</cite>.</td>
+</tr>
+<tr class="row-odd"><td>timeout_on</td>
+<td>Time (decimal seconds, optional) that the identify command takes place.
+Timeout takes effect only when onoff = true.
+Default is 5s</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;identify&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;4d64273a-59ce-4f65-9b05-35804c965888&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;onoff&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="nt">&quot;timeout_on&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Depending on the device protocol this will manifest itself slightly differently.</p>
+</div>
+<div class="section" id="scene-set">
+<h3><a class="toc-backref" href="#id11">scene_set</a><a class="headerlink" href="#scene-set" title="Permalink to this headline">¶</a></h3>
+<p>Send <a class="reference internal" href="scenes.html#objects-scenes"><span class="std std-ref">Scene</span></a> data to a <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a> locally so that it
+may be activated later by <cite>scene_activate</cite>.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="scenes.html#objects-scenes"><span class="std std-ref">sceneid</span></a></td>
+<td>Scene ID</td>
+</tr>
+<tr class="row-odd"><td>dim</td>
+<td>Dim value (range 0 to 100)</td>
+</tr>
+<tr class="row-even"><td>onoff</td>
+<td>A boolean representing on with <cite>true</cite> and off
+with <cite>false</cite> (optional).</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;scene_set&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;53d81d80-369e-4a84-af26-e3b9d8aa9d1f&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;sceneid&quot;</span><span class="p">:</span> <span class="s2">&quot;87dddcc2-9b19-4c90-969c-4976fbd2e529&quot;</span><span class="p">,</span> <span class="nt">&quot;dim&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="scene-activate">
+<h3><a class="toc-backref" href="#id12">scene_activate</a><a class="headerlink" href="#scene-activate" title="Permalink to this headline">¶</a></h3>
+<p>Activates a <a class="reference internal" href="scenes.html#objects-scenes"><span class="std std-ref">Scene</span></a> with optional transition time.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="56%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="scenes.html#objects-scenes"><span class="std std-ref">sceneid</span></a></td>
+<td>Scene ID</td>
+</tr>
+<tr class="row-odd"><td>transition_time</td>
+<td>Scene transition time (decimal seconds)</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;scene_activate&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;scene&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;87dddcc2-9b19-4c90-969c-4976fbd2e529&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;sceneid&quot;</span><span class="p">:</span> <span class="s2">&quot;87dddcc2-9b19-4c90-969c-4976fbd2e529&quot;</span><span class="p">,</span> <span class="nt">&quot;transition_time&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="reboot">
+<h3><a class="toc-backref" href="#id13">reboot</a><a class="headerlink" href="#reboot" title="Permalink to this headline">¶</a></h3>
+<p>Reboots Gateways and Mesh Access Points.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">device</span></a></td>
+<td>Gateway or Mesh Access Point Device ID</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;reboot&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;53d81d80-369e-4a84-af26-e3b9d8aa9d1f&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="reset-fingerprints">
+<span id="objects-action-types-reset-fingerprints"></span><h3><a class="toc-backref" href="#id14">reset_fingerprints</a><a class="headerlink" href="#reset-fingerprints" title="Permalink to this headline">¶</a></h3>
+<p>Reset the Fingerprints on a Gateway Lite to factory default.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">device</span></a></td>
+<td>Gateway Lite Device ID</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;reset_fingerprints&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;c08d875d-a7ac-41aa-bf12-6148665bee2f&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="set-beacon">
+<span id="objects-action-types-set-beacon"></span><h3><a class="toc-backref" href="#id15">set_beacon</a><a class="headerlink" href="#set-beacon" title="Permalink to this headline">¶</a></h3>
+<p>Configure beacon slot according to values in JSON formatted data payload with advertising interval in ms. Set to on/off.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">device</span></a></td>
+<td>Device ID</td>
+</tr>
+<tr class="row-odd"><td>onoff</td>
+<td>A boolean representing on with <cite>1</cite> and
+off with <cite>0</cite>.</td>
+</tr>
+<tr class="row-even"><td>slot</td>
+<td>Beacon slot number (range 0 to 3)</td>
+</tr>
+<tr class="row-odd"><td>interval</td>
+<td>Interval in ms that determines the advertising
+interval with a range of 30ms to 5,000ms.
+Default value is 1,000ms.</td>
+</tr>
+<tr class="row-even"><td>broadcast_tx</td>
+<td>The dBM broadcast power of the beacon.</td>
+</tr>
+<tr class="row-odd"><td>tx_rssi</td>
+<td>A dBM tx rssi value. (range -4 to 200)</td>
+</tr>
+<tr class="row-even"><td>data</td>
+<td>JSON formatted payload containing the configuration data.
+<a class="reference download internal" href="../_downloads/action_set_beacon_value-schema.json" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Schema</span></code></a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><p>iBeacon Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;ibeacon&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;acfd065ec3c011e39bbe1a514932ac01&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;major&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nt">&quot;minor&quot;</span><span class="p">:</span> <span class="mi">14876</span><span class="p">,</span>
+    <span class="nt">&quot;company_id&quot;</span><span class="p">:</span> <span class="s2">&quot;0x4c00&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Eddystone UID Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;eddystone-uid&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;uid&quot;</span><span class="p">:</span> <span class="s2">&quot;acfd065e1a514932ac01000002014876&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Eddystone URL Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;eddystone-url&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://www.blueupbeacons.com&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><strong>broadcast_tx</strong> has a set of values allowed according to a mapping against dBM values allowed by NRF:
+* Radio transmit power in dBm: -30, -20, -16, -12, -8, -4, 0, and 4.
+* In two’s complement hex, these translate to 0xEC, 0xF0 0xF4, 0xF8, 0xFC, 0x00, 0x03, and 0x04.
+* Thus, the JSON string will contain a value on the left (e.g., &#8220;maximum&#8221;, which will be converted to a specific dBM.</p>
+<div class="last highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mh">0x4</span><span class="p">,</span>
+    <span class="s2">&quot;very-high&quot;</span><span class="p">:</span> <span class="mh">0x3</span><span class="p">,</span>
+    <span class="s2">&quot;high&quot;</span><span class="p">:</span> <span class="mh">0x00</span><span class="p">,</span>
+    <span class="s2">&quot;medium-high&quot;</span><span class="p">:</span> <span class="mh">0xFC</span><span class="p">,</span>
+    <span class="s2">&quot;medium&quot;</span><span class="p">:</span> <span class="mh">0xF8</span><span class="p">,</span>
+    <span class="s2">&quot;medium-low&quot;</span><span class="p">:</span> <span class="mh">0xF4</span><span class="p">,</span>
+    <span class="s2">&quot;low&quot;</span><span class="p">:</span> <span class="mh">0xF0</span><span class="p">,</span>
+    <span class="s2">&quot;very-low&quot;</span><span class="p">:</span> <span class="mh">0xEC</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;set_beacon&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;53d81d80-369e-4a84-af26-e3b9d8aa9d1f&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;onoff&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nt">&quot;slot&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nt">&quot;interval&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+    <span class="nt">&quot;broadcast_tx&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nt">&quot;tx_rssi&quot;</span><span class="p">:</span> <span class="mi">-82</span><span class="p">,</span>
+    <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;ibeacon&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;acfd065ec3c011e39bbe1a514932ac01&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;major&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nt">&quot;minor&quot;</span><span class="p">:</span> <span class="mi">14876</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="set-fault-alarm">
+<span id="objects-action-types-set-fault-alarm"></span><h3><a class="toc-backref" href="#id16">set_fault_alarm</a><a class="headerlink" href="#set-fault-alarm" title="Permalink to this headline">¶</a></h3>
+<p>Set a Fault Alarm on a device. See <a class="reference internal" href="fault_alarms.html#objects-fault-alarms"><span class="std std-ref">Fault Alarms</span></a> for reference. This
+action type is available through <a class="reference internal" href="rules_v2.html#objects-property-rules"><span class="std std-ref">Property Rules</span></a>.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="69%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">device</span></a></td>
+<td>Device ID.</td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>Description of the Fault raising the Alarm (Optional).</td>
+</tr>
+<tr class="row-even"><td>level</td>
+<td>Level of the Fault Alarm level</td>
+</tr>
+<tr class="row-odd"><td>priority</td>
+<td>Numeric value that represents the Alarm Priority.</td>
+</tr>
+<tr class="row-even"><td>rule</td>
+<td>ID of the rule that triggered the action.</td>
+</tr>
+<tr class="row-odd"><td>tags</td>
+<td>Arrays of tags (Optional).</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;set_fault_alarm&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;c08d875d-a7ac-41aa-bf12-6148665bee2f&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;rule&quot;</span><span class="p">:</span> <span class="s2">&quot;728d875d-24ac-88aa-bf12-1148665b4273&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;priority&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="s2">&quot;warning&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;test&quot;</span><span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="clear-beacon">
+<h3><a class="toc-backref" href="#id17">clear_beacon</a><a class="headerlink" href="#clear-beacon" title="Permalink to this headline">¶</a></h3>
+<p>Clear values of beacon slot and turn off.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">device</span></a></td>
+<td>Device ID</td>
+</tr>
+<tr class="row-odd"><td>slot</td>
+<td>Beacon slot number (range 0 to 3)</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;clear_beacon&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;53d81d80-369e-4a84-af26-e3b9d8aa9d1f&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;slot&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="adjust-beacon">
+<h3><a class="toc-backref" href="#id18">adjust_beacon</a><a class="headerlink" href="#adjust-beacon" title="Permalink to this headline">¶</a></h3>
+<p>Adjust a previously configured beacon by changing on/off, interval, or broadcast power.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">device</span></a></td>
+<td>Device ID</td>
+</tr>
+<tr class="row-odd"><td>slot</td>
+<td>Beacon slot number (range 0 to 3)</td>
+</tr>
+<tr class="row-even"><td>onoff</td>
+<td>A boolean representing on with <cite>true</cite> and
+off with <cite>false</cite>.</td>
+</tr>
+<tr class="row-odd"><td>interval</td>
+<td>Interval in ms that determines the advertising
+interval with a range of 30ms to 5,000ms.
+Default value is 1,000ms.</td>
+</tr>
+<tr class="row-even"><td>broadcast_tx</td>
+<td>The dBM broadcast power of the beacon.</td>
+</tr>
+<tr class="row-odd"><td>tx_rssi</td>
+<td>A dBM tx rssi value. (range -4 to 200)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>Beacons must be set before you can adjust them.</li>
+</ul>
+</div>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;adjust_beacon&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;53d81d80-369e-4a84-af26-e3b9d8aa9d1f&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;onoff&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="nt">&quot;slot&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nt">&quot;interval&quot;</span><span class="p">:</span> <span class="mi">250</span><span class="p">,</span>
+      <span class="nt">&quot;broadcast_tx&quot;</span><span class="p">:</span> <span class="mi">-20</span><span class="p">,</span>
+      <span class="nt">&quot;tx_rssi&quot;</span><span class="p">:</span> <span class="mi">-82</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="beacon-detected">
+<h3><a class="toc-backref" href="#id19">beacon_detected</a><a class="headerlink" href="#beacon-detected" title="Permalink to this headline">¶</a></h3>
+<p>Sets a Beacon Event as detected.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="38%" />
+<col width="63%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>clientId</td>
+<td>A Client provided identifier</td>
+</tr>
+<tr class="row-odd"><td>customFields</td>
+<td>Client provided custom JSON object for tagging</td>
+</tr>
+<tr class="row-even"><td>beacon_id</td>
+<td>EUID of beacon</td>
+</tr>
+<tr class="row-odd"><td>rx</td>
+<td>Signal strength</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;beacon_detected&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;35537bd6-e97a-4eff-8cdc-2294b3ab2b1c&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;client_id&quot;</span><span class="p">:</span> <span class="s2">&quot;GooeePhoneApp-123&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;customFields&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;someClientData&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;moreClientData&quot;</span><span class="p">:</span> <span class="s2">&quot;010001001010000110&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;beacon_id&quot;</span><span class="p">:</span> <span class="s2">&quot;FEDCBA9876543210&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;rx&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="beacons-exited">
+<h3><a class="toc-backref" href="#id20">beacons_exited</a><a class="headerlink" href="#beacons-exited" title="Permalink to this headline">¶</a></h3>
+<p>Sets a Beacon Event as Exit.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="38%" />
+<col width="63%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>clientId</td>
+<td>A Client provided identifier</td>
+</tr>
+<tr class="row-odd"><td>customFields</td>
+<td>Client provided custom JSON object for tagging</td>
+</tr>
+<tr class="row-even"><td>beacon_id</td>
+<td>EUID of beacon</td>
+</tr>
+<tr class="row-odd"><td>rx</td>
+<td>Signal strength</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;beacon_exited&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;35537bd6-e97a-4eff-8cdc-2294b3ab2b1c&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;client_id&quot;</span><span class="p">:</span> <span class="s2">&quot;GooeePhoneApp-123&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;customFields&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;someClientData&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;moreClientData&quot;</span><span class="p">:</span> <span class="s2">&quot;010001001010000110&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;beacon_id&quot;</span><span class="p">:</span> <span class="s2">&quot;FEDCBA9876543210&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;rx&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="button-pressed">
+<h3><a class="toc-backref" href="#id21">button_pressed</a><a class="headerlink" href="#button-pressed" title="Permalink to this headline">¶</a></h3>
+<p>An Action representing a button pressed on a Switch <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a>.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="38%" />
+<col width="63%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>button_number</td>
+<td>A button identifier</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;New Button Press&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;button_pressed&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;126224f6-7ff2-48a7-8633-6644918633a1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;button_number&quot;</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="button-released">
+<h3><a class="toc-backref" href="#id22">button_released</a><a class="headerlink" href="#button-released" title="Permalink to this headline">¶</a></h3>
+<p>An Action representing a button released on a Switch <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a>.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="38%" />
+<col width="63%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>button_number</td>
+<td>A button identifier</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;New Button Release&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;button_released&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;126224f6-7ff2-48a7-8633-6644918633a1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;button_number&quot;</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="ct-change">
+<span id="action-type-ct-change"></span><h3><a class="toc-backref" href="#id23">ct_change</a><a class="headerlink" href="#ct-change" title="Permalink to this headline">¶</a></h3>
+<p>Changes the Color Temperature.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Device must have Color Temperature Change support.</p>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="38%" />
+<col width="63%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>color_temp</td>
+<td>Color temperature to change to in mireds (133-550)</td>
+</tr>
+<tr class="row-odd"><td>transition_time</td>
+<td>Change transition time (decimal seconds, optional)</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;New Color Temperature&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ct_change&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;884e6276-d6ea-494e-95c3-fc92956345fd&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;color_temp&quot;</span><span class="p">:</span> <span class="mi">400</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="rgb-change">
+<span id="action-type-rgb-change"></span><h3><a class="toc-backref" href="#id24">rgb_change</a><a class="headerlink" href="#rgb-change" title="Permalink to this headline">¶</a></h3>
+<p>Changes the Hue and Saturation levels.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Device must have RGB Change support.</p>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="38%" />
+<col width="63%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>hue</td>
+<td>Level of Hue to change to (0-360)</td>
+</tr>
+<tr class="row-odd"><td>saturation</td>
+<td>Level of Saturation to change to (0-360)</td>
+</tr>
+<tr class="row-even"><td>transition_time</td>
+<td>Change transition time (decimal seconds, optional)</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;RGB Change Action&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;rgb_change&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;884e6276-d6ea-494e-95c3-fc92956345fd&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;hue&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+        <span class="nt">&quot;saturation&quot;</span><span class="p">:</span> <span class="mi">150</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="blacklist">
+<span id="action-type-blacklist"></span><h3><a class="toc-backref" href="#id25">blacklist</a><a class="headerlink" href="#blacklist" title="Permalink to this headline">¶</a></h3>
+<p>Blacklists a <a class="reference internal" href="rules_v2.html#objects-property-rules"><span class="std std-ref">Property-based Rule</span></a> or <a class="reference internal" href="rules_v2.html#objects-event-rules"><span class="std std-ref">Event-based Rule</span></a> from evaluating for a set duration.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="76%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>duration</td>
+<td>Duration a Rule should be disabled for (decimal seconds, required)</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;blacklist&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;d5633e2c-bd1b-4530-973a-ed2f05420fc9&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;propertyrule&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;duration&quot;</span><span class="p">:</span> <span class="mi">60</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="wait">
+<span id="action-type-wait"></span><h3><a class="toc-backref" href="#id26">wait</a><a class="headerlink" href="#wait" title="Permalink to this headline">¶</a></h3>
+<p>Wait allows users to specify a pause during a <a class="reference internal" href="rules_v2.html#objects-property-rules"><span class="std std-ref">Property-based Rule</span></a> or <a class="reference internal" href="rules_v2.html#objects-event-rules"><span class="std std-ref">Event-based Rule</span></a> execution phase.
+Use in conjunction with sequential action groups to stagger action execution (<a class="reference internal" href="rules_v2.html#rule-v2-actions"><span class="std std-ref">see example</span></a>). Does not need a <code class="docutils literal"><span class="pre">target_id</span></code> or <code class="docutils literal"><span class="pre">target_type</span></code>.
+Maximum duration for a wait action is 30 minutes.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="82%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>duration</td>
+<td>Duration a Rule should pause before executing the next action group (decimal seconds, required, max=1800)</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;wait&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;duration&quot;</span><span class="p">:</span> <span class="mi">60</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="co2-setpoint">
+<h3><a class="toc-backref" href="#id27">co2_setpoint</a><a class="headerlink" href="#co2-setpoint" title="Permalink to this headline">¶</a></h3>
+<p>Sends a command to the <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a> to adjust its CO2 setpoint.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>level</td>
+<td>CO2 setpoint value to adjust to.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;co2_setpoint&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;ab526c8d-9066-4e08-98ae-621bb5f991a1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="mi">500</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="extractfan-pressure-setpoint">
+<h3><a class="toc-backref" href="#id28">extractfan_pressure_setpoint</a><a class="headerlink" href="#extractfan-pressure-setpoint" title="Permalink to this headline">¶</a></h3>
+<p>Sends a command to the <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a> to adjust the extractor fan pressure setpoint.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>level</td>
+<td>Pressure setpoint value to adjust to.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;extractfan_pressure_setpoint&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;ab526c8d-9066-4e08-98ae-621bb5f991a1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="mi">500</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="extractfan-speed-setpoint">
+<h3><a class="toc-backref" href="#id29">extractfan_speed_setpoint</a><a class="headerlink" href="#extractfan-speed-setpoint" title="Permalink to this headline">¶</a></h3>
+<p>Sends a command to the <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a> to adjust the extractor fan speed setpoint.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>level</td>
+<td>Speed setpoint value to adjust to.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;extractfan_speed_setpoint&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;ab526c8d-9066-4e08-98ae-621bb5f991a1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="mi">50</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="extracttemp-setpoint">
+<h3><a class="toc-backref" href="#id30">extracttemp_setpoint</a><a class="headerlink" href="#extracttemp-setpoint" title="Permalink to this headline">¶</a></h3>
+<p>Sends a command to the <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a> to adjust its temperature setpoint.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>temperature</td>
+<td>Temperature setpoint value to adjust to.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;extracttemp_setpoint&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;ab526c8d-9066-4e08-98ae-621bb5f991a1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;temperature&quot;</span><span class="p">:</span> <span class="mi">30</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="fan-mode">
+<h3><a class="toc-backref" href="#id31">fan_mode</a><a class="headerlink" href="#fan-mode" title="Permalink to this headline">¶</a></h3>
+<p>Sends a command to the <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a> to adjust its fan mode.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>mode</td>
+<td>Mode value to adjust to.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;fan_mode&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;ab526c8d-9066-4e08-98ae-621bb5f991a1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;mode&quot;</span><span class="p">:</span> <span class="s2">&quot;Auto&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="flowpressure-setpoint">
+<h3><a class="toc-backref" href="#id32">flowpressure_setpoint</a><a class="headerlink" href="#flowpressure-setpoint" title="Permalink to this headline">¶</a></h3>
+<p>Sends a command to the <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a> to adjust its flow pressure setpoint.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>level</td>
+<td>Flow pressure setpoint value to adjust to.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;flowpressure_setpoint&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;ab526c8d-9066-4e08-98ae-621bb5f991a1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="mi">80</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="flowtemp-setpoint">
+<h3><a class="toc-backref" href="#id33">flowtemp_setpoint</a><a class="headerlink" href="#flowtemp-setpoint" title="Permalink to this headline">¶</a></h3>
+<p>Sends a command to the <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a> to adjust its flow temperature setpoint.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>temperature</td>
+<td>Flow temperature setpoint value to adjust to.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;flowtemp_setpoint&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;ab526c8d-9066-4e08-98ae-621bb5f991a1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;temperature&quot;</span><span class="p">:</span> <span class="mi">15</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="humidity-setpoint">
+<h3><a class="toc-backref" href="#id34">humidity_setpoint</a><a class="headerlink" href="#humidity-setpoint" title="Permalink to this headline">¶</a></h3>
+<p>Sends a command to the <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a> to adjust its humidity setpoint.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>level</td>
+<td>Humidity setpoint value to adjust to.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;humidity_setpoint&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;ab526c8d-9066-4e08-98ae-621bb5f991a1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="mi">25</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="louvers">
+<h3><a class="toc-backref" href="#id35">louvers</a><a class="headerlink" href="#louvers" title="Permalink to this headline">¶</a></h3>
+<p>Sends a command to the <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a> to adjust its louvers.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>mode</td>
+<td>Mode value to adjust to.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;louvers&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;ab526c8d-9066-4e08-98ae-621bb5f991a1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;mode&quot;</span><span class="p">:</span> <span class="s2">&quot;Fixed&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="mode">
+<h3><a class="toc-backref" href="#id36">mode</a><a class="headerlink" href="#mode" title="Permalink to this headline">¶</a></h3>
+<p>Sends a command to the <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a> to adjust its mode.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>mode</td>
+<td>Mode value to adjust to.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;mode&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;ab526c8d-9066-4e08-98ae-621bb5f991a1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;mode&quot;</span><span class="p">:</span> <span class="s2">&quot;Low&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="returntemp-setpoint">
+<h3><a class="toc-backref" href="#id37">returntemp_setpoint</a><a class="headerlink" href="#returntemp-setpoint" title="Permalink to this headline">¶</a></h3>
+<p>Sends a command to the <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a> to adjust its return temperature setpoint.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>temperature</td>
+<td>Return temperature setpoint value to adjust to.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;returntemp_setpoint&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;ab526c8d-9066-4e08-98ae-621bb5f991a1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;temperature&quot;</span><span class="p">:</span> <span class="mi">30</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="set-state">
+<h3><a class="toc-backref" href="#id38">set_state</a><a class="headerlink" href="#set-state" title="Permalink to this headline">¶</a></h3>
+<p>Sends a command to the <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a> to set its state.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>mode</td>
+<td>State value to adjust to.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;set_state&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;ab526c8d-9066-4e08-98ae-621bb5f991a1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;Enable&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="speed-setpoint">
+<h3><a class="toc-backref" href="#id39">speed_setpoint</a><a class="headerlink" href="#speed-setpoint" title="Permalink to this headline">¶</a></h3>
+<p>Sends a command to the <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a> to adjust its speed setpoint.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>level</td>
+<td>Speed setpoint value to adjust to.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;speed_setpoint&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;ab526c8d-9066-4e08-98ae-621bb5f991a1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="mi">75</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="supplyfan-pressure-setpoint">
+<h3><a class="toc-backref" href="#id40">supplyfan_pressure_setpoint</a><a class="headerlink" href="#supplyfan-pressure-setpoint" title="Permalink to this headline">¶</a></h3>
+<p>Sends a command to the <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a> to adjust its supply air fan pressure setpoint.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>level</td>
+<td>Supply fan pressure setpoint value to adjust to.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;supplyfan_pressure_setpoint&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;ab526c8d-9066-4e08-98ae-621bb5f991a1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="mi">75</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="supplyfan-speed-setpoint">
+<h3><a class="toc-backref" href="#id41">supplyfan_speed_setpoint</a><a class="headerlink" href="#supplyfan-speed-setpoint" title="Permalink to this headline">¶</a></h3>
+<p>Sends a command to the <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a> to adjust its supply air fan speed setpoint.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>level</td>
+<td>Supply fan speed setpoint value to adjust to.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;supplyfan_speed_setpoint&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;ab526c8d-9066-4e08-98ae-621bb5f991a1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="mi">40</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="supplytemp-setpoint">
+<h3><a class="toc-backref" href="#id42">supplytemp_setpoint</a><a class="headerlink" href="#supplytemp-setpoint" title="Permalink to this headline">¶</a></h3>
+<p>Sends a command to the <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a> to adjust its supply air fan temperature setpoint.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>temperature</td>
+<td>Supply fan temperature setpoint value to adjust to.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;supplytemp_setpoint&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;ab526c8d-9066-4e08-98ae-621bb5f991a1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;temperature&quot;</span><span class="p">:</span> <span class="mi">15</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="temperature-setpoint">
+<h3><a class="toc-backref" href="#id43">temperature_setpoint</a><a class="headerlink" href="#temperature-setpoint" title="Permalink to this headline">¶</a></h3>
+<p>Sends a command to the <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a> to adjust its temperature setpoint.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>temperature</td>
+<td>Temperature setpoint value to adjust to.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;temperature_setpoint&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;ab526c8d-9066-4e08-98ae-621bb5f991a1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;temperature&quot;</span><span class="p">:</span> <span class="mi">30</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="x1-setpoint">
+<h3><a class="toc-backref" href="#id44">x1_setpoint</a><a class="headerlink" href="#x1-setpoint" title="Permalink to this headline">¶</a></h3>
+<p>Sends a command to the <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a> to adjust its X1 setpoint.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>level</td>
+<td>X1 setpoint value to adjust to.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;x1_setpoint&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;ab526c8d-9066-4e08-98ae-621bb5f991a1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="mi">-5</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="x2-setpoint">
+<h3><a class="toc-backref" href="#id45">x2_setpoint</a><a class="headerlink" href="#x2-setpoint" title="Permalink to this headline">¶</a></h3>
+<p>Sends a command to the <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a> to adjust its X2 setpoint.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>level</td>
+<td>X2 setpoint value to adjust to.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;x2_setpoint&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;ab526c8d-9066-4e08-98ae-621bb5f991a1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="mi">10</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="y1-setpoint">
+<h3><a class="toc-backref" href="#id46">y1_setpoint</a><a class="headerlink" href="#y1-setpoint" title="Permalink to this headline">¶</a></h3>
+<p>Sends a command to the <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a> to adjust its Y1 setpoint.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>level</td>
+<td>Y1 setpoint value to adjust to.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;y1_setpoint&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;ab526c8d-9066-4e08-98ae-621bb5f991a1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="mi">30</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="y2-setpoint">
+<h3><a class="toc-backref" href="#id47">y2_setpoint</a><a class="headerlink" href="#y2-setpoint" title="Permalink to this headline">¶</a></h3>
+<p>Sends a command to the <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a> to adjust its Y2 setpoint.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>level</td>
+<td>Y2 setpoint value to adjust to.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;y2_setpoint&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;ab526c8d-9066-4e08-98ae-621bb5f991a1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="mi">40</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="send-sms">
+<h3><a class="toc-backref" href="#id48">send_sms</a><a class="headerlink" href="#send-sms" title="Permalink to this headline">¶</a></h3>
+<p>Sends an SMS notification to a list of phone numbers.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>recipients</td>
+<td>List of phone numbers to notify.</td>
+</tr>
+<tr class="row-odd"><td>message</td>
+<td>The message to send via SMS. Limited to 140 characters.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;send_sms&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;ab526c8d-9066-4e08-98ae-621bb5f991a1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;recipients&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;+1-111-777-9311&quot;</span><span class="p">,</span> <span class="s2">&quot;+447911123456&quot;</span><span class="p">],</span>
+        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;High temperature on this Device. Please check on https://goo.ee/FSXu01&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="send-email">
+<h3><a class="toc-backref" href="#id49">send_email</a><a class="headerlink" href="#send-email" title="Permalink to this headline">¶</a></h3>
+<p>Sends an e-mail notification to a list of addresses.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>recipients</td>
+<td>List of e-mail addresses to notify.</td>
+</tr>
+<tr class="row-odd"><td>subject</td>
+<td>Optional subject for the email sent.</td>
+</tr>
+<tr class="row-even"><td>message</td>
+<td>The message to send via e-mail.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;send_email&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;space&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;ab526c8d-9066-4e08-98ae-621bb5f991a1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;recipients&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;someone@example.com&quot;</span><span class="p">,</span> <span class="s2">&quot;mary@company.com&quot;</span><span class="p">],</span>
+        <span class="nt">&quot;subject&quot;</span><span class="p">:</span> <span class="s2">&quot;Extreme Alert&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Alert of high importance on 1st floor. Please check on https://goo.ee/FSXu01&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="api-endpoints">
+<h2><a class="toc-backref" href="#id50">API Endpoints</a><a class="headerlink" href="#api-endpoints" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="list-action-types">
+<h3><a class="toc-backref" href="#id51">List Action Types</a><a class="headerlink" href="#list-action-types" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--action_types-">
+<code class="descname">GET </code><code class="descname">/action_types/</code><a class="headerlink" href="#get--action_types-" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="retrieve-an-action-type">
+<h3><a class="toc-backref" href="#id52">Retrieve an Action Type</a><a class="headerlink" href="#retrieve-an-action-type" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--action_types-(name)-">
+<code class="descname">GET </code><code class="descname">/action_types/</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><code class="descname">/</code><a class="headerlink" href="#get--action_types-(name)-" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="actions.html" class="btn btn-neutral float-right" title="Actions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../objects.html" class="btn btn-neutral" title="Objects" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Gooee, LLC.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/tabs.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

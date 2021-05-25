@@ -1,0 +1,108 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "onoff": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "interval": {
+      "type": "number",
+      "minimum": 30,
+      "maximum": 5000
+    },
+    "broadcast_tx": {
+      "type": "number",
+      "enum": [-30, -20, -16, -12, -8, -4, 0, 4]
+    },
+    "tx_rssi": {
+      "type": "number",
+      "minimum": -200,
+      "maximum": 4
+    },
+    "major_minor": {
+      "type": "number",
+      "maximum": 65536
+    },
+    "hex": {
+      "type": "string",
+      "minLength": 6,
+      "maxLength": 6,
+      "pattern": "^0x[A-Za-z0-9]{4}$"
+    },
+    "uuid": {
+      "type": "string",
+      "minLength": 32,
+      "maxLength": 36,
+      "pattern": "^([A-Za-z0-9]{8})(-)?([A-Za-z0-9]{4})(-)?([A-Za-z0-9]{4})(-)?([A-Za-z0-9]{4})(-)?([A-Za-z0-9]{12})$"
+    },
+    "url": {
+      "type": "string"
+    },
+    "slot": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 3
+    }
+  },
+  "type": "object",
+  "properties": {
+    "onoff": {"$ref": "#/definitions/onoff"},
+    "slot": {"$ref": "#/definitions/slot"},
+    "interval": {"$ref": "#/definitions/interval"},
+    "broadcast_tx": {"$ref": "#/definitions/broadcast_tx"},
+    "tx_rssi": {"$ref": "#/definitions/tx_rssi"},
+    "data": {
+      "type": "object",
+      "oneOf": [
+        {
+          "properties": {
+            "ibeacon": {
+              "type": "object",
+              "properties": {
+                "uuid": {"$ref": "#/definitions/uuid"},
+                "major": {"$ref": "#/definitions/major_minor"},
+                "minor": {"$ref": "#/definitions/major_minor"},
+                "company_id": {"$ref": "#/definitions/hex"}
+              },
+              "required": ["uuid", "major", "minor"],
+              "additionalProperties": false
+            }
+          },
+          "required": ["ibeacon"],
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "eddystone-uid": {
+              "type": "object",
+              "properties": {
+                "uid": {"$ref": "#/definitions/uuid"}
+              },
+              "required": ["uid"],
+              "additionalProperties": false
+            }
+          },
+          "required": ["eddystone-uid"],
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "eddystone-url": {
+              "type": "object",
+              "properties": {
+                "url": {"$ref": "#/definitions/url"}
+              },
+              "required": ["url"],
+              "additionalProperties": false
+            }
+          },
+          "required": ["eddystone-url"],
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "required": ["onoff", "slot", "interval", "broadcast_tx", "tx_rssi", "data"],
+  "additionalProperties": false
+}

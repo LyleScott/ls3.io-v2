@@ -1,0 +1,958 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Objects &mdash; Documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/sphinx_tabs/semantic-ui-2.2.7/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/sphinx_tabs/semantic-ui-2.2.7/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/navtree.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Documentation" href="index.html"/>
+        <link rel="next" title="Action Types" href="objects/action_types.html"/>
+        <link rel="prev" title="Scope" href="general/scope.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Cloud API
+          
+
+          
+            
+            <img src="_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="link caption"><span class="link caption-text"><a class="reference internal" href="misc.html">Misc</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="misc/change_log.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc/object_relation_diagram.html">Object Relation Diagram</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="general.html">General</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="general/analytics.html">Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/api_tokens.html">API Tokens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/authentication.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/clearing_field_values.html">Clearing Field Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/device_counts.html">Device Counts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/exclude_include_fields.html">Include/Exclude Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/filtering.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/ordering.html">Ordering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/meta.html">Meta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/meta_groups.html">Meta Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/pagination.html">Pagination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/pubsub.html">PubSub Message Broker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/search.html">Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/scope.html">Scope</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="current reference internal" href="#">Objects</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="objects/action_types.html">Action Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/actions.html">Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/analytics_export.html">Analytics Export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/analytics_query.html">Analytics Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/areas.html">Areas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/buildings.html">Buildings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/connected_products.html">Connected Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/currency.html">Currency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/customers.html">Customers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/dashboards.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/devices.html">Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/fault_alarms.html">Fault Alarms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/local_rules.html">Local Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/locations.html">Locations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/partners.html">Partners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/product_files.html">Product Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/product_types.html">Product Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/products.html">Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/rules_v2.html">Rules V2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/rule_groups.html">Rule Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/scenes.html">Scenes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/schedules.html">Schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/spaces.html">Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/timezones.html">Timezones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/user_features.html">User Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/user_groups.html">User Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/user_preferences.html">User Preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/users.html">Users</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="integrations.html">Integrations</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="integrations/als2lux.html">Als-to-Lux Correlation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrations/external_sensor.html">External Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrations/gateway_lite.html">Gateway Lite</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Cloud API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Objects</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/objects.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="objects">
+<span id="id1"></span><h1>Objects<a class="headerlink" href="#objects" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="objects/action_types.html">Action Types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="objects/action_types.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/action_types.html#data-model">Data Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#complex-constraints">Complex Constraints</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="objects/action_types.html#gooee-defined-action-types">Gooee Defined Action Types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#on">on</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#off">off</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#dim">dim</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#adjust">adjust</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#identify">identify</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#scene-set">scene_set</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#scene-activate">scene_activate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#reboot">reboot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#reset-fingerprints">reset_fingerprints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#set-beacon">set_beacon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#set-fault-alarm">set_fault_alarm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#clear-beacon">clear_beacon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#adjust-beacon">adjust_beacon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#beacon-detected">beacon_detected</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#beacons-exited">beacons_exited</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#button-pressed">button_pressed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#button-released">button_released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#ct-change">ct_change</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#rgb-change">rgb_change</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#blacklist">blacklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#wait">wait</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#co2-setpoint">co2_setpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#extractfan-pressure-setpoint">extractfan_pressure_setpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#extractfan-speed-setpoint">extractfan_speed_setpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#extracttemp-setpoint">extracttemp_setpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#fan-mode">fan_mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#flowpressure-setpoint">flowpressure_setpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#flowtemp-setpoint">flowtemp_setpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#humidity-setpoint">humidity_setpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#louvers">louvers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#mode">mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#returntemp-setpoint">returntemp_setpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#set-state">set_state</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#speed-setpoint">speed_setpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#supplyfan-pressure-setpoint">supplyfan_pressure_setpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#supplyfan-speed-setpoint">supplyfan_speed_setpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#supplytemp-setpoint">supplytemp_setpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#temperature-setpoint">temperature_setpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#x1-setpoint">x1_setpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#x2-setpoint">x2_setpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#y1-setpoint">y1_setpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#y2-setpoint">y2_setpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#send-sms">send_sms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#send-email">send_email</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="objects/action_types.html#api-endpoints">API Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#list-action-types">List Action Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/action_types.html#retrieve-an-action-type">Retrieve an Action Type</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="objects/actions.html">Actions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="objects/actions.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/actions.html#data-model">Data Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/actions.html#complex-constraints">Complex Constraints</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="objects/actions.html#api-endpoints">API Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/actions.html#create-an-action">Create an Action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/actions.html#list-actions">List Actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/actions.html#retrieve-an-action">Retrieve an Action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/actions.html#delete-a-action">Delete a Action</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="objects/analytics_export.html">Analytics Export</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="objects/analytics_export.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/analytics_export.html#status-workflow">Status Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/analytics_export.html#export-file-structure">Export File Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/analytics_export.html#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/analytics_export.html#api-endpoints">API Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/analytics_export.html#create-an-analytics-export">Create an Analytics Export</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/analytics_export.html#list-analytics-queries">List Analytics Queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/analytics_export.html#retrieve-an-analytics-export">Retrieve an Analytics Export</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/analytics_export.html#delete-an-analytics-export">Delete an Analytics Export</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="objects/analytics_query.html">Analytics Query</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="objects/analytics_query.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/analytics_query.html#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/analytics_query.html#api-endpoints">API Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/analytics_query.html#create-an-analytics-query">Create an Analytics Query</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/analytics_query.html#list-analytics-queries">List Analytics Queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/analytics_query.html#update-an-analytics-query">Update an Analytics Query</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/analytics_query.html#partially-update-an-analytics-query">Partially Update an Analytics Query</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/analytics_query.html#retrieve-an-analytics-query">Retrieve an Analytics Query</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/analytics_query.html#delete-an-analytics-query">Delete an Analytics Query</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/analytics_query.html#run-an-analytics-query">Run an Analytics Query</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="objects/areas.html">Areas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="objects/areas.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/areas.html#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/areas.html#area-status-conditions">Area Status Conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/areas.html#complex-constraints">Complex Constraints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/areas.html#space-constraints">Space Constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/areas.html#product-constraints">Product Constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/areas.html#devices-constraints">Devices Constraints</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="objects/areas.html#data-source-integration">Data Source Integration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/areas.html#id2">Data Model</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="objects/areas.html#example">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="objects/areas.html#api-endpoints">API Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/areas.html#create-a-area">Create a Area</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/areas.html#list-areas">List Areas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/areas.html#update-a-area">Update a Area</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/areas.html#partially-update-a-area">Partially Update a Area</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/areas.html#retrieve-a-area">Retrieve a Area</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/areas.html#delete-a-area">Delete a Area</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/areas.html#register-an-area-with-a-data-source">Register an Area With a Data Source</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="objects/buildings.html">Buildings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="objects/buildings.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/buildings.html#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/buildings.html#device-counts">Device Counts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/buildings.html#operating-hours">Operating Hours</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/buildings.html#id1">Data Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/buildings.html#time-schedule">Time Schedule</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="objects/buildings.html#id2">Data Model</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="objects/buildings.html#complex-constraints">Complex Constraints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/buildings.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="objects/buildings.html#electrical-fee-schedule">Electrical Fee Schedule</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/buildings.html#id3">Data Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/buildings.html#electrical-fee-schedule-complex-constraints">Complex Constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/buildings.html#time-dependent-rates-model">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="objects/buildings.html#time-dependent-rates">Time Dependent Rates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/buildings.html#id6">Data Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/buildings.html#time-dependent-rates-complex-constraints">Complex Constraints</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="objects/buildings.html#api-endpoints">API Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/buildings.html#create-a-building">Create a Building</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/buildings.html#list-buildings">List Buildings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/buildings.html#update-a-building">Update a Building</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/buildings.html#partially-update-a-building">Partially Update a Building</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/buildings.html#retrieve-a-building">Retrieve a Building</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/buildings.html#delete-a-building">Delete a Building</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/buildings.html#append-entries-to-a-building-s-operating-hours">Append Entries to a Building&#8217;s Operating Hours</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/buildings.html#replace-a-building-s-operating-hours">Replace a Building&#8217;s Operating Hours</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/buildings.html#retrieve-a-building-s-operating-hours">Retrieve a Building&#8217;s Operating Hours</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/buildings.html#remove-all-entries-from-a-building-s-operating-hours">Remove All Entries From a Building&#8217;s Operating Hours</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/buildings.html#append-entries-to-a-building-s-electrical-fee-schedule">Append Entries to a Building&#8217;s Electrical Fee Schedule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/buildings.html#replace-a-building-s-electrical-fee-schedule">Replace a Building&#8217;s Electrical Fee Schedule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/buildings.html#retrieve-a-building-s-electrical-fee-schedule">Retrieve a Building&#8217;s Electrical Fee Schedule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/buildings.html#remove-all-entries-from-a-building-s-electrical-fee-schedule">Remove All Entries From a Building&#8217;s Electrical Fee Schedule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/buildings.html#list-a-building-s-hierarchy-with-devices">List a Building&#8217;s Hierarchy with Devices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/buildings.html#building-reactor-version">Building Reactor Version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/buildings.html#building-reactor-logs">Building Reactor Logs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="objects/connected_products.html">Connected Products</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="objects/connected_products.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/connected_products.html#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/connected_products.html#api-endpoints">API Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/connected_products.html#create-a-connected-product">Create a Connected Product</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/connected_products.html#list-connected-products">List Connected Products</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/connected_products.html#update-a-connected-product">Update a Connected Product</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/connected_products.html#partially-update-a-connected-product">Partially Update a Connected Product</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/connected_products.html#retrieve-a-connected-product">Retrieve a Connected Product</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/connected_products.html#delete-a-connected-product">Delete a Connected Product</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="objects/currency.html">Currency</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="objects/currency.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/currency.html#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/currency.html#api-endpoints">API Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/currency.html#list-all-currencies">List All Currencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/currency.html#retrieve-a-specific-currency">Retrieve a Specific Currency</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="objects/customers.html">Customers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="objects/customers.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/customers.html#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/customers.html#device-counts">Device Counts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/customers.html#partner-access">Partner Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/customers.html#complex-constraints">Complex Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/customers.html#api-endpoints">API Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/customers.html#create-a-customer">Create a Customer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/customers.html#list-customers">List Customers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/customers.html#update-a-customer">Update a Customer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/customers.html#partially-update-a-customer">Partially Update a Customer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/customers.html#retrieve-a-customer">Retrieve a Customer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/customers.html#delete-a-customer">Delete a Customer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/customers.html#grant-scope-access-to-a-partner">Grant Scope Access to a Partner</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="objects/dashboards.html">Dashboards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="objects/dashboards.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/dashboards.html#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/dashboards.html#api-endpoints">API Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/dashboards.html#create-a-dashboard">Create a Dashboard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/dashboards.html#list-dashboards">List Dashboards</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/dashboards.html#update-a-dashboard">Update a Dashboard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/dashboards.html#partially-update-a-dashboard">Partially Update a Dashboard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/dashboards.html#retrieve-a-dashboard">Retrieve a Dashboard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/dashboards.html#delete-a-dashboard">Delete a Dashboard</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="objects/devices.html">Devices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="objects/devices.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/devices.html#gateway-description">Gateway Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/devices.html#mesh-access-point-description">Mesh Access Point Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/devices.html#integration-specific">Integration Specific</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/devices.html#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/devices.html#commission-state-conditions">Commission State Conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/devices.html#complex-constraints">Complex Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/devices.html#gateway-managed-attributes">Gateway Managed Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/devices.html#extra-filters">Extra Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/devices.html#beacon-config-meta">Beacon Config Meta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/devices.html#default-meta-values">Default Meta Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/devices.html#devices-of-type-wim">Devices of Type WIM</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/devices.html#devices-of-type-gateway">Devices of Type Gateway</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/devices.html#devices-of-type-mesh-access-point">Devices of Type Mesh Access Point</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/devices.html#devices-of-type-sensor">Devices of Type Sensor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="objects/devices.html#devices-with-dimmable-support">Devices with Dimmable Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/devices.html#api-endpoints">API Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/devices.html#create-a-device">Create a Device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/devices.html#check-device-euid-availability">Check Device EUID availability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/devices.html#list-devices">List Devices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/devices.html#update-a-device">Update a Device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/devices.html#partially-update-a-device">Partially Update a Device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/devices.html#retrieve-a-device">Retrieve a Device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/devices.html#deactivate-a-device">Deactivate a Device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/devices.html#delete-a-device">Delete a Device</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="objects/devices.html#device-operations">Device Operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/devices.html#move-unassign-space">Move/Unassign Space</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/devices.html#unassign-building">Unassign Building</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/devices.html#unassign-customer">Unassign Customer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="objects/fault_alarms.html">Fault Alarms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="objects/fault_alarms.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/fault_alarms.html#data-model">Data Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/fault_alarms.html#complex-constraints">Complex Constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/fault_alarms.html#state-logs">State Logs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="objects/fault_alarms.html#id1">Data Model</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="objects/fault_alarms.html#api-endpoints">API Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/fault_alarms.html#create-a-fault-alarm">Create a Fault Alarm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/fault_alarms.html#list-fault-alarms">List Fault Alarms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/fault_alarms.html#get-a-fault-alarm">Get a Fault Alarm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/fault_alarms.html#update-a-fault-alarm">Update a Fault Alarm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/fault_alarms.html#partially-update-a-fault-alarm">Partially Update a Fault Alarm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/fault_alarms.html#delete-a-fault-alarm">Delete a Fault Alarm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/fault_alarms.html#bulk-update-of-fault-alarms-states">Bulk Update of Fault Alarms&#8217; states</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="objects/local_rules.html">Local Rules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="objects/local_rules.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/local_rules.html#data-model">Data Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/local_rules.html#complex-constraints">Complex Constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/local_rules.html#conditions">Conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/local_rules.html#operations">Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/local_rules.html#locking">Locking</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="objects/local_rules.html#lock-condition">Lock Condition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="objects/local_rules.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="objects/local_rules.html#api-endpoints">API Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/local_rules.html#create-a-rule">Create a Rule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/local_rules.html#list-rules">List Rules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/local_rules.html#update-a-rule">Update a Rule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/local_rules.html#retrieve-a-rule">Retrieve a Rule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/local_rules.html#delete-a-rule">Delete a Rule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/local_rules.html#retrieve-a-rule-activity-log">Retrieve a Rule activity log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/local_rules.html#retrieve-meta-variables-and-operators-for-building-rules">Retrieve Meta, Variables, and Operators for building Rules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="objects/locations.html">Locations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="objects/locations.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/locations.html#data-model">Data Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/locations.html#example">Example:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="objects/locations.html#filtering-by-latitude-lat-longitude-lng">Filtering by Latitude (lat) / Longitude (lng)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="objects/partners.html">Partners</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="objects/partners.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/partners.html#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/partners.html#complex-constraints">Complex Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/partners.html#partner-devices-total">Partner Devices Total</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/partners.html#partner-preferences-model">Partner Preferences Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/partners.html#customer-management">Customer Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/partners.html#api-endpoints">API Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/partners.html#create-a-partner">Create a Partner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/partners.html#list-partners">List Partners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/partners.html#update-a-partner">Update a Partner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/partners.html#partially-update-a-partner">Partially Update a Partner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/partners.html#retrieve-a-partner">Retrieve a Partner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/partners.html#delete-a-partner">Delete a Partner</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="objects/product_files.html">Product Files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="objects/product_files.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/product_files.html#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/product_files.html#api-endpoints">API Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/product_files.html#create-a-product-file">Create a Product File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/product_files.html#list-product-files">List Product Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/product_files.html#update-a-product-file">Update a Product File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/product_files.html#partially-update-a-product-file">Partially Update a Product File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/product_files.html#retrieve-a-product-file">Retrieve a Product File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/product_files.html#delete-a-product-file">Delete a Product File</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="objects/product_types.html">Product Types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="objects/product_types.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/product_types.html#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/product_types.html#specs-data-model">Specs Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/product_types.html#api-endpoints">API Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/product_types.html#list-product-types">List Product Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/product_types.html#retrieve-a-product-type">Retrieve a Product Type</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="objects/products.html">Products</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="objects/products.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/products.html#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/products.html#complex-constraints">Complex Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/products.html#product-specs">Product Specs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/products.html#product-specs-constraints">Complex Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/products.html#api-endpoints">API Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/products.html#create-a-product">Create a Product</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/products.html#list-products">List Products</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/products.html#update-a-product">Update a Product</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/products.html#partially-update-a-product">Partially Update a Product</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/products.html#retrieve-a-product">Retrieve a Product</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/products.html#delete-a-product">Delete a Product</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/products.html#activate-a-product">Activate a Product</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="objects/rules_v2.html">Rules V2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="objects/rules_v2.html#description">Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/rules_v2.html#timestamp-of-a-message">Timestamp of a Message</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="objects/rules_v2.html#for-property-rules">For Property Rules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="objects/rules_v2.html#for-event-rules">For Event Rules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="objects/rules_v2.html#property-based-rules">Property-based Rules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/rules_v2.html#id1">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/rules_v2.html#data-model">Data Model</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="objects/rules_v2.html#complex-constraints">Complex Constraints</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="objects/rules_v2.html#condition-groups">Condition Groups</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="objects/rules_v2.html#id2">Data Model</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="objects/rules_v2.html#property-rule-condition-group-complex-constraints">Complex Constraints</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="objects/rules_v2.html#function">Function</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="objects/rules_v2.html#boolean-functions">Boolean Functions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="objects/rules_v2.html#numeric-functions">Numeric Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="objects/rules_v2.html#conditions">Conditions</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="objects/rules_v2.html#id4">Data Model</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="objects/rules_v2.html#id5">Complex Constraints</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="objects/rules_v2.html#locking">Locking</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="objects/rules_v2.html#lock-condition">Lock Condition</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="objects/rules_v2.html#id6">Data Model</a></li>
+<li class="toctree-l5"><a class="reference internal" href="objects/rules_v2.html#example">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="objects/rules_v2.html#api-endpoints">API Endpoints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="objects/rules_v2.html#create-a-property-based-rule">Create a Property-based Rule</a></li>
+<li class="toctree-l4"><a class="reference internal" href="objects/rules_v2.html#list-property-based-rules">List Property-based Rules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="objects/rules_v2.html#retrieve-a-property-based-rule">Retrieve a Property-based Rule</a></li>
+<li class="toctree-l4"><a class="reference internal" href="objects/rules_v2.html#update-a-property-based-rule">Update a Property-based Rule</a></li>
+<li class="toctree-l4"><a class="reference internal" href="objects/rules_v2.html#delete-a-property-based-rule">Delete a Property-based Rule</a></li>
+<li class="toctree-l4"><a class="reference internal" href="objects/rules_v2.html#retrieve-property-rule-activity-log">Retrieve Property Rule activity log</a></li>
+<li class="toctree-l4"><a class="reference internal" href="objects/rules_v2.html#retrieve-meta-variables-and-operators-for-building-rules">Retrieve Meta, Variables, and Operators for building Rules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="objects/rules_v2.html#event-based-rules">Event-based Rules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/rules_v2.html#id7">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/rules_v2.html#id8">Data Model</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="objects/rules_v2.html#event-rules-complex-constraints">Complex Constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="objects/rules_v2.html#event-rule-condition">Conditions</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="objects/rules_v2.html#id11">Data Model</a></li>
+<li class="toctree-l5"><a class="reference internal" href="objects/rules_v2.html#id12">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="objects/rules_v2.html#examples">Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/rules_v2.html#id13">API Endpoints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="objects/rules_v2.html#create-an-event-based-rule">Create an Event-based Rule</a></li>
+<li class="toctree-l4"><a class="reference internal" href="objects/rules_v2.html#list-event-based-rules">List Event-based Rules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="objects/rules_v2.html#retrieve-an-event-based-rule">Retrieve an Event-based Rule</a></li>
+<li class="toctree-l4"><a class="reference internal" href="objects/rules_v2.html#update-an-event-based-rule">Update an Event-based Rule</a></li>
+<li class="toctree-l4"><a class="reference internal" href="objects/rules_v2.html#delete-an-event-based-rule">Delete an Event-based Rule</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="objects/rules_v2.html#retrieve-event-rule-activity-log">Retrieve Event Rule activity log</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="objects/rules_v2.html#common">Common</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/rules_v2.html#common-fields">Common Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/rules_v2.html#actions">Actions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="objects/rules_v2.html#id14">Complex Constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="objects/rules_v2.html#id15">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="objects/rule_groups.html">Rule Groups</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="objects/rule_groups.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/rule_groups.html#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/rule_groups.html#complex-constraints">Complex Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/rule_groups.html#api-endpoints">API Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/rule_groups.html#create-a-rule-group">Create a Rule Group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/rule_groups.html#list-all-rule-groups">List all Rule Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/rule_groups.html#retrieve-a-rule-group">Retrieve a Rule Group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/rule_groups.html#update-a-rule-group">Update a Rule Group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/rule_groups.html#partially-update-a-rule-group">Partially Update a Rule Group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/rule_groups.html#delete-a-rule-group">Delete a Rule Group</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="objects/scenes.html">Scenes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="objects/scenes.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/scenes.html#data-model">Data Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/scenes.html#complex-constraints">Complex Constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/scenes.html#notes">Notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/scenes.html#states">States</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="objects/scenes.html#id1">Data Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="objects/scenes.html#example">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="objects/scenes.html#api-endpoints">API Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/scenes.html#create-a-scene">Create a Scene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/scenes.html#list-scenes">List Scenes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/scenes.html#update-a-scene">Update a Scene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/scenes.html#partially-update-a-scene">Partially Update a Scene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/scenes.html#retrieve-a-scene">Retrieve a Scene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/scenes.html#delete-a-scene">Delete a Scene</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="objects/schedules.html">Schedules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="objects/schedules.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/schedules.html#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/schedules.html#complex-constraints">Complex Constraints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/schedules.html#operations">Operations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="objects/schedules.html#api-endpoints">API Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/schedules.html#create-a-schedule">Create a Schedule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/schedules.html#list-schedules">List Schedules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/schedules.html#update-a-schedule">Update a Schedule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/schedules.html#retrieve-a-schedule">Retrieve a Schedule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/schedules.html#delete-a-schedule">Delete a Schedule</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="objects/spaces.html">Spaces</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="objects/spaces.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/spaces.html#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/spaces.html#device-counts">Device Counts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/spaces.html#complex-constraints">Complex Constraints</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="objects/spaces.html#api-endpoints">API Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/spaces.html#create-a-space">Create a Space</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/spaces.html#list-spaces">List Spaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/spaces.html#update-a-space">Update a Space</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/spaces.html#partially-update-a-space">Partially Update a Space</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/spaces.html#retrieve-a-space">Retrieve a Space</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/spaces.html#delete-a-space">Delete a Space</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/spaces.html#list-all-space-devices">List All Space Devices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/spaces.html#list-all-space-connected-products">List All Space Connected Products</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/spaces.html#retrieve-space-states">Retrieve Space States</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="objects/timezones.html">Timezones</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="objects/timezones.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/timezones.html#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/timezones.html#api-endpoints">API Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/timezones.html#list-all-timezones">List All Timezones</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/timezones.html#retrieve-a-specific-timezone">Retrieve a Specific Timezone</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="objects/timezones.html#list-of-supported-timezones">List of Supported Timezones</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="objects/user_features.html">User Features</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="objects/user_features.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/user_features.html#data-model">Data Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/user_features.html#complex-constraints">Complex Constraints</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="objects/user_features.html#api-endpoints">API Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/user_features.html#update-features">Update features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/user_features.html#partially-update-features">Partially Update features</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="objects/user_groups.html">User Groups</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="objects/user_groups.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/user_groups.html#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/user_groups.html#complex-constraints">Complex Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/user_groups.html#permission-sets">Permission Sets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/user_groups.html#id1">Complex Constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/user_groups.html#permission-set-data-model">Permission Set Data Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/user_groups.html#permission-tiers">Permission Tiers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/user_groups.html#string-filters-of-objects-in-permission-sets">String Filters of Objects in Permission Sets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="objects/user_groups.html#api-endpoints">API Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/user_groups.html#list-permission-sets">List Permission Sets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/user_groups.html#create-a-user-group">Create a User Group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/user_groups.html#list-user-group">List User Group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/user_groups.html#update-a-user-group">Update a User Group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/user_groups.html#partially-update-a-user-group">Partially Update a User Group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/user_groups.html#retrieve-a-user-group">Retrieve a User Group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/user_groups.html#delete-a-user-group">Delete a User Group</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="objects/user_preferences.html">User Preferences</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="objects/user_preferences.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/user_preferences.html#data-model">Data Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="objects/users.html">Users</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="objects/users.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects/users.html#data-model">Data Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/users.html#complex-constraints">Complex Constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/users.html#account-status-definitions">Account Status Definitions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="objects/users.html#api-endpoints">API Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/users.html#create-a-user">Create a User</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/users.html#list-users">List Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/users.html#update-a-user">Update a User</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/users.html#partially-update-a-user">Partially Update a User</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/users.html#retrieve-a-user">Retrieve a User</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/users.html#delete-a-user">Delete a User</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/users.html#activate-a-user">Activate a User</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/users.html#deactivating-a-user">Deactivating a User</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/users.html#registering-a-user">Registering a User</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/users.html#resend-user-invitation">Resend User Invitation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/users.html#retrieve-current-user">Retrieve Current User</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/users.html#update-current-user">Update Current User</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/users.html#retrieve-user-permissions">Retrieve User Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/users.html#retrieve-user-preferences">Retrieve User Preferences</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="objects/users.html#username-change-process">Username Change Process</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/users.html#verify-a-username-email-change">Verify a username/email change</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="objects/users.html#password-recovery-processes">Password Recovery Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/users.html#request-a-password-change">Request a password change</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/users.html#changing-the-password">Changing the password</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="objects/users.html#two-factor-authentication">Two-Factor Authentication</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects/users.html#two-factor-authentication-setup">Two-Factor Authentication Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/users.html#verify-two-factor-authentication">Verify Two-Factor Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/users.html#two-factor-authentication-details">Two-Factor Authentication Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects/users.html#disable-two-factor-authentication">Disable Two-Factor Authentication</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="objects/action_types.html" class="btn btn-neutral float-right" title="Action Types" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="general/scope.html" class="btn btn-neutral" title="Scope" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Gooee, LLC.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/sphinx_tabs/tabs.js"></script>
+      <script type="text/javascript" src="_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

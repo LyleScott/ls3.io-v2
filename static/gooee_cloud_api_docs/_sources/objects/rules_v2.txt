@@ -1,0 +1,866 @@
+.. _objects_rules_v2:
+
+========
+Rules V2
+========
+
+.. contents:: Quick Links
+
+
+Description
+===========
+
+Rules are composed of triggers that perform some behavior when :ref:`Device <objects_devices>` or
+:ref:`Area <objects_areas>` :ref:`Meta <general_meta>` changes or an :ref:`Action <objects_actions>`
+is created.
+
+There are 2 types of Rules, :ref:`Property-based Rules <objects_property_rules>` and
+:ref:`Event-based Rules <objects_event_rules>`. The conditions of Property-based Rules observe
+changes to :ref:`Meta <general_meta>` of one or more :ref:`Devices <objects_devices>` or :ref:`Areas
+<objects_areas>`. The conditions of Event-based Rules observe the :ref:`Actions <objects_actions>`
+performed on a particular :ref:`Device <objects_devices>`.
+
+When a Rule is created/updated, our Rule Engine incorporates the Rule and reacts to be able
+to listen to the Devices included in the the conditions of the Rule. To protect itself against
+potential infinite loops of Rule execution that could jeopardize the performance of the system,
+the Rule Engine is also observing the Rules' executions. When a Rule starts having a high rate
+of execution in a short period of time, the system will disable the Rule as a protection mechanism.
+
+
+Timestamp of a Message
+-----------------------
+
+When a :ref:`Device Meta <general_meta>` update or an :ref:`Action <objects_actions>` is received by
+the Rule Engine the timestamp of the message is verified. The event will be ignored if the
+``timestamp`` is in the future or older than 10 minutes.
+
+For Property Rules
+~~~~~~~~~~~~~~~~~~
+
+- If the timestamp of the :ref:`Device Meta <general_meta>` is old, but the message is the last
+  information received from the device, the information about the device is updated to reflect it,
+  but the evaluation of the rule is skipped.
+- If the timestamp is older than any previous valid timestamp of the same :ref:`Device Meta
+  <general_meta>` received from that device, the message is ignored.
+- If the timestamp is in the future, the message is ignored.
+
+For Event Rules
+~~~~~~~~~~~~~~~
+
+- If the timestamp of the :ref:`Action <objects_actions>` is old or is in the future, the message is
+  ignored.
+
+
+.. _objects_property_rules:
+
+Property-based Rules
+====================
+
+Description
+-----------
+
+Property-based Rules are composed of :ref:`condition groups <property_rule_condition_groups>`,
+groupings of conditions across one or more :ref:`Devices <objects_devices>` or :ref:`Areas
+<objects_areas>` of a :ref:`Space <objects_spaces>` that specify desired :ref:`Meta <general_meta>`
+values. Property-based Rules execute their :ref:`Actions <rule_v2_actions>` when their condition
+groups are met as a whole.
+
+Data Model
+----------
+
+================  ===========================================  =========
+Key               Datatype                                     Notes
+================  ===========================================  =========
+id                ref                                          read-only
+created           datetime                                     read-only
+modified          datetime                                     read-only
+name              string                                       required
+description       string
+building          :ref:`ref <objects_buildings>`               read-only
+customer          :ref:`ref <objects_customers>`               read-only
+space             :ref:`ref <objects_spaces>`                  required
+condition_groups  :ref:`ref <property_rule_condition_groups>`  required
+lock_condition    :ref:`ref <property_rule_lock_condition>`
+actions           array(:ref:`ref <rule_v2_actions>`)          required
+enabled           boolean                                      default=true
+customer_scopes   array(:ref:`ref <objects_customers>`)        see :ref:`general_scope`
+partner_scopes    array(:ref:`ref <objects_partners>`)         see :ref:`general_scope`
+tags              array(string)                                max_length=50 per tag
+last_execution    datetime                                     read-only
+execution_count   number                                       read-only
+execution_origin  enum                                         options=[``"cloud"``, ``"gateway"``]
+rule_group        :ref:`ref <objects_rule_groups>`             read-only
+================  ===========================================  =========
+
+.. _property_rules_complex_constraints:
+
+Complex Constraints
+~~~~~~~~~~~~~~~~~~~
+
+- ``name`` and ``space`` must form a unique pair.
+- ``space`` must have a ``data_service_id``.
+- ``space`` must have one or more :ref:`Devices <objects_devices>`.
+- If ``rule_group`` is not ``null``,
+   - ``enabled`` and ``execution_origin`` may only be changed on the :ref:`Rule Group <objects_rule_groups>` itself.
+   - ``condition_groups`` may not be added or removed.
+
+
+.. _property_rule_condition_groups:
+
+Condition Groups
+----------------
+
+A Condition Group describes a set of Conditions applied to one or more Areas or Devices in a Space,
+using a specified function. When the Rule is evaluated, each Condition Group will be evaluated in
+order, and each boolean result will be combined via its ``logical_operator`` with the next Condition
+Group's evaluation result. This operation is left-associative.
+
+
+Data Model
+~~~~~~~~~~
+
+================  ============================================  =========
+Key               Datatype                                      Notes
+================  ============================================  =========
+function          enum                                          required, options=[`"all"`, `"any"`, `"min"`, `"max"`, `"sum"`, `"avg"`, `null`], :ref:`Complex Constraints <property_rule_condition_group_complex_constraints>`
+areas             array(:ref:`ref <objects_areas>`)             :ref:`Complex Constraints <property_rule_condition_group_complex_constraints>`
+devices           array(:ref:`ref <objects_devices>`)           :ref:`Complex Constraints <property_rule_condition_group_complex_constraints>`
+conditions        array(:ref:`ref <property_rule_conditions>`)  required
+duration          int                                           default=`0`
+logical_operator  enum                                          required, options=[`and`, `or`], :ref:`Complex Constraints <property_rule_condition_group_complex_constraints>`
+================  ============================================  =========
+
+
+.. _property_rule_condition_group_complex_constraints:
+
+Complex Constraints
+...................
+
+- If ``function`` is ``"min"``, ``"max"``, ``"sum"``, or ``"avg"``, the ``conditions`` may only
+  contain numeric Meta values.
+- If ``function`` is ``null``:
+   - ``areas`` and ``devices`` must be empty.
+   - ``duration`` must be ``0`` if present.
+   - Only ``"time_of_day"`` and ``"day_of_week"`` may be used as variables for ``conditions``.
+- If ``function`` is not ``null``:
+   - Only one of ``devices``, ``areas`` may be provided.
+   - As a convenience, if ``devices`` and ``areas`` are both omitted or empty, all Devices in the
+     Rule's ``space`` (including Devices in its ``child_spaces``) will be used. This excludes
+     Devices that don't support the Device Meta used in the ``variable`` of each condition.
+     in the ``variable`` of each condition will be inserted.
+   - ``"time_of_day"`` and ``"day_of_week"`` may not be used as variables for ``conditions``.
+   - If ``areas`` is provided:
+      - All ``conditions`` may only use ``"headcount"`` for ``variable``.
+      - All ``areas`` must have the same :ref:`Product <objects_products>`.
+      - All ``areas`` must have a ``data_source_id``.
+- There can be at most one Condition Group where ``function`` is ``null``.
+- If there is more than one Condition Group, ``logical_operator`` is required on all but the last
+  Condition Group.
+- If there is only one Condition Group, ``logical_operator`` is not required.
+- If the Rule's ``rule_group`` is not ``null``, ``conditions`` may not be added or removed.
+- All the ``devices`` in the ``condition_group`` must support the meta properties of that
+  ``condition_group``.
+
+.. _property_rule_function:
+
+Function
+~~~~~~~~
+
+The ``function`` field of a Condition Group determines how to apply its :ref:`Conditions
+<property_rule_conditions>` to its ``areas`` or ``devices``. Functions can be loosely divided into 2
+categories, boolean functions and numeric functions.
+
+Boolean Functions
+.................
+
+- ``"all"``: The ``conditions`` must be met for *all* of the ``devices``.
+- ``"any"``: The ``conditions`` must be met for *any* of the ``devices``.
+
+Numeric Functions
+.................
+
+The numeric functions are applied across *all* Areas or Devices. They specify a mathematical
+function to be applied to all of the objects for each Meta value. The conditions are evaluated for
+the aggregate Meta values instead of being applied to the individual Meta values of each
+Area/Device. They may only be used with numeric Meta values in the conditions.
+
+- ``"min"``: The minimum Meta value for all Devices.
+- ``"max"``: The maximum Meta value for all Devices.
+- ``"avg"``: The average Meta value for all Devices.
+- ``"sum"``: The sum of all Meta values for all Devices.
+
+Function ``null`` is a special case for Condition Groups which do not contain any Device-related
+conditions, such as when using the variables ``time_of_day`` and ``day_of_week``. See
+:ref:`Condition Group Complex Constraints <property_rule_condition_group_complex_constraints>`.
+
+
+.. _property_rule_conditions:
+
+Conditions
+~~~~~~~~~~
+
+Conditions describe the desired state of a :ref:`Meta <general_meta>` value. The Conditions will be
+evaluated once for each of the Condition Group's ``areas`` or ``devices``. The results of each
+individual Condition will be combined via its ``logical_operator`` in the same manner that Condition
+Groups are combined.
+
+Data Model
+..........
+
+================  ======================================  =============
+Key               Datatype                                Notes
+================  ======================================  =============
+variable          string                                  required
+operator          enum                                    required, options=[`=`, `!=`, `>`, `>=`, `<`, `<=`]
+value             string | boolean | int | float | array  required
+logical_operator  enum                                    required, options=[`and`, `or`]
+skip_trigger      boolean                                 default=false
+================  ======================================  =============
+
+Normally, when a Meta value is updated, any Rule that uses that Meta value as a condition variable is
+triggered immediately. However, when the ``skip_trigger`` field is true, updates to that Meta value
+will not cause the Rule to trigger. The Rule will only be triggered by updates to *other* conditions,
+which leads to **all** conditions to be evaluated as normal.
+
+Complex Constraints
+```````````````````
+
+- ``variable`` is the subject of comparison.
+  - ``time_of_day`` represents the current 24-hour time.
+  - ``day_of_week`` represents the day of the week (monday, tuesday, .. , sunday).
+  - Anything else is interpreted as the name of a Device Meta, and represents its current value.
+- ``value`` is the object of comparison. The ``variable`` will be compared to this value via the ``operator``.
+  - If ``variable`` is a :ref:`Meta <general_meta>`, ``value`` should be a valid value for that Meta.
+  - If ``variable`` is ``time_of_day``, ``value`` should use the 24-hour time format ``HH:MM:SS``.
+  - If ``variable`` is ``day_of_week``, ``value`` should be an array containing one or more of the following values, representing each day of the week: ``mon``, ``tue``, ``wed``, ``thu``, ``fri``, ``sat``, ``sun``.
+- ``operator`` is the comparison operator used to compare ``variable`` and ``value``.
+  - If ``variable`` is a :ref:`Meta <general_meta>`, it should be a valid comparison for its datatype (for example, it doesn't make sense to use ``>`` to compare strings).
+  - If ``variable`` is ``time_of_day``, any operator can be used.
+  - If ``variable`` is ``day_of_week``, operator must be one of ``=`` or ``!=``.
+- If the Rule's ``rule_group`` is not null, ``variable``, ``operator``, and ``logical_operator`` are read-only.
+- If an ``adjust`` action is present in the rule, all ``dim`` conditions get the ``skip_trigger = true`` key automatically added.
+
+
+
+.. _property_rule_locking:
+
+Locking
+-------
+
+Property-based Rules employ a locking mechanism to ensure that the same Rule won't keep evaluating
+once the intended effects are achieved. A Rule will never execute more than once *while its
+conditions are still met*.
+
+Once a Property-based Rule executes, it is immediately **locked**. A **locked** Rule will not
+execute, regardless of whether its conditions are fulfilled.
+
+The lock is removed once the Rule's conditions are no longer fulfilled, allowing the Rule to
+execute as normal again.
+
+For example, say you have a Property-based Rule with the following ``condition_groups``:
+
+.. code-block:: json
+
+  [{
+    "function": "any",
+    "conditions": [{
+      "variable": "motion_intensity",
+      "operator": ">",
+      "value": 15
+    }]
+  }]
+
+The following example scenario might play out, where ``"motion_intensity"`` is a Meta value on some
+Device in the Rule's Space:
+
+  * ``"motion_intensity"`` = ``22``:
+    * Rule conditions are fulfilled, and
+    * Rule is not **locked**, so
+    * execute actions, and set Rule to **locked**.
+  * ``"motion_intensity"`` = ``33``:
+    * Rule conditions are fulfilled, but
+    * Rule is **locked**, so skip execution.
+  * ``"motion_intensity"`` = ``10``:
+    * Rule conditions are not fulfilled, so
+    * remove **lock** from Rule.
+  * ``"motion_intensity"` = ``18``
+    * Rule conditions are fulfilled, and
+    * Rule is not **locked**, so
+    * execute actions, and set Rule to **locked**.
+
+
+.. _property_rule_lock_condition:
+
+Lock Condition
+~~~~~~~~~~~~~~
+
+In some cases, the default locking behavior may not meet your needs. To change the default locking
+behavior, supply a value for the ``"lock_condition"`` parameter. The data model for
+``"lock_condition"`` is a subset of the data model for individual ``"conditions"`` and devices of
+the ``"condition groups"``. It does not support ``areas``. The lock condition can be defined only
+when the actions of the rule are of type  ``"adjust"``:
+
+
+Data Model
+..........
+
+==========  =======================================  =========
+Key         Datatype                                 Notes
+==========  =======================================  =========
+variable    string                                   required
+operator    enum                                     required
+value       string | boolean | int | float | array   required
+function    enum                                     required, options=[`"all"`, `"any"`], :ref:`Complex Constraints <property_rule_condition_group_complex_constraints>`
+devices     array(:ref:`ref <objects_devices>`)      required
+==========  =======================================  =========
+
+
+Example
+.......
+
+.. sourcecode:: json
+
+  {
+     "lock_condition": {
+        "variable": "als",
+        "operator": ">=",
+        "value": 55,
+        "devices": ["0298978e-e855-4b94-b686-817ff1ec19af"],
+        "function": "any"
+     }
+  }
+
+If a lock condition is present, the normal locking Rules will be ignored. Instead, the Rule will be
+locked when the lock condition is fulfilled, and unlocked when the lock condition is not* fulfilled.
+
+This provides more flexibility and allows for a Rule to execute multiple times until a specific
+state is achieved.
+
+
+API Endpoints
+-------------
+
+Create a Property-based Rule
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. http:POST:: /rules/v2/property
+
+   :statuscode 201:
+
+List Property-based Rules
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. http:GET:: /rules/v2/property
+
+   :statuscode 200:
+
+Retrieve a Property-based Rule
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. http:GET:: /rules/v2/property/(id)
+
+   :statuscode 200:
+
+Update a Property-based Rule
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. http:PUT:: /rules/v2/property/(id)
+
+   :statuscode 200:
+
+Delete a Property-based Rule
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. http:DELETE:: /rules/v2/property/(id)
+
+   :statuscode 204:
+
+Retrieve Property Rule activity log
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. http:GET:: /rules/v2/property/(id)/activity_log
+
+   :statuscode 200:
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /rules/v2/property/93378718-b2ad-4b6c-a1bb-39c5436bf3e6/activity_log HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json
+
+      [
+        {
+            "date": "2019-04-10 22:08:02.710313",
+            "event": "deletion"
+        },
+        {
+            "actions": {
+                "dim": {
+                    "result": "success",
+                    "target_type": "space",
+                    "targets": [
+                        "97978718-b2ad-4821-a15b-59c5436bfa12",
+                        "77378718-b2ad-4b6c-a1bb-19c5438bf3e6"
+                    ]
+                }
+            },
+            "date": "2019-04-10 22:08:02.133772",
+            "event": "execution"
+        },
+        {
+            "value": true,
+            "date": "2019-04-10 22:08:01.951371",
+            "event": "locked"
+        },
+        {
+            "date": "2019-04-10 22:07:57.197739",
+            "event": "creation"
+        }
+      ]
+
+.. _objects_rules_v2_meta_options:
+
+Retrieve Meta, Variables, and Operators for building Rules
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This endpoint provides a list of the currently available Rule triggers and conditions.  The default
+set of options is listed below.  However, additional options are likely to be present.  Device Meta
+that's in the ``~rule_trigger`` Meta Group will also be included as long as the Meta exists.
+
+.. http:GET:: /rules/meta/options
+
+   :statuscode 200:
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /rules/meta/options HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json
+
+      [
+          {
+              "name": "day_of_week",
+              "display_name": "Day of week",
+              "data_type": "list",
+              "operators": [
+                  {
+                      "value": "=",
+                      "display": "equal to"
+                  },
+                  {
+                      "value": "!=",
+                      "display": "not equal to"
+                  }
+              ],
+              "options": [
+                  {
+                      "value": "mon",
+                      "display": "Monday"
+                  },
+                  {
+                      "value": "tue",
+                      "display": "Tuesday"
+                  },
+                  {
+                      "value": "wed",
+                      "display": "Wednesday"
+                  },
+                  {
+                      "value": "thu",
+                      "display": "Thursday"
+                  },
+                  {
+                      "value": "fri",
+                      "display": "Friday"
+                  },
+                  {
+                      "value": "sat",
+                      "display": "Saturday"
+                  },
+                  {
+                      "value": "sun",
+                      "display": "Sunday"
+                  }
+              ]
+          },
+          {
+              "name": "time_of_day",
+              "display_name": "Time of day",
+              "data_type": "time",
+              "operators": [
+                  {
+                      "value": ">",
+                      "display": "after"
+                  },
+                  {
+                      "value": ">",
+                      "display": "at or after"
+                  },
+                  {
+                      "value": "<",
+                      "display": "before"
+                  },
+                  {
+                      "value": "<=",
+                      "display": "at or before"
+                  },
+                  {
+                      "value": "=",
+                      "display": "is"
+                  },
+                  {
+                      "value": "!=",
+                      "display": "is not"
+                  }
+              ],
+              "options": null
+          },
+          {
+              "name": "motion_intensity",
+              "display_name": "Motion Intensity",
+              "data_type": "number",
+              "operators": [
+                  {
+                      "value": ">",
+                      "display": "greater than"
+                  },
+                  {
+                      "value": ">=",
+                      "display": "greater than or equal to"
+                  },
+                  {
+                      "value": "<",
+                      "display": "less than"
+                  },
+                  {
+                      "value": "<=",
+                      "display": "less than or equal to"
+                  },
+                  {
+                      "value": "=",
+                      "display": "equal to"
+                  },
+                  {
+                      "value": "!=",
+                      "display": "not equal to"
+                  }
+              ],
+              "options": null
+          },
+          {
+              "name": "occupancy_detected",
+              "display_name": "Occupancy",
+              "data_type": "bool",
+              "operators": [
+                  {
+                      "value": "=",
+                      "display": "detected"
+                  },
+                  {
+                      "value": "!=",
+                      "display": "not detected"
+                  }
+              ],
+              "options": null
+          },
+          {
+              "name": "dim",
+              "display_name": "Dim",
+              "data_type": "number",
+              "operators": [
+                  {
+                      "value": ">",
+                      "display": "greater than"
+                  },
+                  {
+                      "value": ">=",
+                      "display": "greater than or equal to"
+                  },
+                  {
+                      "value": "<",
+                      "display": "less than"
+                  },
+                  {
+                      "value": "<=",
+                      "display": "less than or equal to"
+                  },
+                  {
+                      "value": "=",
+                      "display": "equal to"
+                  },
+                  {
+                      "value": "!=",
+                      "display": "not equal to"
+                  }
+              ],
+              "options": null
+          }
+      ]
+
+.. _objects_event_rules:
+
+Event-based Rules
+=================
+
+Description
+-----------
+
+Event-based Rules are composed of a single :ref:`condition <event_rule_condition>` which specifies a
+:ref:`Device <objects_devices>` and an :ref:`Action <objects_actions>`. When the specified Action
+occurs on the specified Device, the Rule will execute its :ref:`Actions <rule_v2_actions>`.
+
+
+Data Model
+----------
+
+================  =====================================  =========
+Key               Datatype                               Notes
+================  =====================================  =========
+id                ref                                    read-only
+created           datetime                               read-only
+modified          datetime                               read-only
+name              string                                 required
+description       string
+building          :ref:`ref <objects_buildings>`         read-only
+customer          :ref:`ref <objects_customers>`         read-only
+device            :ref:`ref <objects_devices>`           read-only
+condition         :ref:`ref <event_rule_condition>`      required
+actions           :ref:`ref <rule_v2_actions>`           required
+enabled           boolean                                default=true
+customer_scopes   array(:ref:`ref <objects_customers>`)  see :ref:`general_scope`
+partner_scopes    array(:ref:`ref <objects_partners>`)   see :ref:`general_scope`
+tags              array(string)                          max_length=50 per tag
+last_execution    datetime                               read-only
+execution_count   number                                 read-only
+execution_origin  enum                                   options=[``"cloud"``, ``"gateway"``]
+================  =====================================  =========
+
+
+.. _event_rules_complex_constraints:
+
+Complex Constraints
+~~~~~~~~~~~~~~~~~~~
+
+- ``name`` must be unique for the ``device``'s :ref:`Space <objects_spaces>`.
+- ``device`` must have an ``"active"`` :ref:`commission state <device_commission_state_conditions>`.
+
+
+.. _event_rule_condition:
+
+Conditions
+~~~~~~~~~~
+
+An Event-based Rule Condition is an object that describes the :ref:`Action Type
+<objects_action_types>` and parameters required for the Rule to trigger.
+
+
+Data Model
+..........
+
+================  ======================================  =========
+Key               Datatype                                Notes
+================  ======================================  =========
+action            :ref:`ref <objects_action_types>`       required
+variable          string                                  required
+operator          enum                                    required, options=[`=`, `!=`, `>`, `>=`, `<`, `<=`]
+value             string | boolean | int | float | array  required
+================  ======================================  =========
+
+.. note:: `operator` and `value` may have restrictions based on the type of `variable`.
+
+
+Example
+.......
+
+.. sourcecode:: json
+
+ {
+    "condition": {
+      "action": "button_pressed",
+      "variable": "button_number",
+      "operator": "=",
+      "value": 1
+    }
+  }
+
+
+Examples
+--------
+
+.. include:: ../_static/property-rules-sample.json
+   :code: json
+
+.. include:: ../_static/event-rules-sample.json
+   :code: json
+
+
+API Endpoints
+-------------
+
+Create an Event-based Rule
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. http:POST:: /rules/v2/event
+
+   :statuscode 201:
+
+List Event-based Rules
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. http:GET:: /rules/v2/event
+
+   :statuscode 200:
+
+Retrieve an Event-based Rule
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. http:GET:: /rules/v2/event/(id)
+
+   :statuscode 200:
+
+Update an Event-based Rule
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. http:PUT:: /rules/v2/event/(id)
+
+   :statuscode 200:
+
+Delete an Event-based Rule
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. http:DELETE:: /rules/v2/event/(id)
+
+   :statuscode 204:
+
+Retrieve Event Rule activity log
+----------------------------------
+
+.. http:GET:: /rules/v2/event/(id)/activity_log
+
+   :statuscode 200:
+
+Common
+======
+
+This section describes parts of the API common to both :ref:`Property-based Rules
+<objects_property_rules>` and :ref:`Event-based Rules <objects_event_rules>`.
+
+
+Common Fields
+-------------
+
+For reference, this table describes the fields common to the data models of both types of Rules.
+
+================  =====================================  =========
+Key               Datatype                               Notes
+================  =====================================  =========
+id                ref                                    read-only
+created           datetime                               read-only
+modified          datetime                               read-only
+name              string                                 required
+description       string
+building          :ref:`ref <objects_buildings>`         read-only
+customer          :ref:`ref <objects_customers>`         read-only
+actions           :ref:`ref <rule_v2_actions>`           required
+enabled           boolean                                default=true
+customer_scopes   array(:ref:`ref <objects_customers>`)  see :ref:`general_scope`
+partner_scopes    array(:ref:`ref <objects_partners>`)   see :ref:`general_scope`
+tags              array(string)                          max_length=50 per tag
+last_execution    datetime                               read-only
+execution_count   number                                 read-only
+execution_origin  enum                                   options=[``"cloud"``, ``"gateway"``]
+================  =====================================  =========
+
+
+.. _rule_v2_actions:
+
+Actions
+-------
+
+The ``actions`` field is an array of grouped :ref:`Actions <objects_actions>` to be executed when a
+Rule's conditions are met. All Actions in a group will execute sequentially before the Actions in
+the next group execute, and so on. For example, the payload below will first send the *Activate
+Scene* Action, :ref:`wait <action_type_wait>` 5 seconds, then send two Off* Actions at the same time
+to a space and device.
+
+See :ref:`Action Types <objects_action_types>` for information on available Action Types.
+
+
+Complex Constraints
+~~~~~~~~~~~~~~~~~~~
+
+- If the Rule's ``execution_origin`` is ``"cloud"``, all Actions' Spaces/Devices must have the same
+  :ref:`Building <objects_buildings>`.
+- If the Rule's ``execution_origin`` is ``"gateway"``, all Actions' Spaces/Devices must be under the
+  same :ref:`Gateway <objects_devices>`.
+- All :ref:`Actions <objects_actions>` must follow the same validation and schema as the
+  :ref:`/actions endpoint <objects_actions>`
+- ``actions`` can contain up to 5 action groups of up to 5 actions each.
+- The action type :ref:`Set Fault Alarm <objects_action_types_set_fault_alarm>` is supported only
+  by Property Rules.
+
+
+Example
+~~~~~~~
+
+.. sourcecode:: json
+
+    {
+        "actions": [
+            [
+                {
+                    "type": "scene_activate",
+                    "target_type": "scene",
+                    "target_id": "87dddcc2-9b19-4c90-969c-4976fbd2e529",
+                    "value": {
+                        "sceneid": "87dddcc2-9b19-4c90-969c-4976fbd2e529",
+                        "transition_time": 5,
+                    }
+                }
+            ],
+            [
+                {
+                    "type": "wait",
+                    "value": {
+                        "duration": 5,
+                    }
+                }
+            ],
+            [
+                {
+                    "type": "off",
+                    "target_type": "device",
+                    "target_id": "4e907061-1da2-4b89-baa5-2e09dd39bd30",
+                    "value": {
+                        "transition_time": 10
+                    }
+                },
+                {
+                    "type": "off",
+                    "target_type": "space",
+                    "target_id": "be850119-e647-481e-a955-17a4c6a17347",
+                    "value": {
+                        "transition_time": 10
+                    }
+                }
+            ]
+        ]
+    }

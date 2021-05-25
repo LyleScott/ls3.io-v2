@@ -1,0 +1,2464 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Timezones &mdash; Documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/navtree.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Documentation" href="../index.html"/>
+        <link rel="up" title="Objects" href="../objects.html"/>
+        <link rel="next" title="User Features" href="user_features.html"/>
+        <link rel="prev" title="Spaces" href="spaces.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Cloud API
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="link caption"><span class="link caption-text"><a class="reference internal" href="../misc.html">Misc</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/change_log.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/object_relation_diagram.html">Object Relation Diagram</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../general.html">General</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/analytics.html">Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api_tokens.html">API Tokens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/authentication.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/clearing_field_values.html">Clearing Field Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/device_counts.html">Device Counts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/exclude_include_fields.html">Include/Exclude Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/filtering.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ordering.html">Ordering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/meta.html">Meta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/meta_groups.html">Meta Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/pagination.html">Pagination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/pubsub.html">PubSub Message Broker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/search.html">Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/scope.html">Scope</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../objects.html">Objects</a></span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="action_types.html">Action Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions.html">Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analytics_export.html">Analytics Export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analytics_query.html">Analytics Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="areas.html">Areas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="buildings.html">Buildings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="connected_products.html">Connected Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="currency.html">Currency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customers.html">Customers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dashboards.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="devices.html">Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fault_alarms.html">Fault Alarms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="local_rules.html">Local Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="locations.html">Locations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="partners.html">Partners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="product_files.html">Product Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="product_types.html">Product Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="products.html">Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules_v2.html">Rules V2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rule_groups.html">Rule Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scenes.html">Scenes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schedules.html">Schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spaces.html">Spaces</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Timezones</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#api-endpoints">API Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list-of-supported-timezones">List of Supported Timezones</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_features.html">User Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_groups.html">User Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_preferences.html">User Preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Users</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../integrations.html">Integrations</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/als2lux.html">Als-to-Lux Correlation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/external_sensor.html">External Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/gateway_lite.html">Gateway Lite</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cloud API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../objects.html">Objects</a> &raquo;</li>
+        
+      <li>Timezones</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/objects/timezones.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="timezones">
+<span id="objects-timezones"></span><h1><a class="toc-backref" href="#id2">Timezones</a><a class="headerlink" href="#timezones" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="quick-links">
+<p class="topic-title first">Quick Links</p>
+<ul class="simple">
+<li><a class="reference internal" href="#timezones" id="id2">Timezones</a><ul>
+<li><a class="reference internal" href="#description" id="id3">Description</a></li>
+<li><a class="reference internal" href="#data-model" id="id4">Data Model</a></li>
+<li><a class="reference internal" href="#api-endpoints" id="id5">API Endpoints</a><ul>
+<li><a class="reference internal" href="#list-all-timezones" id="id6">List All Timezones</a></li>
+<li><a class="reference internal" href="#retrieve-a-specific-timezone" id="id7">Retrieve a Specific Timezone</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#list-of-supported-timezones" id="id8">List of Supported Timezones</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="description">
+<h2><a class="toc-backref" href="#id3">Description</a><a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>Timezones are identified by a 2-digit country code followed by unique identifier, which is in most
+cases in a well-known city in that time zone. For example, Great Britain&#8217;s timezone is identified as
+<cite>GB/London</cite>. Country codes are defined in the <a class="reference external" href="https://www.iso.org/obp/ui/#search">ISO 3166</a> International Standard for country codes.</p>
+</div>
+<div class="section" id="data-model">
+<h2><a class="toc-backref" href="#id4">Data Model</a><a class="headerlink" href="#data-model" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="15%" />
+<col width="68%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>string (ref)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>display_name</td>
+<td>string</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>olson_name</td>
+<td>string</td>
+<td>see the <a class="reference external" href="https://www.iana.org/time-zones">IANA Time Zone Database</a></td>
+</tr>
+<tr class="row-odd"><td>utc_offset</td>
+<td>number</td>
+<td>+/- minutes from Coordinated Universal Time (UTC)</td>
+</tr>
+<tr class="row-even"><td>current_offset</td>
+<td>number</td>
+<td>same as <cite>utc_offset</cite>, but aware of Daylight Savings Time</td>
+</tr>
+<tr class="row-odd"><td>country</td>
+<td>string</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>country_code</td>
+<td>string</td>
+<td>see <a class="reference external" href="https://www.iso.org/obp/ui/#search">ISO 3166</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="api-endpoints">
+<h2><a class="toc-backref" href="#id5">API Endpoints</a><a class="headerlink" href="#api-endpoints" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="list-all-timezones">
+<h3><a class="toc-backref" href="#id6">List All Timezones</a><a class="headerlink" href="#list-all-timezones" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--timezones">
+<code class="descname">GET </code><code class="descname">/timezones</code><a class="headerlink" href="#get--timezones" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="retrieve-a-specific-timezone">
+<h3><a class="toc-backref" href="#id7">Retrieve a Specific Timezone</a><a class="headerlink" href="#retrieve-a-specific-timezone" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--timezones-(name)">
+<code class="descname">GET </code><code class="descname">/timezones/</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#get--timezones-(name)" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="list-of-supported-timezones">
+<h2><a class="toc-backref" href="#id8">List of Supported Timezones</a><a class="headerlink" href="#list-of-supported-timezones" title="Permalink to this headline">¶</a></h2>
+<p>Here is the list of timezones that our system accepts. Make sure that the timezone you are using is
+included in this list. Note that each Timezone is _identified_ in our system by the <cite>name</cite> column
+below.</p>
+<p>Every timezone listed here is a valid timezone from the <a class="reference external" href="https://www.iana.org/time-zones">IANA Time Zone Database</a> (also
+known as the Olson Time Zone Database).  See the <cite>Olson name</cite> column for the name used in the
+corresponding database entry.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">We update our copy of this list manually to avoid conflicts, so we may not be using the
+most recent version of the global time zone data at any given time. In most parts of the world
+this is unlikely to affect you.</p>
+</div>
+<table border="1" class="docutils" id="id1">
+<caption><span class="caption-text">Timezones</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Country</th>
+<th class="head">Name</th>
+<th class="head">UTC Offset</th>
+<th class="head">Olson Name</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Andorra</td>
+<td>AD/Andorra</td>
+<td>+01:00</td>
+<td>Europe/Andorra</td>
+</tr>
+<tr class="row-odd"><td>United Arab Emirates</td>
+<td>AE/Dubai</td>
+<td>+04:00</td>
+<td>Asia/Dubai</td>
+</tr>
+<tr class="row-even"><td>Afghanistan</td>
+<td>AF/Kabul</td>
+<td>+04:30</td>
+<td>Asia/Kabul</td>
+</tr>
+<tr class="row-odd"><td>Antigua &amp; Barbuda</td>
+<td>AG/Antigua</td>
+<td>-04:00</td>
+<td>America/Antigua</td>
+</tr>
+<tr class="row-even"><td>Anguilla</td>
+<td>AI/Anguilla</td>
+<td>-04:00</td>
+<td>America/Anguilla</td>
+</tr>
+<tr class="row-odd"><td>Albania</td>
+<td>AL/Tirane</td>
+<td>+01:00</td>
+<td>Europe/Tirane</td>
+</tr>
+<tr class="row-even"><td>Armenia</td>
+<td>AM/Yerevan</td>
+<td>+04:00</td>
+<td>Asia/Yerevan</td>
+</tr>
+<tr class="row-odd"><td>Angola</td>
+<td>AO/Luanda</td>
+<td>+01:00</td>
+<td>Africa/Luanda</td>
+</tr>
+<tr class="row-even"><td>Antarctica</td>
+<td>AQ/Casey</td>
+<td>+08:00</td>
+<td>Antarctica/Casey</td>
+</tr>
+<tr class="row-odd"><td>Antarctica</td>
+<td>AQ/Davis</td>
+<td>+07:00</td>
+<td>Antarctica/Davis</td>
+</tr>
+<tr class="row-even"><td>Antarctica</td>
+<td>AQ/DumontDUrville</td>
+<td>+10:00</td>
+<td>Antarctica/DumontDUrville</td>
+</tr>
+<tr class="row-odd"><td>Antarctica</td>
+<td>AQ/Mawson</td>
+<td>+05:00</td>
+<td>Antarctica/Mawson</td>
+</tr>
+<tr class="row-even"><td>Antarctica</td>
+<td>AQ/McMurdo</td>
+<td>+12:00</td>
+<td>Antarctica/McMurdo</td>
+</tr>
+<tr class="row-odd"><td>Antarctica</td>
+<td>AQ/Palmer</td>
+<td>-03:00</td>
+<td>Antarctica/Palmer</td>
+</tr>
+<tr class="row-even"><td>Antarctica</td>
+<td>AQ/Rothera</td>
+<td>-03:00</td>
+<td>Antarctica/Rothera</td>
+</tr>
+<tr class="row-odd"><td>Antarctica</td>
+<td>AQ/Syowa</td>
+<td>+03:00</td>
+<td>Antarctica/Syowa</td>
+</tr>
+<tr class="row-even"><td>Antarctica</td>
+<td>AQ/Troll</td>
+<td>-00:00</td>
+<td>Antarctica/Troll</td>
+</tr>
+<tr class="row-odd"><td>Antarctica</td>
+<td>AQ/Vostok</td>
+<td>+06:00</td>
+<td>Antarctica/Vostok</td>
+</tr>
+<tr class="row-even"><td>Argentina</td>
+<td>AR/Buenos_Aires</td>
+<td>-03:00</td>
+<td>America/Argentina/Buenos_Aires</td>
+</tr>
+<tr class="row-odd"><td>Argentina</td>
+<td>AR/Catamarca</td>
+<td>-03:00</td>
+<td>America/Argentina/Catamarca</td>
+</tr>
+<tr class="row-even"><td>Argentina</td>
+<td>AR/Cordoba</td>
+<td>-03:00</td>
+<td>America/Argentina/Cordoba</td>
+</tr>
+<tr class="row-odd"><td>Argentina</td>
+<td>AR/Jujuy</td>
+<td>-03:00</td>
+<td>America/Argentina/Jujuy</td>
+</tr>
+<tr class="row-even"><td>Argentina</td>
+<td>AR/La_Rioja</td>
+<td>-03:00</td>
+<td>America/Argentina/La_Rioja</td>
+</tr>
+<tr class="row-odd"><td>Argentina</td>
+<td>AR/Mendoza</td>
+<td>-03:00</td>
+<td>America/Argentina/Mendoza</td>
+</tr>
+<tr class="row-even"><td>Argentina</td>
+<td>AR/Rio_Gallegos</td>
+<td>-03:00</td>
+<td>America/Argentina/Rio_Gallegos</td>
+</tr>
+<tr class="row-odd"><td>Argentina</td>
+<td>AR/Salta</td>
+<td>-03:00</td>
+<td>America/Argentina/Salta</td>
+</tr>
+<tr class="row-even"><td>Argentina</td>
+<td>AR/San_Juan</td>
+<td>-03:00</td>
+<td>America/Argentina/San_Juan</td>
+</tr>
+<tr class="row-odd"><td>Argentina</td>
+<td>AR/San_Luis</td>
+<td>-03:00</td>
+<td>America/Argentina/San_Luis</td>
+</tr>
+<tr class="row-even"><td>Argentina</td>
+<td>AR/Tucuman</td>
+<td>-03:00</td>
+<td>America/Argentina/Tucuman</td>
+</tr>
+<tr class="row-odd"><td>Argentina</td>
+<td>AR/Ushuaia</td>
+<td>-03:00</td>
+<td>America/Argentina/Ushuaia</td>
+</tr>
+<tr class="row-even"><td>Samoa (American)</td>
+<td>AS/Pago_Pago</td>
+<td>-11:00</td>
+<td>Pacific/Pago_Pago</td>
+</tr>
+<tr class="row-odd"><td>Austria</td>
+<td>AT/Vienna</td>
+<td>+01:00</td>
+<td>Europe/Vienna</td>
+</tr>
+<tr class="row-even"><td>Australia</td>
+<td>AU/Adelaide</td>
+<td>+09:30</td>
+<td>Australia/Adelaide</td>
+</tr>
+<tr class="row-odd"><td>Australia</td>
+<td>AU/Brisbane</td>
+<td>+10:00</td>
+<td>Australia/Brisbane</td>
+</tr>
+<tr class="row-even"><td>Australia</td>
+<td>AU/Broken_Hill</td>
+<td>+09:30</td>
+<td>Australia/Broken_Hill</td>
+</tr>
+<tr class="row-odd"><td>Australia</td>
+<td>AU/Currie</td>
+<td>+10:00</td>
+<td>Australia/Currie</td>
+</tr>
+<tr class="row-even"><td>Australia</td>
+<td>AU/Darwin</td>
+<td>+09:30</td>
+<td>Australia/Darwin</td>
+</tr>
+<tr class="row-odd"><td>Australia</td>
+<td>AU/Eucla</td>
+<td>+08:45</td>
+<td>Australia/Eucla</td>
+</tr>
+<tr class="row-even"><td>Australia</td>
+<td>AU/Hobart</td>
+<td>+10:00</td>
+<td>Australia/Hobart</td>
+</tr>
+<tr class="row-odd"><td>Australia</td>
+<td>AU/Lindeman</td>
+<td>+10:00</td>
+<td>Australia/Lindeman</td>
+</tr>
+<tr class="row-even"><td>Australia</td>
+<td>AU/Lord_Howe</td>
+<td>+10:30</td>
+<td>Australia/Lord_Howe</td>
+</tr>
+<tr class="row-odd"><td>Australia</td>
+<td>AU/Macquarie</td>
+<td>+11:00</td>
+<td>Antarctica/Macquarie</td>
+</tr>
+<tr class="row-even"><td>Australia</td>
+<td>AU/Melbourne</td>
+<td>+10:00</td>
+<td>Australia/Melbourne</td>
+</tr>
+<tr class="row-odd"><td>Australia</td>
+<td>AU/Perth</td>
+<td>+08:00</td>
+<td>Australia/Perth</td>
+</tr>
+<tr class="row-even"><td>Australia</td>
+<td>AU/Sydney</td>
+<td>+10:00</td>
+<td>Australia/Sydney</td>
+</tr>
+<tr class="row-odd"><td>Aruba</td>
+<td>AW/Aruba</td>
+<td>-04:00</td>
+<td>America/Aruba</td>
+</tr>
+<tr class="row-even"><td>Åland Islands</td>
+<td>AX/Mariehamn</td>
+<td>+02:00</td>
+<td>Europe/Mariehamn</td>
+</tr>
+<tr class="row-odd"><td>Azerbaijan</td>
+<td>AZ/Baku</td>
+<td>+04:00</td>
+<td>Asia/Baku</td>
+</tr>
+<tr class="row-even"><td>Bosnia &amp; Herzegovina</td>
+<td>BA/Sarajevo</td>
+<td>+01:00</td>
+<td>Europe/Sarajevo</td>
+</tr>
+<tr class="row-odd"><td>Barbados</td>
+<td>BB/Barbados</td>
+<td>-04:00</td>
+<td>America/Barbados</td>
+</tr>
+<tr class="row-even"><td>Bangladesh</td>
+<td>BD/Dhaka</td>
+<td>+06:00</td>
+<td>Asia/Dhaka</td>
+</tr>
+<tr class="row-odd"><td>Belgium</td>
+<td>BE/Brussels</td>
+<td>+01:00</td>
+<td>Europe/Brussels</td>
+</tr>
+<tr class="row-even"><td>Burkina Faso</td>
+<td>BF/Ouagadougou</td>
+<td>-00:00</td>
+<td>Africa/Ouagadougou</td>
+</tr>
+<tr class="row-odd"><td>Bulgaria</td>
+<td>BG/Sofia</td>
+<td>+02:00</td>
+<td>Europe/Sofia</td>
+</tr>
+<tr class="row-even"><td>Bahrain</td>
+<td>BH/Bahrain</td>
+<td>+03:00</td>
+<td>Asia/Bahrain</td>
+</tr>
+<tr class="row-odd"><td>Burundi</td>
+<td>BI/Bujumbura</td>
+<td>+02:00</td>
+<td>Africa/Bujumbura</td>
+</tr>
+<tr class="row-even"><td>Benin</td>
+<td>BJ/Porto-Novo</td>
+<td>+01:00</td>
+<td>Africa/Porto-Novo</td>
+</tr>
+<tr class="row-odd"><td>St Barthelemy</td>
+<td>BL/St_Barthelemy</td>
+<td>-04:00</td>
+<td>America/St_Barthelemy</td>
+</tr>
+<tr class="row-even"><td>Bermuda</td>
+<td>BM/Bermuda</td>
+<td>-04:00</td>
+<td>Atlantic/Bermuda</td>
+</tr>
+<tr class="row-odd"><td>Brunei</td>
+<td>BN/Brunei</td>
+<td>+08:00</td>
+<td>Asia/Brunei</td>
+</tr>
+<tr class="row-even"><td>Bolivia</td>
+<td>BO/La_Paz</td>
+<td>-04:00</td>
+<td>America/La_Paz</td>
+</tr>
+<tr class="row-odd"><td>Caribbean NL</td>
+<td>BQ/Kralendijk</td>
+<td>-04:00</td>
+<td>America/Kralendijk</td>
+</tr>
+<tr class="row-even"><td>Brazil</td>
+<td>BR/Araguaina</td>
+<td>-03:00</td>
+<td>America/Araguaina</td>
+</tr>
+<tr class="row-odd"><td>Brazil</td>
+<td>BR/Bahia</td>
+<td>-03:00</td>
+<td>America/Bahia</td>
+</tr>
+<tr class="row-even"><td>Brazil</td>
+<td>BR/Belem</td>
+<td>-03:00</td>
+<td>America/Belem</td>
+</tr>
+<tr class="row-odd"><td>Brazil</td>
+<td>BR/Boa_Vista</td>
+<td>-04:00</td>
+<td>America/Boa_Vista</td>
+</tr>
+<tr class="row-even"><td>Brazil</td>
+<td>BR/Campo_Grande</td>
+<td>-04:00</td>
+<td>America/Campo_Grande</td>
+</tr>
+<tr class="row-odd"><td>Brazil</td>
+<td>BR/Cuiaba</td>
+<td>-04:00</td>
+<td>America/Cuiaba</td>
+</tr>
+<tr class="row-even"><td>Brazil</td>
+<td>BR/Eirunepe</td>
+<td>-05:00</td>
+<td>America/Eirunepe</td>
+</tr>
+<tr class="row-odd"><td>Brazil</td>
+<td>BR/Fortaleza</td>
+<td>-03:00</td>
+<td>America/Fortaleza</td>
+</tr>
+<tr class="row-even"><td>Brazil</td>
+<td>BR/Maceio</td>
+<td>-03:00</td>
+<td>America/Maceio</td>
+</tr>
+<tr class="row-odd"><td>Brazil</td>
+<td>BR/Manaus</td>
+<td>-04:00</td>
+<td>America/Manaus</td>
+</tr>
+<tr class="row-even"><td>Brazil</td>
+<td>BR/Noronha</td>
+<td>-02:00</td>
+<td>America/Noronha</td>
+</tr>
+<tr class="row-odd"><td>Brazil</td>
+<td>BR/Porto_Velho</td>
+<td>-04:00</td>
+<td>America/Porto_Velho</td>
+</tr>
+<tr class="row-even"><td>Brazil</td>
+<td>BR/Recife</td>
+<td>-03:00</td>
+<td>America/Recife</td>
+</tr>
+<tr class="row-odd"><td>Brazil</td>
+<td>BR/Rio_Branco</td>
+<td>-05:00</td>
+<td>America/Rio_Branco</td>
+</tr>
+<tr class="row-even"><td>Brazil</td>
+<td>BR/Santarem</td>
+<td>-03:00</td>
+<td>America/Santarem</td>
+</tr>
+<tr class="row-odd"><td>Brazil</td>
+<td>BR/Sao_Paulo</td>
+<td>-03:00</td>
+<td>America/Sao_Paulo</td>
+</tr>
+<tr class="row-even"><td>Bahamas</td>
+<td>BS/Nassau</td>
+<td>-05:00</td>
+<td>America/Nassau</td>
+</tr>
+<tr class="row-odd"><td>Bhutan</td>
+<td>BT/Thimphu</td>
+<td>+06:00</td>
+<td>Asia/Thimphu</td>
+</tr>
+<tr class="row-even"><td>Botswana</td>
+<td>BW/Gaborone</td>
+<td>+02:00</td>
+<td>Africa/Gaborone</td>
+</tr>
+<tr class="row-odd"><td>Belarus</td>
+<td>BY/Minsk</td>
+<td>+03:00</td>
+<td>Europe/Minsk</td>
+</tr>
+<tr class="row-even"><td>Belize</td>
+<td>BZ/Belize</td>
+<td>-06:00</td>
+<td>America/Belize</td>
+</tr>
+<tr class="row-odd"><td>Canada</td>
+<td>CA/Atikokan</td>
+<td>-05:00</td>
+<td>America/Atikokan</td>
+</tr>
+<tr class="row-even"><td>Canada</td>
+<td>CA/Blanc-Sablon</td>
+<td>-04:00</td>
+<td>America/Blanc-Sablon</td>
+</tr>
+<tr class="row-odd"><td>Canada</td>
+<td>CA/Cambridge_Bay</td>
+<td>-07:00</td>
+<td>America/Cambridge_Bay</td>
+</tr>
+<tr class="row-even"><td>Canada</td>
+<td>CA/Creston</td>
+<td>-07:00</td>
+<td>America/Creston</td>
+</tr>
+<tr class="row-odd"><td>Canada</td>
+<td>CA/Dawson</td>
+<td>-08:00</td>
+<td>America/Dawson</td>
+</tr>
+<tr class="row-even"><td>Canada</td>
+<td>CA/Dawson_Creek</td>
+<td>-07:00</td>
+<td>America/Dawson_Creek</td>
+</tr>
+<tr class="row-odd"><td>Canada</td>
+<td>CA/Edmonton</td>
+<td>-07:00</td>
+<td>America/Edmonton</td>
+</tr>
+<tr class="row-even"><td>Canada</td>
+<td>CA/Fort_Nelson</td>
+<td>-07:00</td>
+<td>America/Fort_Nelson</td>
+</tr>
+<tr class="row-odd"><td>Canada</td>
+<td>CA/Glace_Bay</td>
+<td>-04:00</td>
+<td>America/Glace_Bay</td>
+</tr>
+<tr class="row-even"><td>Canada</td>
+<td>CA/Goose_Bay</td>
+<td>-04:00</td>
+<td>America/Goose_Bay</td>
+</tr>
+<tr class="row-odd"><td>Canada</td>
+<td>CA/Halifax</td>
+<td>-04:00</td>
+<td>America/Halifax</td>
+</tr>
+<tr class="row-even"><td>Canada</td>
+<td>CA/Inuvik</td>
+<td>-07:00</td>
+<td>America/Inuvik</td>
+</tr>
+<tr class="row-odd"><td>Canada</td>
+<td>CA/Iqaluit</td>
+<td>-05:00</td>
+<td>America/Iqaluit</td>
+</tr>
+<tr class="row-even"><td>Canada</td>
+<td>CA/Moncton</td>
+<td>-04:00</td>
+<td>America/Moncton</td>
+</tr>
+<tr class="row-odd"><td>Canada</td>
+<td>CA/Nipigon</td>
+<td>-05:00</td>
+<td>America/Nipigon</td>
+</tr>
+<tr class="row-even"><td>Canada</td>
+<td>CA/Pangnirtung</td>
+<td>-05:00</td>
+<td>America/Pangnirtung</td>
+</tr>
+<tr class="row-odd"><td>Canada</td>
+<td>CA/Rainy_River</td>
+<td>-06:00</td>
+<td>America/Rainy_River</td>
+</tr>
+<tr class="row-even"><td>Canada</td>
+<td>CA/Rankin_Inlet</td>
+<td>-06:00</td>
+<td>America/Rankin_Inlet</td>
+</tr>
+<tr class="row-odd"><td>Canada</td>
+<td>CA/Regina</td>
+<td>-06:00</td>
+<td>America/Regina</td>
+</tr>
+<tr class="row-even"><td>Canada</td>
+<td>CA/Resolute</td>
+<td>-06:00</td>
+<td>America/Resolute</td>
+</tr>
+<tr class="row-odd"><td>Canada</td>
+<td>CA/St_Johns</td>
+<td>-03:30</td>
+<td>America/St_Johns</td>
+</tr>
+<tr class="row-even"><td>Canada</td>
+<td>CA/Swift_Current</td>
+<td>-06:00</td>
+<td>America/Swift_Current</td>
+</tr>
+<tr class="row-odd"><td>Canada</td>
+<td>CA/Thunder_Bay</td>
+<td>-05:00</td>
+<td>America/Thunder_Bay</td>
+</tr>
+<tr class="row-even"><td>Canada</td>
+<td>CA/Toronto</td>
+<td>-05:00</td>
+<td>America/Toronto</td>
+</tr>
+<tr class="row-odd"><td>Canada</td>
+<td>CA/Vancouver</td>
+<td>-08:00</td>
+<td>America/Vancouver</td>
+</tr>
+<tr class="row-even"><td>Canada</td>
+<td>CA/Whitehorse</td>
+<td>-08:00</td>
+<td>America/Whitehorse</td>
+</tr>
+<tr class="row-odd"><td>Canada</td>
+<td>CA/Winnipeg</td>
+<td>-06:00</td>
+<td>America/Winnipeg</td>
+</tr>
+<tr class="row-even"><td>Canada</td>
+<td>CA/Yellowknife</td>
+<td>-07:00</td>
+<td>America/Yellowknife</td>
+</tr>
+<tr class="row-odd"><td>Cocos (Keeling) Islands</td>
+<td>CC/Cocos</td>
+<td>+06:30</td>
+<td>Indian/Cocos</td>
+</tr>
+<tr class="row-even"><td>Congo (Dem. Rep.)</td>
+<td>CD/Kinshasa</td>
+<td>+01:00</td>
+<td>Africa/Kinshasa</td>
+</tr>
+<tr class="row-odd"><td>Congo (Dem. Rep.)</td>
+<td>CD/Lubumbashi</td>
+<td>+02:00</td>
+<td>Africa/Lubumbashi</td>
+</tr>
+<tr class="row-even"><td>Central African Rep.</td>
+<td>CF/Bangui</td>
+<td>+01:00</td>
+<td>Africa/Bangui</td>
+</tr>
+<tr class="row-odd"><td>Congo (Rep.)</td>
+<td>CG/Brazzaville</td>
+<td>+01:00</td>
+<td>Africa/Brazzaville</td>
+</tr>
+<tr class="row-even"><td>Switzerland</td>
+<td>CH/Zurich</td>
+<td>+01:00</td>
+<td>Europe/Zurich</td>
+</tr>
+<tr class="row-odd"><td>Côte d&#8217;Ivoire</td>
+<td>CI/Abidjan</td>
+<td>-00:00</td>
+<td>Africa/Abidjan</td>
+</tr>
+<tr class="row-even"><td>Cook Islands</td>
+<td>CK/Rarotonga</td>
+<td>-10:00</td>
+<td>Pacific/Rarotonga</td>
+</tr>
+<tr class="row-odd"><td>Chile</td>
+<td>CL/Easter</td>
+<td>-06:00</td>
+<td>Pacific/Easter</td>
+</tr>
+<tr class="row-even"><td>Chile</td>
+<td>CL/Punta_Arenas</td>
+<td>-03:00</td>
+<td>America/Punta_Arenas</td>
+</tr>
+<tr class="row-odd"><td>Chile</td>
+<td>CL/Santiago</td>
+<td>-04:00</td>
+<td>America/Santiago</td>
+</tr>
+<tr class="row-even"><td>Cameroon</td>
+<td>CM/Douala</td>
+<td>+01:00</td>
+<td>Africa/Douala</td>
+</tr>
+<tr class="row-odd"><td>China</td>
+<td>CN/Shanghai</td>
+<td>+08:00</td>
+<td>Asia/Shanghai</td>
+</tr>
+<tr class="row-even"><td>China</td>
+<td>CN/Urumqi</td>
+<td>+06:00</td>
+<td>Asia/Urumqi</td>
+</tr>
+<tr class="row-odd"><td>Colombia</td>
+<td>CO/Bogota</td>
+<td>-05:00</td>
+<td>America/Bogota</td>
+</tr>
+<tr class="row-even"><td>Costa Rica</td>
+<td>CR/Costa_Rica</td>
+<td>-06:00</td>
+<td>America/Costa_Rica</td>
+</tr>
+<tr class="row-odd"><td>Cuba</td>
+<td>CU/Havana</td>
+<td>-05:00</td>
+<td>America/Havana</td>
+</tr>
+<tr class="row-even"><td>Cape Verde</td>
+<td>CV/Cape_Verde</td>
+<td>-01:00</td>
+<td>Atlantic/Cape_Verde</td>
+</tr>
+<tr class="row-odd"><td>Curaçao</td>
+<td>CW/Curacao</td>
+<td>-04:00</td>
+<td>America/Curacao</td>
+</tr>
+<tr class="row-even"><td>Christmas Island</td>
+<td>CX/Christmas</td>
+<td>+07:00</td>
+<td>Indian/Christmas</td>
+</tr>
+<tr class="row-odd"><td>Cyprus</td>
+<td>CY/Famagusta</td>
+<td>+02:00</td>
+<td>Asia/Famagusta</td>
+</tr>
+<tr class="row-even"><td>Cyprus</td>
+<td>CY/Nicosia</td>
+<td>+02:00</td>
+<td>Asia/Nicosia</td>
+</tr>
+<tr class="row-odd"><td>Czech Republic</td>
+<td>CZ/Prague</td>
+<td>+01:00</td>
+<td>Europe/Prague</td>
+</tr>
+<tr class="row-even"><td>Germany</td>
+<td>DE/Berlin</td>
+<td>+01:00</td>
+<td>Europe/Berlin</td>
+</tr>
+<tr class="row-odd"><td>Germany</td>
+<td>DE/Busingen</td>
+<td>+01:00</td>
+<td>Europe/Busingen</td>
+</tr>
+<tr class="row-even"><td>Djibouti</td>
+<td>DJ/Djibouti</td>
+<td>+03:00</td>
+<td>Africa/Djibouti</td>
+</tr>
+<tr class="row-odd"><td>Denmark</td>
+<td>DK/Copenhagen</td>
+<td>+01:00</td>
+<td>Europe/Copenhagen</td>
+</tr>
+<tr class="row-even"><td>Dominica</td>
+<td>DM/Dominica</td>
+<td>-04:00</td>
+<td>America/Dominica</td>
+</tr>
+<tr class="row-odd"><td>Dominican Republic</td>
+<td>DO/Santo_Domingo</td>
+<td>-04:00</td>
+<td>America/Santo_Domingo</td>
+</tr>
+<tr class="row-even"><td>Algeria</td>
+<td>DZ/Algiers</td>
+<td>+01:00</td>
+<td>Africa/Algiers</td>
+</tr>
+<tr class="row-odd"><td>Ecuador</td>
+<td>EC/Galapagos</td>
+<td>-06:00</td>
+<td>Pacific/Galapagos</td>
+</tr>
+<tr class="row-even"><td>Ecuador</td>
+<td>EC/Guayaquil</td>
+<td>-05:00</td>
+<td>America/Guayaquil</td>
+</tr>
+<tr class="row-odd"><td>Estonia</td>
+<td>EE/Tallinn</td>
+<td>+02:00</td>
+<td>Europe/Tallinn</td>
+</tr>
+<tr class="row-even"><td>Egypt</td>
+<td>EG/Cairo</td>
+<td>+02:00</td>
+<td>Africa/Cairo</td>
+</tr>
+<tr class="row-odd"><td>Western Sahara</td>
+<td>EH/El_Aaiun</td>
+<td>-00:00</td>
+<td>Africa/El_Aaiun</td>
+</tr>
+<tr class="row-even"><td>Eritrea</td>
+<td>ER/Asmara</td>
+<td>+03:00</td>
+<td>Africa/Asmara</td>
+</tr>
+<tr class="row-odd"><td>Spain</td>
+<td>ES/Canary</td>
+<td>-00:00</td>
+<td>Atlantic/Canary</td>
+</tr>
+<tr class="row-even"><td>Spain</td>
+<td>ES/Ceuta</td>
+<td>+01:00</td>
+<td>Africa/Ceuta</td>
+</tr>
+<tr class="row-odd"><td>Spain</td>
+<td>ES/Madrid</td>
+<td>+01:00</td>
+<td>Europe/Madrid</td>
+</tr>
+<tr class="row-even"><td>Ethiopia</td>
+<td>ET/Addis_Ababa</td>
+<td>+03:00</td>
+<td>Africa/Addis_Ababa</td>
+</tr>
+<tr class="row-odd"><td>Finland</td>
+<td>FI/Helsinki</td>
+<td>+02:00</td>
+<td>Europe/Helsinki</td>
+</tr>
+<tr class="row-even"><td>Fiji</td>
+<td>FJ/Fiji</td>
+<td>+12:00</td>
+<td>Pacific/Fiji</td>
+</tr>
+<tr class="row-odd"><td>Falkland Islands</td>
+<td>FK/Stanley</td>
+<td>-03:00</td>
+<td>Atlantic/Stanley</td>
+</tr>
+<tr class="row-even"><td>Micronesia</td>
+<td>FM/Chuuk</td>
+<td>+10:00</td>
+<td>Pacific/Chuuk</td>
+</tr>
+<tr class="row-odd"><td>Micronesia</td>
+<td>FM/Kosrae</td>
+<td>+11:00</td>
+<td>Pacific/Kosrae</td>
+</tr>
+<tr class="row-even"><td>Micronesia</td>
+<td>FM/Pohnpei</td>
+<td>+11:00</td>
+<td>Pacific/Pohnpei</td>
+</tr>
+<tr class="row-odd"><td>Faroe Islands</td>
+<td>FO/Faroe</td>
+<td>-00:00</td>
+<td>Atlantic/Faroe</td>
+</tr>
+<tr class="row-even"><td>France</td>
+<td>FR/Paris</td>
+<td>+01:00</td>
+<td>Europe/Paris</td>
+</tr>
+<tr class="row-odd"><td>Gabon</td>
+<td>GA/Libreville</td>
+<td>+01:00</td>
+<td>Africa/Libreville</td>
+</tr>
+<tr class="row-even"><td>Britain (UK)</td>
+<td>GB/London</td>
+<td>-00:00</td>
+<td>Europe/London</td>
+</tr>
+<tr class="row-odd"><td>Grenada</td>
+<td>GD/Grenada</td>
+<td>-04:00</td>
+<td>America/Grenada</td>
+</tr>
+<tr class="row-even"><td>Georgia</td>
+<td>GE/Tbilisi</td>
+<td>+04:00</td>
+<td>Asia/Tbilisi</td>
+</tr>
+<tr class="row-odd"><td>French Guiana</td>
+<td>GF/Cayenne</td>
+<td>-03:00</td>
+<td>America/Cayenne</td>
+</tr>
+<tr class="row-even"><td>Guernsey</td>
+<td>GG/Guernsey</td>
+<td>-00:00</td>
+<td>Europe/Guernsey</td>
+</tr>
+<tr class="row-odd"><td>Ghana</td>
+<td>GH/Accra</td>
+<td>-00:00</td>
+<td>Africa/Accra</td>
+</tr>
+<tr class="row-even"><td>Gibraltar</td>
+<td>GI/Gibraltar</td>
+<td>+01:00</td>
+<td>Europe/Gibraltar</td>
+</tr>
+<tr class="row-odd"><td>Greenland</td>
+<td>GL/Danmarkshavn</td>
+<td>-00:00</td>
+<td>America/Danmarkshavn</td>
+</tr>
+<tr class="row-even"><td>Greenland</td>
+<td>GL/Godthab</td>
+<td>-03:00</td>
+<td>America/Godthab</td>
+</tr>
+<tr class="row-odd"><td>Greenland</td>
+<td>GL/Scoresbysund</td>
+<td>-01:00</td>
+<td>America/Scoresbysund</td>
+</tr>
+<tr class="row-even"><td>Greenland</td>
+<td>GL/Thule</td>
+<td>-04:00</td>
+<td>America/Thule</td>
+</tr>
+<tr class="row-odd"><td>Gambia</td>
+<td>GM/Banjul</td>
+<td>-00:00</td>
+<td>Africa/Banjul</td>
+</tr>
+<tr class="row-even"><td>Guinea</td>
+<td>GN/Conakry</td>
+<td>-00:00</td>
+<td>Africa/Conakry</td>
+</tr>
+<tr class="row-odd"><td>Guadeloupe</td>
+<td>GP/Guadeloupe</td>
+<td>-04:00</td>
+<td>America/Guadeloupe</td>
+</tr>
+<tr class="row-even"><td>Equatorial Guinea</td>
+<td>GQ/Malabo</td>
+<td>+01:00</td>
+<td>Africa/Malabo</td>
+</tr>
+<tr class="row-odd"><td>Greece</td>
+<td>GR/Athens</td>
+<td>+02:00</td>
+<td>Europe/Athens</td>
+</tr>
+<tr class="row-even"><td>South Georgia &amp; the South Sandwich Islands</td>
+<td>GS/South_Georgia</td>
+<td>-02:00</td>
+<td>Atlantic/South_Georgia</td>
+</tr>
+<tr class="row-odd"><td>Guatemala</td>
+<td>GT/Guatemala</td>
+<td>-06:00</td>
+<td>America/Guatemala</td>
+</tr>
+<tr class="row-even"><td>Guam</td>
+<td>GU/Guam</td>
+<td>+10:00</td>
+<td>Pacific/Guam</td>
+</tr>
+<tr class="row-odd"><td>Guinea-Bissau</td>
+<td>GW/Bissau</td>
+<td>-00:00</td>
+<td>Africa/Bissau</td>
+</tr>
+<tr class="row-even"><td>Guyana</td>
+<td>GY/Guyana</td>
+<td>-04:00</td>
+<td>America/Guyana</td>
+</tr>
+<tr class="row-odd"><td>Hong Kong</td>
+<td>HK/Hong_Kong</td>
+<td>+08:00</td>
+<td>Asia/Hong_Kong</td>
+</tr>
+<tr class="row-even"><td>Honduras</td>
+<td>HN/Tegucigalpa</td>
+<td>-06:00</td>
+<td>America/Tegucigalpa</td>
+</tr>
+<tr class="row-odd"><td>Croatia</td>
+<td>HR/Zagreb</td>
+<td>+01:00</td>
+<td>Europe/Zagreb</td>
+</tr>
+<tr class="row-even"><td>Haiti</td>
+<td>HT/Port-au-Prince</td>
+<td>-05:00</td>
+<td>America/Port-au-Prince</td>
+</tr>
+<tr class="row-odd"><td>Hungary</td>
+<td>HU/Budapest</td>
+<td>+01:00</td>
+<td>Europe/Budapest</td>
+</tr>
+<tr class="row-even"><td>Indonesia</td>
+<td>ID/Jakarta</td>
+<td>+07:00</td>
+<td>Asia/Jakarta</td>
+</tr>
+<tr class="row-odd"><td>Indonesia</td>
+<td>ID/Jayapura</td>
+<td>+09:00</td>
+<td>Asia/Jayapura</td>
+</tr>
+<tr class="row-even"><td>Indonesia</td>
+<td>ID/Makassar</td>
+<td>+08:00</td>
+<td>Asia/Makassar</td>
+</tr>
+<tr class="row-odd"><td>Indonesia</td>
+<td>ID/Pontianak</td>
+<td>+07:00</td>
+<td>Asia/Pontianak</td>
+</tr>
+<tr class="row-even"><td>Ireland</td>
+<td>IE/Dublin</td>
+<td>+01:00</td>
+<td>Europe/Dublin</td>
+</tr>
+<tr class="row-odd"><td>Israel</td>
+<td>IL/Jerusalem</td>
+<td>+02:00</td>
+<td>Asia/Jerusalem</td>
+</tr>
+<tr class="row-even"><td>Isle of Man</td>
+<td>IM/Isle_of_Man</td>
+<td>-00:00</td>
+<td>Europe/Isle_of_Man</td>
+</tr>
+<tr class="row-odd"><td>India</td>
+<td>IN/Kolkata</td>
+<td>+05:30</td>
+<td>Asia/Kolkata</td>
+</tr>
+<tr class="row-even"><td>British Indian Ocean Territory</td>
+<td>IO/Chagos</td>
+<td>+06:00</td>
+<td>Indian/Chagos</td>
+</tr>
+<tr class="row-odd"><td>Iraq</td>
+<td>IQ/Baghdad</td>
+<td>+03:00</td>
+<td>Asia/Baghdad</td>
+</tr>
+<tr class="row-even"><td>Iran</td>
+<td>IR/Tehran</td>
+<td>+03:30</td>
+<td>Asia/Tehran</td>
+</tr>
+<tr class="row-odd"><td>Iceland</td>
+<td>IS/Reykjavik</td>
+<td>-00:00</td>
+<td>Atlantic/Reykjavik</td>
+</tr>
+<tr class="row-even"><td>Italy</td>
+<td>IT/Rome</td>
+<td>+01:00</td>
+<td>Europe/Rome</td>
+</tr>
+<tr class="row-odd"><td>Jersey</td>
+<td>JE/Jersey</td>
+<td>-00:00</td>
+<td>Europe/Jersey</td>
+</tr>
+<tr class="row-even"><td>Jamaica</td>
+<td>JM/Jamaica</td>
+<td>-05:00</td>
+<td>America/Jamaica</td>
+</tr>
+<tr class="row-odd"><td>Jordan</td>
+<td>JO/Amman</td>
+<td>+02:00</td>
+<td>Asia/Amman</td>
+</tr>
+<tr class="row-even"><td>Japan</td>
+<td>JP/Tokyo</td>
+<td>+09:00</td>
+<td>Asia/Tokyo</td>
+</tr>
+<tr class="row-odd"><td>Kenya</td>
+<td>KE/Nairobi</td>
+<td>+03:00</td>
+<td>Africa/Nairobi</td>
+</tr>
+<tr class="row-even"><td>Kyrgyzstan</td>
+<td>KG/Bishkek</td>
+<td>+06:00</td>
+<td>Asia/Bishkek</td>
+</tr>
+<tr class="row-odd"><td>Cambodia</td>
+<td>KH/Phnom_Penh</td>
+<td>+07:00</td>
+<td>Asia/Phnom_Penh</td>
+</tr>
+<tr class="row-even"><td>Kiribati</td>
+<td>KI/Enderbury</td>
+<td>+13:00</td>
+<td>Pacific/Enderbury</td>
+</tr>
+<tr class="row-odd"><td>Kiribati</td>
+<td>KI/Kiritimati</td>
+<td>+14:00</td>
+<td>Pacific/Kiritimati</td>
+</tr>
+<tr class="row-even"><td>Kiribati</td>
+<td>KI/Tarawa</td>
+<td>+12:00</td>
+<td>Pacific/Tarawa</td>
+</tr>
+<tr class="row-odd"><td>Comoros</td>
+<td>KM/Comoro</td>
+<td>+03:00</td>
+<td>Indian/Comoro</td>
+</tr>
+<tr class="row-even"><td>St Kitts &amp; Nevis</td>
+<td>KN/St_Kitts</td>
+<td>-04:00</td>
+<td>America/St_Kitts</td>
+</tr>
+<tr class="row-odd"><td>Korea (North)</td>
+<td>KP/Pyongyang</td>
+<td>+09:00</td>
+<td>Asia/Pyongyang</td>
+</tr>
+<tr class="row-even"><td>Korea (South)</td>
+<td>KR/Seoul</td>
+<td>+09:00</td>
+<td>Asia/Seoul</td>
+</tr>
+<tr class="row-odd"><td>Kuwait</td>
+<td>KW/Kuwait</td>
+<td>+03:00</td>
+<td>Asia/Kuwait</td>
+</tr>
+<tr class="row-even"><td>Cayman Islands</td>
+<td>KY/Cayman</td>
+<td>-05:00</td>
+<td>America/Cayman</td>
+</tr>
+<tr class="row-odd"><td>Kazakhstan</td>
+<td>KZ/Almaty</td>
+<td>+06:00</td>
+<td>Asia/Almaty</td>
+</tr>
+<tr class="row-even"><td>Kazakhstan</td>
+<td>KZ/Aqtau</td>
+<td>+05:00</td>
+<td>Asia/Aqtau</td>
+</tr>
+<tr class="row-odd"><td>Kazakhstan</td>
+<td>KZ/Aqtobe</td>
+<td>+05:00</td>
+<td>Asia/Aqtobe</td>
+</tr>
+<tr class="row-even"><td>Kazakhstan</td>
+<td>KZ/Atyrau</td>
+<td>+05:00</td>
+<td>Asia/Atyrau</td>
+</tr>
+<tr class="row-odd"><td>Kazakhstan</td>
+<td>KZ/Oral</td>
+<td>+05:00</td>
+<td>Asia/Oral</td>
+</tr>
+<tr class="row-even"><td>Kazakhstan</td>
+<td>KZ/Qyzylorda</td>
+<td>+06:00</td>
+<td>Asia/Qyzylorda</td>
+</tr>
+<tr class="row-odd"><td>Laos</td>
+<td>LA/Vientiane</td>
+<td>+07:00</td>
+<td>Asia/Vientiane</td>
+</tr>
+<tr class="row-even"><td>Lebanon</td>
+<td>LB/Beirut</td>
+<td>+02:00</td>
+<td>Asia/Beirut</td>
+</tr>
+<tr class="row-odd"><td>St Lucia</td>
+<td>LC/St_Lucia</td>
+<td>-04:00</td>
+<td>America/St_Lucia</td>
+</tr>
+<tr class="row-even"><td>Liechtenstein</td>
+<td>LI/Vaduz</td>
+<td>+01:00</td>
+<td>Europe/Vaduz</td>
+</tr>
+<tr class="row-odd"><td>Sri Lanka</td>
+<td>LK/Colombo</td>
+<td>+05:30</td>
+<td>Asia/Colombo</td>
+</tr>
+<tr class="row-even"><td>Liberia</td>
+<td>LR/Monrovia</td>
+<td>-00:00</td>
+<td>Africa/Monrovia</td>
+</tr>
+<tr class="row-odd"><td>Lesotho</td>
+<td>LS/Maseru</td>
+<td>+02:00</td>
+<td>Africa/Maseru</td>
+</tr>
+<tr class="row-even"><td>Lithuania</td>
+<td>LT/Vilnius</td>
+<td>+02:00</td>
+<td>Europe/Vilnius</td>
+</tr>
+<tr class="row-odd"><td>Luxembourg</td>
+<td>LU/Luxembourg</td>
+<td>+01:00</td>
+<td>Europe/Luxembourg</td>
+</tr>
+<tr class="row-even"><td>Latvia</td>
+<td>LV/Riga</td>
+<td>+02:00</td>
+<td>Europe/Riga</td>
+</tr>
+<tr class="row-odd"><td>Libya</td>
+<td>LY/Tripoli</td>
+<td>+02:00</td>
+<td>Africa/Tripoli</td>
+</tr>
+<tr class="row-even"><td>Morocco</td>
+<td>MA/Casablanca</td>
+<td>-00:00</td>
+<td>Africa/Casablanca</td>
+</tr>
+<tr class="row-odd"><td>Monaco</td>
+<td>MC/Monaco</td>
+<td>+01:00</td>
+<td>Europe/Monaco</td>
+</tr>
+<tr class="row-even"><td>Moldova</td>
+<td>MD/Chisinau</td>
+<td>+02:00</td>
+<td>Europe/Chisinau</td>
+</tr>
+<tr class="row-odd"><td>Montenegro</td>
+<td>ME/Podgorica</td>
+<td>+01:00</td>
+<td>Europe/Podgorica</td>
+</tr>
+<tr class="row-even"><td>St Martin (French)</td>
+<td>MF/Marigot</td>
+<td>-04:00</td>
+<td>America/Marigot</td>
+</tr>
+<tr class="row-odd"><td>Madagascar</td>
+<td>MG/Antananarivo</td>
+<td>+03:00</td>
+<td>Indian/Antananarivo</td>
+</tr>
+<tr class="row-even"><td>Marshall Islands</td>
+<td>MH/Kwajalein</td>
+<td>+12:00</td>
+<td>Pacific/Kwajalein</td>
+</tr>
+<tr class="row-odd"><td>Marshall Islands</td>
+<td>MH/Majuro</td>
+<td>+12:00</td>
+<td>Pacific/Majuro</td>
+</tr>
+<tr class="row-even"><td>Macedonia</td>
+<td>MK/Skopje</td>
+<td>+01:00</td>
+<td>Europe/Skopje</td>
+</tr>
+<tr class="row-odd"><td>Mali</td>
+<td>ML/Bamako</td>
+<td>-00:00</td>
+<td>Africa/Bamako</td>
+</tr>
+<tr class="row-even"><td>Myanmar (Burma)</td>
+<td>MM/Yangon</td>
+<td>+06:30</td>
+<td>Asia/Yangon</td>
+</tr>
+<tr class="row-odd"><td>Mongolia</td>
+<td>MN/Choibalsan</td>
+<td>+08:00</td>
+<td>Asia/Choibalsan</td>
+</tr>
+<tr class="row-even"><td>Mongolia</td>
+<td>MN/Hovd</td>
+<td>+07:00</td>
+<td>Asia/Hovd</td>
+</tr>
+<tr class="row-odd"><td>Mongolia</td>
+<td>MN/Ulaanbaatar</td>
+<td>+08:00</td>
+<td>Asia/Ulaanbaatar</td>
+</tr>
+<tr class="row-even"><td>Macau</td>
+<td>MO/Macau</td>
+<td>+08:00</td>
+<td>Asia/Macau</td>
+</tr>
+<tr class="row-odd"><td>Northern Mariana Islands</td>
+<td>MP/Saipan</td>
+<td>+10:00</td>
+<td>Pacific/Saipan</td>
+</tr>
+<tr class="row-even"><td>Martinique</td>
+<td>MQ/Martinique</td>
+<td>-04:00</td>
+<td>America/Martinique</td>
+</tr>
+<tr class="row-odd"><td>Mauritania</td>
+<td>MR/Nouakchott</td>
+<td>-00:00</td>
+<td>Africa/Nouakchott</td>
+</tr>
+<tr class="row-even"><td>Montserrat</td>
+<td>MS/Montserrat</td>
+<td>-04:00</td>
+<td>America/Montserrat</td>
+</tr>
+<tr class="row-odd"><td>Malta</td>
+<td>MT/Malta</td>
+<td>+01:00</td>
+<td>Europe/Malta</td>
+</tr>
+<tr class="row-even"><td>Mauritius</td>
+<td>MU/Mauritius</td>
+<td>+04:00</td>
+<td>Indian/Mauritius</td>
+</tr>
+<tr class="row-odd"><td>Maldives</td>
+<td>MV/Maldives</td>
+<td>+05:00</td>
+<td>Indian/Maldives</td>
+</tr>
+<tr class="row-even"><td>Malawi</td>
+<td>MW/Blantyre</td>
+<td>+02:00</td>
+<td>Africa/Blantyre</td>
+</tr>
+<tr class="row-odd"><td>Mexico</td>
+<td>MX/Bahia_Banderas</td>
+<td>-06:00</td>
+<td>America/Bahia_Banderas</td>
+</tr>
+<tr class="row-even"><td>Mexico</td>
+<td>MX/Cancun</td>
+<td>-05:00</td>
+<td>America/Cancun</td>
+</tr>
+<tr class="row-odd"><td>Mexico</td>
+<td>MX/Chihuahua</td>
+<td>-07:00</td>
+<td>America/Chihuahua</td>
+</tr>
+<tr class="row-even"><td>Mexico</td>
+<td>MX/Hermosillo</td>
+<td>-07:00</td>
+<td>America/Hermosillo</td>
+</tr>
+<tr class="row-odd"><td>Mexico</td>
+<td>MX/Matamoros</td>
+<td>-06:00</td>
+<td>America/Matamoros</td>
+</tr>
+<tr class="row-even"><td>Mexico</td>
+<td>MX/Mazatlan</td>
+<td>-07:00</td>
+<td>America/Mazatlan</td>
+</tr>
+<tr class="row-odd"><td>Mexico</td>
+<td>MX/Merida</td>
+<td>-06:00</td>
+<td>America/Merida</td>
+</tr>
+<tr class="row-even"><td>Mexico</td>
+<td>MX/Mexico_City</td>
+<td>-06:00</td>
+<td>America/Mexico_City</td>
+</tr>
+<tr class="row-odd"><td>Mexico</td>
+<td>MX/Monterrey</td>
+<td>-06:00</td>
+<td>America/Monterrey</td>
+</tr>
+<tr class="row-even"><td>Mexico</td>
+<td>MX/Ojinaga</td>
+<td>-07:00</td>
+<td>America/Ojinaga</td>
+</tr>
+<tr class="row-odd"><td>Mexico</td>
+<td>MX/Tijuana</td>
+<td>-08:00</td>
+<td>America/Tijuana</td>
+</tr>
+<tr class="row-even"><td>Malaysia</td>
+<td>MY/Kuala_Lumpur</td>
+<td>+08:00</td>
+<td>Asia/Kuala_Lumpur</td>
+</tr>
+<tr class="row-odd"><td>Malaysia</td>
+<td>MY/Kuching</td>
+<td>+08:00</td>
+<td>Asia/Kuching</td>
+</tr>
+<tr class="row-even"><td>Mozambique</td>
+<td>MZ/Maputo</td>
+<td>+02:00</td>
+<td>Africa/Maputo</td>
+</tr>
+<tr class="row-odd"><td>Namibia</td>
+<td>NA/Windhoek</td>
+<td>+02:00</td>
+<td>Africa/Windhoek</td>
+</tr>
+<tr class="row-even"><td>New Caledonia</td>
+<td>NC/Noumea</td>
+<td>+11:00</td>
+<td>Pacific/Noumea</td>
+</tr>
+<tr class="row-odd"><td>Niger</td>
+<td>NE/Niamey</td>
+<td>+01:00</td>
+<td>Africa/Niamey</td>
+</tr>
+<tr class="row-even"><td>Norfolk Island</td>
+<td>NF/Norfolk</td>
+<td>+11:00</td>
+<td>Pacific/Norfolk</td>
+</tr>
+<tr class="row-odd"><td>Nigeria</td>
+<td>NG/Lagos</td>
+<td>+01:00</td>
+<td>Africa/Lagos</td>
+</tr>
+<tr class="row-even"><td>Nicaragua</td>
+<td>NI/Managua</td>
+<td>-06:00</td>
+<td>America/Managua</td>
+</tr>
+<tr class="row-odd"><td>Netherlands</td>
+<td>NL/Amsterdam</td>
+<td>+01:00</td>
+<td>Europe/Amsterdam</td>
+</tr>
+<tr class="row-even"><td>Norway</td>
+<td>NO/Oslo</td>
+<td>+01:00</td>
+<td>Europe/Oslo</td>
+</tr>
+<tr class="row-odd"><td>Nepal</td>
+<td>NP/Kathmandu</td>
+<td>+05:45</td>
+<td>Asia/Kathmandu</td>
+</tr>
+<tr class="row-even"><td>Nauru</td>
+<td>NR/Nauru</td>
+<td>+12:00</td>
+<td>Pacific/Nauru</td>
+</tr>
+<tr class="row-odd"><td>Niue</td>
+<td>NU/Niue</td>
+<td>-11:00</td>
+<td>Pacific/Niue</td>
+</tr>
+<tr class="row-even"><td>New Zealand</td>
+<td>NZ/Auckland</td>
+<td>+12:00</td>
+<td>Pacific/Auckland</td>
+</tr>
+<tr class="row-odd"><td>New Zealand</td>
+<td>NZ/Chatham</td>
+<td>+12:45</td>
+<td>Pacific/Chatham</td>
+</tr>
+<tr class="row-even"><td>Oman</td>
+<td>OM/Muscat</td>
+<td>+04:00</td>
+<td>Asia/Muscat</td>
+</tr>
+<tr class="row-odd"><td>Panama</td>
+<td>PA/Panama</td>
+<td>-05:00</td>
+<td>America/Panama</td>
+</tr>
+<tr class="row-even"><td>Peru</td>
+<td>PE/Lima</td>
+<td>-05:00</td>
+<td>America/Lima</td>
+</tr>
+<tr class="row-odd"><td>French Polynesia</td>
+<td>PF/Gambier</td>
+<td>-09:00</td>
+<td>Pacific/Gambier</td>
+</tr>
+<tr class="row-even"><td>French Polynesia</td>
+<td>PF/Marquesas</td>
+<td>-09:30</td>
+<td>Pacific/Marquesas</td>
+</tr>
+<tr class="row-odd"><td>French Polynesia</td>
+<td>PF/Tahiti</td>
+<td>-10:00</td>
+<td>Pacific/Tahiti</td>
+</tr>
+<tr class="row-even"><td>Papua New Guinea</td>
+<td>PG/Bougainville</td>
+<td>+11:00</td>
+<td>Pacific/Bougainville</td>
+</tr>
+<tr class="row-odd"><td>Papua New Guinea</td>
+<td>PG/Port_Moresby</td>
+<td>+10:00</td>
+<td>Pacific/Port_Moresby</td>
+</tr>
+<tr class="row-even"><td>Philippines</td>
+<td>PH/Manila</td>
+<td>+08:00</td>
+<td>Asia/Manila</td>
+</tr>
+<tr class="row-odd"><td>Pakistan</td>
+<td>PK/Karachi</td>
+<td>+05:00</td>
+<td>Asia/Karachi</td>
+</tr>
+<tr class="row-even"><td>Poland</td>
+<td>PL/Warsaw</td>
+<td>+01:00</td>
+<td>Europe/Warsaw</td>
+</tr>
+<tr class="row-odd"><td>St Pierre &amp; Miquelon</td>
+<td>PM/Miquelon</td>
+<td>-03:00</td>
+<td>America/Miquelon</td>
+</tr>
+<tr class="row-even"><td>Pitcairn</td>
+<td>PN/Pitcairn</td>
+<td>-08:00</td>
+<td>Pacific/Pitcairn</td>
+</tr>
+<tr class="row-odd"><td>Puerto Rico</td>
+<td>PR/Puerto_Rico</td>
+<td>-04:00</td>
+<td>America/Puerto_Rico</td>
+</tr>
+<tr class="row-even"><td>Palestine</td>
+<td>PS/Gaza</td>
+<td>+02:00</td>
+<td>Asia/Gaza</td>
+</tr>
+<tr class="row-odd"><td>Palestine</td>
+<td>PS/Hebron</td>
+<td>+02:00</td>
+<td>Asia/Hebron</td>
+</tr>
+<tr class="row-even"><td>Portugal</td>
+<td>PT/Azores</td>
+<td>-01:00</td>
+<td>Atlantic/Azores</td>
+</tr>
+<tr class="row-odd"><td>Portugal</td>
+<td>PT/Lisbon</td>
+<td>-00:00</td>
+<td>Europe/Lisbon</td>
+</tr>
+<tr class="row-even"><td>Portugal</td>
+<td>PT/Madeira</td>
+<td>-00:00</td>
+<td>Atlantic/Madeira</td>
+</tr>
+<tr class="row-odd"><td>Palau</td>
+<td>PW/Palau</td>
+<td>+09:00</td>
+<td>Pacific/Palau</td>
+</tr>
+<tr class="row-even"><td>Paraguay</td>
+<td>PY/Asuncion</td>
+<td>-04:00</td>
+<td>America/Asuncion</td>
+</tr>
+<tr class="row-odd"><td>Qatar</td>
+<td>QA/Qatar</td>
+<td>+03:00</td>
+<td>Asia/Qatar</td>
+</tr>
+<tr class="row-even"><td>Réunion</td>
+<td>RE/Reunion</td>
+<td>+04:00</td>
+<td>Indian/Reunion</td>
+</tr>
+<tr class="row-odd"><td>Romania</td>
+<td>RO/Bucharest</td>
+<td>+02:00</td>
+<td>Europe/Bucharest</td>
+</tr>
+<tr class="row-even"><td>Serbia</td>
+<td>RS/Belgrade</td>
+<td>+01:00</td>
+<td>Europe/Belgrade</td>
+</tr>
+<tr class="row-odd"><td>Russia</td>
+<td>RU/Anadyr</td>
+<td>+12:00</td>
+<td>Asia/Anadyr</td>
+</tr>
+<tr class="row-even"><td>Russia</td>
+<td>RU/Astrakhan</td>
+<td>+04:00</td>
+<td>Europe/Astrakhan</td>
+</tr>
+<tr class="row-odd"><td>Russia</td>
+<td>RU/Barnaul</td>
+<td>+07:00</td>
+<td>Asia/Barnaul</td>
+</tr>
+<tr class="row-even"><td>Russia</td>
+<td>RU/Chita</td>
+<td>+09:00</td>
+<td>Asia/Chita</td>
+</tr>
+<tr class="row-odd"><td>Russia</td>
+<td>RU/Irkutsk</td>
+<td>+08:00</td>
+<td>Asia/Irkutsk</td>
+</tr>
+<tr class="row-even"><td>Russia</td>
+<td>RU/Kaliningrad</td>
+<td>+02:00</td>
+<td>Europe/Kaliningrad</td>
+</tr>
+<tr class="row-odd"><td>Russia</td>
+<td>RU/Kamchatka</td>
+<td>+12:00</td>
+<td>Asia/Kamchatka</td>
+</tr>
+<tr class="row-even"><td>Russia</td>
+<td>RU/Khandyga</td>
+<td>+09:00</td>
+<td>Asia/Khandyga</td>
+</tr>
+<tr class="row-odd"><td>Russia</td>
+<td>RU/Kirov</td>
+<td>+03:00</td>
+<td>Europe/Kirov</td>
+</tr>
+<tr class="row-even"><td>Russia</td>
+<td>RU/Krasnoyarsk</td>
+<td>+07:00</td>
+<td>Asia/Krasnoyarsk</td>
+</tr>
+<tr class="row-odd"><td>Russia</td>
+<td>RU/Magadan</td>
+<td>+11:00</td>
+<td>Asia/Magadan</td>
+</tr>
+<tr class="row-even"><td>Russia</td>
+<td>RU/Moscow</td>
+<td>+03:00</td>
+<td>Europe/Moscow</td>
+</tr>
+<tr class="row-odd"><td>Russia</td>
+<td>RU/Novokuznetsk</td>
+<td>+07:00</td>
+<td>Asia/Novokuznetsk</td>
+</tr>
+<tr class="row-even"><td>Russia</td>
+<td>RU/Novosibirsk</td>
+<td>+07:00</td>
+<td>Asia/Novosibirsk</td>
+</tr>
+<tr class="row-odd"><td>Russia</td>
+<td>RU/Omsk</td>
+<td>+06:00</td>
+<td>Asia/Omsk</td>
+</tr>
+<tr class="row-even"><td>Russia</td>
+<td>RU/Sakhalin</td>
+<td>+11:00</td>
+<td>Asia/Sakhalin</td>
+</tr>
+<tr class="row-odd"><td>Russia</td>
+<td>RU/Samara</td>
+<td>+04:00</td>
+<td>Europe/Samara</td>
+</tr>
+<tr class="row-even"><td>Russia</td>
+<td>RU/Saratov</td>
+<td>+04:00</td>
+<td>Europe/Saratov</td>
+</tr>
+<tr class="row-odd"><td>Russia</td>
+<td>RU/Simferopol</td>
+<td>+03:00</td>
+<td>Europe/Simferopol</td>
+</tr>
+<tr class="row-even"><td>Russia</td>
+<td>RU/Srednekolymsk</td>
+<td>+11:00</td>
+<td>Asia/Srednekolymsk</td>
+</tr>
+<tr class="row-odd"><td>Russia</td>
+<td>RU/Tomsk</td>
+<td>+07:00</td>
+<td>Asia/Tomsk</td>
+</tr>
+<tr class="row-even"><td>Russia</td>
+<td>RU/Ulyanovsk</td>
+<td>+04:00</td>
+<td>Europe/Ulyanovsk</td>
+</tr>
+<tr class="row-odd"><td>Russia</td>
+<td>RU/Ust-Nera</td>
+<td>+10:00</td>
+<td>Asia/Ust-Nera</td>
+</tr>
+<tr class="row-even"><td>Russia</td>
+<td>RU/Vladivostok</td>
+<td>+10:00</td>
+<td>Asia/Vladivostok</td>
+</tr>
+<tr class="row-odd"><td>Russia</td>
+<td>RU/Volgograd</td>
+<td>+03:00</td>
+<td>Europe/Volgograd</td>
+</tr>
+<tr class="row-even"><td>Russia</td>
+<td>RU/Yakutsk</td>
+<td>+09:00</td>
+<td>Asia/Yakutsk</td>
+</tr>
+<tr class="row-odd"><td>Russia</td>
+<td>RU/Yekaterinburg</td>
+<td>+05:00</td>
+<td>Asia/Yekaterinburg</td>
+</tr>
+<tr class="row-even"><td>Rwanda</td>
+<td>RW/Kigali</td>
+<td>+02:00</td>
+<td>Africa/Kigali</td>
+</tr>
+<tr class="row-odd"><td>Saudi Arabia</td>
+<td>SA/Riyadh</td>
+<td>+03:00</td>
+<td>Asia/Riyadh</td>
+</tr>
+<tr class="row-even"><td>Solomon Islands</td>
+<td>SB/Guadalcanal</td>
+<td>+11:00</td>
+<td>Pacific/Guadalcanal</td>
+</tr>
+<tr class="row-odd"><td>Seychelles</td>
+<td>SC/Mahe</td>
+<td>+04:00</td>
+<td>Indian/Mahe</td>
+</tr>
+<tr class="row-even"><td>Sudan</td>
+<td>SD/Khartoum</td>
+<td>+02:00</td>
+<td>Africa/Khartoum</td>
+</tr>
+<tr class="row-odd"><td>Sweden</td>
+<td>SE/Stockholm</td>
+<td>+01:00</td>
+<td>Europe/Stockholm</td>
+</tr>
+<tr class="row-even"><td>Singapore</td>
+<td>SG/Singapore</td>
+<td>+08:00</td>
+<td>Asia/Singapore</td>
+</tr>
+<tr class="row-odd"><td>St Helena</td>
+<td>SH/St_Helena</td>
+<td>-00:00</td>
+<td>Atlantic/St_Helena</td>
+</tr>
+<tr class="row-even"><td>Slovenia</td>
+<td>SI/Ljubljana</td>
+<td>+01:00</td>
+<td>Europe/Ljubljana</td>
+</tr>
+<tr class="row-odd"><td>Svalbard &amp; Jan Mayen</td>
+<td>SJ/Longyearbyen</td>
+<td>+01:00</td>
+<td>Arctic/Longyearbyen</td>
+</tr>
+<tr class="row-even"><td>Slovakia</td>
+<td>SK/Bratislava</td>
+<td>+01:00</td>
+<td>Europe/Bratislava</td>
+</tr>
+<tr class="row-odd"><td>Sierra Leone</td>
+<td>SL/Freetown</td>
+<td>-00:00</td>
+<td>Africa/Freetown</td>
+</tr>
+<tr class="row-even"><td>San Marino</td>
+<td>SM/San_Marino</td>
+<td>+01:00</td>
+<td>Europe/San_Marino</td>
+</tr>
+<tr class="row-odd"><td>Senegal</td>
+<td>SN/Dakar</td>
+<td>-00:00</td>
+<td>Africa/Dakar</td>
+</tr>
+<tr class="row-even"><td>Somalia</td>
+<td>SO/Mogadishu</td>
+<td>+03:00</td>
+<td>Africa/Mogadishu</td>
+</tr>
+<tr class="row-odd"><td>Suriname</td>
+<td>SR/Paramaribo</td>
+<td>-03:00</td>
+<td>America/Paramaribo</td>
+</tr>
+<tr class="row-even"><td>South Sudan</td>
+<td>SS/Juba</td>
+<td>+03:00</td>
+<td>Africa/Juba</td>
+</tr>
+<tr class="row-odd"><td>Sao Tome &amp; Principe</td>
+<td>ST/Sao_Tome</td>
+<td>+01:00</td>
+<td>Africa/Sao_Tome</td>
+</tr>
+<tr class="row-even"><td>El Salvador</td>
+<td>SV/El_Salvador</td>
+<td>-06:00</td>
+<td>America/El_Salvador</td>
+</tr>
+<tr class="row-odd"><td>St Maarten (Dutch)</td>
+<td>SX/Lower_Princes</td>
+<td>-04:00</td>
+<td>America/Lower_Princes</td>
+</tr>
+<tr class="row-even"><td>Syria</td>
+<td>SY/Damascus</td>
+<td>+02:00</td>
+<td>Asia/Damascus</td>
+</tr>
+<tr class="row-odd"><td>Swaziland</td>
+<td>SZ/Mbabane</td>
+<td>+02:00</td>
+<td>Africa/Mbabane</td>
+</tr>
+<tr class="row-even"><td>Turks &amp; Caicos Is</td>
+<td>TC/Grand_Turk</td>
+<td>-05:00</td>
+<td>America/Grand_Turk</td>
+</tr>
+<tr class="row-odd"><td>Chad</td>
+<td>TD/Ndjamena</td>
+<td>+01:00</td>
+<td>Africa/Ndjamena</td>
+</tr>
+<tr class="row-even"><td>French Southern &amp; Antarctic Lands</td>
+<td>TF/Kerguelen</td>
+<td>+05:00</td>
+<td>Indian/Kerguelen</td>
+</tr>
+<tr class="row-odd"><td>Togo</td>
+<td>TG/Lome</td>
+<td>-00:00</td>
+<td>Africa/Lome</td>
+</tr>
+<tr class="row-even"><td>Thailand</td>
+<td>TH/Bangkok</td>
+<td>+07:00</td>
+<td>Asia/Bangkok</td>
+</tr>
+<tr class="row-odd"><td>Tajikistan</td>
+<td>TJ/Dushanbe</td>
+<td>+05:00</td>
+<td>Asia/Dushanbe</td>
+</tr>
+<tr class="row-even"><td>Tokelau</td>
+<td>TK/Fakaofo</td>
+<td>+13:00</td>
+<td>Pacific/Fakaofo</td>
+</tr>
+<tr class="row-odd"><td>East Timor</td>
+<td>TL/Dili</td>
+<td>+09:00</td>
+<td>Asia/Dili</td>
+</tr>
+<tr class="row-even"><td>Turkmenistan</td>
+<td>TM/Ashgabat</td>
+<td>+05:00</td>
+<td>Asia/Ashgabat</td>
+</tr>
+<tr class="row-odd"><td>Tunisia</td>
+<td>TN/Tunis</td>
+<td>+01:00</td>
+<td>Africa/Tunis</td>
+</tr>
+<tr class="row-even"><td>Tonga</td>
+<td>TO/Tongatapu</td>
+<td>+13:00</td>
+<td>Pacific/Tongatapu</td>
+</tr>
+<tr class="row-odd"><td>Turkey</td>
+<td>TR/Istanbul</td>
+<td>+03:00</td>
+<td>Europe/Istanbul</td>
+</tr>
+<tr class="row-even"><td>Trinidad &amp; Tobago</td>
+<td>TT/Port_of_Spain</td>
+<td>-04:00</td>
+<td>America/Port_of_Spain</td>
+</tr>
+<tr class="row-odd"><td>Tuvalu</td>
+<td>TV/Funafuti</td>
+<td>+12:00</td>
+<td>Pacific/Funafuti</td>
+</tr>
+<tr class="row-even"><td>Taiwan</td>
+<td>TW/Taipei</td>
+<td>+08:00</td>
+<td>Asia/Taipei</td>
+</tr>
+<tr class="row-odd"><td>Tanzania</td>
+<td>TZ/Dar_es_Salaam</td>
+<td>+03:00</td>
+<td>Africa/Dar_es_Salaam</td>
+</tr>
+<tr class="row-even"><td>Ukraine</td>
+<td>UA/Kiev</td>
+<td>+02:00</td>
+<td>Europe/Kiev</td>
+</tr>
+<tr class="row-odd"><td>Ukraine</td>
+<td>UA/Uzhgorod</td>
+<td>+02:00</td>
+<td>Europe/Uzhgorod</td>
+</tr>
+<tr class="row-even"><td>Ukraine</td>
+<td>UA/Zaporozhye</td>
+<td>+02:00</td>
+<td>Europe/Zaporozhye</td>
+</tr>
+<tr class="row-odd"><td>Uganda</td>
+<td>UG/Kampala</td>
+<td>+03:00</td>
+<td>Africa/Kampala</td>
+</tr>
+<tr class="row-even"><td>US minor outlying islands</td>
+<td>UM/Midway</td>
+<td>-11:00</td>
+<td>Pacific/Midway</td>
+</tr>
+<tr class="row-odd"><td>US minor outlying islands</td>
+<td>UM/Wake</td>
+<td>+12:00</td>
+<td>Pacific/Wake</td>
+</tr>
+<tr class="row-even"><td>United States</td>
+<td>US/Alaska</td>
+<td>-09:00</td>
+<td>America/Anchorage</td>
+</tr>
+<tr class="row-odd"><td>United States</td>
+<td>US/Central</td>
+<td>-06:00</td>
+<td>America/Chicago</td>
+</tr>
+<tr class="row-even"><td>United States</td>
+<td>US/Eastern</td>
+<td>-05:00</td>
+<td>America/New_York</td>
+</tr>
+<tr class="row-odd"><td>United States</td>
+<td>US/Hawaii</td>
+<td>-10:00</td>
+<td>Pacific/Honolulu</td>
+</tr>
+<tr class="row-even"><td>United States</td>
+<td>US/Mountain</td>
+<td>-07:00</td>
+<td>America/Denver</td>
+</tr>
+<tr class="row-odd"><td>United States</td>
+<td>US/Arizona</td>
+<td>-07:00</td>
+<td>America/Phoenix</td>
+</tr>
+<tr class="row-even"><td>United States</td>
+<td>US/Pacific</td>
+<td>-08:00</td>
+<td>America/Los_Angeles</td>
+</tr>
+<tr class="row-odd"><td>Uruguay</td>
+<td>UY/Montevideo</td>
+<td>-03:00</td>
+<td>America/Montevideo</td>
+</tr>
+<tr class="row-even"><td>Uzbekistan</td>
+<td>UZ/Samarkand</td>
+<td>+05:00</td>
+<td>Asia/Samarkand</td>
+</tr>
+<tr class="row-odd"><td>Uzbekistan</td>
+<td>UZ/Tashkent</td>
+<td>+05:00</td>
+<td>Asia/Tashkent</td>
+</tr>
+<tr class="row-even"><td>Vatican City</td>
+<td>VA/Vatican</td>
+<td>+01:00</td>
+<td>Europe/Vatican</td>
+</tr>
+<tr class="row-odd"><td>St Vincent</td>
+<td>VC/St_Vincent</td>
+<td>-04:00</td>
+<td>America/St_Vincent</td>
+</tr>
+<tr class="row-even"><td>Venezuela</td>
+<td>VE/Caracas</td>
+<td>-04:00</td>
+<td>America/Caracas</td>
+</tr>
+<tr class="row-odd"><td>Virgin Islands (UK)</td>
+<td>VG/Tortola</td>
+<td>-04:00</td>
+<td>America/Tortola</td>
+</tr>
+<tr class="row-even"><td>Virgin Islands (US)</td>
+<td>VI/St_Thomas</td>
+<td>-04:00</td>
+<td>America/St_Thomas</td>
+</tr>
+<tr class="row-odd"><td>Vietnam</td>
+<td>VN/Ho_Chi_Minh</td>
+<td>+07:00</td>
+<td>Asia/Ho_Chi_Minh</td>
+</tr>
+<tr class="row-even"><td>Vanuatu</td>
+<td>VU/Efate</td>
+<td>+11:00</td>
+<td>Pacific/Efate</td>
+</tr>
+<tr class="row-odd"><td>Wallis &amp; Futuna</td>
+<td>WF/Wallis</td>
+<td>+12:00</td>
+<td>Pacific/Wallis</td>
+</tr>
+<tr class="row-even"><td>Samoa (western)</td>
+<td>WS/Apia</td>
+<td>+13:00</td>
+<td>Pacific/Apia</td>
+</tr>
+<tr class="row-odd"><td>Yemen</td>
+<td>YE/Aden</td>
+<td>+03:00</td>
+<td>Asia/Aden</td>
+</tr>
+<tr class="row-even"><td>Mayotte</td>
+<td>YT/Mayotte</td>
+<td>+03:00</td>
+<td>Indian/Mayotte</td>
+</tr>
+<tr class="row-odd"><td>South Africa</td>
+<td>ZA/Johannesburg</td>
+<td>+02:00</td>
+<td>Africa/Johannesburg</td>
+</tr>
+<tr class="row-even"><td>Zambia</td>
+<td>ZM/Lusaka</td>
+<td>+02:00</td>
+<td>Africa/Lusaka</td>
+</tr>
+<tr class="row-odd"><td>Zimbabwe</td>
+<td>ZW/Harare</td>
+<td>+02:00</td>
+<td>Africa/Harare</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="user_features.html" class="btn btn-neutral float-right" title="User Features" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="spaces.html" class="btn btn-neutral" title="Spaces" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Gooee, LLC.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/tabs.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

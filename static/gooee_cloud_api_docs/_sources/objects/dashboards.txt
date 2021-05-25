@@ -1,0 +1,77 @@
+.. _objects_dashboards:
+
+==========
+Dashboards
+==========
+
+.. contents:: Quick Links
+
+Description
+===========
+
+Dashboards show data aquired from analytics and device properties and are stored by their
+query and position on the screen.
+
+Data Model
+==========
+
+===============  ==========================================  ========================
+Key              Datatype                                    Notes
+===============  ==========================================  ========================
+id               ref                                         read-only
+created          datetime                                    read-only
+modified         datetime                                    read-only
+created_by       :ref:`ref <objects_users>`                  read-only
+name             str                                         required, max_length=100
+properties       obj                                         JSON Field
+tags             array(str)                                  max_length=50 per tag
+customer_scopes  array(:ref:`ref <objects_customers>`)       see :ref:`general_scope`
+partner_scopes   array(:ref:`ref <objects_partners>`)        see :ref:`general_scope`
+===============  ==========================================  ========================
+
+
+API Endpoints
+=============
+
+Create a Dashboard
+------------------
+
+.. http:POST:: /dashboards/
+
+   :statuscode 201:
+
+List Dashboards
+---------------
+
+.. http:GET:: /dashboards/
+
+   :statuscode 200:
+
+Update a Dashboard
+------------------
+
+.. http:PUT:: /dashboards/(id)/
+
+   :statuscode 200:
+
+Partially Update a Dashboard
+----------------------------
+
+.. http:PATCH:: /dashboards/(id)/
+
+   :statuscode 200:
+
+Retrieve a Dashboard
+--------------------
+
+.. http:GET:: /dashboards/(id)/
+
+   :statuscode 200:
+
+Delete a Dashboard
+------------------
+
+.. http:DELETE:: /dashboards/(id)/
+
+   :statuscode 204:
+

@@ -1,0 +1,60 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "property_config": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "property_name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9_]+$"
+          },
+          "property_table_name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9_]+$"
+          },
+          "data_type": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^(integer|int|double|string|boolean|bool){1}$"
+          },
+          "fields": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100,
+                  "pattern": "^[A-Za-z0-9_]+$"
+                },
+                "spec": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100,
+                  "pattern": "^((CHAR|char|VARCHAR|varchar|TINYINT|tinyint|SMALLINT|smallint|MEDIUMINT|mediumint|INT|int|BIGINT|bigint)(\\(\\d+\\))?|(FLOAT|float|DOUBLE|double|DECIMAL|decimal)(\\(\\d+,\\d+\\))?|(TINYTEXT|tinytext|TEXT|text|MEDIUMTEXT|mediumtext|LONGTEXT|longtext|DATE|date|DATETIME|datetime|TIMESTAMP|timestamp|TIME|time)){1}$"
+                }
+              },
+              "required": ["name", "spec"],
+              "additionalProperties": false
+            },
+            "minItems": 1
+          }
+        },
+        "required": ["property_name", "property_table_name", "data_type", "fields"],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    }
+  },
+  "required": ["property_config"],
+  "additionalProperties": false
+}

@@ -1,0 +1,24 @@
+{
+  "device": "$device_id",
+  "name": "no occupancy detected",
+  "conditions": [
+    {
+      "variable": "occupancy_detected",
+      "operator": "=",
+      "value": false,
+      "duration": 60
+    }
+  ],
+  "operations": [
+    {
+      "spaces": [
+        "$space_id"
+      ],
+      "actions": [
+        {
+          "name": "off"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,777 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Filtering &mdash; Documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/navtree.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Documentation" href="../index.html"/>
+        <link rel="up" title="General" href="../general.html"/>
+        <link rel="next" title="Ordering" href="ordering.html"/>
+        <link rel="prev" title="Include/Exclude Fields" href="exclude_include_fields.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Cloud API
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="link caption"><span class="link caption-text"><a class="reference internal" href="../misc.html">Misc</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/change_log.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/object_relation_diagram.html">Object Relation Diagram</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../general.html">General</a></span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="analytics.html">Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_tokens.html">API Tokens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clearing_field_values.html">Clearing Field Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="device_counts.html">Device Counts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exclude_include_fields.html">Include/Exclude Fields</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Filtering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#intro">Intro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extra-filters">Extra Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#true-false-filters">True/False Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#default-id-filters">Default ID Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tags-filters">Tags Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#default-datetime-filters">Default DateTime Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#default-string-filters">Default String Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#filter-devices-by-meta">Filter Devices by Meta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#order-devices-by-meta">Order Devices by Meta</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ordering.html">Ordering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meta.html">Meta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meta_groups.html">Meta Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pagination.html">Pagination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pubsub.html">PubSub Message Broker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search.html">Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scope.html">Scope</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../objects.html">Objects</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../objects/action_types.html">Action Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/actions.html">Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/analytics_export.html">Analytics Export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/analytics_query.html">Analytics Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/areas.html">Areas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/buildings.html">Buildings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/connected_products.html">Connected Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/currency.html">Currency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/customers.html">Customers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/dashboards.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/devices.html">Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/fault_alarms.html">Fault Alarms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/local_rules.html">Local Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/locations.html">Locations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/partners.html">Partners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/product_files.html">Product Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/product_types.html">Product Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/products.html">Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/rules_v2.html">Rules V2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/rule_groups.html">Rule Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/scenes.html">Scenes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/schedules.html">Schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/spaces.html">Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/timezones.html">Timezones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/user_features.html">User Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/user_groups.html">User Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/user_preferences.html">User Preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/users.html">Users</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../integrations.html">Integrations</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/als2lux.html">Als-to-Lux Correlation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/external_sensor.html">External Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/gateway_lite.html">Gateway Lite</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cloud API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../general.html">General</a> &raquo;</li>
+        
+      <li>Filtering</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/general/filtering.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="filtering">
+<span id="general-filtering"></span><h1><a class="toc-backref" href="#id7">Filtering</a><a class="headerlink" href="#filtering" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="quick-links">
+<p class="topic-title first">Quick Links</p>
+<ul class="simple">
+<li><a class="reference internal" href="#filtering" id="id7">Filtering</a><ul>
+<li><a class="reference internal" href="#intro" id="id8">Intro</a></li>
+<li><a class="reference internal" href="#extra-filters" id="id9">Extra Filters</a></li>
+<li><a class="reference internal" href="#true-false-filters" id="id10">True/False Filters</a><ul>
+<li><a class="reference internal" href="#examples" id="id11">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#default-id-filters" id="id12">Default ID Filters</a><ul>
+<li><a class="reference internal" href="#id1" id="id13">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tags-filters" id="id14">Tags Filters</a><ul>
+<li><a class="reference internal" href="#id2" id="id15">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#default-datetime-filters" id="id16">Default DateTime Filters</a><ul>
+<li><a class="reference internal" href="#id3" id="id17">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#default-string-filters" id="id18">Default String Filters</a><ul>
+<li><a class="reference internal" href="#id4" id="id19">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#filter-devices-by-meta" id="id20">Filter Devices by Meta</a><ul>
+<li><a class="reference internal" href="#id5" id="id21">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#order-devices-by-meta" id="id22">Order Devices by Meta</a><ul>
+<li><a class="reference internal" href="#id6" id="id23">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="intro">
+<h2><a class="toc-backref" href="#id8">Intro</a><a class="headerlink" href="#intro" title="Permalink to this headline">¶</a></h2>
+<p>Generally, API endpoints are filterable by the attributes <strong>defined in the REST
+data model</strong>. Filtering is also enabled on the attributes of those first-order
+relations.</p>
+<p>For example, given the data models:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="60%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">User</th>
+<th class="head">Datatype</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>id</td>
+</tr>
+<tr class="row-odd"><td>created</td>
+<td>datetime</td>
+</tr>
+<tr class="row-even"><td>name</td>
+<td>string</td>
+</tr>
+<tr class="row-odd"><td>account_type</td>
+<td>ref</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="53%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">User Role</th>
+<th class="head">Datatype</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>id</td>
+</tr>
+<tr class="row-odd"><td>created</td>
+<td>datetime</td>
+</tr>
+<tr class="row-even"><td>name</td>
+<td>string</td>
+</tr>
+</tbody>
+</table>
+<p>You can filter on attributes:</p>
+<dl class="get">
+<dt id="get--users-?name__contains=sylv">
+<code class="descname">GET </code><code class="descname">/users/?name__contains=sylv</code><a class="headerlink" href="#get--users-?name__contains=sylv" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="get">
+<dt id="get--users-?user_role=02ec4289-8e03-4a61-9829-e9ba512468b8">
+<code class="descname">GET </code><code class="descname">/users/?user_role=02ec4289-8e03-4a61-9829-e9ba512468b8</code><a class="headerlink" href="#get--users-?user_role=02ec4289-8e03-4a61-9829-e9ba512468b8" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>You can also filter on a relation attribute, just keep in mind that the ability
+to filter on that relation&#8217;s relations is not supported. (if you need this,
+speak up.)</p>
+<dl class="get">
+<dt id="get--users-?user_role__name__iexact=admin">
+<code class="descname">GET </code><code class="descname">/users/?user_role__name__iexact=admin</code><a class="headerlink" href="#get--users-?user_role__name__iexact=admin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="get">
+<dt id="get--users-?user_role__created__gt=2016-01-26T14-34-25-05-00">
+<code class="descname">GET </code><code class="descname">/users/?user_role__created__gt=2016-01-26T14:34:25-05:00</code><a class="headerlink" href="#get--users-?user_role__created__gt=2016-01-26T14-34-25-05-00" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="extra-filters">
+<h2><a class="toc-backref" href="#id9">Extra Filters</a><a class="headerlink" href="#extra-filters" title="Permalink to this headline">¶</a></h2>
+<p>Filtering on extra fields may be supported on some objects.
+See the following table for reference:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="51%" />
+<col width="13%" />
+<col width="37%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Object</th>
+<th class="head">Extra Fields</th>
+<th class="head">Examples</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference internal" href="../objects/devices.html#objects-devices"><span class="std std-ref">Devices</span></a></td>
+<td><p class="first">customer</p>
+<p class="last">building</p>
+</td>
+<td><p class="first">/devices/?customer=ID
+/devices/?customer=ID&amp;type=gateway</p>
+<p class="last">/devices/?building=ID
+/devices/?building=ID&amp;type=wim</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>For <a class="reference internal" href="../objects/devices.html#objects-devices"><span class="std std-ref">Devices</span></a> filtering by <cite>customer</cite> and <cite>building</cite> we only
+support <strong>equal(=)</strong> operator.</p>
+<p>Those objects use different paths between the object itself
+and the <a class="reference internal" href="../objects/buildings.html#objects-buildings"><span class="std std-ref">Building</span></a> or <a class="reference internal" href="../objects/customers.html#objects-customers"><span class="std std-ref">Customer</span></a>.
+<a class="reference internal" href="../objects/devices.html#objects-devices"><span class="std std-ref">Devices</span></a> can have 2 possible paths:</p>
+<ol class="arabic simple">
+<li>Device -&gt; Gateway -&gt; Space -&gt; Building -&gt; Customer</li>
+<li>Device -&gt; Connected Product -&gt; Space -&gt; Building -&gt; Customer</li>
+</ol>
+<p><a class="reference internal" href="../objects/devices.html#objects-devices"><span class="std std-ref">Gateway Devices</span></a> can have 1 possible path:</p>
+<ol class="arabic simple">
+<li>Gateway -&gt; Space -&gt; Building -&gt; Customer</li>
+</ol>
+<p><a class="reference internal" href="../objects/devices.html#objects-devices"><span class="std std-ref">Mesh Access Point Devices</span></a> can have 1 possible path:</p>
+<ol class="last arabic simple">
+<li>Mesh Access Point -&gt; Gateway -&gt; Space -&gt; Building -&gt; Customer</li>
+</ol>
+</div>
+</div>
+<div class="section" id="true-false-filters">
+<h2><a class="toc-backref" href="#id10">True/False Filters</a><a class="headerlink" href="#true-false-filters" title="Permalink to this headline">¶</a></h2>
+<p>If you are using boolean filters, use <strong>True</strong> and <strong>False</strong> as the values.
+Not 0/1 or true/false. This is a constraint of the filtering library using
+Python native datatypes to cheat a bit.</p>
+<div class="section" id="examples">
+<h3><a class="toc-backref" href="#id11">Examples</a><a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--users-?is_active=True">
+<code class="descname">GET </code><code class="descname">/users/?is_active=True</code><a class="headerlink" href="#get--users-?is_active=True" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+<div class="section" id="default-id-filters">
+<h2><a class="toc-backref" href="#id12">Default ID Filters</a><a class="headerlink" href="#default-id-filters" title="Permalink to this headline">¶</a></h2>
+<p>Most IDs in the system are UUIDs rather than integer IDs. It&#8217;s worth noting
+that these UUID fields will be stored <strong>in lowercase</strong>, so keep that in mind
+when you are filtering.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="40%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Filter</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>=</td>
+<td>Is equal</td>
+</tr>
+<tr class="row-odd"><td>!=</td>
+<td>Not equal</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id1">
+<h3><a class="toc-backref" href="#id13">Examples</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--users-?id=0123963e-d50b-4e02-830e-cd2d4b22573b">
+<code class="descname">GET </code><code class="descname">/users/?id=0123963e-d50b-4e02-830e-cd2d4b22573b</code><a class="headerlink" href="#get--users-?id=0123963e-d50b-4e02-830e-cd2d4b22573b" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+<div class="section" id="tags-filters">
+<h2><a class="toc-backref" href="#id14">Tags Filters</a><a class="headerlink" href="#tags-filters" title="Permalink to this headline">¶</a></h2>
+<p>Most objects on the system can be tagged. If you are filtering an object by its tags you can
+only use the <em>equal</em> operator with a comma separated list of tags.</p>
+<div class="section" id="id2">
+<h3><a class="toc-backref" href="#id15">Examples</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--users-?tags=vip,etc">
+<code class="descname">GET </code><code class="descname">/users/?tags=vip,etc</code><a class="headerlink" href="#get--users-?tags=vip,etc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+<div class="section" id="default-datetime-filters">
+<h2><a class="toc-backref" href="#id16">Default DateTime Filters</a><a class="headerlink" href="#default-datetime-filters" title="Permalink to this headline">¶</a></h2>
+<p>Dates are ISO-8601 formatted.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="85%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Filter</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>=</td>
+<td>Is equal</td>
+</tr>
+<tr class="row-odd"><td>!=</td>
+<td>Not equal</td>
+</tr>
+<tr class="row-even"><td>__gt</td>
+<td>Greater than</td>
+</tr>
+<tr class="row-odd"><td>__gte</td>
+<td>Greater than or equal to</td>
+</tr>
+<tr class="row-even"><td>__lt</td>
+<td>Less than</td>
+</tr>
+<tr class="row-odd"><td>__lte</td>
+<td>Less than or equal to</td>
+</tr>
+<tr class="row-even"><td>__in</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>__range</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>__year</td>
+<td>Supports <em>=</em>, <em>!=</em>, <em>__lt</em>, <em>__lte</em>, <em>__gt</em>, <em>__gte</em></td>
+</tr>
+<tr class="row-odd"><td>__month</td>
+<td>Supports <em>=</em>, <em>!=</em>, <em>__lt</em>, <em>__lte</em>, <em>__gt</em>, <em>__gte</em></td>
+</tr>
+<tr class="row-even"><td>__day</td>
+<td>Supports <em>=</em>, <em>!=</em>, <em>__lt</em>, <em>__lte</em>, <em>__gt</em>, <em>__gte</em></td>
+</tr>
+<tr class="row-odd"><td>__hour</td>
+<td>Supports <em>=</em>, <em>!=</em>, <em>__lt</em>, <em>__lte</em>, <em>__gt</em>, <em>__gte</em></td>
+</tr>
+<tr class="row-even"><td>__minute</td>
+<td>Supports <em>=</em>, <em>!=</em>, <em>__lt</em>, <em>__lte</em>, <em>__gt</em>, <em>__gte</em></td>
+</tr>
+<tr class="row-odd"><td>__second</td>
+<td>Supports <em>=</em>, <em>!=</em>, <em>__lt</em>, <em>__lte</em>, <em>__gt</em>, <em>__gte</em></td>
+</tr>
+<tr class="row-even"><td>__isnull</td>
+<td>=True or =False</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id3">
+<h3><a class="toc-backref" href="#id17">Examples</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--users-?created=2016-01-26T14-22-26-05-00">
+<code class="descname">GET </code><code class="descname">/users/?created=2016-01-26T14:22:26-05:00</code><a class="headerlink" href="#get--users-?created=2016-01-26T14-22-26-05-00" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="get">
+<dt id="get--users-?created__lt=2016-01-26T19-23-21+00-00">
+<code class="descname">GET </code><code class="descname">/users/?created__lt=2016-01-26T19:23:21+00:00</code><a class="headerlink" href="#get--users-?created__lt=2016-01-26T19-23-21+00-00" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="get">
+<dt id="get--users-?created__year=2016&amp;created__day=20">
+<code class="descname">GET </code><code class="descname">/users/?created__year=2016&amp;created__day=20</code><a class="headerlink" href="#get--users-?created__year=2016&created__day=20" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+<div class="section" id="default-string-filters">
+<h2><a class="toc-backref" href="#id18">Default String Filters</a><a class="headerlink" href="#default-string-filters" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Filter</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>=</td>
+<td>Is equal</td>
+</tr>
+<tr class="row-odd"><td>!=</td>
+<td>Not equal</td>
+</tr>
+<tr class="row-even"><td>__iexact</td>
+<td>Case-insensitive equals</td>
+</tr>
+<tr class="row-odd"><td>__contains</td>
+<td>Substring match</td>
+</tr>
+<tr class="row-even"><td>__icontains</td>
+<td>Substring match (case insensitive)</td>
+</tr>
+<tr class="row-odd"><td>__in</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>__startswith</td>
+<td>Starts with the substring</td>
+</tr>
+<tr class="row-odd"><td>__istartswith</td>
+<td>Starts with the substring (case insensitive)</td>
+</tr>
+<tr class="row-even"><td>__endswith</td>
+<td>Ends with the substring</td>
+</tr>
+<tr class="row-odd"><td>__iendswith</td>
+<td>Ends with the substring (case insensitive)</td>
+</tr>
+<tr class="row-even"><td>__isnull</td>
+<td>=True or =False</td>
+</tr>
+<tr class="row-odd"><td>__regex</td>
+<td>Matches regex</td>
+</tr>
+<tr class="row-even"><td>__iregex</td>
+<td>Matches regex (case insensitive)</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id4">
+<h3><a class="toc-backref" href="#id19">Examples</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--users-?name=Lyle">
+<code class="descname">GET </code><code class="descname">/users/?name=Lyle</code><a class="headerlink" href="#get--users-?name=Lyle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="get">
+<dt id="get--users-?name__iexact=lyle">
+<code class="descname">GET </code><code class="descname">/users/?name__iexact=lyle</code><a class="headerlink" href="#get--users-?name__iexact=lyle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="get">
+<dt id="get--users-?name__iendswith=le">
+<code class="descname">GET </code><code class="descname">/users/?name__iendswith=le</code><a class="headerlink" href="#get--users-?name__iendswith=le" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="get">
+<dt id="get--users-?created__isnull=True">
+<code class="descname">GET </code><code class="descname">/users/?created__isnull=True</code><a class="headerlink" href="#get--users-?created__isnull=True" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+<div class="section" id="filter-devices-by-meta">
+<span id="general-filtering-device-meta"></span><h2><a class="toc-backref" href="#id20">Filter Devices by Meta</a><a class="headerlink" href="#filter-devices-by-meta" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../objects/devices.html#objects-devices"><span class="std std-ref">Devices</span></a> can be filtered by their <a class="reference internal" href="meta.html#general-meta"><span class="std std-ref">Meta</span></a> <code class="docutils literal"><span class="pre">value</span></code> using
+the following syntax:</p>
+<dl class="get">
+<dt id="get--devices-?meta__META_NAME=META_VALUE">
+<code class="descname">GET </code><code class="descname">/devices/?meta__{{META_NAME}}={{META_VALUE}}</code><a class="headerlink" href="#get--devices-?meta__META_NAME=META_VALUE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>where <code class="docutils literal"><span class="pre">{{META_NAME}}</span></code> is the <code class="docutils literal"><span class="pre">name</span></code> of a Meta and <code class="docutils literal"><span class="pre">{{META_VALUE}}</span></code> is the <code class="docutils literal"><span class="pre">value</span></code>.</p>
+<p>You may also filter <a class="reference internal" href="../objects/devices.html#objects-devices"><span class="std std-ref">Devices</span></a> for the existence of a particular
+<a class="reference internal" href="meta.html#general-meta"><span class="std std-ref">Meta</span></a> by name, using the following syntax:</p>
+<dl class="get">
+<dt id="get--devices-?meta__META_NAME__isnull=True">
+<code class="descname">GET </code><code class="descname">/devices/?meta__{{META_NAME}}__isnull=True</code><a class="headerlink" href="#get--devices-?meta__META_NAME__isnull=True" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="get">
+<dt id="get--devices-?meta__META_NAME__isnull=False">
+<code class="descname">GET </code><code class="descname">/devices/?meta__{{META_NAME}}__isnull=False</code><a class="headerlink" href="#get--devices-?meta__META_NAME__isnull=False" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="section" id="id5">
+<h3><a class="toc-backref" href="#id21">Examples</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--devices-?meta__is_online=true">
+<code class="descname">GET </code><code class="descname">/devices/?meta__is_online=true</code><a class="headerlink" href="#get--devices-?meta__is_online=true" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="get">
+<dt id="get--devices-?meta__is_online=True">
+<code class="descname">GET </code><code class="descname">/devices/?meta__is_online=True</code><a class="headerlink" href="#get--devices-?meta__is_online=True" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="get">
+<dt id="get--devices-?meta__dim=5">
+<code class="descname">GET </code><code class="descname">/devices/?meta__dim=5</code><a class="headerlink" href="#get--devices-?meta__dim=5" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="get">
+<dt id="get--devices-?meta__als__isnull=false">
+<code class="descname">GET </code><code class="descname">/devices/?meta__als__isnull=false</code><a class="headerlink" href="#get--devices-?meta__als__isnull=false" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+<div class="section" id="order-devices-by-meta">
+<span id="general-ordering-device-meta"></span><h2><a class="toc-backref" href="#id22">Order Devices by Meta</a><a class="headerlink" href="#order-devices-by-meta" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../objects/devices.html#objects-devices"><span class="std std-ref">Devices</span></a> can be ordered by their <a class="reference internal" href="meta.html#general-meta"><span class="std std-ref">Meta</span></a> <code class="docutils literal"><span class="pre">value</span></code> using
+the following syntax:</p>
+<dl class="get">
+<dt id="get--devices-?order_by=meta__META_NAME">
+<code class="descname">GET </code><code class="descname">/devices/?order_by=meta__{{META_NAME}}</code><a class="headerlink" href="#get--devices-?order_by=meta__META_NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>When ordering by Device Meta <code class="docutils literal"><span class="pre">value</span></code> you will be excluding Devices that do not currently have that
+Meta.  If you would like to reverse the order then prefix the Meta Name with <code class="docutils literal"><span class="pre">-</span></code>.</p>
+<div class="section" id="id6">
+<h3><a class="toc-backref" href="#id23">Examples</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--devices-?order_by=meta__dim">
+<code class="descname">GET </code><code class="descname">/devices/?order_by=meta__dim</code><a class="headerlink" href="#get--devices-?order_by=meta__dim" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="get">
+<dt id="get--devices-?order_by=meta__is_online">
+<code class="descname">GET </code><code class="descname">/devices/?order_by=meta__is_online</code><a class="headerlink" href="#get--devices-?order_by=meta__is_online" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="get">
+<dt id="get--devices-?order_by=meta__last_activity">
+<code class="descname">GET </code><code class="descname">/devices/?order_by=meta__last_activity</code><a class="headerlink" href="#get--devices-?order_by=meta__last_activity" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ordering.html" class="btn btn-neutral float-right" title="Ordering" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="exclude_include_fields.html" class="btn btn-neutral" title="Include/Exclude Fields" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Gooee, LLC.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/tabs.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

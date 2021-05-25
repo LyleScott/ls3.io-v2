@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "Partner Preferences Schema",
+  "description": "Schema used for Partner Preferences.",
+  "additionalProperties": false,
+  "patternProperties": {
+    "^[a-zA-Z0-9_-]+$": {"$ref": "#/definitions/colorValue"}
+  },
+  "maxProperties": 20,
+  "definitions": {
+    "colorValue": {
+      "type": "string",
+      "pattern": "^#[a-fA-F0-9]{6}$"
+    }
+  }
+}

@@ -1,0 +1,54 @@
+.. _general_clearing_field_values:
+
+=====================
+Clearing Field Values
+=====================
+
+Deleting a value depends on the datatype of the field. See the below table for
+what value to use for each datatype.
+
+.. note:: Omitting values in the request has no effect on the value.
+
+==========  ===========
+Datatype    Empty Value
+==========  ===========
+string      ""
+ref         null
+array(ref)  []
+boolean     null
+integer     null
+datetime    null
+date        null
+time        null
+image       ""
+==========  ===========
+
+Examples
+--------
+
+ref:
+
+.. sourcecode:: json
+
+  {
+      "name": "My Object",
+      "building": null
+  }
+
+array(ref):
+
+.. sourcecode:: json
+
+  {
+      "name": "My Object",
+      "buildings": []
+  }
+
+string:
+
+.. sourcecode:: json
+
+  {
+      "name": "My Object",
+      "proper_name": ""
+  }

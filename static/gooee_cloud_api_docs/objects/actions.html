@@ -1,0 +1,531 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Actions &mdash; Documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/navtree.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Documentation" href="../index.html"/>
+        <link rel="up" title="Objects" href="../objects.html"/>
+        <link rel="next" title="Analytics Export" href="analytics_export.html"/>
+        <link rel="prev" title="Action Types" href="action_types.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Cloud API
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="link caption"><span class="link caption-text"><a class="reference internal" href="../misc.html">Misc</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/change_log.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/object_relation_diagram.html">Object Relation Diagram</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../general.html">General</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/analytics.html">Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api_tokens.html">API Tokens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/authentication.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/clearing_field_values.html">Clearing Field Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/device_counts.html">Device Counts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/exclude_include_fields.html">Include/Exclude Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/filtering.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ordering.html">Ordering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/meta.html">Meta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/meta_groups.html">Meta Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/pagination.html">Pagination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/pubsub.html">PubSub Message Broker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/search.html">Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/scope.html">Scope</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../objects.html">Objects</a></span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="action_types.html">Action Types</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Actions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#api-endpoints">API Endpoints</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="analytics_export.html">Analytics Export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analytics_query.html">Analytics Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="areas.html">Areas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="buildings.html">Buildings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="connected_products.html">Connected Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="currency.html">Currency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customers.html">Customers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dashboards.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="devices.html">Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fault_alarms.html">Fault Alarms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="local_rules.html">Local Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="locations.html">Locations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="partners.html">Partners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="product_files.html">Product Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="product_types.html">Product Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="products.html">Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules_v2.html">Rules V2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rule_groups.html">Rule Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scenes.html">Scenes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schedules.html">Schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spaces.html">Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timezones.html">Timezones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_features.html">User Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_groups.html">User Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_preferences.html">User Preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Users</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../integrations.html">Integrations</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/als2lux.html">Als-to-Lux Correlation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/external_sensor.html">External Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/gateway_lite.html">Gateway Lite</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cloud API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../objects.html">Objects</a> &raquo;</li>
+        
+      <li>Actions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/objects/actions.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="actions">
+<span id="objects-actions"></span><h1><a class="toc-backref" href="#id1">Actions</a><a class="headerlink" href="#actions" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="quick-links">
+<p class="topic-title first">Quick Links</p>
+<ul class="simple">
+<li><a class="reference internal" href="#actions" id="id1">Actions</a><ul>
+<li><a class="reference internal" href="#description" id="id2">Description</a></li>
+<li><a class="reference internal" href="#data-model" id="id3">Data Model</a><ul>
+<li><a class="reference internal" href="#complex-constraints" id="id4">Complex Constraints</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#api-endpoints" id="id5">API Endpoints</a><ul>
+<li><a class="reference internal" href="#create-an-action" id="id6">Create an Action</a></li>
+<li><a class="reference internal" href="#list-actions" id="id7">List Actions</a></li>
+<li><a class="reference internal" href="#retrieve-an-action" id="id8">Retrieve an Action</a></li>
+<li><a class="reference internal" href="#delete-a-action" id="id9">Delete a Action</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="description">
+<h2><a class="toc-backref" href="#id2">Description</a><a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>Actions are the execution of <a class="reference internal" href="action_types.html#objects-action-types"><span class="std std-ref">Action Types</span></a> against a
+target entity.  In order to
+change the state of one or more <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Devices</span></a> an Action is created.  Upon
+creation, the Action is executed and any future state changes require an additional Action to be
+created.</p>
+</div>
+<div class="section" id="data-model">
+<h2><a class="toc-backref" href="#id3">Data Model</a><a class="headerlink" href="#data-model" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="27%" />
+<col width="62%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>ref</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>created</td>
+<td>datetime</td>
+<td>read-only</td>
+</tr>
+<tr class="row-even"><td>modified</td>
+<td>datetime</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>name</td>
+<td>string</td>
+<td>max_length=100</td>
+</tr>
+<tr class="row-even"><td>value</td>
+<td>object</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>type</td>
+<td><a class="reference internal" href="action_types.html#objects-action-types"><span class="std std-ref">ref</span></a></td>
+<td>required</td>
+</tr>
+<tr class="row-even"><td>device</td>
+<td><a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">ref</span></a></td>
+<td><a class="reference internal" href="#action-complex-constraints"><span class="std std-ref">Complex Constraints</span></a>, deprecated, filterable=false</td>
+</tr>
+<tr class="row-odd"><td>space</td>
+<td><a class="reference internal" href="spaces.html#objects-spaces"><span class="std std-ref">ref</span></a></td>
+<td><a class="reference internal" href="#action-complex-constraints"><span class="std std-ref">Complex Constraints</span></a>, deprecated, filterable=false</td>
+</tr>
+<tr class="row-even"><td>target_type</td>
+<td>string</td>
+<td><a class="reference internal" href="#action-complex-constraints"><span class="std std-ref">Complex Constraints</span></a></td>
+</tr>
+<tr class="row-odd"><td>target_id</td>
+<td>ref</td>
+<td><a class="reference internal" href="#action-complex-constraints"><span class="std std-ref">Complex Constraints</span></a></td>
+</tr>
+<tr class="row-even"><td>origin</td>
+<td>string</td>
+<td>max_length=32</td>
+</tr>
+<tr class="row-odd"><td>origin_id</td>
+<td>ref</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>data_service_id</td>
+<td>string</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>customer_scopes</td>
+<td>array(<a class="reference internal" href="customers.html#objects-customers"><span class="std std-ref">ref</span></a>)</td>
+<td>see <a class="reference internal" href="../general/scope.html#general-scope"><span class="std std-ref">Scope</span></a></td>
+</tr>
+<tr class="row-even"><td>partner_scopes</td>
+<td>array(<a class="reference internal" href="partners.html#objects-partners"><span class="std std-ref">ref</span></a>)</td>
+<td>see <a class="reference internal" href="../general/scope.html#general-scope"><span class="std std-ref">Scope</span></a></td>
+</tr>
+<tr class="row-odd"><td>tags</td>
+<td>array(str)</td>
+<td>max_length=50 per tag</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="complex-constraints">
+<span id="action-complex-constraints"></span><h3><a class="toc-backref" href="#id4">Complex Constraints</a><a class="headerlink" href="#complex-constraints" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">An Action&#8217;s target is a combination of its <code class="docutils literal"><span class="pre">target_type</span></code> and <code class="docutils literal"><span class="pre">target_id</span></code> fields.</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">target_type</span></code> must be valid for selected <a class="reference internal" href="action_types.html#objects-action-types"><span class="std std-ref">ActionType</span></a> for example, a <code class="docutils literal"><span class="pre">dim</span></code> Action with a <code class="docutils literal"><span class="pre">target_type</span></code> set to <code class="docutils literal"><span class="pre">propertyrule</span></code> is invalid. See <a class="reference internal" href="action_types.html#objects-action-types"><span class="std std-ref">ActionTypes</span></a> to find which Entities a action type is <code class="docutils literal"><span class="pre">available_on</span></code></li>
+<li><code class="docutils literal"><span class="pre">target_id</span></code> must be a valid entity of selected <code class="docutils literal"><span class="pre">target_type</span></code>.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">device</span></code> and <code class="docutils literal"><span class="pre">space</span></code> fields are being deprecated, use <code class="docutils literal"><span class="pre">target_type</span></code> and <code class="docutils literal"><span class="pre">target_id</span></code>.</p>
+</li>
+<li><p class="first">If the target entity is a <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a>, it must have a <code class="docutils literal"><span class="pre">commission_state</span></code> of <code class="docutils literal"><span class="pre">&quot;active&quot;</span></code>.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">value</span></code> must follow the schema defined on the corresponding <a class="reference internal" href="action_types.html#objects-action-types"><span class="std std-ref">ActionType</span></a>.</p>
+</li>
+<li><p class="first">The fields <code class="docutils literal"><span class="pre">origin</span></code> and <code class="docutils literal"><span class="pre">origin_id</span></code> are meant to track the origin of the action. Although there are no constraints
+regarding which values can be set for the origin, the actions coming from the following sources will have their origin fields
+automatically populated:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Alexa Integration sets <code class="docutils literal"><span class="pre">origin</span></code> to <code class="docutils literal"><span class="pre">alexa</span></code>.</li>
+<li>Google Assistant sets <code class="docutils literal"><span class="pre">origin</span></code> to <code class="docutils literal"><span class="pre">google_assistant</span></code>.</li>
+<li><a class="reference internal" href="../general/pubsub.html#general-pubsub"><span class="std std-ref">PubSub Message Broker</span></a> sets <code class="docutils literal"><span class="pre">origin</span></code> to <code class="docutils literal"><span class="pre">mqtt</span></code>.</li>
+<li><a class="reference internal" href="schedules.html#objects-schedules"><span class="std std-ref">Schedules</span></a> set <code class="docutils literal"><span class="pre">origin</span></code> to <code class="docutils literal"><span class="pre">schedule</span></code> and <code class="docutils literal"><span class="pre">origin_id</span></code> to the ID of the Schedule.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="api-endpoints">
+<h2><a class="toc-backref" href="#id5">API Endpoints</a><a class="headerlink" href="#api-endpoints" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="create-an-action">
+<h3><a class="toc-backref" href="#id6">Create an Action</a><a class="headerlink" href="#create-an-action" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--actions-">
+<code class="descname">POST </code><code class="descname">/actions/</code><a class="headerlink" href="#post--actions-" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2">201 Created</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="list-actions">
+<h3><a class="toc-backref" href="#id7">List Actions</a><a class="headerlink" href="#list-actions" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--actions-">
+<code class="descname">GET </code><code class="descname">/actions/</code><a class="headerlink" href="#get--actions-" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="retrieve-an-action">
+<h3><a class="toc-backref" href="#id8">Retrieve an Action</a><a class="headerlink" href="#retrieve-an-action" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--actions-(id)-">
+<code class="descname">GET </code><code class="descname">/actions/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><code class="descname">/</code><a class="headerlink" href="#get--actions-(id)-" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="delete-a-action">
+<h3><a class="toc-backref" href="#id9">Delete a Action</a><a class="headerlink" href="#delete-a-action" title="Permalink to this headline">¶</a></h3>
+<dl class="delete">
+<dt id="delete--actions-(id)-">
+<code class="descname">DELETE </code><code class="descname">/actions/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><code class="descname">/</code><a class="headerlink" href="#delete--actions-(id)-" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.5">204 No Content</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="analytics_export.html" class="btn btn-neutral float-right" title="Analytics Export" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="action_types.html" class="btn btn-neutral" title="Action Types" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Gooee, LLC.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/tabs.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

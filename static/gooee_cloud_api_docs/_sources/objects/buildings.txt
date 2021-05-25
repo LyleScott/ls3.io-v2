@@ -1,0 +1,670 @@
+.. _objects_buildings:
+
+=========
+Buildings
+=========
+
+.. contents:: Quick Links
+
+Description
+===========
+
+Buildings are composed of a hierarchy of :ref:`Spaces <objects_spaces>`.  They
+belong to a :ref:`Customer <objects_customers>` and have a physical
+:ref:`Location <objects_locations>`.
+
+Data Model
+==========
+
+========================     ===================================================  ========================
+Key                          Datatype                                             Notes
+========================     ===================================================  ========================
+id                           ref                                                  read-only
+created                      datetime                                             read-only
+modified                     datetime                                             read-only
+name                         string                                               required, max_length=100
+description                  string
+customer                     :ref:`ref <objects_customers>`                       required, write-once
+spaces                       array(:ref:`ref <objects_spaces>`)
+physical_spaces              array(:ref:`ref <objects_spaces>`)                   read-only
+virtual_spaces               array(:ref:`ref <objects_spaces>`)                   read-only
+location                     :ref:`location <objects_locations>`
+timezone                     enum                                                 default=UTC, see :ref:`Timezones <objects_timezones>`
+currency                     enum                                                 default=USD, see :ref:`Currency <objects_currency>`
+auto_dst                     boolean                                              default=true, Automatic Daylight Savings
+last_activity                datetime                                             read-only
+meta                         array(:ref:`meta <general_meta>`)
+data_service_id              string                                               read-only
+anx_dimensions               array(str)                                           see :ref:`analytics_dimensions`
+customer_scopes              array(:ref:`ref <objects_customers>`)                see :ref:`general_scope`
+partner_scopes               array(:ref:`ref <objects_partners>`)                 see :ref:`general_scope`
+tags                         array(str)                                           max_length=50 per tag
+reactor_version              string                                               max_length=64, s3-generated version e.g. 'unknown', write-only
+rule_version                 string                                               read-only, options=[v1, v2], default=v2
+========================     ===================================================  ========================
+
+.. _objects_buildings_annotations:
+
+Device Counts
+=============
+
+Device counts (online/total) are supported on an opt-in basis via the "_annotate" filter.
+See: :ref:`Device Counts <general_device_counts>` for reference.
+
+.. _objects_buildings_operating_hours:
+
+Operating Hours
+===============
+
+Every Building may have operating hours to define the times that it will be open. By default Buildings will
+have empty operating hours ``[]``.
+
+Data Model
+----------
+
+=====================  ========  =====
+Key                    Datatype  Notes
+=====================  ========  =====
+name                   string    required, unique, max_length=100
+effective_date         date      required, unique, format=`YYYY-mm-dd`
+time_schedule          object    see :ref:`Time Schedule <time_schedule_model>`
+=====================  ========  =====
+
+.. _time_schedule_model:
+
+Time Schedule
+-------------
+
+Data Model
+~~~~~~~~~~
+
+===========  ========  =====
+Key          Datatype  Notes
+===========  ========  =====
+day_of_week  string    required, choices=[mon,tue,wed,thu,fri,sat,sun]
+start        time      required, format=`HH:MM`
+end          time      required, format=`HH:MM`
+===========  ========  =====
+
+.. _time_schedule_complex_constraints:
+
+Complex Constraints
+===================
+
+``start`` and ``end`` for a single day must not match or overlap.
+
+
+Example
+-------
+
+.. sourcecode:: javascript
+
+    "operating_hours" : [
+      {
+        "effective_date": "2017-07-01",
+        "name": "Summer Working Hours",
+        "time_schedule": [
+          {
+            "day_of_week": "mon",
+            "start": "09:00",
+            "end": "17:30"
+          },
+          {
+            "day_of_week": "tue",
+            "start": "09:00",
+            "end": "17:30"
+          },
+          {
+            "day_of_week": "wed",
+            "start": "09:00",
+            "end": "17:30"
+          },
+          {
+            "day_of_week": "thu",
+            "start": "09:00",
+            "end": "17:30"
+          },
+          {
+            "day_of_week": "fri",
+            "start": "09:00",
+            "end": "17:30"
+          },
+          {
+            "day_of_week": "sat",
+            "start": "08:00",
+            "end": "12:00"
+          }
+        ]
+      }
+    ]
+
+
+.. _objects_buildings_electrical_fee_schedule:
+
+Electrical Fee Schedule
+=======================
+
+An electrical fee schedule may be added to a building. The "name", "effective_date" and "base_rate"
+fields are required and establish a default rate for the building. Exceptions to the default
+schedule may be added in the "time_dependent_rates" field.
+
+By default, every Building has an empty electrical fee schedule: ``[]``.
+
+Data Model
+----------
+
+=====================  ========  =====
+Key                    Datatype  Notes
+=====================  ========  =====
+name                   string    required, unique, max_length=100
+effective_date         date      required, unique, format=`YYYY-mm-dd`
+base_rate              number    required, > 0
+time_dependent_rates   object    see :ref:`Time Dependent Rates <time_dependent_rates_model>`
+=====================  ========  =====
+
+.. _electrical_fee_schedule_complex_constraints:
+
+Complex Constraints
+-------------------
+
+`effective_date` must be unique for the Building.
+
+`name` must be unique for the Building.
+
+.. _time_dependent_rates_model:
+
+Example
+-------
+
+.. sourcecode:: javascript
+
+    "electrical_fee_schedule" : [
+      {
+        "effective_date": "2016-01-01",     // YYYY-mm-dd
+        "base_rate": 150,                   // Positive number
+        "name": "Winter 2016",
+        "time_dependent_rates": [
+          {
+            "day_of_week": "mon",           // (mon,tue,wed,thu,fri,sat,sun)
+            "start": "07:00",               // 24 hour time (HH:MM)
+            "end": "18:30",
+            "rate": 200
+          },
+          {
+            "day_of_week": "tue",
+            "start": "07:00",
+            "end": "18:30",
+            "rate": 200
+          },
+          {
+            "day_of_week": "wed",
+            "start": "07:00",
+            "end": "18:30",
+            "rate": 200
+          },
+          {
+            "day_of_week": "thu",
+            "start": "07:00",
+            "end": "18:30",
+            "rate": 200
+          },
+          {
+            "day_of_week": "fri",
+            "start": "07:00",
+            "end": "18:30",
+            "rate": 200
+          }
+        ]
+      }
+    ]
+
+Time Dependent Rates
+====================
+
+Data Model
+----------
+
+===========  ========  =====
+Key          Datatype  Notes
+===========  ========  =====
+day_of_week  string    required, choices=[mon,tue,wed,thu,fri,sat,sun]
+start        time      required, format=`HH:MM`
+end          time      required, format=`HH:MM`
+rate         number    required, > 0
+===========  ========  =====
+
+.. _time_dependent_rates_complex_constraints:
+
+Complex Constraints
+-------------------
+
+`start` and `end` for a single day must not match or overlap.
+
+API Endpoints
+=============
+
+Create a Building
+-----------------
+
+.. http:POST:: /buildings
+
+   :statuscode 201:
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      POST /buildings/ HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+      {
+        "name": "Example Buidling",
+        "customer": "e119942a-1d57-4180-b65a-4b48f7cb9f60",
+        "timezone": "US/Eastern",
+        "location": {
+          "addr1": "4100 E Mexico Ave A",
+          "city": "Denver",
+          "state": "CO",
+          "postal_code": "80222",
+          "country": "US"
+        },
+        "meta": [
+          {
+            "name": "serial_number",
+            "display_name": "Serial Number",
+            "value": "ABC123"
+          },
+          {
+            "name": "temperature",
+            "display_name": "Temperature",
+            "value": 1.23
+          }
+        ],
+        "tags": ["Example1234"]
+      }
+
+
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 201 OK
+      Content-Type: application/json
+
+      {
+        "id": "5c541a96-3c50-41fa-8cbf-365554feddad",
+        "created": "2020-03-17T14:56:01.204974Z",
+        "modified": "2020-03-17T14:56:01.205003Z",
+        "name": "Example Building",
+        "description": "",
+        "customer": "e119942a-1d57-4180-b65a-4b48f7cb9f60",
+        "spaces": [],
+        "physical_spaces": [],
+        "virtual_spaces": [],
+        "users": [],
+        "timezone": "US/Eastern",
+        "currency": "USD",
+        "last_activity": null,
+        "meta": [
+          {
+            "name": "temperature",
+            "display_name": "Temperature",
+            "value": 1.23,
+            "unit_of_measure": null,
+            "modified": "2020-03-17T14:56:01.513558Z"
+          },
+          {
+            "name": "serial_number",
+            "display_name": "Serial Number",
+            "value": "ABC123",
+            "unit_of_measure": null,
+            "modified": "2020-03-17T14:56:01.505765Z"
+          }
+        ],
+        "data_service_id": "UsEwsCRbWmRkaSawwYbhkxgg",
+        "tags": [
+          "Example1234"
+        ],
+        "rule_version": "v2",
+        "anx_dimensions": null,
+        "location": {
+          "addr1": "4100 E Mexico Ave A",
+          "addr2": "",
+          "city": "Denver",
+          "state": "CO",
+          "postal_code": "80222",
+          "country": "US",
+          "phone_number": "",
+          "lat": null,
+          "lng": null
+        }
+      }
+
+List Buildings
+--------------
+
+.. http:GET:: /buildings
+
+   :statuscode 200:
+
+Update a Building
+-----------------
+
+.. http:PUT:: /buildings/(id)
+
+   :statuscode 200:
+
+Partially Update a Building
+---------------------------
+
+.. http:PATCH:: /buildings/(id)
+
+   :statuscode 200:
+
+Retrieve a Building
+-------------------
+
+.. http:GET:: /buildings/(id)
+
+   :statuscode 200:
+
+Delete a Building
+-----------------
+
+.. http:DELETE:: /buildings/(id)
+
+   :statuscode 204:
+
+
+Append Entries to a Building's Operating Hours
+----------------------------------------------
+
+.. http:POST:: /buildings/(id)/operating_hours
+
+   :statuscode 201:
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      POST /buildings/93378718-b2ad-4b6c-a1bb-39c5436bf3e6/operating_hours HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+      [
+        {
+          "effective_date": "2017-07-01",
+          "name": "Weekend Working Hours",
+          "time_schedule": [
+            {
+              "day_of_week": "sat",
+              "start": "08:00",
+              "end": "12:00"
+            },
+            {
+              "day_of_week": "sun",
+              "start": "08:00",
+              "end": "12:00"
+            }
+          ]
+        }
+      ]
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 201 OK
+      Content-Type: application/json
+
+      [
+        {
+          "id": "01a19ae6-78ec-4d8f-859d-edf0f954042f",
+          "name": "Weekend Working Hours",
+          "effective_date": "2017-07-01",
+          "time_schedule": [
+            {
+              "day_of_week": "sat",
+              "start": "08:00",
+              "end": "12:00"
+            },
+            {
+              "day_of_week": "sun",
+              "start": "08:00",
+              "end": "12:00"
+            }
+          ]
+        }
+      ]
+
+Replace a Building's Operating Hours
+------------------------------------
+
+.. http:PUT:: /buildings/(id)/operating_hours
+
+   :statuscode 200:
+
+Retrieve a Building's Operating Hours
+-------------------------------------
+
+.. http:GET:: /buildings/(id)/operating_hours
+
+   :statuscode 200:
+
+Remove All Entries From a Building's Operating Hours
+----------------------------------------------------
+
+.. http:DELETE:: /buildings/(id)/operating_hours
+
+   :statuscode 204:
+
+Append Entries to a Building's Electrical Fee Schedule
+------------------------------------------------------
+
+.. http:POST:: /buildings/(id)/electrical_fee_schedule
+
+   :statuscode 201:
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      POST /buildings/93378718-b2ad-4b6c-a1bb-39c5436bf3e6/electrical_fee_schedule HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+      [
+        {
+          "effective_date": "2016-01-12",
+          "base_rate": 100,
+          "name": "Example Schedule"
+        }
+      ]
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 201 OK
+      Content-Type: application/json
+
+      [
+        {
+          "id": "598f3a8a-8489-4529-9922-f09db0654d20",
+          "name": "Example Schedule",
+          "effective_date": "2016-01-12",
+          "base_rate": 100.0,
+          "time_dependent_rates": []
+        }
+      ]
+
+Replace a Building's Electrical Fee Schedule
+--------------------------------------------
+
+.. http:PUT:: /buildings/(id)/electrical_fee_schedule
+
+   :statuscode 200:
+
+Retrieve a Building's Electrical Fee Schedule
+---------------------------------------------
+
+.. http:GET:: /buildings/(id)/electrical_fee_schedule
+
+   :statuscode 200:
+
+Remove All Entries From a Building's Electrical Fee Schedule
+------------------------------------------------------------
+
+.. http:DELETE:: /buildings/(id)/electrical_fee_schedule
+
+   :statuscode 204:
+
+.. _objects_buildings_hierarchy:
+
+List a Building's Hierarchy with Devices
+----------------------------------------
+
+.. http:GET:: /buildings/(id)/devices
+
+   :query meta: Meta name used to filter devices.
+   :query features__has_keys: Filter using a list of primary feature names.
+   :statuscode 200:
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /buildings/93378718-b2ad-4b6c-a1bb-39c5436bf3e6/devices/?meta=dim&features__has_keys=["bcn_ibeacon"] HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+
+   **Example responses**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json
+
+      [
+        {
+          "id": "53f9bed2-dc09-4aa0-87d1-4801e25c5b91",
+          "name": "First Floor",
+          "type": "floor",
+          "devices": [],
+          "parent_space": null,
+          "child_spaces": [
+            {
+              "id": "0d9fde47-652e-4a85-af01-0b716dbda82b",
+              "name": "Corridor",
+              "type": "room",
+              "devices": [
+                {
+                  "id": "8c369415-9c3e-4fb0-9eb1-39ed7b50b593",
+                  "name": "Name of New Device",
+                  "type": "wim"
+                },
+                {
+                  "id": "6be00c12-fb44-4aa9-b993-1b1d4d8d723b",
+                  "name": "Light FX",
+                  "type": "wim"
+                }
+              ],
+              "parent_space": "53f9bed2-dc09-4aa0-87d1-4801e25c5b91",
+              "child_spaces": []
+            }
+          ]
+        }
+      ]
+
+
+.. _objects_buildings_reactor_version:
+
+Building Reactor Version
+------------------------
+
+.. http:GET:: /buildings/(id)/reactor
+
+   :statuscode 200:
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /buildings/93378718-b2ad-4b6c-a1bb-39c5436bf3e6/reactor HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json
+
+      {
+        "reactor_version": "YULobu7VvxEqfdjm0D_rx7cGTbbVQCCz"
+      }
+
+
+.. _objects_buildings_reactor_logs:
+
+Building Reactor Logs
+---------------------
+
+.. http:GET:: /buildings/(id)/reactor_logs
+
+   :statuscode 200:
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /buildings/93378718-b2ad-4b6c-a1bb-39c5436bf3e6/reactor_logs HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+
+   **Example responses**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json
+
+      [
+        {
+          "id":"Uhp7na5GmXxc5nbdA7MKUbVk",
+          "timestamp":1472045241964,
+          "logLevel":"error",
+          "createdAt":1472045241964,
+          "app":"UYKNnwpFGgbyp4bUArq5daPg",
+          "message":"This is an error entry"
+        },
+        {
+          "id":"UYKNnwpmmgxcpHxAA7qpUbBh",
+          "timestamp":1472045241963,
+          "logLevel":"warn",
+          "createdAt":1472045241963,
+          "app":"UYKNnwpFGgbyp4bUArq5daPg",
+          "message":"This is a warn entry"
+        },
+        {
+          "id":"UEKr4RKmmDSyKHbUdrMKdbeg",
+          "timestamp":1472045241963,
+          "logLevel":"info",
+          "createdAt":1472045241963,
+          "app":"UYKNnwpFGgbyp4bUArq5daPg",
+          "message":"This is a info entry"
+        },
+        {
+          "id":"UYpN4Rp3GXbcp4xdUNMpUxef",
+          "timestamp":1472045241962,
+          "logLevel":"debug",
+          "createdAt":1472045241962,
+          "app":"UYKNnwpFGgbyp4bUArq5daPg",
+          "message":"This is a debug entry"
+        }
+      ]

@@ -1,0 +1,867 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>External Sensors &mdash; Documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/navtree.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Documentation" href="../index.html"/>
+        <link rel="up" title="Integrations" href="../integrations.html"/>
+        <link rel="next" title="Gateway Lite" href="gateway_lite.html"/>
+        <link rel="prev" title="Als-to-Lux Correlation" href="als2lux.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Cloud API
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="link caption"><span class="link caption-text"><a class="reference internal" href="../misc.html">Misc</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/change_log.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/object_relation_diagram.html">Object Relation Diagram</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../general.html">General</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/analytics.html">Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api_tokens.html">API Tokens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/authentication.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/clearing_field_values.html">Clearing Field Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/device_counts.html">Device Counts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/exclude_include_fields.html">Include/Exclude Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/filtering.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ordering.html">Ordering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/meta.html">Meta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/meta_groups.html">Meta Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/pagination.html">Pagination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/pubsub.html">PubSub Message Broker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/search.html">Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/scope.html">Scope</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../objects.html">Objects</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../objects/action_types.html">Action Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/actions.html">Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/analytics_export.html">Analytics Export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/analytics_query.html">Analytics Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/areas.html">Areas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/buildings.html">Buildings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/connected_products.html">Connected Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/currency.html">Currency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/customers.html">Customers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/dashboards.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/devices.html">Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/fault_alarms.html">Fault Alarms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/local_rules.html">Local Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/locations.html">Locations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/partners.html">Partners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/product_files.html">Product Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/product_types.html">Product Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/products.html">Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/rules_v2.html">Rules V2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/rule_groups.html">Rule Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/scenes.html">Scenes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/schedules.html">Schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/spaces.html">Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/timezones.html">Timezones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/user_features.html">User Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/user_groups.html">User Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/user_preferences.html">User Preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/users.html">Users</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../integrations.html">Integrations</a></span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="als2lux.html">Als-to-Lux Correlation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">External Sensors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#external-sensor-interface">External Sensor Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#external-sensor-integration">External Sensor Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bulk-commissioning">Bulk Commissioning</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gateway_lite.html">Gateway Lite</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cloud API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../integrations.html">Integrations</a> &raquo;</li>
+        
+      <li>External Sensors</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/integrations/external_sensor.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="external-sensors">
+<span id="integrations-external-sensor"></span><h1><a class="toc-backref" href="#id6">External Sensors</a><a class="headerlink" href="#external-sensors" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="quick-links">
+<p class="topic-title first">Quick Links</p>
+<ul class="simple">
+<li><a class="reference internal" href="#external-sensors" id="id6">External Sensors</a><ul>
+<li><a class="reference internal" href="#introduction" id="id7">Introduction</a></li>
+<li><a class="reference internal" href="#external-sensor-interface" id="id8">External Sensor Interface</a><ul>
+<li><a class="reference internal" href="#description" id="id9">Description</a></li>
+<li><a class="reference internal" href="#data-model" id="id10">Data Model</a></li>
+<li><a class="reference internal" href="#api-endpoints" id="id11">API Endpoints</a><ul>
+<li><a class="reference internal" href="#get-external-sensor-interfaces" id="id12">Get External Sensor Interfaces</a></li>
+<li><a class="reference internal" href="#retrieve-an-external-sensor-interface" id="id13">Retrieve an External Sensor Interface</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#external-sensor-integration" id="id14">External Sensor Integration</a><ul>
+<li><a class="reference internal" href="#id1" id="id15">Description</a></li>
+<li><a class="reference internal" href="#id2" id="id16">Data Model</a></li>
+<li><a class="reference internal" href="#id3" id="id17">API Endpoints</a><ul>
+<li><a class="reference internal" href="#create-an-external-sensor-integration" id="id18">Create an External Sensor Integration</a></li>
+<li><a class="reference internal" href="#get-external-sensor-integration" id="id19">Get External Sensor Integration</a></li>
+<li><a class="reference internal" href="#update-an-external-sensor-integration" id="id20">Update an External Sensor Integration</a></li>
+<li><a class="reference internal" href="#partially-update-an-external-sensor-integration" id="id21">Partially Update an External Sensor Integration</a></li>
+<li><a class="reference internal" href="#retrieve-an-external-sensor-integration" id="id22">Retrieve an External Sensor Integration</a></li>
+<li><a class="reference internal" href="#delete-an-external-sensor-integration" id="id23">Delete an External Sensor Integration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#bulk-commissioning" id="id24">Bulk Commissioning</a><ul>
+<li><a class="reference internal" href="#file-export" id="id25">File Export</a><ul>
+<li><a class="reference internal" href="#request" id="id26">Request</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#file-import" id="id27">File Import</a><ul>
+<li><a class="reference internal" href="#id4" id="id28">Request</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="introduction">
+<h2><a class="toc-backref" href="#id7">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>External Sensor Integrations are used to forward data from external sensors to the Gooee Cloud. Each integration available will have a specific set of configuration parameters
+(named <a class="reference internal" href="#integrations-external-sensor-interfaces"><span class="std std-ref">External Sensor Interface</span></a>) that may (or must) be filled in order to process the incoming data. External Sensor Integrations
+are associated to <a class="reference internal" href="../objects/areas.html#objects-areas"><span class="std std-ref">Areas</span></a> and assume Area as the entity that receives data from the external sensor (headcount, temperature, etc..) and will roll up the received
+values up to the higher logical entities like <a class="reference internal" href="../objects/spaces.html#objects-spaces"><span class="std std-ref">Spaces</span></a> and <a class="reference internal" href="../objects/buildings.html#objects-buildings"><span class="std std-ref">Buildings</span></a> if their <cite>rollup</cite> setting is configured for the Area.</p>
+</div>
+<div class="section" id="external-sensor-interface">
+<span id="integrations-external-sensor-interfaces"></span><h2><a class="toc-backref" href="#id8">External Sensor Interface</a><a class="headerlink" href="#external-sensor-interface" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="description">
+<h3><a class="toc-backref" href="#id9">Description</a><a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h3>
+<p>An <a class="reference internal" href="#integrations-external-sensor-interfaces"><span class="std std-ref">External Sensor Interface</span></a> is defined as a global (non <a class="reference internal" href="../general/scope.html#general-scope"><span class="std std-ref">scoped</span></a>) object that will be created by Gooee (and later by Partners)
+to define how an External Sensor will talk to the Gooee Cloud.</p>
+</div>
+<div class="section" id="data-model">
+<h3><a class="toc-backref" href="#id10">Data Model</a><a class="headerlink" href="#data-model" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="48%" />
+<col width="35%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>ref</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>created</td>
+<td>datetime</td>
+<td>read-only</td>
+</tr>
+<tr class="row-even"><td>modified</td>
+<td>datetime</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>name</td>
+<td>string</td>
+<td>required, max_length=100</td>
+</tr>
+<tr class="row-even"><td>data_transport</td>
+<td>enum</td>
+<td>read-only, options=[http, mqtt]</td>
+</tr>
+<tr class="row-odd"><td>auth_header</td>
+<td>string</td>
+<td>max_length=100</td>
+</tr>
+<tr class="row-even"><td>auth_method</td>
+<td>enum</td>
+<td>options=[basic, token]</td>
+</tr>
+<tr class="row-odd"><td>data_format</td>
+<td>enum</td>
+<td>read-only, options=[json, xml]</td>
+</tr>
+<tr class="row-even"><td>sensor_module</td>
+<td>string</td>
+<td>max_length=255</td>
+</tr>
+<tr class="row-odd"><td>tags</td>
+<td>array(string)</td>
+<td>max_length=50 per tag</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="api-endpoints">
+<h3><a class="toc-backref" href="#id11">API Endpoints</a><a class="headerlink" href="#api-endpoints" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="get-external-sensor-interfaces">
+<h4><a class="toc-backref" href="#id12">Get External Sensor Interfaces</a><a class="headerlink" href="#get-external-sensor-interfaces" title="Permalink to this headline">¶</a></h4>
+<dl class="get">
+<dt id="get--integrations-external_sensor-interfaces">
+<code class="descname">GET </code><code class="descname">/integrations/external_sensor/interfaces</code><a class="headerlink" href="#get--integrations-external_sensor-interfaces" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="retrieve-an-external-sensor-interface">
+<h4><a class="toc-backref" href="#id13">Retrieve an External Sensor Interface</a><a class="headerlink" href="#retrieve-an-external-sensor-interface" title="Permalink to this headline">¶</a></h4>
+<dl class="get">
+<dt id="get--integrations-external_sensor-interfaces-(id)">
+<code class="descname">GET </code><code class="descname">/integrations/external_sensor/interfaces/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#get--integrations-external_sensor-interfaces-(id)" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+</div>
+<div class="section" id="external-sensor-integration">
+<h2><a class="toc-backref" href="#id14">External Sensor Integration</a><a class="headerlink" href="#external-sensor-integration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3><a class="toc-backref" href="#id15">Description</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>An <a class="reference internal" href="#integrations-external-sensor-integrations"><span class="std std-ref">External Sensor Integration</span></a> is defined as a
+<a class="reference internal" href="../general/scope.html#general-scope"><span class="std std-ref">scoped</span></a> instance of an <a class="reference internal" href="#integrations-external-sensor-interfaces"><span class="std std-ref">External Sensor Interface</span></a>
+that is created by Partners/Customers so that an external sensor can talk to the Gooee Cloud via the
+<a class="reference internal" href="#integrations-external-sensor-interfaces"><span class="std std-ref">External Sensor Interface&#8217;s</span></a> sensor module.</p>
+</div>
+<div class="section" id="id2">
+<h3><a class="toc-backref" href="#id16">Data Model</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="57%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>ref</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>created</td>
+<td>datetime</td>
+<td>read-only</td>
+</tr>
+<tr class="row-even"><td>modified</td>
+<td>datetime</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>interface</td>
+<td><a class="reference internal" href="#integrations-external-sensor-interfaces"><span class="std std-ref">ref</span></a></td>
+<td>required</td>
+</tr>
+<tr class="row-even"><td>building</td>
+<td><a class="reference internal" href="../objects/buildings.html#objects-buildings"><span class="std std-ref">ref</span></a></td>
+<td>required</td>
+</tr>
+<tr class="row-odd"><td>areas</td>
+<td>array(<a class="reference internal" href="../objects/areas.html#objects-areas"><span class="std std-ref">ref</span></a>)</td>
+<td>required</td>
+</tr>
+<tr class="row-even"><td>extra_data</td>
+<td>obj</td>
+<td>JSON Field</td>
+</tr>
+<tr class="row-odd"><td>auth_token</td>
+<td>string</td>
+<td>read_only</td>
+</tr>
+<tr class="row-even"><td>http_endpoint</td>
+<td>string</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>auth_method</td>
+<td>string</td>
+<td>read-only</td>
+</tr>
+<tr class="row-even"><td>auth_header</td>
+<td>string</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>mqtt_topic</td>
+<td>string</td>
+<td>read-only</td>
+</tr>
+<tr class="row-even"><td>last_activity</td>
+<td>datetime</td>
+<td>read-only</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id3">
+<h3><a class="toc-backref" href="#id17">API Endpoints</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="create-an-external-sensor-integration">
+<h4><a class="toc-backref" href="#id18">Create an External Sensor Integration</a><a class="headerlink" href="#create-an-external-sensor-integration" title="Permalink to this headline">¶</a></h4>
+<dl class="post">
+<dt id="post--integrations-external_sensor">
+<code class="descname">POST </code><code class="descname">/integrations/external_sensor</code><a class="headerlink" href="#post--integrations-external_sensor" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2">201 Created</a> &#8211; </li>
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/integrations/external_sensor</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">application/json</span>
+
+{
+    &quot;sensor_type&quot;: &quot;44879b1b-7ab1-478f-b5a2-d75cd39353e0&quot;,
+    &quot;building&quot;: &quot;6b104afd-5d5f-44d0-9f24-b9350d879d25&quot;,
+    &quot;areas&quot;: [&quot;3055af54-7b22-4574-a0c4-a1c5d1f82992&quot;, &quot;fdf4bf5b-773f-4a86-8618-04e69b2c466e&quot;]
+}
+</pre></div>
+</div>
+<p><strong>Example response (based on http/token transport interface)</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">CREATED</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;933a4a1d-b28c-4cbe-b841-ec128bebeca1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;created&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-10-29T20:15:00.124345Z&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;modified&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-10-29T20:15:00.124375Z&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;interface&quot;</span><span class="p">:</span> <span class="s2">&quot;44879b1b-7ab1-478f-b5a2-d75cd39353e0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;building&quot;</span><span class="p">:</span> <span class="s2">&quot;6b104afd-5d5f-44d0-9f24-b9350d879d25&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;areas&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;3055af54-7b22-4574-a0c4-a1c5d1f82992&quot;</span><span class="p">,</span> <span class="s2">&quot;fdf4bf5b-773f-4a86-8618-04e69b2c466e&quot;</span><span class="p">],</span>
+    <span class="nt">&quot;http_endpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;https://api.gooee.io/integrations/external_sensor/933a4a1d-b28c-4cbe-b841-ec128bebeca1/receiver&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;auth_token&quot;</span><span class="p">:</span> <span class="s2">&quot;256778939d0ee57eda123447c78c353b38e2704f5a59c88553836ffb7dde&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;auth_header&quot;</span><span class="p">:</span> <span class="s2">&quot;FooBarCustomAuthorization&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;auth_method&quot;</span><span class="p">:</span> <span class="s2">&quot;token&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;last_updated&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-10-29T18:30:00.164599Z&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;extra_data&quot;</span><span class="p">:</span> <span class="p">{}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response (based on mqtt transport interface)</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">CREATED</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;933a4a1d-b28c-4cbe-b841-ec128bebeca1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;created&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-10-29T20:15:00.124345Z&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;modified&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-10-29T20:15:00.124375Z&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;interface&quot;</span><span class="p">:</span> <span class="s2">&quot;44879b1b-7ab1-478f-b5a2-d75cd39353e0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;building&quot;</span><span class="p">:</span> <span class="s2">&quot;6b104afd-5d5f-44d0-9f24-b9350d879d25&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;areas&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;3055af54-7b22-4574-a0c4-a1c5d1f82992&quot;</span><span class="p">,</span> <span class="s2">&quot;fdf4bf5b-773f-4a86-8618-04e69b2c466e&quot;</span><span class="p">],</span>
+    <span class="nt">&quot;mqtt_topic&quot;</span><span class="p">:</span> <span class="s2">&quot;integrations/external_sensor/933a4a1d-b28c-4cbe-b841-ec128bebeca1/receiver&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;auth_token&quot;</span><span class="p">:</span> <span class="s2">&quot;056770039d0ee57e00123447008c353b3800704f5a59008553836ffb7dd0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;last_updated&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-10-29T18:30:00.164599Z&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;extra_data&quot;</span><span class="p">:</span> <span class="p">{}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p id="integrations-external-sensor-extra-data"><strong>Example request (with extra_data)</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/integrations/external_sensor</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">application/json</span>
+
+{
+    &quot;sensor_type&quot;: &quot;44879b1b-7ab1-478f-b5a2-d75cd39353e0&quot;,
+    &quot;building&quot;: &quot;6b104afd-5d5f-44d0-9f24-b9350d879d25&quot;,
+    &quot;areas&quot;: [&quot;3055af54-7b22-4574-a0c4-a1c5d1f82992&quot;, &quot;fdf4bf5b-773f-4a86-8618-04e69b2c466e&quot;],
+    &quot;extra_data&quot;: {
+        &quot;app_id&quot;: &quot;foo&quot;,
+        &quot;app_key&quot;: &quot;bar&quot;
+    }
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="get-external-sensor-integration">
+<h4><a class="toc-backref" href="#id19">Get External Sensor Integration</a><a class="headerlink" href="#get-external-sensor-integration" title="Permalink to this headline">¶</a></h4>
+<dl class="get">
+<dt id="get--integrations-external_sensor">
+<code class="descname">GET </code><code class="descname">/integrations/external_sensor</code><a class="headerlink" href="#get--integrations-external_sensor" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="update-an-external-sensor-integration">
+<h4><a class="toc-backref" href="#id20">Update an External Sensor Integration</a><a class="headerlink" href="#update-an-external-sensor-integration" title="Permalink to this headline">¶</a></h4>
+<dl class="put">
+<dt id="put--integrations-external_sensor-(id)-">
+<code class="descname">PUT </code><code class="descname">/integrations/external_sensor/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><code class="descname">/</code><a class="headerlink" href="#put--integrations-external_sensor-(id)-" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="partially-update-an-external-sensor-integration">
+<h4><a class="toc-backref" href="#id21">Partially Update an External Sensor Integration</a><a class="headerlink" href="#partially-update-an-external-sensor-integration" title="Permalink to this headline">¶</a></h4>
+<dl class="patch">
+<dt id="patch--integrations-external_sensor-(id)">
+<code class="descname">PATCH </code><code class="descname">/integrations/external_sensor/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#patch--integrations-external_sensor-(id)" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="retrieve-an-external-sensor-integration">
+<h4><a class="toc-backref" href="#id22">Retrieve an External Sensor Integration</a><a class="headerlink" href="#retrieve-an-external-sensor-integration" title="Permalink to this headline">¶</a></h4>
+<dl class="get">
+<dt id="get--integrations-external_sensor-(id)">
+<code class="descname">GET </code><code class="descname">/integrations/external_sensor/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#get--integrations-external_sensor-(id)" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="delete-an-external-sensor-integration">
+<h4><a class="toc-backref" href="#id23">Delete an External Sensor Integration</a><a class="headerlink" href="#delete-an-external-sensor-integration" title="Permalink to this headline">¶</a></h4>
+<dl class="delete">
+<dt id="delete--integrations-external_sensor-(id)">
+<code class="descname">DELETE </code><code class="descname">/integrations/external_sensor/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#delete--integrations-external_sensor-(id)" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.5">204 No Content</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+</div>
+<div class="section" id="bulk-commissioning">
+<h2><a class="toc-backref" href="#id24">Bulk Commissioning</a><a class="headerlink" href="#bulk-commissioning" title="Permalink to this headline">¶</a></h2>
+<p>This feature provides the ability to setup sensor elements in a bulk fashion via file uploads as
+opposed to individually. The file format is specific to each <a class="reference internal" href="#integrations-external-sensor-integrations"><span class="std std-ref">External Sensor Integration</span></a>, but always contains
+a uniquely generated data source id for every element/asset in the configuration. The data source id
+is necessary to link the sensor platform resource with its equivalent Cloud API resource so that
+metric data from the sensor can be associated with the right Cloud API resource.</p>
+<div class="section" id="file-export">
+<span id="integrations-commissioning-export"></span><h3><a class="toc-backref" href="#id25">File Export</a><a class="headerlink" href="#file-export" title="Permalink to this headline">¶</a></h3>
+<p>As part of commissioning sensors, a final file is exported from the sensor elements
+(e.g. Devices/Areas) configuration. A sensor&#8217;s API (or lack thereof) largely drives the
+export functionality that the Cloud API provides and thus how the final file is ultimately generated.
+Here are some example cases:</p>
+<ul class="simple">
+<li>Case 1: API-less Sensor (i.e. PointGrab):</li>
+</ul>
+<p>We export the Cloud API
+<a class="reference internal" href="#integrations-external-sensor-integrations"><span class="std std-ref">External Sensor Integration</span></a> configuration and
+import it into the sensor platform. Then, the sensor platform spits out a final file with unique
+data source ids, which is then imported via Cloud API to link the sensor platform and Cloud API
+<a class="reference internal" href="#integrations-external-sensor-integrations"><span class="std std-ref">External Sensor Integration</span></a> resources. The flow
+is as such:</p>
+<p><strong>Cloud API</strong> (download/export from) &#8211;&gt; (upload/import to) <strong>Sensor Platform</strong> (download/export from) &#8211;&gt; (upload/import to) <strong>Cloud API</strong></p>
+<ul class="simple">
+<li>Case 2: Sensor with a local API only (i.e. Xovis):</li>
+</ul>
+<p>In other cases where a sensor platform&#8217;s API is local to the sensor, we fetch a config file from
+the sensor and import it via Cloud API. The flow is as such:</p>
+<p><strong>Sensor</strong> (download/export from) &#8211;&gt; (upload/import to) <strong>Cloud API</strong></p>
+<div class="section" id="request">
+<h4><a class="toc-backref" href="#id26">Request</a><a class="headerlink" href="#request" title="Permalink to this headline">¶</a></h4>
+<dl class="post">
+<dt id="post--integrations-external_sensor-(id)-export">
+<code class="descname">POST </code><code class="descname">/integrations/external_sensor/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><code class="descname">/export</code><a class="headerlink" href="#post--integrations-external_sensor-(id)-export" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">statuscode 200:</th><td class="field-body">File exported successfully</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><strong>Example request:</strong></p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/integrations/external_sensor/213fa400-e290-47f0-e6f4-2f8e6d75f007/export</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</pre></div>
+</div>
+<p><strong>Example response:</strong></p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/csv</span>
+
+Site,Customer Foo - Building Bar
+Building,Building Bar
+Floor,Space Baz
+width,40.0
+length,20.0
+height,3.0
+imagewidth,1000
+imageheight,500
+
+,Add Device,Name,PositionX,PositionY,Height,Rotation,GooeeId
+,,Device 1,20.0,10.0,3.0,0,2aac10ae-efff-4dd9-9081-889f8837448d
+,,Device 2,20.0,15.0,3.0,0,f86be8e6-5140-45e0-a150-51ed85837884
+
+,Add Area,Name,Frequency,Type,CenterX,CenterY,Width,Length,Rotation,Select Devices,GooeeId
+,,Area 1,60,DESK,20.0,9.8,8.0,3.6,0,Device 1,db017fc2-efe8-4fc2-bd1b-2673be258b1b
+,,Area 2,60,DESK,20.0,15.0,8.0,6.0,0,Device 2,3f4a086b-d4ca-412a-a6f5-61b922275f54
+
+,Link Device,Device Name,Serial Number
+,,Device 1,1111111-1111-111111-1111
+,,Device 2,2222222-2222-222222-2222
+</pre></div>
+</div>
+</dd></dl>
+
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The rotation value of PointGrab Devices is exported counter-clockwise.</p>
+</div>
+</div>
+</div>
+<div class="section" id="file-import">
+<span id="integrations-commissioning-import"></span><h3><a class="toc-backref" href="#id27">File Import</a><a class="headerlink" href="#file-import" title="Permalink to this headline">¶</a></h3>
+<p>The Cloud API provides a way to upload/import the exported file from a particular sensor installation
+(using the <a class="reference internal" href="#integrations-external-sensor-integrations"><span class="std std-ref">External Sensor Integration</span></a>&#8216;s
+<cite>bulk_register</cite> url path) so that data source ids can be linked back to Cloud API
+<a class="reference internal" href="../objects/areas.html#objects-areas"><span class="std std-ref">Area</span></a> ids. After linking, each Area&#8217;s
+<a class="reference internal" href="../objects/areas.html#area-status-conditions"><span class="std std-ref">status</span></a> transitions to <cite>active</cite>, and the Cloud API responds with the
+number of <a class="reference internal" href="../objects/areas.html#objects-areas"><span class="std std-ref">Areas</span></a> that had data source ids successfully linked.</p>
+<div class="section" id="id4">
+<h4><a class="toc-backref" href="#id28">Request</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<p>Sample curl upload command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -F <span class="s1">&#39;file=@/path/to/file.xml&#39;</span> -X POST -H <span class="s1">&#39;Authorization: JWT &lt;jwt_token&gt;&#39;</span> -H <span class="s1">&#39;Content-Type: multipart/form-data&#39;</span> <span class="s1">&#39;http://api.gooee.io/integrations/external_sensor/24ac57dc-89ad-4b30-b288-aa9ae29a6933/bulk_register&#39;</span>
+</pre></div>
+</div>
+<dl class="post">
+<dt id="post--integrations-external_sensor-(id)-bulk_register">
+<code class="descname">POST </code><code class="descname">/integrations/external_sensor/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><code class="descname">/bulk_register</code><a class="headerlink" href="#post--integrations-external_sensor-(id)-bulk_register" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; File imported successfully</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p><strong>Example request:</strong></p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/integrations/external_sensor/213fa400-e290-47f0-e6f4-2f8e6d75f007/bulk_register</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">multipart/form-data</span>
+<span class="na">Form</span><span class="o">:</span> <span class="l">file=&lt;exported_xovis_config.xml&gt;</span>
+</pre></div>
+</div>
+<p><strong>Example response:</strong></p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+    <span class="nt">&quot;num_areas&quot;</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="gateway_lite.html" class="btn btn-neutral float-right" title="Gateway Lite" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="als2lux.html" class="btn btn-neutral" title="Als-to-Lux Correlation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Gooee, LLC.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/tabs.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

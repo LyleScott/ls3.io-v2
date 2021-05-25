@@ -1,0 +1,176 @@
+.. _objects_products:
+
+========
+Products
+========
+
+.. contents:: Quick Links
+
+Description
+===========
+
+Products provide the fundamental information used for interacting with :ref:`Devices <objects_devices>`. They
+provide information regarding capabilities and technical data available. They can have a `product_owner` which is
+the :ref:`Partner <objects_partners>` who creates the product and a `manufacturer` being the :ref:`Partner<objects_partners>`
+with `is_manufacturer=True` representing who made the product, so that if the manufacturer has an account in our system
+they can claim ownership of the product.
+
+Data Model
+==========
+
+=====================  ===========================================  ===============================================================================================
+Key                    Datatype                                     Notes
+=====================  ===========================================  ===============================================================================================
+id                     ref                                          read-only
+created                datetime                                     read-only
+modified               datetime                                     read-only
+name                   string                                       required, max_length=100
+description            string                                       required
+sku                    string                                       required, max_length=100, :ref:`Complex Constraints <product_complex_constraints>`
+type                   :ref:`ref <objects_product_types>`           required
+specs                  array(obj) :ref:`ref <product_specs>`        read-only when `state` is 'active', :ref:`Complex Constraints <product_complex_constraints>`
+manufacturer           :ref:`ref <objects_partners>`                required, :ref:`Complex Constraints <product_complex_constraints>`
+manufacturer_name                                                   read-only, pulled from linked Manufacturer
+manufacturer_logo                                                   read-only, pulled from linked Manufacturer
+image                  base64_image
+meta                   array(:ref:`meta <general_meta>`)
+owner                  :ref:`ref <objects_partners>`                read-only, (contact cloud-backend@gooee.com if incorrect)
+state                  string                                       read-only, options=['draft', 'active'], :ref:`Complex Constraints <product_complex_constraints>`
+product_files          array(:ref:`ref <objects_product_files>`)
+activated_date         datetime                                     read-only
+data_service_id        string                                       read-only
+anx_dimensions         array(str)                                   see :ref:`analytics_dimensions`
+tags                   array(str)                                   max_length=50 per tag
+=====================  ===========================================  ===============================================================================================
+
+.. note:: There are Product Specs that, when set to `true`, allow for custom constraints on the Product.
+          This puts a limit on the Action targeting a Device, so that its value can only fall within the given constraints."
+
+
+.. _product_complex_constraints:
+
+Complex Constraints
+===================
+
+SKUs must be unique per Manufacturer.
+
+Only :ref:`Partner <objects_partners>` with `is_manufacturer=True` are valid selections for a Product's manufacturer.
+
+Only :ref:`Partner <objects_partners>` users or Gooee users can create Products.
+
+Only Gooee users can change the `owner` of a Product.
+
+Only Gooee users can edit `specs` of Product whose `state` is 'active'.
+
+
+.. _product_specs:
+
+Product Specs
+=============
+
+The Product `specs` are populated with default values from the Product :ref:`type <objects_product_types>` when the
+Product is created and they can only be edited while the Product is in a draft state. Product
+`specs` cannot be partially updated — the whole `specs` object gets replaced with new values on a
+PUT or PATCH. If Product has been activated with incorrect `specs` contact cloud-backend@gooee.com .
+
+=============  ==============================  ======================================
+Key            Datatype                        Notes
+=============  ==============================  ======================================
+name           string                          required, max_length=100, :ref:`Complex Constraints <product_specs_constraints>`.
+display_name   string                          max_length=100, :ref:`Complex Constraints <product_specs_constraints>`.
+value          number, string, array, boolean  required, :ref:`Complex Constraints <product_specs_constraints>`.
+modified       datetime                        :ref:`Complex Constraints <product_specs_constraints>`.
+=============  ==============================  ======================================
+
+.. _product_specs_constraints:
+
+Complex Constraints
+===================
+
+- *name* is limited to letters, numbers, and underscore (_). It must be a unique spec name from the Product :ref:`type <objects_product_types>`.
+- *display_name* is not required, if is not provided it will come from the Product :ref:`type <objects_product_types>`.
+- *value* is not required, if is not provided it will be set to a default one according to the *datatype* defined for
+  the spec on the Product :ref:`type <objects_product_types>`. The value is validated against the definition on the Product :ref:`type <objects_product_types>`.
+- *modified* is read only, is set when the *value* changes from default one to a user provided value.
+
+
+Example specs:
+
+.. code-block:: json
+
+    [
+        {
+          "name": "ctrl_dimmable",
+          "display_name": "Dimmable Support",
+          "modified": null,
+          "value": true
+        },
+        {
+          "name": "bcn_ibeacon",
+          "display_name": "iBeacon Support",
+          "modified": null,
+          "value": true
+        },
+    ]
+
+API Endpoints
+=============
+
+Create a Product
+----------------
+
+.. http:POST:: /products/
+
+   :statuscode 201:
+
+List Products
+-------------
+
+.. http:GET:: /products/
+
+   :statuscode 200:
+
+Update a Product
+----------------
+
+   Only owner of the Product may update its products.
+
+.. http:PUT:: /products/(id)/
+
+   :statuscode 200:
+
+Partially Update a Product
+--------------------------
+
+   Only owner of the Product may update its products.
+
+.. http:PATCH:: /products/(id)/
+
+   :statuscode 200:
+
+Retrieve a Product
+------------------
+
+.. http:GET:: /products/(id)/
+
+   :statuscode 200:
+
+Delete a Product
+----------------
+
+   Only owner of the Product may delete its products.
+
+.. http:DELETE:: /products/(id)/
+
+   :statuscode 204:
+
+Activate a Product
+------------------
+
+   Only owner of the Product may activate its products.
+
+.. http:PUT:: /products/(id)/activate
+
+   :statuscode 204: Product was activated successfully.
+   :statuscode 400: Product is already active.
+   :statuscode 412: All the specs need to be filled in order to activate this Product.

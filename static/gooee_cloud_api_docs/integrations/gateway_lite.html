@@ -1,0 +1,1006 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Gateway Lite &mdash; Documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/navtree.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Documentation" href="../index.html"/>
+        <link rel="up" title="Integrations" href="../integrations.html"/>
+        <link rel="prev" title="External Sensors" href="external_sensor.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Cloud API
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="link caption"><span class="link caption-text"><a class="reference internal" href="../misc.html">Misc</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/change_log.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/object_relation_diagram.html">Object Relation Diagram</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../general.html">General</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/analytics.html">Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api_tokens.html">API Tokens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/authentication.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/clearing_field_values.html">Clearing Field Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/device_counts.html">Device Counts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/exclude_include_fields.html">Include/Exclude Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/filtering.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ordering.html">Ordering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/meta.html">Meta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/meta_groups.html">Meta Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/pagination.html">Pagination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/pubsub.html">PubSub Message Broker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/search.html">Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/scope.html">Scope</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../objects.html">Objects</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../objects/action_types.html">Action Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/actions.html">Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/analytics_export.html">Analytics Export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/analytics_query.html">Analytics Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/areas.html">Areas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/buildings.html">Buildings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/connected_products.html">Connected Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/currency.html">Currency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/customers.html">Customers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/dashboards.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/devices.html">Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/fault_alarms.html">Fault Alarms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/local_rules.html">Local Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/locations.html">Locations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/partners.html">Partners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/product_files.html">Product Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/product_types.html">Product Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/products.html">Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/rules_v2.html">Rules V2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/rule_groups.html">Rule Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/scenes.html">Scenes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/schedules.html">Schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/spaces.html">Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/timezones.html">Timezones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/user_features.html">User Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/user_groups.html">User Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/user_preferences.html">User Preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/users.html">Users</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../integrations.html">Integrations</a></span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="als2lux.html">Als-to-Lux Correlation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_sensor.html">External Sensors</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Gateway Lite</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#user-registration">User Registration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#acquiring-a-gateway-lite">Acquiring a Gateway Lite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#releasing-a-gateway-lite">Releasing a Gateway Lite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fingerprint-management">Fingerprint Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#importing-gateway-lite-devices">Importing Gateway Lite Devices</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cloud API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../integrations.html">Integrations</a> &raquo;</li>
+        
+      <li>Gateway Lite</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/integrations/gateway_lite.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="gateway-lite">
+<span id="integrations-gateway-lite"></span><h1><a class="toc-backref" href="#id2">Gateway Lite</a><a class="headerlink" href="#gateway-lite" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="quick-links">
+<p class="topic-title first">Quick Links</p>
+<ul class="simple">
+<li><a class="reference internal" href="#gateway-lite" id="id2">Gateway Lite</a><ul>
+<li><a class="reference internal" href="#description" id="id3">Description</a></li>
+<li><a class="reference internal" href="#user-registration" id="id4">User Registration</a><ul>
+<li><a class="reference internal" href="#obtaining-an-integration-key" id="id5">Obtaining an Integration Key</a></li>
+<li><a class="reference internal" href="#registering-as-a-gateway-lite-user" id="id6">Registering as a Gateway Lite User</a></li>
+<li><a class="reference internal" href="#activating-a-gateway-lite-user" id="id7">Activating a Gateway Lite User</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#acquiring-a-gateway-lite" id="id8">Acquiring a Gateway Lite</a></li>
+<li><a class="reference internal" href="#releasing-a-gateway-lite" id="id9">Releasing a Gateway Lite</a></li>
+<li><a class="reference internal" href="#fingerprint-management" id="id10">Fingerprint Management</a><ul>
+<li><a class="reference internal" href="#data-model" id="id11">Data Model</a></li>
+<li><a class="reference internal" href="#create-a-fingerprint" id="id12">Create a Fingerprint</a></li>
+<li><a class="reference internal" href="#list-fingerprints" id="id13">List Fingerprints</a></li>
+<li><a class="reference internal" href="#retrieve-a-fingerprint" id="id14">Retrieve a Fingerprint</a></li>
+<li><a class="reference internal" href="#delete-a-fingerprint" id="id15">Delete a Fingerprint</a></li>
+<li><a class="reference internal" href="#resyncing-fingerprints" id="id16">Resyncing Fingerprints</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#importing-gateway-lite-devices" id="id17">Importing Gateway Lite Devices</a><ul>
+<li><a class="reference internal" href="#id1" id="id18">Data Model</a></li>
+<li><a class="reference internal" href="#complex-constraints" id="id19">Complex Constraints</a></li>
+<li><a class="reference internal" href="#upload-parse-a-gateway-lite-file" id="id20">Upload/Parse a Gateway Lite File</a></li>
+<li><a class="reference internal" href="#list-of-gateway-lite-files" id="id21">List of Gateway Lite Files</a></li>
+<li><a class="reference internal" href="#retrieve-a-gateway-lite-file-resource" id="id22">Retrieve a Gateway Lite File (resource)</a></li>
+<li><a class="reference internal" href="#delete-a-gateway-lite-file" id="id23">Delete a Gateway Lite File</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="description">
+<h2><a class="toc-backref" href="#id3">Description</a><a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>Gateway Lite is a special type of Gateway aimed at residential and small business Users. Gateway Lite
+should have a custom field named <cite>installation_code</cite> to allow the Cloud API to talk directly to it.
+This installation code is usually printed on the back of the Gateway.</p>
+</div>
+<div class="section" id="user-registration">
+<h2><a class="toc-backref" href="#id4">User Registration</a><a class="headerlink" href="#user-registration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="obtaining-an-integration-key">
+<span id="integration-gateway-lite-integration-key"></span><h3><a class="toc-backref" href="#id5">Obtaining an Integration Key</a><a class="headerlink" href="#obtaining-an-integration-key" title="Permalink to this headline">¶</a></h3>
+<p>Integration Key is a token associated with each Gateway Lite <a class="reference internal" href="../objects/partners.html#objects-partners"><span class="std std-ref">Provider</span></a>
+(Partners with <cite>is_gateway_lite_provider=True</cite>). They can be used to allow <a class="reference internal" href="../objects/users.html#objects-users"><span class="std std-ref">Users</span></a> to self register and manage Gateway Lite Devices.</p>
+<dl class="get">
+<dt id="get--partners-(id)-integration_key-">
+<code class="descname">GET </code><code class="descname">/partners/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><code class="descname">/integration_key/</code><a class="headerlink" href="#get--partners-(id)-integration_key-" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; Response served successfully.</li>
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> &#8211; The Partner  is not a Gateway Lite provider (<cite>is_gateway_lite_provider=True</cite>).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/partners/(id)/integration_key/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">application/json</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+  <span class="nt">&quot;integration_key&quot;</span><span class="p">:</span> <span class="s2">&quot;3878732iydjdahdajhd&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="registering-as-a-gateway-lite-user">
+<span id="integration-gateway-lite-users-registration"></span><h3><a class="toc-backref" href="#id6">Registering as a Gateway Lite User</a><a class="headerlink" href="#registering-as-a-gateway-lite-user" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--integrations-gateway_lite-users-register-">
+<code class="descname">POST </code><code class="descname">/integrations/gateway_lite/users/register/</code><a class="headerlink" href="#post--integrations-gateway_lite-users-register-" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">JSON Parameters:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first simple">
+<li><strong>integration_key</strong> (<em>string</em>) &#8211; An integration key provided by the Partner to allow User&#8217;s registration.</li>
+<li><strong>first_name</strong> (<em>string</em>) &#8211; User&#8217;s first name (required)</li>
+<li><strong>last_name</strong> (<em>string</em>) &#8211; User&#8217;s last name (required)</li>
+<li><strong>email</strong> (<em>string</em>) &#8211; User&#8217;s email (required)</li>
+<li><strong>password</strong> (<em>string</em>) &#8211; Set a password for the User</li>
+<li><strong>password_confirm</strong> (<em>string</em>) &#8211; Confirm User&#8217;s password</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2">201 Created</a> &#8211; user was created successfully</li>
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> &#8211; parameters are missing or incorrect</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/integrations/gateway_lite/users/register/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">application/json</span>
+
+{
+  &quot;integration_key&quot;: &quot;3878732iydjdahdajhd&quot;,
+  &quot;first_name&quot;: &quot;Bob&quot;,
+  &quot;last_name&quot;: &quot;Bobsen&quot;,
+  &quot;email&quot;: &quot;bob.bobsen@email.com&quot;,
+  &quot;password&quot;: &quot;somepassword&quot;,
+  &quot;password_confirm&quot;: &quot;somepassword&quot;
+}
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">CREATED</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+    <span class="nt">&quot;detail&quot;</span><span class="p">:</span> <span class="s2">&quot;User account registered successfully. Please check your email to activate it.&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="activating-a-gateway-lite-user">
+<span id="integration-gateway-lite-users-activation"></span><h3><a class="toc-backref" href="#id7">Activating a Gateway Lite User</a><a class="headerlink" href="#activating-a-gateway-lite-user" title="Permalink to this headline">¶</a></h3>
+<p>Once a <a class="reference internal" href="../objects/users.html#objects-users"><span class="std std-ref">User</span></a> has registered, she/he will receive an email with a 6 digit token
+and must use this endpoint to activate the account and login.</p>
+<dl class="post">
+<dt id="post--integrations-gateway_lite-users-activate-">
+<code class="descname">POST </code><code class="descname">/integrations/gateway_lite/users/activate/</code><a class="headerlink" href="#post--integrations-gateway_lite-users-activate-" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">JSON Parameters:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first simple">
+<li><strong>activation_token</strong> (<em>string</em>) &#8211; the activation token sent to the user (required)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; user was activated successfully</li>
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> &#8211; parameters are missing or incorrect</li>
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> &#8211; activation_token not found</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/integrations/gateway_lite/users/activate/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">application/json</span>
+
+{
+  &quot;activation_token&quot;: &quot;387873&quot;
+}
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="acquiring-a-gateway-lite">
+<span id="integrations-gateway-lite-acquire"></span><h2><a class="toc-backref" href="#id8">Acquiring a Gateway Lite</a><a class="headerlink" href="#acquiring-a-gateway-lite" title="Permalink to this headline">¶</a></h2>
+<p>Acquiring a Gateway Lite is the process of getting it from <cite>inactive</cite> commission state to
+<cite>customer_provisioned</cite>, making the authenticated <a class="reference internal" href="../objects/users.html#objects-users"><span class="std std-ref">User</span></a> the owner of the Gateway.
+This process is done by providing the <strong>euid</strong> located on the back of the Gateway as raw data or scanning the QR code on it.</p>
+<dl class="post">
+<dt id="post--integrations-gateway_lite-acquire">
+<code class="descname">POST </code><code class="descname">/integrations/gateway_lite/acquire</code><a class="headerlink" href="#post--integrations-gateway_lite-acquire" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; The device was acquired correctly.</li>
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> &#8211; Invalid request data.</li>
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> &#8211; Device already acquired.</li>
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> &#8211; Device not found.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p><strong>Request Model</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="56%" />
+<col width="22%" />
+<col width="22%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>euid</td>
+<td>string</td>
+<td>required</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/integrations/gateway_lite/acquire</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+      <span class="nt">&quot;euid&quot;</span><span class="p">:</span> <span class="s2">&quot;0200000100001274&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example responses</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+      <span class="nt">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;120e54bb-0fdc-4929-a7f4-7fab08cb0469&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;euid&quot;</span><span class="p">:</span> <span class="s2">&quot;0200000100001274&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;access_url&quot;</span><span class="p">:</span> <span class="s2">&quot;0200000100001274-88d198253b85f1a35282.p2p.gooee.com&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="releasing-a-gateway-lite">
+<span id="integrations-gateway-lite-release"></span><h2><a class="toc-backref" href="#id9">Releasing a Gateway Lite</a><a class="headerlink" href="#releasing-a-gateway-lite" title="Permalink to this headline">¶</a></h2>
+<p>Releasing is the process of un-scoping (removing ownership) of a Gateway Lite from the
+<a class="reference internal" href="../objects/customers.html#objects-customers"><span class="std std-ref">Customer</span></a> which brings it back to the <cite>inactive</cite> state.</p>
+<dl class="put">
+<dt id="put--devices-(ID)-release-">
+<code class="descname">PUT </code><code class="descname">/devices/</code><span class="sig-paren">(</span><em>ID</em><span class="sig-paren">)</span><code class="descname">/release/</code><a class="headerlink" href="#put--devices-(ID)-release-" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="patch">
+<dt id="patch--devices-(ID)-release-">
+<code class="descname">PATCH </code><code class="descname">/devices/</code><span class="sig-paren">(</span><em>ID</em><span class="sig-paren">)</span><code class="descname">/release/</code><a class="headerlink" href="#patch--devices-(ID)-release-" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; The Gateway was released successfully.</li>
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> &#8211; The Gateway cannot be found.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request:</strong></p>
+<blockquote>
+<div><div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">PUT</span> <span class="nn">/devices/867f431a-601a-480f-a590-570ebc1c3fdb/release/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response:</strong></p>
+<blockquote>
+<div><div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+  <span class="nt">&quot;detail&quot;</span><span class="p">:</span> <span class="s2">&quot;The Gateway was released successfully.&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="fingerprint-management">
+<span id="integrations-gateway-lite-fingerprints"></span><h2><a class="toc-backref" href="#id10">Fingerprint Management</a><a class="headerlink" href="#fingerprint-management" title="Permalink to this headline">¶</a></h2>
+<p>Fingerprints are used by <cite>Gateway Lite</cite> to allow <a class="reference internal" href="../objects/users.html#objects-users"><span class="std std-ref">User&#8217;s</span></a> mobile devices to
+authenticate on the Gateway Lite to control itself and it&#8217;s associated <a class="reference internal" href="../objects/devices.html#objects-devices"><span class="std std-ref">Devices</span></a>.
+They are represented by a 32 characters hexadecimal string.</p>
+<div class="section" id="data-model">
+<h3><a class="toc-backref" href="#id11">Data Model</a><a class="headerlink" href="#data-model" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="31%" />
+<col width="52%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>ref</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>fingerprint</td>
+<td>string</td>
+<td>required, max_length=32, unique, base16 value</td>
+</tr>
+<tr class="row-even"><td>user</td>
+<td><a class="reference internal" href="../objects/users.html#objects-users"><span class="std std-ref">ref</span></a></td>
+<td>write-only, defaults to the logged <a class="reference internal" href="../objects/users.html#objects-users"><span class="std std-ref">User</span></a></td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>string</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="create-a-fingerprint">
+<h3><a class="toc-backref" href="#id12">Create a Fingerprint</a><a class="headerlink" href="#create-a-fingerprint" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--integrations-gateway_lite-fingerprints">
+<code class="descname">POST </code><code class="descname">/integrations/gateway_lite/fingerprints</code><a class="headerlink" href="#post--integrations-gateway_lite-fingerprints" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2">201 Created</a> &#8211; Fingerprint was created correctly.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request:</strong></p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/integrations/gateway_lite/fingerprints</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+  <span class="nt">&quot;fingerprint&quot;</span><span class="p">:</span> <span class="s2">&quot;e66db5dc25c4423da290d42a5b57af21&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Iphone 7s Plus&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response:</strong></p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">CREATED</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+  <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;867f431a-601a-480f-a590-570ebc1c3fdb&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;fingerprint&quot;</span><span class="p">:</span> <span class="s2">&quot;e66db5dc25c4423da290d42a5b57af21&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Iphone 7s Plus&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="list-fingerprints">
+<h3><a class="toc-backref" href="#id13">List Fingerprints</a><a class="headerlink" href="#list-fingerprints" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--integrations-gateway_lite-fingerprints">
+<code class="descname">GET </code><code class="descname">/integrations/gateway_lite/fingerprints</code><a class="headerlink" href="#get--integrations-gateway_lite-fingerprints" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request:</strong></p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/integrations/gateway_lite/fingerprints</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</pre></div>
+</div>
+<p><strong>Example response:</strong></p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;867f431a-601a-480f-a590-570ebc1c3fdb&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;fingerprint&quot;</span><span class="p">:</span> <span class="s2">&quot;e66db5dc25c4423da290d42a5b57af21&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Iphone 7s Plus&quot;</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;453f431a-601a-480f-a590-570ebc1c3f12&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;fingerprint&quot;</span><span class="p">:</span> <span class="s2">&quot;e66db5dc25c4423da290d42a5b57af34&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Test Phone&quot;</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="retrieve-a-fingerprint">
+<h3><a class="toc-backref" href="#id14">Retrieve a Fingerprint</a><a class="headerlink" href="#retrieve-a-fingerprint" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--integrations-gateway_lite-fingerprints-(id)">
+<code class="descname">GET </code><code class="descname">/integrations/gateway_lite/fingerprints/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#get--integrations-gateway_lite-fingerprints-(id)" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request:</strong></p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/integrations/gateway_lite/fingerprints/867f431a-601a-480f-a590-570ebc1c3fdb</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</pre></div>
+</div>
+<p><strong>Example response:</strong></p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+  <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;867f431a-601a-480f-a590-570ebc1c3fdb&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;fingerprint&quot;</span><span class="p">:</span> <span class="s2">&quot;e66db5dc25c4423da290d42a5b57af21&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Iphone 7s Plus&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="delete-a-fingerprint">
+<h3><a class="toc-backref" href="#id15">Delete a Fingerprint</a><a class="headerlink" href="#delete-a-fingerprint" title="Permalink to this headline">¶</a></h3>
+<dl class="delete">
+<dt id="delete--integrations-gateway_lite-fingerprints-(id)">
+<code class="descname">DELETE </code><code class="descname">/integrations/gateway_lite/fingerprints/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#delete--integrations-gateway_lite-fingerprints-(id)" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.5">204 No Content</a> &#8211; Fingerprint was deleted successfully.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">DELETE</span> <span class="nn">/integrations/gateway_lite/fingerprints/867f431a-601a-480f-a590-570ebc1c3fdb</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="resyncing-fingerprints">
+<h3><a class="toc-backref" href="#id16">Resyncing Fingerprints</a><a class="headerlink" href="#resyncing-fingerprints" title="Permalink to this headline">¶</a></h3>
+<p>Resync all Fingerprints scoped to your User.</p>
+<dl class="post">
+<dt id="post--integrations-gateway_lite-fingerprints-resync">
+<code class="descname">POST </code><code class="descname">/integrations/gateway_lite/fingerprints/resync</code><a class="headerlink" href="#post--integrations-gateway_lite-fingerprints-resync" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; Synchronizing 3 fingerprint(s).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/integrations/gateway_lite/fingerprints/resync</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<p id="integrations-gateway-lite-fingerprints-resync-specific">Resync specific Fingerprints scoped to your User by specifying an array of
+Fingerprints in the request payload.  Alternatively, you can use their IDs if hyphens are omitted.</p>
+<dl class="post">
+<dt id="post--integrations-gateway_lite-fingerprints-resync">
+<code class="descname">POST </code><code class="descname">/integrations/gateway_lite/fingerprints/resync</code><a class="headerlink" href="#post--integrations-gateway_lite-fingerprints-resync" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; Synchronizing 2 fingerprint(s).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/integrations/gateway_lite/fingerprints/resync</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+  <span class="nt">&quot;fingerprints&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;f641649b1a2a4f3caee3c40c16b9806b&quot;</span><span class="p">,</span> <span class="s2">&quot;ebd70e23ebd1439fb325bda663c52266&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="importing-gateway-lite-devices">
+<span id="integrations-gateway-lite-import"></span><h2><a class="toc-backref" href="#id17">Importing Gateway Lite Devices</a><a class="headerlink" href="#importing-gateway-lite-devices" title="Permalink to this headline">¶</a></h2>
+<p>An endpoint for uploading a CSV file containing device information that will be processed into
+individual Gateway Lite devices that can be acquired by consumers.</p>
+<div class="section" id="id1">
+<h3><a class="toc-backref" href="#id18">Data Model</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="48%" />
+<col width="32%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>ref</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>created</td>
+<td>datetime</td>
+<td>read-only</td>
+</tr>
+<tr class="row-even"><td>modified</td>
+<td>datetime</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>csv_file</td>
+<td>file</td>
+<td>required</td>
+</tr>
+<tr class="row-even"><td>product_id</td>
+<td>UUID</td>
+<td>required</td>
+</tr>
+<tr class="row-odd"><td>status</td>
+<td>enum</td>
+<td>read-only</td>
+</tr>
+<tr class="row-even"><td>customer_scopes</td>
+<td>array(<a class="reference internal" href="../objects/customers.html#objects-customers"><span class="std std-ref">ref</span></a>)</td>
+<td>see <a class="reference internal" href="../general/scope.html#general-scope"><span class="std std-ref">Scope</span></a></td>
+</tr>
+<tr class="row-odd"><td>partner_scopes</td>
+<td>array(<a class="reference internal" href="../objects/partners.html#objects-partners"><span class="std std-ref">ref</span></a>)</td>
+<td>see <a class="reference internal" href="../general/scope.html#general-scope"><span class="std std-ref">Scope</span></a></td>
+</tr>
+<tr class="row-even"><td>error_message</td>
+<td>string</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>partner_id</td>
+<td>UUID</td>
+<td>read-only</td>
+</tr>
+<tr class="row-even"><td>tags</td>
+<td>array(str)</td>
+<td>max_length=50 per tag</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="complex-constraints">
+<h3><a class="toc-backref" href="#id19">Complex Constraints</a><a class="headerlink" href="#complex-constraints" title="Permalink to this headline">¶</a></h3>
+<p>You must upload a CSV file with <cite>;</cite> delimiters and containing a header of:
+<code class="docutils literal"><span class="pre">&quot;Product</span> <span class="pre">Serial</span> <span class="pre">Number&quot;;&quot;FW</span> <span class="pre">Code&quot;;&quot;Nabto</span> <span class="pre">DeviceId&quot;;&quot;InstallCode&quot;</span></code></p>
+</div>
+<div class="section" id="upload-parse-a-gateway-lite-file">
+<h3><a class="toc-backref" href="#id20">Upload/Parse a Gateway Lite File</a><a class="headerlink" href="#upload-parse-a-gateway-lite-file" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--integrations-gateway_lite-import">
+<code class="descname">POST </code><code class="descname">/integrations/gateway_lite/import</code><a class="headerlink" href="#post--integrations-gateway_lite-import" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2">201 Created</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/integrations/gateway_lite/import</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW</span>
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name=&quot;csv_file&quot;; filename=&quot;gateway_lite_devices.csv&quot;
+Content-Type: text/csv
+
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name=&quot;product_id&quot;
+
+8c6c4bbd-1398-4cc6-85f0-d8bb04965f8e
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+</pre></div>
+</div>
+</div>
+<div class="section" id="list-of-gateway-lite-files">
+<h3><a class="toc-backref" href="#id21">List of Gateway Lite Files</a><a class="headerlink" href="#list-of-gateway-lite-files" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--integrations-gateway_lite-import">
+<code class="descname">GET </code><code class="descname">/integrations/gateway_lite/import</code><a class="headerlink" href="#get--integrations-gateway_lite-import" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="retrieve-a-gateway-lite-file-resource">
+<h3><a class="toc-backref" href="#id22">Retrieve a Gateway Lite File (resource)</a><a class="headerlink" href="#retrieve-a-gateway-lite-file-resource" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--integrations-gateway_lite-import">
+<code class="descname">GET </code><code class="descname">/integrations/gateway_lite/import</code><a class="headerlink" href="#get--integrations-gateway_lite-import" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="delete-a-gateway-lite-file">
+<h3><a class="toc-backref" href="#id23">Delete a Gateway Lite File</a><a class="headerlink" href="#delete-a-gateway-lite-file" title="Permalink to this headline">¶</a></h3>
+<dl class="delete">
+<dt id="delete--integrations-gateway_lite-import">
+<code class="descname">DELETE </code><code class="descname">/integrations/gateway_lite/import</code><a class="headerlink" href="#delete--integrations-gateway_lite-import" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.5">204 No Content</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="external_sensor.html" class="btn btn-neutral" title="External Sensors" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Gooee, LLC.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/tabs.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

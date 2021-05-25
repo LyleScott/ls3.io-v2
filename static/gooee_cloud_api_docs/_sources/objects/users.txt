@@ -1,0 +1,855 @@
+.. _objects_users:
+
+=====
+Users
+=====
+
+.. contents:: Quick Links
+
+Description
+===========
+
+Users are of various account types and can interact with the system. They may be assigned
+:ref:`User Groups <objects_user_groups>` to provide varying levels of access to resources
+in the system.
+
+.. note:: For API token documentation, please see :ref:`API Tokens <general_api_tokens>`.
+
+Data Model
+==========
+
+======================  ==============================================  =====================================================
+Key                     Datatype                                        Notes
+======================  ==============================================  =====================================================
+id                      ref                                             read-only
+created                 datetime                                        read-only
+modified                datetime                                        read-only
+username                string                                          required
+password                string                                          required, write-only, :ref:`Complex Constraints <users_complex_constraints>`
+account_type            enum                                            required, options=[gooee, partner, customer]
+customer                :ref:`ref <objects_customers>`                  :ref:`Complex Constraints <users_complex_constraints>`
+partner                 :ref:`ref <objects_partners>`                   :ref:`Complex Constraints <users_complex_constraints>`
+first_name              string                                          max_length=30
+last_name               string                                          max_length=30
+account_status          enum                                            read-only, default=inactive, options=[active, inactive, pending, expired, transfer], See :ref:`Account Status Definitions <users_account_status_definitions>`.
+account_status_updated  datetime                                        read-only
+buildings               array(:ref:`ref <objects_buildings>`)
+user_groups             array(:ref:`ref <objects_user_groups>`)         max_length=5
+phone_number            string                                          max_length=20
+avatar                  base64_image
+customer_scopes         array(:ref:`ref <objects_customers>`)           see :ref:`general_scope`
+partner_scopes          array(:ref:`ref <objects_partners>`)            see :ref:`general_scope`
+tags                    array(str)                                      max_length=50 per tag
+======================  ==============================================  =====================================================
+
+
+.. _users_complex_constraints:
+
+Complex Constraints
+-------------------
+
+If *account_type=customer*, *customer* is required.
+
+If *account_type=partner*, *partner* is required.
+
+Only *partner* or *customer* may be provided.
+
+Passwords are validated against the following constraints:
+
+* at least 8 characters long
+* include at least 1 lowercase letter
+* include at least 1 uppercase letter
+* include at least 1 number
+* Special characters allowed: !"#$%&\'()*+,-./:;<=>?@[]^_`{|}~
+
+A user can be associated to up to 5 ref:`User Groups <objects_user_groups>`.
+
+|
+
+.. _users_account_status_definitions:
+
+Account Status Definitions
+--------------------------
+
+- ``active`` - The account has been activated and the User is fully operational.
+- ``expired`` - An account activation was initiated, but the activation token expired before it was used.
+- ``inactive`` - The account has been deactivated by an Administrator.
+- ``pending`` - The account exists and requires activation.
+- ``transfer`` - The account is being transferred to a new email address.
+
+|
+
+API Endpoints
+=============
+
+Create a User
+-------------
+
+When a user is created it will be inactive by default and cannot login into the system. An email
+will be sent to the user containing an activation key or a link to reset the password. A **portal** url parameter
+needs to be provided and set to `true` when a user is created from the portal in order to render different
+emails depending if the user comes from the portal or is an API user. The user should
+:ref:`activate the account <users_registration>` to setup a password and provide personal information.
+The url sent will look like:
+
+``https://portal.gooee.com/#/user-registration/{activation_key}/{first_name}/{last_name}/{username}/``
+
+.. http:POST:: /users/
+
+   :query mobile: one of ``true``, ``false`` (default if not provided) indicating if the request
+      is made from a mobile app.
+   :query scheme: optional url scheme that can be handled by a mobile app.
+   :query portal: one of ``true``, ``false`` (default if not provided).
+   :statuscode 201:
+
+Once a user can login into the system, in order to be able to access endpoints of the building
+hierarchy, the user must have a :ref:`User Groups <objects_user_groups>` assigned with permission_sets
+that grants him access.
+
+List Users
+----------
+
+.. http:GET:: /users/
+
+   :statuscode 200:
+
+Update a User
+-------------
+
+.. http:PUT:: /users/(id)/
+
+   :statuscode 200:
+   :statuscode 202: Changes were made to a user's ``username`` field. ``username`` field update is pending email verification. ``username`` changes only available to Gooee Admins.
+
+Partially Update a User
+-----------------------
+
+.. http:PATCH:: /users/(id)/
+
+   :statuscode 200:
+   :statuscode 202: Changes were made to a user's ``username`` field. ``username`` field update is pending email verification. ``username`` changes only available to Gooee Admins.
+
+Retrieve a User
+---------------
+
+.. http:GET:: /users/(id)/
+
+   :statuscode 200:
+
+Delete a User
+-------------
+
+.. http:DELETE:: /users/(id)/
+
+   :statuscode 204:
+
+Activate a User
+---------------
+
+.. http:post:: /users/(id)/activate/
+
+    Activate User account. Can only be performed by Gooee Users or Users having the required
+    permission sets.  Requires the User to have a first and last name.
+
+    :statuscode 200: User account activated successfully.
+    :statuscode 400: Parameters are missing or incorrect.
+
+.. _users_info:
+
+
+Deactivating a User
+-------------------
+
+.. http:post:: /users/(id)/deactivate/
+
+    Deactivate User account. Can only be performed by Gooee Users or users having the required permission sets.
+
+    :statuscode 200: User account deactivated successfully. Login is disabled.
+    :statuscode 400: Parameters are missing or incorrect.
+
+.. _users_registration:
+
+Registering a User
+------------------
+
+.. http:post:: /users/register/
+
+    Finish user account setup by using activation key sent by email
+
+    :json string activation_key: the activation key sent to the user
+    :json string first_name: user's first name (required)
+    :json string last_name: user's last name (required)
+    :json string phone_number: user's phone number (not required)
+    :json base64_image avatar: user's picture (not required)
+    :json string password: set a password for the user
+    :json string password_confirm: confirm user's password
+
+    :statuscode 201: user was activated successfully
+    :statuscode 400: parameters are missing or incorrect
+    :statuscode 410: activation key has expired
+
+    **Example request**:
+
+    .. sourcecode:: http
+
+        POST /users/register/ HTTP/1.1
+        Host: api.gooee.io
+        Accept: application/json
+
+        {
+          "activation_key": "3878732iydjdahdajhd",
+          "first_name": "Bob",
+          "last_name": "Bobsen",
+          "phone_number": "18005467",
+          "avatar": "image",
+          "password": "somepassword",
+          "password_confirm": "somepassword"
+        }
+
+    **Example response**:
+
+    .. sourcecode:: http
+
+        HTTP/1.1 201 CREATED
+        Content-Type: application/json
+
+        {
+            "detail": "User registered successfully. You can login now."
+        }
+
+
+.. _users_resend_invitation:
+
+Resend User Invitation
+----------------------
+
+.. http:post:: /users/(id)/resend_invitation/
+
+    Resend a user invitation in case never was received on user creation.
+
+    :query mobile: one of ``true``, ``false`` (default if not provided) indicating if the request
+      is made from a mobile app.
+    :query scheme: optional url scheme that can be handled by a mobile app.
+    :statuscode 201: a new invitation was sent to the user.
+    :statuscode 400: Malformed request.
+
+    **Example request**:
+
+    .. sourcecode:: http
+
+        POST /users/8238328383/resend_invitation/ HTTP/1.1
+        Host: api.gooee.io
+        Accept: application/json
+
+    **Example response**:
+
+    .. sourcecode:: http
+
+        HTTP/1.1 201 CREATED
+        Content-Type: application/json
+
+        {
+            "detail": "A new invitation was sent to the user."
+        }
+
+.. _users_retrieve_current_user:
+
+Retrieve Current User
+---------------------
+
+.. http:get:: /me
+
+    :statuscode 200: Everything went fine.
+    :statuscode 401: User is not authenticated.
+
+    **Example Response**
+
+    .. sourcecode:: http
+
+        HTTP/1.1 200 OK
+        Content-Type: application/json
+
+        {
+            "id": "84517997-741e-44c8-9908-cb0eda822fc0",
+            "created": "2017-01-30T21:20:19.222883Z",
+            "modified": "2017-01-31T21:10:19.322879Z",
+            "username": "user@email.com",
+            "account_type": "partner",
+            "first_name": "Test",
+            "last_name": "User",
+            "last_login": "2017-01-31T21:10:19.317405Z",
+            "account_status": "active",
+            "account_status_updated": "2017-01-30T21:20:19.359702Z",
+            "user_groups": [],
+            "partner": "12345997-741e-44c8-9908-c23328822e01",
+            "customer": null,
+            "buildings": [],
+            "phone_number": null,
+            "avatar": null,
+            "tags": [],
+        }
+
+.. _users_update_current_user:
+
+Update Current User
+-------------------
+
+A User can update its own User resource using the ``/me`` endpoint. The API is identical to updating
+another User with ``/users/(id)`` except that certain fields are read-only:
+
+- ``account_type``
+- ``is_api_user``
+- ``buildings``
+- ``username``
+- ``partner``
+- ``customer``
+- ``customer_scopes``
+- ``partner_scopes``
+- ``user_groups``
+
+.. http:put:: /me
+
+    :statuscode 200: Everything went fine.
+    :statuscode 401: User is not authenticated.
+    :statuscode 403: User does not have permission to change one or more fields.
+
+.. http:patch:: /me
+
+    :statuscode 200: Everything went fine.
+    :statuscode 401: User is not authenticated.
+    :statuscode 403: User does not have permission to change one or more fields.
+
+    **Example Request**
+
+    .. sourcecode:: http
+
+        PATCH /me HTTP/1.1
+        Host: api.gooee.io
+        Accept: application/json
+
+        {
+            "first_name": "Test",
+            "last_name": "User",
+            "phone_number": "+1(123)456-7891",
+            "avatar": null,
+            "tags": []
+        }
+
+Retrieve User Permissions
+-------------------------
+
+.. http:get:: /users/(id)/permissions
+.. http:get:: /me/permissions
+
+    :statuscode 200: Everything went fine.
+    :statuscode 401: User is not authenticated.
+
+    **Example Response**
+
+    .. sourcecode:: http
+
+        HTTP/1.1 200 OK
+        Content-Type: application/json
+
+        [
+            "add_action",
+            "add_device",
+            "add_rule",
+            "change_action",
+            "change_device",
+            "change_rule",
+            "delete_action",
+            "delete_device",
+            "delete_rule",
+        ]
+
+Retrieve User Preferences
+-------------------------
+
+See :ref:`more info <objects_user_preferences>` on User Preferences.
+
+.. http:get:: /users/(id)/preferences
+
+    :statuscode 200: Everything went fine.
+    :statuscode 401: User is not authenticated.
+
+    **Example Response**
+
+    .. sourcecode:: http
+
+        HTTP/1.1 200 OK
+        Content-Type: application/json
+
+        {
+            "date_format": "YYYY-MM-DD",
+            "number_format": "en_US",
+            "timezone": "UTC",
+            "use_24": false,
+            "use_local": true
+        }
+
+.. http:patch:: /users/(id)/preferences
+
+    Patch a User's Preferences
+
+    :statuscode 200: User Preferences patched.
+    :statuscode 400: Malformed request.
+
+    **Example request**:
+
+    .. sourcecode:: http
+
+        PATCH /users/8238328383/preferences/ HTTP/1.1
+        Host: api.gooee.io
+        Accept: application/json
+
+        {
+            "timezone": "US/Eastern"
+        }
+
+    **Example response**:
+
+    .. sourcecode:: http
+
+        HTTP/1.1 200 OK
+        Content-Type: application/json
+
+        {
+            "date_format": "YYYY-MM-DD",
+            "number_format": "en_US",
+            "timezone": "US/Eastern",
+            "use_24": false,
+            "use_local": true
+        }
+
+.. http:put:: /users/(id)/preferences
+
+    Update a User's Preferences
+
+    :statuscode 200: User Preferences updated.
+    :statuscode 400: Malformed request.
+
+    **Example request**:
+
+    .. sourcecode:: http
+
+        PUT /users/8238328383/preferences/ HTTP/1.1
+        Host: api.gooee.io
+        Accept: application/json
+
+        {
+            "date_format": "YYYY-MM-DD",
+            "number_format": "fr_FR",
+            "timezone": "UTC",
+            "use_24": true,
+            "use_local": true
+        }
+
+    **Example response**:
+
+    .. sourcecode:: http
+
+        HTTP/1.1 200 OK
+        Content-Type: application/json
+
+        {
+            "date_format": "YYYY-MM-DD",
+            "number_format": "fr_FR",
+            "timezone": "UTC",
+            "use_24": true,
+            "use_local": true
+        }
+
+Username Change Process
+=======================
+
+To change a user's email address, perform a ``PATCH/PUT`` on their user detail record that updates the username field.
+This will return a **202 ACCEPTED** and send a notification email to their old address that states a username change
+was requested. Another email will be sent to the new address that contains a link to verify the email address.
+The change will not be official until a request to ``POST /users/update_email`` endpoint is completed. This means the
+user will be able to log into the system under the old username until the verification step is complete.
+
+Requires the Permission ``manage_partner_users`` if the User is a Partner User or ``manage_customer_users`` if
+they are a Customer User. See :ref:`User Groups <objects_user_groups>` for more info on Permissions.
+
+Verify a username/email change
+------------------------------
+
+.. http:POST:: /users/update_email
+
+    Verify a username change
+
+    :statuscode 200:
+
+
+**Request Model**
+
+==============  ========  ============
+Key             Datatype  Notes
+==============  ========  ============
+activation_key  string    required
+==============  ========  ============
+
+
+**Example request**:
+
+.. sourcecode:: http
+
+  POST /users/email_change HTTP/1.1
+  Host: api.gooee.io
+  Content-Type: application/json
+
+  {
+    "activation_key": "b942a49bf6449268230cdeff109aa13080f8f94f"
+  }
+
+
+Password Recovery Processes
+===========================
+
+When users want to change their password or they forgot it, they will need to send a request with their email
+and we will generate an encrypted **uid** and a unique **token** for changing the password.
+
+
+Request a password change
+-------------------------
+
+.. http:POST:: /users/password/request/change/
+
+   :query mobile: one of ``true``, ``false`` (default if not provided) indicating if the request
+     is made from a mobile app.
+   :query scheme: optional url scheme that can be handled by a mobile app.
+   :statuscode 200:
+
+
+**Request Model**
+
+========  ========  ============
+Key       Datatype  Notes
+========  ========  ============
+username  string    required
+========  ========  ============
+
+
+**Example request**:
+
+.. sourcecode:: http
+
+  POST /users/password/request/change/ HTTP/1.1
+  Host: api.gooee.io
+  Content-Type: application/json
+
+  {
+        "username": "$username"
+  }
+
+An email will be sent to user with a link to change the password and response will look as following:
+
+**Example response**:
+
+.. sourcecode:: http
+
+  HTTP/1.1 200 OK
+  Content-Type: application/json
+
+  {
+        "detail": "An email was sent with instructions to reset password."
+  }
+
+The email will have a link like:
+
+    http://portal.gooee.com/#/reset-password/NzZhMWNhZWExMmQwNGJhZTg3OTdkMTgzZGFhZjI2MzA/4af-d8c43b3cf9c27349e43b?mobile=false
+
+containing first the **uidb64** and secondly the **token**.
+
+If **mobile** and **scheme** url parameters are supplied, the link will look like:
+
+    http://portal.gooee.com/#/reset-password/NzZhMWNhZWExMmQwNGJhZTg3OTdkMTgzZGFhZjI2MzA/4af-d8c43b3cf9c27349e43b?mobile=true&scheme=yourschemehere
+
+
+Changing the password
+---------------------
+
+.. http:POST:: /users/password/change/
+
+    :statuscode 200:
+
+
+**Request Model**
+
+================  ========  ========
+Key               Datatype  Notes
+================  ========  ========
+token             string    required
+uidb64            string    required
+password          string    required, see :ref:`Complex Constraints <users_complex_constraints>`
+password_confirm  string    required, see :ref:`Complex Constraints <users_complex_constraints>`
+================  ========  ========
+
+**Example request**:
+
+.. sourcecode:: http
+
+  POST /users/password/change/ HTTP/1.1
+  Host: api.gooee.io
+  Content-Type: application/json
+
+  {
+        "token": "$token",
+        "uidb64": "$uidb64",
+        "password": "$password",
+        "password_confirm": "$password"
+  }
+
+
+The request needs to contain the same **uidb64** and **token** from the email in the previous step to be valid.
+Say the email has a link like:
+
+    http://portal.gooee.com/#/reset-password/NzZhMWNhZWExMmQwNGJhZTg3OTdkMTgzZGFhZjI2MzA/4af-d8c43b3cf9c27349e43b
+
+then the request would be
+
+.. sourcecode:: http
+
+  POST /users/password/change/ HTTP/1.1
+  Host: api.gooee.io
+  Content-Type: application/json
+
+  {
+        "token": "4af-d8c43b3cf9c27349e43b",
+        "uidb64": "NzZhMWNhZWExMmQwNGJhZTg3OTdkMTgzZGFhZjI2MzA",
+        "password": "$password",
+        "password_confirm": "$password"
+  }
+
+**Example responses**:
+
+.. sourcecode:: http
+
+  HTTP/1.1 200 OK
+  Content-Type: application/json
+
+  {
+        "detail": "Password has been changed successfully."
+  }
+
+
+.. _users_two_factor:
+
+Two-Factor Authentication
+=========================
+
+In order to enable Two-Factor Authentication, a User needs to follow these steps:
+
+1. :ref:`Two-Factor Authentication setup <users_two_factor_setup>`.
+2. :ref:`Verify Two-Factor Authentication <users_two_factor_verify>`.
+
+Once the two steps are completed successfully, the User will use Two-Factor Authentication as described in
+:ref:`Authentication documentation <general_authentication_login>` for subsequent logins.
+
+.. _users_two_factor_setup:
+
+Two-Factor Authentication Setup
+-------------------------------
+
+To setup two-factor authentication, you need to specify a method via the ``two_factor_auth_method``
+post param.
+
+.. http:post:: /users/(id)/two_factor/setup
+
+   :statuscode 200: Everything went fine.
+   :statuscode 400: Malformed or invalid request
+
+**Request Model**
+
+======================  ========  ========
+Key                     Datatype  Notes
+======================  ========  ========
+two_factor_auth_method  string    required ('app', 'sms', or 'email')
+phone_number            string    required if `two_factor_auth_method` is 'sms'
+======================  ========  ========
+
+**Example response for email Two-Factor Authentication method**:
+
+.. sourcecode:: http
+
+  HTTP/1.1 200 OK
+  Content-Type: application/json
+
+  {
+        "detail": "An email was sent with your authentication code to user@example.com.",
+        "setup_details": {}
+  }
+
+
+**Example response for sms Two-Factor Authentication method**:
+
+.. sourcecode:: http
+
+  HTTP/1.1 200 OK
+  Content-Type: application/json
+
+  {
+        "detail": "A SMS was sent with your authentication code to +1-202-555-0111.",
+        "setup_details": {}
+  }
+
+
+**Example response for app Two-Factor Authentication method**:
+
+.. sourcecode:: http
+
+  HTTP/1.1 200 OK
+  Content-Type: application/json
+
+  {
+        "detail": "Please setup the authenticator app (e.g Google Authenticator) on your phone.",
+        "setup_details": {
+          "issuer": "Gooee Cloud API",
+          "secret": "6EBPEJDTAHL64DS5",
+          "account_name": "user@example.com",
+          "provisioning_uri": "otpauth://totp/user@example.com?secret=6EBPEJDTAHL64DS5&issuer=Gooee%20LLC"
+        }
+  }
+
+
+``setup_details`` contains the information needed to provision the app (e.g Google Authenticator or Authy) that will
+be used for authentication. Details:
+
+  * ``issuer`` is the entity that issues the token.
+  * ``secret`` is a secret code used by the app to generate the token, which should be saved secretly
+    by the User and never shared.
+  * ``account_name`` is the User's account identifier, usually the email.
+  * ``provisioning_uri`` is a url built with previous values that could be encoded in a QR code and scanned by the
+    app to easily provision the code generation. For more information see: https://github.com/google/google-authenticator/wiki/Key-Uri-Format.
+
+**Provisioning example ( Google Authenticator ):**
+
+.. tabs::
+
+   .. group-tab:: Manual Provisioning
+
+      .. image:: ../_static/2fa_manual_provisioning.png
+
+   .. group-tab:: QR code Provisioning
+
+      .. image:: ../_static/2fa_qr_provisioning.png
+
+
+.. _users_two_factor_verify:
+
+Verify Two-Factor Authentication
+--------------------------------
+
+Now that you’ve setup your Two-Factor authentication, its time to verify it to confirm that you have
+access to the device or message sent.
+
+.. http:post:: /users/(id)/two_factor/verify
+
+   :statuscode 200: Two-Factor Authentication was enabled successfully.
+   :statuscode 400: Malformed request
+
+
+**Request Model**
+
+======================  ========  ========
+Key                     Datatype  Notes
+======================  ========  ========
+two_factor_auth_code    string    required
+two_factor_auth_method  string    required
+======================  ========  ========
+
+**Example request**:
+
+.. sourcecode:: http
+
+  POST /users/(id)/two_factor/verify HTTP/1.1
+  Host: api.gooee.io
+  Content-Type: application/json
+
+  {
+        "two_factor_auth_code": "123456"
+  }
+
+
+**Example responses**:
+
+.. sourcecode:: http
+
+  HTTP/1.1 200 OK
+  Content-Type: application/json
+
+  {
+        "detail": "Two-Factor Authentication was enabled successfully."
+  }
+
+.. _users_two_factor_details:
+
+Two-Factor Authentication Details
+---------------------------------
+
+Once Two-Factor authentication is enabled for a user, they can obtain the details of the chosen method
+and configuration using this endpoint.
+
+.. http:get:: /users/(id)/two_factor
+
+   :statuscode 200: Everything went fine.
+   :statuscode 400: Malformed or invalid request
+
+**Example request**:
+
+.. sourcecode:: http
+
+  GET /users/(id)/two_factor HTTP/1.1
+  Host: api.gooee.io
+  Content-Type: application/json
+
+**Example responses**:
+
+.. sourcecode:: http
+
+  HTTP/1.1 200 OK
+  Content-Type: application/json
+
+  {
+        "two_factor_auth_method": "sms",
+        "config" {
+            "phone_number": "+1 8131234567"
+        }
+  }
+
+.. _users_two_factor_disable:
+
+Disable Two-Factor Authentication
+---------------------------------
+
+Once Two-Factor authentication is enabled, it can easily be disabled. Once disabled, users will not
+require a two-factor authentication code to login.
+
+.. http:post:: /users/(id)/two_factor/disable
+
+   :statuscode 200: Everything went fine.
+   :statuscode 400: Malformed or invalid request
+
+**Example request**:
+
+.. sourcecode:: http
+
+  POST /users/(id)/two_factor/disable HTTP/1.1
+  Host: api.gooee.io
+  Content-Type: application/json
+
+  {
+        "two_factor_auth_code": "123456"
+  }
+
+**Example responses**:
+
+.. sourcecode:: http
+
+  HTTP/1.1 200 OK
+  Content-Type: application/json
+
+  {
+        "detail": "'app' two-factor authentication has been disabled on your account"
+  }

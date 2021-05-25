@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "hue": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 360
+    },
+    "saturation": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 360
+    },
+    "transition_time": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    }
+  },
+  "required": [
+    "hue",
+    "saturation"
+  ],
+  "additionalProperties": false
+}

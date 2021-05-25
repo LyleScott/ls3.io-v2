@@ -1,0 +1,376 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Validation for query builder payloads.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "#/definitions/uuid",
+      "title": "ID",
+      "description": "Id of query"
+    },
+    "created": {
+      "type": "string",
+      "title": "Created",
+      "description": "Created timestamp of Query"
+    },
+    "modified": {
+      "type": "string",
+      "title": "Modified",
+      "description": "Modified timestamp of Query"
+    },
+    "created_by": {
+      "$ref": "#/definitions/uuid",
+      "title": "Created By",
+      "description": "Id of the Query's creator"
+    },
+    "name": {
+      "type": "string",
+      "title": "Name",
+      "description": "Name of Query",
+      "minLength": 1
+    },
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "hour",
+                "last_hour",
+                "last_twelve_hours",
+                "last_twentyfour_hours",
+                "today",
+                "yesterday",
+                "week",
+                "last_week",
+                "last_seven_days",
+                "month",
+                "last_month",
+                "year",
+                "last_year",
+                "last_twelve_months",
+                "custom"
+              ]
+            },
+            "value": {
+              "type": "object",
+              "properties": {
+                "end": {
+                  "$ref": "#/definitions/time_param"
+                },
+                "start": {
+                  "$ref": "#/definitions/time_param"
+                }
+              }
+            },
+            "timezone": {
+              "type": "string"
+            }
+          },
+          "title": "Date",
+          "description": "Time specification for the query.",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "timezone"
+          ]
+        },
+        "filter": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/definitions/uuid"
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "area",
+                "building",
+                "country",
+                "customer",
+                "device",
+                "partner",
+                "space"
+              ]
+            }
+          },
+          "title": "Filter",
+          "description": "Filtering parameters.",
+          "additonalProperties": false,
+          "required": [
+            "id",
+            "type"
+          ]
+        },
+        "group": {
+          "type": "object",
+          "properties": {
+            "interval": {
+              "type": "string",
+              "enum": [
+                "seconds",
+                "minutes",
+                "hours",
+                "days",
+                "weeks",
+                "months",
+                "years"
+              ]
+            },
+            "type": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "enum": [
+                "granularity",
+                "customer",
+                "partner",
+                null
+              ]
+            }
+          },
+          "title": "Group",
+          "description": "Group parameters.",
+          "additionalProperties": false,
+          "required": [
+            "type"
+          ]
+        },
+        "metric": {
+          "type": "object",
+          "title": "Metric",
+          "description": "Metric parameters.",
+          "oneOf": [
+            {
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "active_power",
+                    "added",
+                    "air_barometric_pressure",
+                    "air_co2",
+                    "air_voc",
+                    "als",
+                    "ambient_noise",
+                    "ambient_temperature",
+                    "area_head_count",
+                    "area_headcount_in",
+                    "area_headcount_out",
+                    "area_headcount_net",
+                    "area_utilization",
+                    "boiler_temperature",
+                    "calculated_volume_setpoint",
+                    "chiller_flow_temperature",
+                    "chiller_return_temperature",
+                    "cooling_valve",
+                    "dim",
+                    "dwell_count",
+                    "dwell_time",
+                    "flow_temperature",
+                    "flowtemp_setpoint",
+                    "heating_valve",
+                    "hvac_mode",
+                    "hvac_setpoint",
+                    "hvac_state",
+                    "lux",
+                    "motion_intensity",
+                    "outside_air_temperature",
+                    "outside_relative_humidity",
+                    "power_consumption",
+                    "power_consumption_cumulative",
+                    "primary_gas_meter",
+                    "relative_humidity",
+                    "returntemp_setpoint",
+                    "return_air_temperature",
+                    "return_relative_humidity",
+                    "return_temperature",
+                    "secondary_gas_meter",
+                    "supplyair_temperature",
+                    "supplyfan_speed",
+                    "supplyfan_speed_setpoint",
+                    "supplytemperature_setpoint",
+                    "supply_air_temperature",
+                    "supply_relative_humidity",
+                    "temperature_setpoint",
+                    "vibration",
+                    "volumetric_flow"
+                  ]
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "status"
+                  ]
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "inactive",
+                    "active",
+                    "customer_provisioned",
+                    "deactivated",
+                    "site_provisioned"
+                  ],
+                  "title": "Status",
+                  "description": "Status of object."
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "type",
+                "status"
+              ]
+            }
+          ]
+        },
+        "object": {
+          "type": "string",
+          "enum": [
+            "areas",
+            "buildings",
+            "customers",
+            "devices",
+            "spaces",
+            "users"
+          ],
+          "title": "Object",
+          "description": "Object type."
+        },
+        "operation": {
+          "type": "string",
+          "enum": [
+            "avg",
+            "count",
+            "max",
+            "min",
+            "std",
+            "sum"
+          ],
+          "title": "Operation",
+          "description": "Operation type."
+        },
+        "aggregate": {
+          "type": "boolean",
+          "title": "Aggregate",
+          "description": "Enable Aggregation"
+        }
+      },
+      "title": "Parameters",
+      "description": "Parameters for the query.",
+      "additionalProperties": false,
+      "dependencies": {
+        "status": {
+          "properties": {
+            "object": {
+              "enum": [
+                "users",
+                "devices"
+              ]
+            },
+            "metric": {
+              "properties": {
+                "type": {
+                  "enum": [
+                    "status"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "date",
+        "metric",
+        "object",
+        "operation"
+      ]
+    },
+    "tags": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "customer_scopes": {
+      "type": "array",
+      "title": "Customer Scopes",
+      "description": "Customer ids that are scoped to this query.",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/definitions/uuid"
+      }
+    },
+    "partner_scopes": {
+      "type": "array",
+      "title": "Partner Scopes",
+      "description": "Partner ids that are scoped to this query.",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/definitions/uuid"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "parameters"
+  ],
+  "definitions": {
+    "uuid": {
+      "title": "UUID",
+      "description": "A UUID value.",
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+      "minLength": 36,
+      "maxLength": 36
+    },
+    "time_param": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "relative",
+            "specific",
+            "now"
+          ]
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1
+        },
+        "interval": {
+          "type": "number"
+        },
+        "granularity": {
+          "type": "string",
+          "enum": [
+            "seconds",
+            "minutes",
+            "hours",
+            "days",
+            "weeks",
+            "months",
+            "years"
+          ]
+        }
+      }
+    }
+  }
+}

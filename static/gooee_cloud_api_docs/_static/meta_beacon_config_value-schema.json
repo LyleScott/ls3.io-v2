@@ -1,0 +1,121 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "onoff": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "interval": {
+      "type": "number",
+      "minimum": 30,
+      "maximum": 5000
+    },
+    "broadcast_tx": {
+      "type": "number",
+      "enum": [-30, -20, -16, -12, -8, -4, 0, 4]
+    },
+    "tx_rssi": {
+      "type": "number",
+      "minimum": -200,
+      "maximum": 4
+    },
+    "major": {
+      "type": "number",
+      "maximum": 65536
+    },
+    "minor": {
+      "type": "number",
+      "maximum": 65536
+    },
+    "hex": {
+      "type": "string",
+      "minLength": 6,
+      "maxLength": 6,
+      "pattern": "^0x[A-Za-z0-9]{4}$"
+    },
+    "uuid": {
+      "type": "string",
+      "minLength": 32,
+      "maxLength": 36,
+      "pattern": "^([A-Za-z0-9]{8})(-)?([A-Za-z0-9]{4})(-)?([A-Za-z0-9]{4})(-)?([A-Za-z0-9]{4})(-)?([A-Za-z0-9]{12})$"
+    },
+    "url": {
+      "type": "string"
+    },
+    "slot": {
+      "type": "object",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "onoff": {"$ref": "#/definitions/onoff"},
+            "interval": {"$ref": "#/definitions/interval"},
+            "broadcast_tx": {"$ref": "#/definitions/broadcast_tx"},
+            "tx_rssi": {"$ref": "#/definitions/tx_rssi"},
+            "data": {
+              "type": "object",
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": ["ibeacon"]
+                    },
+                    "uuid": {"$ref": "#/definitions/uuid"},
+                    "major": {"$ref": "#/definitions/major"},
+                    "minor": {"$ref": "#/definitions/minor"},
+                    "company_id": {"$ref": "#/definitions/hex"}
+                  },
+                  "required": ["type", "uuid", "major", "minor"],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": ["eddystone-uid"]
+                    },
+                    "uid": {"$ref": "#/definitions/uuid"}
+                  },
+                  "required": ["type", "uid"],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": ["eddystone-url"]
+                    },
+                    "url": {"$ref": "#/definitions/url"}
+                  },
+                  "required": ["type", "url"],
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": ["onoff", "interval", "broadcast_tx", "tx_rssi", "data"]
+        }
+      ]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "slot_0": {"$ref": "#/definitions/slot"},
+    "slot_1": {"$ref": "#/definitions/slot"},
+    "slot_2": {"$ref": "#/definitions/slot"},
+    "slot_3": {"$ref": "#/definitions/slot"}
+  },
+  "required": ["slot_0", "slot_1", "slot_2", "slot_3"],
+  "additionalProperties": false
+}

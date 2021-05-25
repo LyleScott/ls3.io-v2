@@ -1,0 +1,386 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Scope &mdash; Documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/navtree.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Documentation" href="../index.html"/>
+        <link rel="up" title="General" href="../general.html"/>
+        <link rel="next" title="Objects" href="../objects.html"/>
+        <link rel="prev" title="Search" href="search.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Cloud API
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="link caption"><span class="link caption-text"><a class="reference internal" href="../misc.html">Misc</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/change_log.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/object_relation_diagram.html">Object Relation Diagram</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../general.html">General</a></span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="analytics.html">Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_tokens.html">API Tokens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clearing_field_values.html">Clearing Field Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="device_counts.html">Device Counts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exclude_include_fields.html">Include/Exclude Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filtering.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ordering.html">Ordering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meta.html">Meta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meta_groups.html">Meta Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pagination.html">Pagination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pubsub.html">PubSub Message Broker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search.html">Search</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Scope</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#implicit-scopes">Implicit Scopes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scope-propagation">Scope Propagation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#partner-access">Partner Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#constraints">Constraints</a></li>
+</ul>
+</li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../objects.html">Objects</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../objects/action_types.html">Action Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/actions.html">Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/analytics_export.html">Analytics Export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/analytics_query.html">Analytics Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/areas.html">Areas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/buildings.html">Buildings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/connected_products.html">Connected Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/currency.html">Currency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/customers.html">Customers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/dashboards.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/devices.html">Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/fault_alarms.html">Fault Alarms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/local_rules.html">Local Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/locations.html">Locations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/partners.html">Partners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/product_files.html">Product Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/product_types.html">Product Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/products.html">Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/rules_v2.html">Rules V2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/rule_groups.html">Rule Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/scenes.html">Scenes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/schedules.html">Schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/spaces.html">Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/timezones.html">Timezones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/user_features.html">User Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/user_groups.html">User Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/user_preferences.html">User Preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/users.html">Users</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../integrations.html">Integrations</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/als2lux.html">Als-to-Lux Correlation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/external_sensor.html">External Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/gateway_lite.html">Gateway Lite</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cloud API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../general.html">General</a> &raquo;</li>
+        
+      <li>Scope</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/general/scope.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="scope">
+<span id="general-scope"></span><h1>Scope<a class="headerlink" href="#scope" title="Permalink to this headline">¶</a></h1>
+<p>Scope is used to define the data that a User can have access to. Most objects in our ecosystem have
+scope. An object can either be scoped to a Partner, a Customer, or both. An object can be scoped to
+multiple Partners and Customers as well. Any User associated with that Customer or Partner has
+the potential to see that object, depending also on the specific permissions of their
+<a class="reference internal" href="../objects/user_groups.html#objects-user-groups"><span class="std std-ref">User Group</span></a>.</p>
+<p>You will not see your own Partner or Customer scopes on objects that you own, but you will see other
+Partners or Customers (as long as they are scoped to you) that that object is scoped to. See
+<a class="reference internal" href="#general-scope-implicit-scopes"><span class="std std-ref">Implicit Scopes</span></a> for more information on this.</p>
+<p>Scopes are defined on two fields, <code class="docutils literal"><span class="pre">&quot;customer_scopes&quot;</span></code> and <code class="docutils literal"><span class="pre">&quot;partner_scopes&quot;</span></code>. These are public
+fields and Users can add/remove other Partners and Customers (not their own) from these fields.
+These fields are available on most objects in our ecosystem. Others, like
+<a class="reference internal" href="../objects/products.html#objects-products"><span class="std std-ref">Products</span></a>, have their own rules which are documented on their
+respective pages.</p>
+<p>The <code class="docutils literal"><span class="pre">&quot;customer_scopes&quot;</span></code> and <code class="docutils literal"><span class="pre">&quot;partner_scopes&quot;</span></code> fields are not included in API responses by default.
+To include them in a response, you may use the <cite>_annotate</cite> filter with one or both fields,
+comma-separated:</p>
+<dl class="get">
+<dt id="get--buildings-?_annotate=customer_scopes">
+<code class="descname">GET </code><code class="descname">/buildings/?_annotate=customer_scopes</code><a class="headerlink" href="#get--buildings-?_annotate=customer_scopes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="get">
+<dt id="get--customers-da8ef7cd-a442-4260-b177-d3af2058f7ec-?_annotate=partner_scopes">
+<code class="descname">GET </code><code class="descname">/customers/da8ef7cd-a442-4260-b177-d3af2058f7ec/?_annotate=partner_scopes</code><a class="headerlink" href="#get--customers-da8ef7cd-a442-4260-b177-d3af2058f7ec-?_annotate=partner_scopes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="get">
+<dt id="get--devices-?_annotate=customer_scopes,partner_scopes">
+<code class="descname">GET </code><code class="descname">/devices/?_annotate=customer_scopes,partner_scopes</code><a class="headerlink" href="#get--devices-?_annotate=customer_scopes,partner_scopes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Gooee Users have access to everything and are not affected by scope.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Another way to say &#8220;X is scoped to Y&#8221; is &#8220;Y owns X&#8221;.</p>
+</div>
+<div class="section" id="implicit-scopes">
+<span id="general-scope-implicit-scopes"></span><h2>Implicit Scopes<a class="headerlink" href="#implicit-scopes" title="Permalink to this headline">¶</a></h2>
+<p>Some scopes are implicitly inherent in the system and cannot be changed. These scopes are also
+not visible to the User. The following cases apply:</p>
+<ul class="simple">
+<li>Customers and Partners are always scoped to themselves.</li>
+<li>Users and User Groups are always scoped to their respective Customer/Partner.</li>
+</ul>
+<p>In addition, if you are the owner of an object (i.e. if that object is scoped to <em>you</em>), you will
+not see your own Customer or Partner ID in the corresponding <code class="docutils literal"><span class="pre">&quot;customer_scopes&quot;</span></code> or
+<code class="docutils literal"><span class="pre">&quot;partner_scopes&quot;</span></code> field of that object. However, if you have granted access to an object to another
+Customer or Partner, Users of that other Customer or Partner will see your own Customer or Partner
+ID in the corresponding scope field of that object.</p>
+</div>
+<div class="section" id="scope-propagation">
+<h2>Scope Propagation<a class="headerlink" href="#scope-propagation" title="Permalink to this headline">¶</a></h2>
+<p>Scopes are propagated through the system when new objects are created. In addition to the
+Customer or Partner ID of the current User, the following scopes are also assigned to newly created
+objects:</p>
+<ul class="simple">
+<li>For Customer Users, any <code class="docutils literal"><span class="pre">&quot;partner_scopes&quot;</span></code> of the User&#8217;s Customer are propagated.</li>
+<li>For Partner Users, any <code class="docutils literal"><span class="pre">&quot;customer_scopes&quot;</span></code> of the User&#8217;s Partner are propagated.</li>
+</ul>
+</div>
+<div class="section" id="partner-access">
+<h2>Partner Access<a class="headerlink" href="#partner-access" title="Permalink to this headline">¶</a></h2>
+<p>A <a class="reference internal" href="../objects/customers.html#objects-customers"><span class="std std-ref">Customer</span></a> can grant scope access to a <a class="reference internal" href="../objects/partners.html#objects-partners"><span class="std std-ref">Partner</span></a>,
+granting them the ability to manage their resources on behalf of the
+<a class="reference internal" href="../objects/customers.html#objects-customers"><span class="std std-ref">Customer</span></a>. See <a class="reference internal" href="../objects/customers.html#objects-customers-partner-access"><span class="std std-ref">Partner Access</span></a>
+for more information.</p>
+</div>
+<div class="section" id="constraints">
+<h2>Constraints<a class="headerlink" href="#constraints" title="Permalink to this headline">¶</a></h2>
+<p>In order to add a Customer or Partner to an object&#8217;s scopes, any <em>required</em> relationships to other
+objects must already be scoped to that Customer or Partner. For example, to add Partner X to
+a Building&#8217;s <code class="docutils literal"><span class="pre">&quot;partner_scopes&quot;</span></code>, the Building&#8217;s Customer must already have Partner X in its own
+<code class="docutils literal"><span class="pre">&quot;partner_scopes&quot;</span></code>.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../objects.html" class="btn btn-neutral float-right" title="Objects" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="search.html" class="btn btn-neutral" title="Search" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Gooee, LLC.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/tabs.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

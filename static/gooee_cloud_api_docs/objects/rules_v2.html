@@ -1,0 +1,1738 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Rules V2 &mdash; Documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/navtree.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Documentation" href="../index.html"/>
+        <link rel="up" title="Objects" href="../objects.html"/>
+        <link rel="next" title="Rule Groups" href="rule_groups.html"/>
+        <link rel="prev" title="Products" href="products.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Cloud API
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="link caption"><span class="link caption-text"><a class="reference internal" href="../misc.html">Misc</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/change_log.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/object_relation_diagram.html">Object Relation Diagram</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../general.html">General</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/analytics.html">Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api_tokens.html">API Tokens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/authentication.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/clearing_field_values.html">Clearing Field Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/device_counts.html">Device Counts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/exclude_include_fields.html">Include/Exclude Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/filtering.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ordering.html">Ordering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/meta.html">Meta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/meta_groups.html">Meta Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/pagination.html">Pagination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/pubsub.html">PubSub Message Broker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/search.html">Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/scope.html">Scope</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../objects.html">Objects</a></span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="action_types.html">Action Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions.html">Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analytics_export.html">Analytics Export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analytics_query.html">Analytics Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="areas.html">Areas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="buildings.html">Buildings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="connected_products.html">Connected Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="currency.html">Currency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customers.html">Customers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dashboards.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="devices.html">Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fault_alarms.html">Fault Alarms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="local_rules.html">Local Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="locations.html">Locations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="partners.html">Partners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="product_files.html">Product Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="product_types.html">Product Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="products.html">Products</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Rules V2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#property-based-rules">Property-based Rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#event-based-rules">Event-based Rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#common">Common</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rule_groups.html">Rule Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scenes.html">Scenes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schedules.html">Schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spaces.html">Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timezones.html">Timezones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_features.html">User Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_groups.html">User Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_preferences.html">User Preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Users</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../integrations.html">Integrations</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/als2lux.html">Als-to-Lux Correlation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/external_sensor.html">External Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/gateway_lite.html">Gateway Lite</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cloud API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../objects.html">Objects</a> &raquo;</li>
+        
+      <li>Rules V2</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/objects/rules_v2.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="rules-v2">
+<span id="objects-rules-v2"></span><h1><a class="toc-backref" href="#id16">Rules V2</a><a class="headerlink" href="#rules-v2" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="quick-links">
+<p class="topic-title first">Quick Links</p>
+<ul class="simple">
+<li><a class="reference internal" href="#rules-v2" id="id16">Rules V2</a><ul>
+<li><a class="reference internal" href="#description" id="id17">Description</a><ul>
+<li><a class="reference internal" href="#timestamp-of-a-message" id="id18">Timestamp of a Message</a><ul>
+<li><a class="reference internal" href="#for-property-rules" id="id19">For Property Rules</a></li>
+<li><a class="reference internal" href="#for-event-rules" id="id20">For Event Rules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#property-based-rules" id="id21">Property-based Rules</a><ul>
+<li><a class="reference internal" href="#id1" id="id22">Description</a></li>
+<li><a class="reference internal" href="#data-model" id="id23">Data Model</a><ul>
+<li><a class="reference internal" href="#complex-constraints" id="id24">Complex Constraints</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#condition-groups" id="id25">Condition Groups</a><ul>
+<li><a class="reference internal" href="#id2" id="id26">Data Model</a><ul>
+<li><a class="reference internal" href="#property-rule-condition-group-complex-constraints" id="id27">Complex Constraints</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#function" id="id28">Function</a><ul>
+<li><a class="reference internal" href="#boolean-functions" id="id29">Boolean Functions</a></li>
+<li><a class="reference internal" href="#numeric-functions" id="id30">Numeric Functions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#conditions" id="id31">Conditions</a><ul>
+<li><a class="reference internal" href="#id4" id="id32">Data Model</a><ul>
+<li><a class="reference internal" href="#id5" id="id33">Complex Constraints</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#locking" id="id34">Locking</a><ul>
+<li><a class="reference internal" href="#lock-condition" id="id35">Lock Condition</a><ul>
+<li><a class="reference internal" href="#id6" id="id36">Data Model</a></li>
+<li><a class="reference internal" href="#example" id="id37">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#api-endpoints" id="id38">API Endpoints</a><ul>
+<li><a class="reference internal" href="#create-a-property-based-rule" id="id39">Create a Property-based Rule</a></li>
+<li><a class="reference internal" href="#list-property-based-rules" id="id40">List Property-based Rules</a></li>
+<li><a class="reference internal" href="#retrieve-a-property-based-rule" id="id41">Retrieve a Property-based Rule</a></li>
+<li><a class="reference internal" href="#update-a-property-based-rule" id="id42">Update a Property-based Rule</a></li>
+<li><a class="reference internal" href="#delete-a-property-based-rule" id="id43">Delete a Property-based Rule</a></li>
+<li><a class="reference internal" href="#retrieve-property-rule-activity-log" id="id44">Retrieve Property Rule activity log</a></li>
+<li><a class="reference internal" href="#retrieve-meta-variables-and-operators-for-building-rules" id="id45">Retrieve Meta, Variables, and Operators for building Rules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#event-based-rules" id="id46">Event-based Rules</a><ul>
+<li><a class="reference internal" href="#id7" id="id47">Description</a></li>
+<li><a class="reference internal" href="#id8" id="id48">Data Model</a><ul>
+<li><a class="reference internal" href="#event-rules-complex-constraints" id="id49">Complex Constraints</a></li>
+<li><a class="reference internal" href="#event-rule-condition" id="id50">Conditions</a><ul>
+<li><a class="reference internal" href="#id11" id="id51">Data Model</a></li>
+<li><a class="reference internal" href="#id12" id="id52">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#examples" id="id53">Examples</a></li>
+<li><a class="reference internal" href="#id13" id="id54">API Endpoints</a><ul>
+<li><a class="reference internal" href="#create-an-event-based-rule" id="id55">Create an Event-based Rule</a></li>
+<li><a class="reference internal" href="#list-event-based-rules" id="id56">List Event-based Rules</a></li>
+<li><a class="reference internal" href="#retrieve-an-event-based-rule" id="id57">Retrieve an Event-based Rule</a></li>
+<li><a class="reference internal" href="#update-an-event-based-rule" id="id58">Update an Event-based Rule</a></li>
+<li><a class="reference internal" href="#delete-an-event-based-rule" id="id59">Delete an Event-based Rule</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#retrieve-event-rule-activity-log" id="id60">Retrieve Event Rule activity log</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#common" id="id61">Common</a><ul>
+<li><a class="reference internal" href="#common-fields" id="id62">Common Fields</a></li>
+<li><a class="reference internal" href="#actions" id="id63">Actions</a><ul>
+<li><a class="reference internal" href="#id14" id="id64">Complex Constraints</a></li>
+<li><a class="reference internal" href="#id15" id="id65">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="description">
+<h2><a class="toc-backref" href="#id17">Description</a><a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>Rules are composed of triggers that perform some behavior when <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a> or
+<a class="reference internal" href="areas.html#objects-areas"><span class="std std-ref">Area</span></a> <a class="reference internal" href="../general/meta.html#general-meta"><span class="std std-ref">Meta</span></a> changes or an <a class="reference internal" href="actions.html#objects-actions"><span class="std std-ref">Action</span></a>
+is created.</p>
+<p>There are 2 types of Rules, <a class="reference internal" href="#objects-property-rules"><span class="std std-ref">Property-based Rules</span></a> and
+<a class="reference internal" href="#objects-event-rules"><span class="std std-ref">Event-based Rules</span></a>. The conditions of Property-based Rules observe
+changes to <a class="reference internal" href="../general/meta.html#general-meta"><span class="std std-ref">Meta</span></a> of one or more <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Devices</span></a> or <a class="reference internal" href="areas.html#objects-areas"><span class="std std-ref">Areas</span></a>. The conditions of Event-based Rules observe the <a class="reference internal" href="actions.html#objects-actions"><span class="std std-ref">Actions</span></a>
+performed on a particular <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a>.</p>
+<p>When a Rule is created/updated, our Rule Engine incorporates the Rule and reacts to be able
+to listen to the Devices included in the the conditions of the Rule. To protect itself against
+potential infinite loops of Rule execution that could jeopardize the performance of the system,
+the Rule Engine is also observing the Rules&#8217; executions. When a Rule starts having a high rate
+of execution in a short period of time, the system will disable the Rule as a protection mechanism.</p>
+<div class="section" id="timestamp-of-a-message">
+<h3><a class="toc-backref" href="#id18">Timestamp of a Message</a><a class="headerlink" href="#timestamp-of-a-message" title="Permalink to this headline">¶</a></h3>
+<p>When a <a class="reference internal" href="../general/meta.html#general-meta"><span class="std std-ref">Device Meta</span></a> update or an <a class="reference internal" href="actions.html#objects-actions"><span class="std std-ref">Action</span></a> is received by
+the Rule Engine the timestamp of the message is verified. The event will be ignored if the
+<code class="docutils literal"><span class="pre">timestamp</span></code> is in the future or older than 10 minutes.</p>
+<div class="section" id="for-property-rules">
+<h4><a class="toc-backref" href="#id19">For Property Rules</a><a class="headerlink" href="#for-property-rules" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>If the timestamp of the <a class="reference internal" href="../general/meta.html#general-meta"><span class="std std-ref">Device Meta</span></a> is old, but the message is the last
+information received from the device, the information about the device is updated to reflect it,
+but the evaluation of the rule is skipped.</li>
+<li>If the timestamp is older than any previous valid timestamp of the same <a class="reference internal" href="../general/meta.html#general-meta"><span class="std std-ref">Device Meta</span></a> received from that device, the message is ignored.</li>
+<li>If the timestamp is in the future, the message is ignored.</li>
+</ul>
+</div>
+<div class="section" id="for-event-rules">
+<h4><a class="toc-backref" href="#id20">For Event Rules</a><a class="headerlink" href="#for-event-rules" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>If the timestamp of the <a class="reference internal" href="actions.html#objects-actions"><span class="std std-ref">Action</span></a> is old or is in the future, the message is
+ignored.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="property-based-rules">
+<span id="objects-property-rules"></span><h2><a class="toc-backref" href="#id21">Property-based Rules</a><a class="headerlink" href="#property-based-rules" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3><a class="toc-backref" href="#id22">Description</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Property-based Rules are composed of <a class="reference internal" href="#property-rule-condition-groups"><span class="std std-ref">condition groups</span></a>,
+groupings of conditions across one or more <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Devices</span></a> or <a class="reference internal" href="areas.html#objects-areas"><span class="std std-ref">Areas</span></a> of a <a class="reference internal" href="spaces.html#objects-spaces"><span class="std std-ref">Space</span></a> that specify desired <a class="reference internal" href="../general/meta.html#general-meta"><span class="std std-ref">Meta</span></a>
+values. Property-based Rules execute their <a class="reference internal" href="#rule-v2-actions"><span class="std std-ref">Actions</span></a> when their condition
+groups are met as a whole.</p>
+</div>
+<div class="section" id="data-model">
+<h3><a class="toc-backref" href="#id23">Data Model</a><a class="headerlink" href="#data-model" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="45%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>ref</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>created</td>
+<td>datetime</td>
+<td>read-only</td>
+</tr>
+<tr class="row-even"><td>modified</td>
+<td>datetime</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>name</td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr class="row-even"><td>description</td>
+<td>string</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>building</td>
+<td><a class="reference internal" href="buildings.html#objects-buildings"><span class="std std-ref">ref</span></a></td>
+<td>read-only</td>
+</tr>
+<tr class="row-even"><td>customer</td>
+<td><a class="reference internal" href="customers.html#objects-customers"><span class="std std-ref">ref</span></a></td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>space</td>
+<td><a class="reference internal" href="spaces.html#objects-spaces"><span class="std std-ref">ref</span></a></td>
+<td>required</td>
+</tr>
+<tr class="row-even"><td>condition_groups</td>
+<td><a class="reference internal" href="#property-rule-condition-groups"><span class="std std-ref">ref</span></a></td>
+<td>required</td>
+</tr>
+<tr class="row-odd"><td>lock_condition</td>
+<td><a class="reference internal" href="#property-rule-lock-condition"><span class="std std-ref">ref</span></a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>actions</td>
+<td>array(<a class="reference internal" href="#rule-v2-actions"><span class="std std-ref">ref</span></a>)</td>
+<td>required</td>
+</tr>
+<tr class="row-odd"><td>enabled</td>
+<td>boolean</td>
+<td>default=true</td>
+</tr>
+<tr class="row-even"><td>customer_scopes</td>
+<td>array(<a class="reference internal" href="customers.html#objects-customers"><span class="std std-ref">ref</span></a>)</td>
+<td>see <a class="reference internal" href="../general/scope.html#general-scope"><span class="std std-ref">Scope</span></a></td>
+</tr>
+<tr class="row-odd"><td>partner_scopes</td>
+<td>array(<a class="reference internal" href="partners.html#objects-partners"><span class="std std-ref">ref</span></a>)</td>
+<td>see <a class="reference internal" href="../general/scope.html#general-scope"><span class="std std-ref">Scope</span></a></td>
+</tr>
+<tr class="row-even"><td>tags</td>
+<td>array(string)</td>
+<td>max_length=50 per tag</td>
+</tr>
+<tr class="row-odd"><td>last_execution</td>
+<td>datetime</td>
+<td>read-only</td>
+</tr>
+<tr class="row-even"><td>execution_count</td>
+<td>number</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>execution_origin</td>
+<td>enum</td>
+<td>options=[<code class="docutils literal"><span class="pre">&quot;cloud&quot;</span></code>, <code class="docutils literal"><span class="pre">&quot;gateway&quot;</span></code>]</td>
+</tr>
+<tr class="row-even"><td>rule_group</td>
+<td><a class="reference internal" href="rule_groups.html#objects-rule-groups"><span class="std std-ref">ref</span></a></td>
+<td>read-only</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="complex-constraints">
+<span id="property-rules-complex-constraints"></span><h4><a class="toc-backref" href="#id24">Complex Constraints</a><a class="headerlink" href="#complex-constraints" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">name</span></code> and <code class="docutils literal"><span class="pre">space</span></code> must form a unique pair.</li>
+<li><code class="docutils literal"><span class="pre">space</span></code> must have a <code class="docutils literal"><span class="pre">data_service_id</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">space</span></code> must have one or more <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Devices</span></a>.</li>
+<li><dl class="first docutils">
+<dt>If <code class="docutils literal"><span class="pre">rule_group</span></code> is not <code class="docutils literal"><span class="pre">null</span></code>,</dt>
+<dd><ul class="first last">
+<li><code class="docutils literal"><span class="pre">enabled</span></code> and <code class="docutils literal"><span class="pre">execution_origin</span></code> may only be changed on the <a class="reference internal" href="rule_groups.html#objects-rule-groups"><span class="std std-ref">Rule Group</span></a> itself.</li>
+<li><code class="docutils literal"><span class="pre">condition_groups</span></code> may not be added or removed.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="condition-groups">
+<span id="property-rule-condition-groups"></span><h3><a class="toc-backref" href="#id25">Condition Groups</a><a class="headerlink" href="#condition-groups" title="Permalink to this headline">¶</a></h3>
+<p>A Condition Group describes a set of Conditions applied to one or more Areas or Devices in a Space,
+using a specified function. When the Rule is evaluated, each Condition Group will be evaluated in
+order, and each boolean result will be combined via its <code class="docutils literal"><span class="pre">logical_operator</span></code> with the next Condition
+Group&#8217;s evaluation result. This operation is left-associative.</p>
+<div class="section" id="id2">
+<h4><a class="toc-backref" href="#id26">Data Model</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="7%" />
+<col width="20%" />
+<col width="73%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>function</td>
+<td>enum</td>
+<td>required, options=[<cite>&#8220;all&#8221;</cite>, <cite>&#8220;any&#8221;</cite>, <cite>&#8220;min&#8221;</cite>, <cite>&#8220;max&#8221;</cite>, <cite>&#8220;sum&#8221;</cite>, <cite>&#8220;avg&#8221;</cite>, <cite>null</cite>], <a class="reference internal" href="#property-rule-condition-group-complex-constraints"><span class="std std-ref">Complex Constraints</span></a></td>
+</tr>
+<tr class="row-odd"><td>areas</td>
+<td>array(<a class="reference internal" href="areas.html#objects-areas"><span class="std std-ref">ref</span></a>)</td>
+<td><a class="reference internal" href="#property-rule-condition-group-complex-constraints"><span class="std std-ref">Complex Constraints</span></a></td>
+</tr>
+<tr class="row-even"><td>devices</td>
+<td>array(<a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">ref</span></a>)</td>
+<td><a class="reference internal" href="#property-rule-condition-group-complex-constraints"><span class="std std-ref">Complex Constraints</span></a></td>
+</tr>
+<tr class="row-odd"><td>conditions</td>
+<td>array(<a class="reference internal" href="#property-rule-conditions"><span class="std std-ref">ref</span></a>)</td>
+<td>required</td>
+</tr>
+<tr class="row-even"><td>duration</td>
+<td>int</td>
+<td>default=`0`</td>
+</tr>
+<tr class="row-odd"><td>logical_operator</td>
+<td>enum</td>
+<td>required, options=[<cite>and</cite>, <cite>or</cite>], <a class="reference internal" href="#property-rule-condition-group-complex-constraints"><span class="std std-ref">Complex Constraints</span></a></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="property-rule-condition-group-complex-constraints">
+<span id="id3"></span><h5><a class="toc-backref" href="#id27">Complex Constraints</a><a class="headerlink" href="#property-rule-condition-group-complex-constraints" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li>If <code class="docutils literal"><span class="pre">function</span></code> is <code class="docutils literal"><span class="pre">&quot;min&quot;</span></code>, <code class="docutils literal"><span class="pre">&quot;max&quot;</span></code>, <code class="docutils literal"><span class="pre">&quot;sum&quot;</span></code>, or <code class="docutils literal"><span class="pre">&quot;avg&quot;</span></code>, the <code class="docutils literal"><span class="pre">conditions</span></code> may only
+contain numeric Meta values.</li>
+<li><dl class="first docutils">
+<dt>If <code class="docutils literal"><span class="pre">function</span></code> is <code class="docutils literal"><span class="pre">null</span></code>:</dt>
+<dd><ul class="first last">
+<li><code class="docutils literal"><span class="pre">areas</span></code> and <code class="docutils literal"><span class="pre">devices</span></code> must be empty.</li>
+<li><code class="docutils literal"><span class="pre">duration</span></code> must be <code class="docutils literal"><span class="pre">0</span></code> if present.</li>
+<li>Only <code class="docutils literal"><span class="pre">&quot;time_of_day&quot;</span></code> and <code class="docutils literal"><span class="pre">&quot;day_of_week&quot;</span></code> may be used as variables for <code class="docutils literal"><span class="pre">conditions</span></code>.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>If <code class="docutils literal"><span class="pre">function</span></code> is not <code class="docutils literal"><span class="pre">null</span></code>:</dt>
+<dd><ul class="first last">
+<li>Only one of <code class="docutils literal"><span class="pre">devices</span></code>, <code class="docutils literal"><span class="pre">areas</span></code> may be provided.</li>
+<li>As a convenience, if <code class="docutils literal"><span class="pre">devices</span></code> and <code class="docutils literal"><span class="pre">areas</span></code> are both omitted or empty, all Devices in the
+Rule&#8217;s <code class="docutils literal"><span class="pre">space</span></code> (including Devices in its <code class="docutils literal"><span class="pre">child_spaces</span></code>) will be used. This excludes
+Devices that don&#8217;t support the Device Meta used in the <code class="docutils literal"><span class="pre">variable</span></code> of each condition.
+in the <code class="docutils literal"><span class="pre">variable</span></code> of each condition will be inserted.</li>
+<li><code class="docutils literal"><span class="pre">&quot;time_of_day&quot;</span></code> and <code class="docutils literal"><span class="pre">&quot;day_of_week&quot;</span></code> may not be used as variables for <code class="docutils literal"><span class="pre">conditions</span></code>.</li>
+<li><dl class="first docutils">
+<dt>If <code class="docutils literal"><span class="pre">areas</span></code> is provided:</dt>
+<dd><ul class="first last">
+<li>All <code class="docutils literal"><span class="pre">conditions</span></code> may only use <code class="docutils literal"><span class="pre">&quot;headcount&quot;</span></code> for <code class="docutils literal"><span class="pre">variable</span></code>.</li>
+<li>All <code class="docutils literal"><span class="pre">areas</span></code> must have the same <a class="reference internal" href="products.html#objects-products"><span class="std std-ref">Product</span></a>.</li>
+<li>All <code class="docutils literal"><span class="pre">areas</span></code> must have a <code class="docutils literal"><span class="pre">data_source_id</span></code>.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>There can be at most one Condition Group where <code class="docutils literal"><span class="pre">function</span></code> is <code class="docutils literal"><span class="pre">null</span></code>.</li>
+<li>If there is more than one Condition Group, <code class="docutils literal"><span class="pre">logical_operator</span></code> is required on all but the last
+Condition Group.</li>
+<li>If there is only one Condition Group, <code class="docutils literal"><span class="pre">logical_operator</span></code> is not required.</li>
+<li>If the Rule&#8217;s <code class="docutils literal"><span class="pre">rule_group</span></code> is not <code class="docutils literal"><span class="pre">null</span></code>, <code class="docutils literal"><span class="pre">conditions</span></code> may not be added or removed.</li>
+<li>All the <code class="docutils literal"><span class="pre">devices</span></code> in the <code class="docutils literal"><span class="pre">condition_group</span></code> must support the meta properties of that
+<code class="docutils literal"><span class="pre">condition_group</span></code>.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="function">
+<span id="property-rule-function"></span><h4><a class="toc-backref" href="#id28">Function</a><a class="headerlink" href="#function" title="Permalink to this headline">¶</a></h4>
+<p>The <code class="docutils literal"><span class="pre">function</span></code> field of a Condition Group determines how to apply its <a class="reference internal" href="#property-rule-conditions"><span class="std std-ref">Conditions</span></a> to its <code class="docutils literal"><span class="pre">areas</span></code> or <code class="docutils literal"><span class="pre">devices</span></code>. Functions can be loosely divided into 2
+categories, boolean functions and numeric functions.</p>
+<div class="section" id="boolean-functions">
+<h5><a class="toc-backref" href="#id29">Boolean Functions</a><a class="headerlink" href="#boolean-functions" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">&quot;all&quot;</span></code>: The <code class="docutils literal"><span class="pre">conditions</span></code> must be met for <em>all</em> of the <code class="docutils literal"><span class="pre">devices</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">&quot;any&quot;</span></code>: The <code class="docutils literal"><span class="pre">conditions</span></code> must be met for <em>any</em> of the <code class="docutils literal"><span class="pre">devices</span></code>.</li>
+</ul>
+</div>
+<div class="section" id="numeric-functions">
+<h5><a class="toc-backref" href="#id30">Numeric Functions</a><a class="headerlink" href="#numeric-functions" title="Permalink to this headline">¶</a></h5>
+<p>The numeric functions are applied across <em>all</em> Areas or Devices. They specify a mathematical
+function to be applied to all of the objects for each Meta value. The conditions are evaluated for
+the aggregate Meta values instead of being applied to the individual Meta values of each
+Area/Device. They may only be used with numeric Meta values in the conditions.</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">&quot;min&quot;</span></code>: The minimum Meta value for all Devices.</li>
+<li><code class="docutils literal"><span class="pre">&quot;max&quot;</span></code>: The maximum Meta value for all Devices.</li>
+<li><code class="docutils literal"><span class="pre">&quot;avg&quot;</span></code>: The average Meta value for all Devices.</li>
+<li><code class="docutils literal"><span class="pre">&quot;sum&quot;</span></code>: The sum of all Meta values for all Devices.</li>
+</ul>
+<p>Function <code class="docutils literal"><span class="pre">null</span></code> is a special case for Condition Groups which do not contain any Device-related
+conditions, such as when using the variables <code class="docutils literal"><span class="pre">time_of_day</span></code> and <code class="docutils literal"><span class="pre">day_of_week</span></code>. See
+<a class="reference internal" href="#property-rule-condition-group-complex-constraints"><span class="std std-ref">Condition Group Complex Constraints</span></a>.</p>
+</div>
+</div>
+<div class="section" id="conditions">
+<span id="property-rule-conditions"></span><h4><a class="toc-backref" href="#id31">Conditions</a><a class="headerlink" href="#conditions" title="Permalink to this headline">¶</a></h4>
+<p>Conditions describe the desired state of a <a class="reference internal" href="../general/meta.html#general-meta"><span class="std std-ref">Meta</span></a> value. The Conditions will be
+evaluated once for each of the Condition Group&#8217;s <code class="docutils literal"><span class="pre">areas</span></code> or <code class="docutils literal"><span class="pre">devices</span></code>. The results of each
+individual Condition will be combined via its <code class="docutils literal"><span class="pre">logical_operator</span></code> in the same manner that Condition
+Groups are combined.</p>
+<div class="section" id="id4">
+<h5><a class="toc-backref" href="#id32">Data Model</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h5>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="36%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>variable</td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr class="row-odd"><td>operator</td>
+<td>enum</td>
+<td>required, options=[<cite>=</cite>, <cite>!=</cite>, <cite>&gt;</cite>, <cite>&gt;=</cite>, <cite>&lt;</cite>, <cite>&lt;=</cite>]</td>
+</tr>
+<tr class="row-even"><td>value</td>
+<td>string | boolean | int | float | array</td>
+<td>required</td>
+</tr>
+<tr class="row-odd"><td>logical_operator</td>
+<td>enum</td>
+<td>required, options=[<cite>and</cite>, <cite>or</cite>]</td>
+</tr>
+<tr class="row-even"><td>skip_trigger</td>
+<td>boolean</td>
+<td>default=false</td>
+</tr>
+</tbody>
+</table>
+<p>Normally, when a Meta value is updated, any Rule that uses that Meta value as a condition variable is
+triggered immediately. However, when the <code class="docutils literal"><span class="pre">skip_trigger</span></code> field is true, updates to that Meta value
+will not cause the Rule to trigger. The Rule will only be triggered by updates to <em>other</em> conditions,
+which leads to <strong>all</strong> conditions to be evaluated as normal.</p>
+<div class="section" id="id5">
+<h6><a class="toc-backref" href="#id33">Complex Constraints</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h6>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">variable</span></code> is the subject of comparison.
+- <code class="docutils literal"><span class="pre">time_of_day</span></code> represents the current 24-hour time.
+- <code class="docutils literal"><span class="pre">day_of_week</span></code> represents the day of the week (monday, tuesday, .. , sunday).
+- Anything else is interpreted as the name of a Device Meta, and represents its current value.</li>
+<li><code class="docutils literal"><span class="pre">value</span></code> is the object of comparison. The <code class="docutils literal"><span class="pre">variable</span></code> will be compared to this value via the <code class="docutils literal"><span class="pre">operator</span></code>.
+- If <code class="docutils literal"><span class="pre">variable</span></code> is a <a class="reference internal" href="../general/meta.html#general-meta"><span class="std std-ref">Meta</span></a>, <code class="docutils literal"><span class="pre">value</span></code> should be a valid value for that Meta.
+- If <code class="docutils literal"><span class="pre">variable</span></code> is <code class="docutils literal"><span class="pre">time_of_day</span></code>, <code class="docutils literal"><span class="pre">value</span></code> should use the 24-hour time format <code class="docutils literal"><span class="pre">HH:MM:SS</span></code>.
+- If <code class="docutils literal"><span class="pre">variable</span></code> is <code class="docutils literal"><span class="pre">day_of_week</span></code>, <code class="docutils literal"><span class="pre">value</span></code> should be an array containing one or more of the following values, representing each day of the week: <code class="docutils literal"><span class="pre">mon</span></code>, <code class="docutils literal"><span class="pre">tue</span></code>, <code class="docutils literal"><span class="pre">wed</span></code>, <code class="docutils literal"><span class="pre">thu</span></code>, <code class="docutils literal"><span class="pre">fri</span></code>, <code class="docutils literal"><span class="pre">sat</span></code>, <code class="docutils literal"><span class="pre">sun</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">operator</span></code> is the comparison operator used to compare <code class="docutils literal"><span class="pre">variable</span></code> and <code class="docutils literal"><span class="pre">value</span></code>.
+- If <code class="docutils literal"><span class="pre">variable</span></code> is a <a class="reference internal" href="../general/meta.html#general-meta"><span class="std std-ref">Meta</span></a>, it should be a valid comparison for its datatype (for example, it doesn&#8217;t make sense to use <code class="docutils literal"><span class="pre">&gt;</span></code> to compare strings).
+- If <code class="docutils literal"><span class="pre">variable</span></code> is <code class="docutils literal"><span class="pre">time_of_day</span></code>, any operator can be used.
+- If <code class="docutils literal"><span class="pre">variable</span></code> is <code class="docutils literal"><span class="pre">day_of_week</span></code>, operator must be one of <code class="docutils literal"><span class="pre">=</span></code> or <code class="docutils literal"><span class="pre">!=</span></code>.</li>
+<li>If the Rule&#8217;s <code class="docutils literal"><span class="pre">rule_group</span></code> is not null, <code class="docutils literal"><span class="pre">variable</span></code>, <code class="docutils literal"><span class="pre">operator</span></code>, and <code class="docutils literal"><span class="pre">logical_operator</span></code> are read-only.</li>
+<li>If an <code class="docutils literal"><span class="pre">adjust</span></code> action is present in the rule, all <code class="docutils literal"><span class="pre">dim</span></code> conditions get the <code class="docutils literal"><span class="pre">skip_trigger</span> <span class="pre">=</span> <span class="pre">true</span></code> key automatically added.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="locking">
+<span id="property-rule-locking"></span><h3><a class="toc-backref" href="#id34">Locking</a><a class="headerlink" href="#locking" title="Permalink to this headline">¶</a></h3>
+<p>Property-based Rules employ a locking mechanism to ensure that the same Rule won&#8217;t keep evaluating
+once the intended effects are achieved. A Rule will never execute more than once <em>while its
+conditions are still met</em>.</p>
+<p>Once a Property-based Rule executes, it is immediately <strong>locked</strong>. A <strong>locked</strong> Rule will not
+execute, regardless of whether its conditions are fulfilled.</p>
+<p>The lock is removed once the Rule&#8217;s conditions are no longer fulfilled, allowing the Rule to
+execute as normal again.</p>
+<p>For example, say you have a Property-based Rule with the following <code class="docutils literal"><span class="pre">condition_groups</span></code>:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[{</span>
+  <span class="nt">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;any&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;conditions&quot;</span><span class="p">:</span> <span class="p">[{</span>
+    <span class="nt">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;motion_intensity&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;&gt;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">15</span>
+  <span class="p">}]</span>
+<span class="p">}]</span>
+</pre></div>
+</div>
+<p>The following example scenario might play out, where <code class="docutils literal"><span class="pre">&quot;motion_intensity&quot;</span></code> is a Meta value on some
+Device in the Rule&#8217;s Space:</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">&quot;motion_intensity&quot;</span></code> = <code class="docutils literal"><span class="pre">22</span></code>:
+* Rule conditions are fulfilled, and
+* Rule is not <strong>locked</strong>, so
+* execute actions, and set Rule to <strong>locked</strong>.</li>
+<li><code class="docutils literal"><span class="pre">&quot;motion_intensity&quot;</span></code> = <code class="docutils literal"><span class="pre">33</span></code>:
+* Rule conditions are fulfilled, but
+* Rule is <strong>locked</strong>, so skip execution.</li>
+<li><code class="docutils literal"><span class="pre">&quot;motion_intensity&quot;</span></code> = <code class="docutils literal"><span class="pre">10</span></code>:
+* Rule conditions are not fulfilled, so
+* remove <strong>lock</strong> from Rule.</li>
+<li><code class="docutils literal"><span class="pre">&quot;motion_intensity&quot;`</span> <span class="pre">=</span> <span class="pre">``18</span></code>
+* Rule conditions are fulfilled, and
+* Rule is not <strong>locked</strong>, so
+* execute actions, and set Rule to <strong>locked</strong>.</li>
+</ul>
+</div></blockquote>
+<div class="section" id="lock-condition">
+<span id="property-rule-lock-condition"></span><h4><a class="toc-backref" href="#id35">Lock Condition</a><a class="headerlink" href="#lock-condition" title="Permalink to this headline">¶</a></h4>
+<p>In some cases, the default locking behavior may not meet your needs. To change the default locking
+behavior, supply a value for the <code class="docutils literal"><span class="pre">&quot;lock_condition&quot;</span></code> parameter. The data model for
+<code class="docutils literal"><span class="pre">&quot;lock_condition&quot;</span></code> is a subset of the data model for individual <code class="docutils literal"><span class="pre">&quot;conditions&quot;</span></code> and devices of
+the <code class="docutils literal"><span class="pre">&quot;condition</span> <span class="pre">groups&quot;</span></code>. It does not support <code class="docutils literal"><span class="pre">areas</span></code>. The lock condition can be defined only
+when the actions of the rule are of type  <code class="docutils literal"><span class="pre">&quot;adjust&quot;</span></code>:</p>
+<div class="section" id="id6">
+<h5><a class="toc-backref" href="#id36">Data Model</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h5>
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="24%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>variable</td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr class="row-odd"><td>operator</td>
+<td>enum</td>
+<td>required</td>
+</tr>
+<tr class="row-even"><td>value</td>
+<td>string | boolean | int | float | array</td>
+<td>required</td>
+</tr>
+<tr class="row-odd"><td>function</td>
+<td>enum</td>
+<td>required, options=[<cite>&#8220;all&#8221;</cite>, <cite>&#8220;any&#8221;</cite>], <a class="reference internal" href="#property-rule-condition-group-complex-constraints"><span class="std std-ref">Complex Constraints</span></a></td>
+</tr>
+<tr class="row-even"><td>devices</td>
+<td>array(<a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">ref</span></a>)</td>
+<td>required</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="example">
+<h5><a class="toc-backref" href="#id37">Example</a><a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="nt">&quot;lock_condition&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;als&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;&gt;=&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">55</span><span class="p">,</span>
+      <span class="nt">&quot;devices&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;0298978e-e855-4b94-b686-817ff1ec19af&quot;</span><span class="p">],</span>
+      <span class="nt">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;any&quot;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If a lock condition is present, the normal locking Rules will be ignored. Instead, the Rule will be
+locked when the lock condition is fulfilled, and unlocked when the lock condition is not* fulfilled.</p>
+<p>This provides more flexibility and allows for a Rule to execute multiple times until a specific
+state is achieved.</p>
+</div>
+</div>
+</div>
+<div class="section" id="api-endpoints">
+<h3><a class="toc-backref" href="#id38">API Endpoints</a><a class="headerlink" href="#api-endpoints" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="create-a-property-based-rule">
+<h4><a class="toc-backref" href="#id39">Create a Property-based Rule</a><a class="headerlink" href="#create-a-property-based-rule" title="Permalink to this headline">¶</a></h4>
+<dl class="post">
+<dt id="post--rules-v2-property">
+<code class="descname">POST </code><code class="descname">/rules/v2/property</code><a class="headerlink" href="#post--rules-v2-property" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2">201 Created</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="list-property-based-rules">
+<h4><a class="toc-backref" href="#id40">List Property-based Rules</a><a class="headerlink" href="#list-property-based-rules" title="Permalink to this headline">¶</a></h4>
+<dl class="get">
+<dt id="get--rules-v2-property">
+<code class="descname">GET </code><code class="descname">/rules/v2/property</code><a class="headerlink" href="#get--rules-v2-property" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="retrieve-a-property-based-rule">
+<h4><a class="toc-backref" href="#id41">Retrieve a Property-based Rule</a><a class="headerlink" href="#retrieve-a-property-based-rule" title="Permalink to this headline">¶</a></h4>
+<dl class="get">
+<dt id="get--rules-v2-property-(id)">
+<code class="descname">GET </code><code class="descname">/rules/v2/property/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#get--rules-v2-property-(id)" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="update-a-property-based-rule">
+<h4><a class="toc-backref" href="#id42">Update a Property-based Rule</a><a class="headerlink" href="#update-a-property-based-rule" title="Permalink to this headline">¶</a></h4>
+<dl class="put">
+<dt id="put--rules-v2-property-(id)">
+<code class="descname">PUT </code><code class="descname">/rules/v2/property/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#put--rules-v2-property-(id)" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="delete-a-property-based-rule">
+<h4><a class="toc-backref" href="#id43">Delete a Property-based Rule</a><a class="headerlink" href="#delete-a-property-based-rule" title="Permalink to this headline">¶</a></h4>
+<dl class="delete">
+<dt id="delete--rules-v2-property-(id)">
+<code class="descname">DELETE </code><code class="descname">/rules/v2/property/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#delete--rules-v2-property-(id)" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.5">204 No Content</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="retrieve-property-rule-activity-log">
+<h4><a class="toc-backref" href="#id44">Retrieve Property Rule activity log</a><a class="headerlink" href="#retrieve-property-rule-activity-log" title="Permalink to this headline">¶</a></h4>
+<dl class="get">
+<dt id="get--rules-v2-property-(id)-activity_log">
+<code class="descname">GET </code><code class="descname">/rules/v2/property/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><code class="descname">/activity_log</code><a class="headerlink" href="#get--rules-v2-property-(id)-activity_log" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/rules/v2/property/93378718-b2ad-4b6c-a1bb-39c5436bf3e6/activity_log</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">[</span>
+  <span class="p">{</span>
+      <span class="nt">&quot;date&quot;</span><span class="p">:</span> <span class="s2">&quot;2019-04-10 22:08:02.710313&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;event&quot;</span><span class="p">:</span> <span class="s2">&quot;deletion&quot;</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+      <span class="nt">&quot;actions&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;dim&quot;</span><span class="p">:</span> <span class="p">{</span>
+              <span class="nt">&quot;result&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+              <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;space&quot;</span><span class="p">,</span>
+              <span class="nt">&quot;targets&quot;</span><span class="p">:</span> <span class="p">[</span>
+                  <span class="s2">&quot;97978718-b2ad-4821-a15b-59c5436bfa12&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;77378718-b2ad-4b6c-a1bb-19c5438bf3e6&quot;</span>
+              <span class="p">]</span>
+          <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;date&quot;</span><span class="p">:</span> <span class="s2">&quot;2019-04-10 22:08:02.133772&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;event&quot;</span><span class="p">:</span> <span class="s2">&quot;execution&quot;</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+      <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nt">&quot;date&quot;</span><span class="p">:</span> <span class="s2">&quot;2019-04-10 22:08:01.951371&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;event&quot;</span><span class="p">:</span> <span class="s2">&quot;locked&quot;</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+      <span class="nt">&quot;date&quot;</span><span class="p">:</span> <span class="s2">&quot;2019-04-10 22:07:57.197739&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;event&quot;</span><span class="p">:</span> <span class="s2">&quot;creation&quot;</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="retrieve-meta-variables-and-operators-for-building-rules">
+<span id="objects-rules-v2-meta-options"></span><h4><a class="toc-backref" href="#id45">Retrieve Meta, Variables, and Operators for building Rules</a><a class="headerlink" href="#retrieve-meta-variables-and-operators-for-building-rules" title="Permalink to this headline">¶</a></h4>
+<p>This endpoint provides a list of the currently available Rule triggers and conditions.  The default
+set of options is listed below.  However, additional options are likely to be present.  Device Meta
+that&#8217;s in the <code class="docutils literal"><span class="pre">~rule_trigger</span></code> Meta Group will also be included as long as the Meta exists.</p>
+<dl class="get">
+<dt id="get--rules-meta-options">
+<code class="descname">GET </code><code class="descname">/rules/meta/options</code><a class="headerlink" href="#get--rules-meta-options" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/rules/meta/options</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;day_of_week&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;display_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Day of week&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;data_type&quot;</span><span class="p">:</span> <span class="s2">&quot;list&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;operators&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;equal to&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;!=&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;not equal to&quot;</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;mon&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Monday&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;tue&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Tuesday&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;wed&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Wednesday&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;thu&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Thursday&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;fri&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Friday&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;sat&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Saturday&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;sun&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Sunday&quot;</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;time_of_day&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;display_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Time of day&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;data_type&quot;</span><span class="p">:</span> <span class="s2">&quot;time&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;operators&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;&gt;&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;after&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;&gt;&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;at or after&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;before&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;=&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;at or before&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;is&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;!=&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;is not&quot;</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="kc">null</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;motion_intensity&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;display_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Motion Intensity&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;data_type&quot;</span><span class="p">:</span> <span class="s2">&quot;number&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;operators&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;&gt;&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;greater than&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;&gt;=&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;greater than or equal to&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;less than&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;=&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;less than or equal to&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;equal to&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;!=&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;not equal to&quot;</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="kc">null</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;occupancy_detected&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;display_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Occupancy&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;data_type&quot;</span><span class="p">:</span> <span class="s2">&quot;bool&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;operators&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;detected&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;!=&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;not detected&quot;</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="kc">null</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dim&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;display_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Dim&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;data_type&quot;</span><span class="p">:</span> <span class="s2">&quot;number&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;operators&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;&gt;&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;greater than&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;&gt;=&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;greater than or equal to&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;less than&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;=&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;less than or equal to&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;equal to&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;!=&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;not equal to&quot;</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="kc">null</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+<div class="section" id="event-based-rules">
+<span id="objects-event-rules"></span><h2><a class="toc-backref" href="#id46">Event-based Rules</a><a class="headerlink" href="#event-based-rules" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h3><a class="toc-backref" href="#id47">Description</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>Event-based Rules are composed of a single <a class="reference internal" href="#event-rule-condition"><span class="std std-ref">condition</span></a> which specifies a
+<a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Device</span></a> and an <a class="reference internal" href="actions.html#objects-actions"><span class="std std-ref">Action</span></a>. When the specified Action
+occurs on the specified Device, the Rule will execute its <a class="reference internal" href="#rule-v2-actions"><span class="std std-ref">Actions</span></a>.</p>
+</div>
+<div class="section" id="id8">
+<h3><a class="toc-backref" href="#id48">Data Model</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="42%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>ref</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>created</td>
+<td>datetime</td>
+<td>read-only</td>
+</tr>
+<tr class="row-even"><td>modified</td>
+<td>datetime</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>name</td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr class="row-even"><td>description</td>
+<td>string</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>building</td>
+<td><a class="reference internal" href="buildings.html#objects-buildings"><span class="std std-ref">ref</span></a></td>
+<td>read-only</td>
+</tr>
+<tr class="row-even"><td>customer</td>
+<td><a class="reference internal" href="customers.html#objects-customers"><span class="std std-ref">ref</span></a></td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>device</td>
+<td><a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">ref</span></a></td>
+<td>read-only</td>
+</tr>
+<tr class="row-even"><td>condition</td>
+<td><a class="reference internal" href="#event-rule-condition"><span class="std std-ref">ref</span></a></td>
+<td>required</td>
+</tr>
+<tr class="row-odd"><td>actions</td>
+<td><a class="reference internal" href="#rule-v2-actions"><span class="std std-ref">ref</span></a></td>
+<td>required</td>
+</tr>
+<tr class="row-even"><td>enabled</td>
+<td>boolean</td>
+<td>default=true</td>
+</tr>
+<tr class="row-odd"><td>customer_scopes</td>
+<td>array(<a class="reference internal" href="customers.html#objects-customers"><span class="std std-ref">ref</span></a>)</td>
+<td>see <a class="reference internal" href="../general/scope.html#general-scope"><span class="std std-ref">Scope</span></a></td>
+</tr>
+<tr class="row-even"><td>partner_scopes</td>
+<td>array(<a class="reference internal" href="partners.html#objects-partners"><span class="std std-ref">ref</span></a>)</td>
+<td>see <a class="reference internal" href="../general/scope.html#general-scope"><span class="std std-ref">Scope</span></a></td>
+</tr>
+<tr class="row-odd"><td>tags</td>
+<td>array(string)</td>
+<td>max_length=50 per tag</td>
+</tr>
+<tr class="row-even"><td>last_execution</td>
+<td>datetime</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>execution_count</td>
+<td>number</td>
+<td>read-only</td>
+</tr>
+<tr class="row-even"><td>execution_origin</td>
+<td>enum</td>
+<td>options=[<code class="docutils literal"><span class="pre">&quot;cloud&quot;</span></code>, <code class="docutils literal"><span class="pre">&quot;gateway&quot;</span></code>]</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="event-rules-complex-constraints">
+<span id="id9"></span><h4><a class="toc-backref" href="#id49">Complex Constraints</a><a class="headerlink" href="#event-rules-complex-constraints" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">name</span></code> must be unique for the <code class="docutils literal"><span class="pre">device</span></code>&#8216;s <a class="reference internal" href="spaces.html#objects-spaces"><span class="std std-ref">Space</span></a>.</li>
+<li><code class="docutils literal"><span class="pre">device</span></code> must have an <code class="docutils literal"><span class="pre">&quot;active&quot;</span></code> <a class="reference internal" href="devices.html#device-commission-state-conditions"><span class="std std-ref">commission state</span></a>.</li>
+</ul>
+</div>
+<div class="section" id="event-rule-condition">
+<span id="id10"></span><h4><a class="toc-backref" href="#id50">Conditions</a><a class="headerlink" href="#event-rule-condition" title="Permalink to this headline">¶</a></h4>
+<p>An Event-based Rule Condition is an object that describes the <a class="reference internal" href="action_types.html#objects-action-types"><span class="std std-ref">Action Type</span></a> and parameters required for the Rule to trigger.</p>
+<div class="section" id="id11">
+<h5><a class="toc-backref" href="#id51">Data Model</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h5>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="36%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>action</td>
+<td><a class="reference internal" href="action_types.html#objects-action-types"><span class="std std-ref">ref</span></a></td>
+<td>required</td>
+</tr>
+<tr class="row-odd"><td>variable</td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr class="row-even"><td>operator</td>
+<td>enum</td>
+<td>required, options=[<cite>=</cite>, <cite>!=</cite>, <cite>&gt;</cite>, <cite>&gt;=</cite>, <cite>&lt;</cite>, <cite>&lt;=</cite>]</td>
+</tr>
+<tr class="row-odd"><td>value</td>
+<td>string | boolean | int | float | array</td>
+<td>required</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><cite>operator</cite> and <cite>value</cite> may have restrictions based on the type of <cite>variable</cite>.</p>
+</div>
+</div>
+<div class="section" id="id12">
+<h5><a class="toc-backref" href="#id52">Example</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="nt">&quot;condition&quot;</span><span class="p">:</span> <span class="p">{</span>
+     <span class="nt">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;button_pressed&quot;</span><span class="p">,</span>
+     <span class="nt">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;button_number&quot;</span><span class="p">,</span>
+     <span class="nt">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span>
+     <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">1</span>
+   <span class="p">}</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="examples">
+<h3><a class="toc-backref" href="#id53">Examples</a><a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;space&quot;</span><span class="p">:</span> <span class="s2">&quot;$space_id&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;A sample rule&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;condition_groups&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;devices&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;$device1_id&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;$device2_id&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;$device3_id&quot;</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;conditions&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;als&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">50</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;duration&quot;</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+      <span class="s2">&quot;logical_operator&quot;</span><span class="p">:</span> <span class="s2">&quot;and&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">&quot;conditions&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;time_of_day&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;13:00:00&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;logical_operator&quot;</span><span class="p">:</span> <span class="s2">&quot;or&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;day_of_week&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;mon&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;tue&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;wed&quot;</span>
+          <span class="p">]</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;lock_condition&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;devices&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;$device1_id&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;$device2_id&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;$device3_id&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;conditions&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;als&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;=&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">50</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;actions&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;dim&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;space&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;$space_id&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;level&quot;</span><span class="p">:</span> <span class="mi">10</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;device&quot;</span><span class="p">:</span> <span class="s2">&quot;$device_id&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;A sample rule&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;condition&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;dim&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;level&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">70</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;actions&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;adjust&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;space&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;$space_id&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;delta&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+          <span class="s2">&quot;transition_time&quot;</span><span class="p">:</span> <span class="mi">3</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id13">
+<h3><a class="toc-backref" href="#id54">API Endpoints</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="create-an-event-based-rule">
+<h4><a class="toc-backref" href="#id55">Create an Event-based Rule</a><a class="headerlink" href="#create-an-event-based-rule" title="Permalink to this headline">¶</a></h4>
+<dl class="post">
+<dt id="post--rules-v2-event">
+<code class="descname">POST </code><code class="descname">/rules/v2/event</code><a class="headerlink" href="#post--rules-v2-event" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2">201 Created</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="list-event-based-rules">
+<h4><a class="toc-backref" href="#id56">List Event-based Rules</a><a class="headerlink" href="#list-event-based-rules" title="Permalink to this headline">¶</a></h4>
+<dl class="get">
+<dt id="get--rules-v2-event">
+<code class="descname">GET </code><code class="descname">/rules/v2/event</code><a class="headerlink" href="#get--rules-v2-event" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="retrieve-an-event-based-rule">
+<h4><a class="toc-backref" href="#id57">Retrieve an Event-based Rule</a><a class="headerlink" href="#retrieve-an-event-based-rule" title="Permalink to this headline">¶</a></h4>
+<dl class="get">
+<dt id="get--rules-v2-event-(id)">
+<code class="descname">GET </code><code class="descname">/rules/v2/event/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#get--rules-v2-event-(id)" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="update-an-event-based-rule">
+<h4><a class="toc-backref" href="#id58">Update an Event-based Rule</a><a class="headerlink" href="#update-an-event-based-rule" title="Permalink to this headline">¶</a></h4>
+<dl class="put">
+<dt id="put--rules-v2-event-(id)">
+<code class="descname">PUT </code><code class="descname">/rules/v2/event/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#put--rules-v2-event-(id)" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="delete-an-event-based-rule">
+<h4><a class="toc-backref" href="#id59">Delete an Event-based Rule</a><a class="headerlink" href="#delete-an-event-based-rule" title="Permalink to this headline">¶</a></h4>
+<dl class="delete">
+<dt id="delete--rules-v2-event-(id)">
+<code class="descname">DELETE </code><code class="descname">/rules/v2/event/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#delete--rules-v2-event-(id)" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.5">204 No Content</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="retrieve-event-rule-activity-log">
+<h3><a class="toc-backref" href="#id60">Retrieve Event Rule activity log</a><a class="headerlink" href="#retrieve-event-rule-activity-log" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--rules-v2-event-(id)-activity_log">
+<code class="descname">GET </code><code class="descname">/rules/v2/event/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><code class="descname">/activity_log</code><a class="headerlink" href="#get--rules-v2-event-(id)-activity_log" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="common">
+<h2><a class="toc-backref" href="#id61">Common</a><a class="headerlink" href="#common" title="Permalink to this headline">¶</a></h2>
+<p>This section describes parts of the API common to both <a class="reference internal" href="#objects-property-rules"><span class="std std-ref">Property-based Rules</span></a> and <a class="reference internal" href="#objects-event-rules"><span class="std std-ref">Event-based Rules</span></a>.</p>
+<div class="section" id="common-fields">
+<h3><a class="toc-backref" href="#id62">Common Fields</a><a class="headerlink" href="#common-fields" title="Permalink to this headline">¶</a></h3>
+<p>For reference, this table describes the fields common to the data models of both types of Rules.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="42%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>ref</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>created</td>
+<td>datetime</td>
+<td>read-only</td>
+</tr>
+<tr class="row-even"><td>modified</td>
+<td>datetime</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>name</td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr class="row-even"><td>description</td>
+<td>string</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>building</td>
+<td><a class="reference internal" href="buildings.html#objects-buildings"><span class="std std-ref">ref</span></a></td>
+<td>read-only</td>
+</tr>
+<tr class="row-even"><td>customer</td>
+<td><a class="reference internal" href="customers.html#objects-customers"><span class="std std-ref">ref</span></a></td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>actions</td>
+<td><a class="reference internal" href="#rule-v2-actions"><span class="std std-ref">ref</span></a></td>
+<td>required</td>
+</tr>
+<tr class="row-even"><td>enabled</td>
+<td>boolean</td>
+<td>default=true</td>
+</tr>
+<tr class="row-odd"><td>customer_scopes</td>
+<td>array(<a class="reference internal" href="customers.html#objects-customers"><span class="std std-ref">ref</span></a>)</td>
+<td>see <a class="reference internal" href="../general/scope.html#general-scope"><span class="std std-ref">Scope</span></a></td>
+</tr>
+<tr class="row-even"><td>partner_scopes</td>
+<td>array(<a class="reference internal" href="partners.html#objects-partners"><span class="std std-ref">ref</span></a>)</td>
+<td>see <a class="reference internal" href="../general/scope.html#general-scope"><span class="std std-ref">Scope</span></a></td>
+</tr>
+<tr class="row-odd"><td>tags</td>
+<td>array(string)</td>
+<td>max_length=50 per tag</td>
+</tr>
+<tr class="row-even"><td>last_execution</td>
+<td>datetime</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>execution_count</td>
+<td>number</td>
+<td>read-only</td>
+</tr>
+<tr class="row-even"><td>execution_origin</td>
+<td>enum</td>
+<td>options=[<code class="docutils literal"><span class="pre">&quot;cloud&quot;</span></code>, <code class="docutils literal"><span class="pre">&quot;gateway&quot;</span></code>]</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="actions">
+<span id="rule-v2-actions"></span><h3><a class="toc-backref" href="#id63">Actions</a><a class="headerlink" href="#actions" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal"><span class="pre">actions</span></code> field is an array of grouped <a class="reference internal" href="actions.html#objects-actions"><span class="std std-ref">Actions</span></a> to be executed when a
+Rule&#8217;s conditions are met. All Actions in a group will execute sequentially before the Actions in
+the next group execute, and so on. For example, the payload below will first send the <em>Activate
+Scene</em> Action, <a class="reference internal" href="action_types.html#action-type-wait"><span class="std std-ref">wait</span></a> 5 seconds, then send two Off* Actions at the same time
+to a space and device.</p>
+<p>See <a class="reference internal" href="action_types.html#objects-action-types"><span class="std std-ref">Action Types</span></a> for information on available Action Types.</p>
+<div class="section" id="id14">
+<h4><a class="toc-backref" href="#id64">Complex Constraints</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>If the Rule&#8217;s <code class="docutils literal"><span class="pre">execution_origin</span></code> is <code class="docutils literal"><span class="pre">&quot;cloud&quot;</span></code>, all Actions&#8217; Spaces/Devices must have the same
+<a class="reference internal" href="buildings.html#objects-buildings"><span class="std std-ref">Building</span></a>.</li>
+<li>If the Rule&#8217;s <code class="docutils literal"><span class="pre">execution_origin</span></code> is <code class="docutils literal"><span class="pre">&quot;gateway&quot;</span></code>, all Actions&#8217; Spaces/Devices must be under the
+same <a class="reference internal" href="devices.html#objects-devices"><span class="std std-ref">Gateway</span></a>.</li>
+<li>All <a class="reference internal" href="actions.html#objects-actions"><span class="std std-ref">Actions</span></a> must follow the same validation and schema as the
+<a class="reference internal" href="actions.html#objects-actions"><span class="std std-ref">/actions endpoint</span></a></li>
+<li><code class="docutils literal"><span class="pre">actions</span></code> can contain up to 5 action groups of up to 5 actions each.</li>
+<li>The action type <a class="reference internal" href="action_types.html#objects-action-types-set-fault-alarm"><span class="std std-ref">Set Fault Alarm</span></a> is supported only
+by Property Rules.</li>
+</ul>
+</div>
+<div class="section" id="id15">
+<h4><a class="toc-backref" href="#id65">Example</a><a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;actions&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;scene_activate&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;scene&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;87dddcc2-9b19-4c90-969c-4976fbd2e529&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;sceneid&quot;</span><span class="p">:</span> <span class="s2">&quot;87dddcc2-9b19-4c90-969c-4976fbd2e529&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;transition_time&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;wait&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;duration&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;off&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;4e907061-1da2-4b89-baa5-2e09dd39bd30&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;transition_time&quot;</span><span class="p">:</span> <span class="mi">10</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;off&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;target_type&quot;</span><span class="p">:</span> <span class="s2">&quot;space&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;target_id&quot;</span><span class="p">:</span> <span class="s2">&quot;be850119-e647-481e-a955-17a4c6a17347&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;transition_time&quot;</span><span class="p">:</span> <span class="mi">10</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="rule_groups.html" class="btn btn-neutral float-right" title="Rule Groups" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="products.html" class="btn btn-neutral" title="Products" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Gooee, LLC.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/tabs.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

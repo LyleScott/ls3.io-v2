@@ -1,0 +1,351 @@
+.. _general_search:
+
+======
+Search
+======
+
+The Search API provides site-wide, case-insensitive, locale-insensitive fulltext searching
+capabilities.  See :ref:`Parameters <search_parameters>` for how to query.
+
+Data Model
+==========
+
+============  =========  ==============================================================================
+Key           Data Type  Notes                                        
+============  =========  ==============================================================================
+model         string     Model representing the record.
+id            ref        UUID of the record.
+relevance     number     Relevance of the search result based on your query parameter.
+fields        object     Fields of the result.  See :ref:`Supported Model Fields <search_supported_model_fields>`.
+============  =========  ==============================================================================
+
+.. _search_supported_model_fields:
+
+Supported Model Fields
+----------------------
+
+Depending on the ``model`` of the search result the ``fields`` provided will be different.  When conducting a 
+search these are the ``fields`` for each ``model`` that are searched and returned in the result:
+
+- :ref:`Area Fields <search_area>`
+- :ref:`Building Fields <search_building>`
+- :ref:`Connected Product Fields <search_connectedproduct>`
+- :ref:`Customer Fields <search_customer>`
+- :ref:`Device Fields <search_device>`
+- :ref:`Event Rule Fields <search_eventrule>`
+- :ref:`Partner Fields <search_partner>`
+- :ref:`Product Fields <search_product>`
+- :ref:`Property Rule Fields <search_propertyrule>`
+- :ref:`Scene Fields <search_scene>`
+- :ref:`Schedule Fields <search_schedule>`
+- :ref:`Space Fields <search_space>`
+- :ref:`User Fields <search_user>`
+- :ref:`User Group Fields <search_usergroup>`
+
+|
+
+.. _search_area:
+
+Area Fields
+-----------
+
+This is the data structure of ``fields`` for the ``area`` model.
+
+============  ==============================
+Key           Data Type
+============  ==============================
+name          string
+description   string
+============  ==============================
+
+.. _search_building:
+
+Building Fields
+---------------
+
+This is the data structure of ``fields`` for the ``building`` model.
+
+============  ==============================
+Key           Data Type
+============  ==============================
+name          string
+description   string
+addr1         string
+addr2         string
+city          string
+state         string
+postal_code   string
+country       string
+============  ==============================
+
+.. _search_connectedproduct:
+
+Connected Product Fields
+------------------------
+
+This is the data structure of ``fields`` for the ``connectedproduct`` model.
+
+============  ==============================
+Key           Data Type
+============  ==============================
+name          string
+============  ==============================
+
+.. _search_customer:
+
+Customer Fields
+---------------
+
+This is the data structure of ``fields`` for the ``customer`` model.
+
+============  ==============================
+Key           Data Type
+============  ==============================
+name          string
+description   string
+logo          string
+addr1         string
+addr2         string
+city          string
+state         string
+postal_code   string
+country       string
+============  ==============================
+
+.. _search_device:
+
+Device Fields
+-------------
+
+This is the data structure of ``fields`` for the ``device`` model.
+
+============  ==============================
+Key           Data Type
+============  ==============================
+name          string
+description   string
+type          string
+euid          string
+building      :ref:`ref <objects_buildings>`
+============  ==============================
+
+.. _search_eventrule:
+
+Event Rule Fields
+-----------------
+
+This is the data structure of ``fields`` for the ``eventrule`` model.
+
+============  ==============================
+Key           Data Type
+============  ==============================
+name          string
+description   string
+============  ==============================
+
+.. _search_partner:
+
+Partner Fields
+--------------
+
+This is the data structure of ``fields`` for the ``partner`` model.
+
+============  ==============================
+Key           Data Type
+============  ==============================
+name          string
+description   string
+logo          string
+addr1         string
+addr2         string
+city          string
+state         string
+postal_code   string
+country       string
+============  ==============================
+
+.. _search_product:
+
+Product Fields
+--------------
+
+This is the data structure of ``fields`` for the ``product`` model.
+
+============  ==============================
+Key           Data Type
+============  ==============================
+name          string
+description   string
+image         string
+sku           string
+============  ==============================
+
+.. _search_propertyrule:
+
+Property Rule Fields
+--------------------
+
+This is the data structure of ``fields`` for the ``propertyrule`` model.
+
+============  ==============================
+Key           Data Type
+============  ==============================
+name          string
+description   string
+============  ==============================
+
+.. _search_scene:
+
+Scene Fields
+------------
+
+This is the data structure of ``fields`` for the ``scene`` model.
+
+============  ==============================
+Key           Data Type
+============  ==============================
+name          string
+description   string
+============  ==============================
+
+.. _search_schedule:
+
+Schedule Fields
+---------------
+
+This is the data structure of ``fields`` for the ``schedule`` model.
+
+============  ==============================
+Key           Data Type
+============  ==============================
+name          string
+description   string
+============  ==============================
+
+.. _search_space:
+
+Space Fields
+------------
+
+This is the data structure of ``fields`` for the ``space`` model.
+
+============  ==============================
+Key           Data Type
+============  ==============================
+name          string
+description   string
+building      :ref:`ref <objects_buildings>`
+============  ==============================
+
+.. _search_user:
+
+User Fields
+-----------
+
+This is the data structure of ``fields`` for the ``user`` model.
+
+============  ==============================
+Key           Data Type
+============  ==============================
+username      string
+first_name    string
+last_name     string
+avatar        string
+============  ==============================
+
+.. _search_usergroup:
+
+User Group Fields
+-----------------
+
+This is the data structure of ``fields`` for the ``usergroup`` model.
+
+============  ==============================
+Key           Data Type
+============  ==============================
+name          string
+description   string
+============  ==============================
+
+
+.. _search_parameters:
+
+Parameters
+==========
+
+The following table lists all available search parameters, which are supplied in the URL query
+string.
+
+.. note:: Fuzzy searching is not yet supported. This will be implemented in the future.
+
+============  =================================================  ====================================
+Filter        Description                                        Example
+============  =================================================  ====================================
+q             Some text to search for. Minimum of 3 characters.  ``/search?q=foobar``
+models        A list of models to search. If not given,          ``/search?q=quux&models=customer,building``
+              all models are searched
+============  =================================================  ====================================
+
+Examples
+========
+
+Query search
+------------
+
+.. http:GET:: /search?q=banana
+.. sourcecode:: http
+
+  HTTP/1.1 200 OK
+  Content-Type: application/json
+  Link: ...
+  X-Result-Count: 2
+
+  [
+    {
+      "model": "device",
+      "id": "881466fa-e1ae-44b6-b066-7db5a85d26bb",
+      "relevance": 3.26788,
+      "fields": {
+        "description": "A light bulb that looks like a banana!",
+        "euid": null,
+        "name": "BananaBulb™",
+        "type": "bulb"
+      }
+    },
+    {
+      "model": "user",
+      "id": "bbd13896-8e2d-446e-b2e4-7c3029e7994c",
+      "relevance": 1.766,
+      "fields": {
+        "avatar": "/_images/johan-avatar.png",
+        "first_name": "Johan",
+        "last_name": "McBananaFace",
+        "username": "banana@fruit.net"
+      }
+    }
+  ]
+
+Query search, filtered by model
+-------------------------------
+
+.. http:GET:: /search?q=banana&models=device
+.. sourcecode:: http
+
+  HTTP/1.1 200 OK
+  Content-Type: application/json
+  Link: ...
+  X-Result-Count: 1
+
+  [
+    {
+      "model": "device",
+      "id": "881466fa-e1ae-44b6-b066-7db5a85d26bb",
+      "relevance": 3.26788,
+      "fields": {
+        "description": "A light bulb that looks like a banana!",
+        "euid": null,
+        "name": "Banana Device",
+        "type": "bulb"
+      }
+    }
+  ]

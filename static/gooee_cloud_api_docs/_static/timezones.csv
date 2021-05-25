@@ -1,0 +1,403 @@
+Country,Name,UTC Offset,Olson Name
+Andorra,AD/Andorra,+01:00,Europe/Andorra
+United Arab Emirates,AE/Dubai,+04:00,Asia/Dubai
+Afghanistan,AF/Kabul,+04:30,Asia/Kabul
+Antigua & Barbuda,AG/Antigua,-04:00,America/Antigua
+Anguilla,AI/Anguilla,-04:00,America/Anguilla
+Albania,AL/Tirane,+01:00,Europe/Tirane
+Armenia,AM/Yerevan,+04:00,Asia/Yerevan
+Angola,AO/Luanda,+01:00,Africa/Luanda
+Antarctica,AQ/Casey,+08:00,Antarctica/Casey
+Antarctica,AQ/Davis,+07:00,Antarctica/Davis
+Antarctica,AQ/DumontDUrville,+10:00,Antarctica/DumontDUrville
+Antarctica,AQ/Mawson,+05:00,Antarctica/Mawson
+Antarctica,AQ/McMurdo,+12:00,Antarctica/McMurdo
+Antarctica,AQ/Palmer,-03:00,Antarctica/Palmer
+Antarctica,AQ/Rothera,-03:00,Antarctica/Rothera
+Antarctica,AQ/Syowa,+03:00,Antarctica/Syowa
+Antarctica,AQ/Troll,-00:00,Antarctica/Troll
+Antarctica,AQ/Vostok,+06:00,Antarctica/Vostok
+Argentina,AR/Buenos_Aires,-03:00,America/Argentina/Buenos_Aires
+Argentina,AR/Catamarca,-03:00,America/Argentina/Catamarca
+Argentina,AR/Cordoba,-03:00,America/Argentina/Cordoba
+Argentina,AR/Jujuy,-03:00,America/Argentina/Jujuy
+Argentina,AR/La_Rioja,-03:00,America/Argentina/La_Rioja
+Argentina,AR/Mendoza,-03:00,America/Argentina/Mendoza
+Argentina,AR/Rio_Gallegos,-03:00,America/Argentina/Rio_Gallegos
+Argentina,AR/Salta,-03:00,America/Argentina/Salta
+Argentina,AR/San_Juan,-03:00,America/Argentina/San_Juan
+Argentina,AR/San_Luis,-03:00,America/Argentina/San_Luis
+Argentina,AR/Tucuman,-03:00,America/Argentina/Tucuman
+Argentina,AR/Ushuaia,-03:00,America/Argentina/Ushuaia
+Samoa (American),AS/Pago_Pago,-11:00,Pacific/Pago_Pago
+Austria,AT/Vienna,+01:00,Europe/Vienna
+Australia,AU/Adelaide,+09:30,Australia/Adelaide
+Australia,AU/Brisbane,+10:00,Australia/Brisbane
+Australia,AU/Broken_Hill,+09:30,Australia/Broken_Hill
+Australia,AU/Currie,+10:00,Australia/Currie
+Australia,AU/Darwin,+09:30,Australia/Darwin
+Australia,AU/Eucla,+08:45,Australia/Eucla
+Australia,AU/Hobart,+10:00,Australia/Hobart
+Australia,AU/Lindeman,+10:00,Australia/Lindeman
+Australia,AU/Lord_Howe,+10:30,Australia/Lord_Howe
+Australia,AU/Macquarie,+11:00,Antarctica/Macquarie
+Australia,AU/Melbourne,+10:00,Australia/Melbourne
+Australia,AU/Perth,+08:00,Australia/Perth
+Australia,AU/Sydney,+10:00,Australia/Sydney
+Aruba,AW/Aruba,-04:00,America/Aruba
+Åland Islands,AX/Mariehamn,+02:00,Europe/Mariehamn
+Azerbaijan,AZ/Baku,+04:00,Asia/Baku
+Bosnia & Herzegovina,BA/Sarajevo,+01:00,Europe/Sarajevo
+Barbados,BB/Barbados,-04:00,America/Barbados
+Bangladesh,BD/Dhaka,+06:00,Asia/Dhaka
+Belgium,BE/Brussels,+01:00,Europe/Brussels
+Burkina Faso,BF/Ouagadougou,-00:00,Africa/Ouagadougou
+Bulgaria,BG/Sofia,+02:00,Europe/Sofia
+Bahrain,BH/Bahrain,+03:00,Asia/Bahrain
+Burundi,BI/Bujumbura,+02:00,Africa/Bujumbura
+Benin,BJ/Porto-Novo,+01:00,Africa/Porto-Novo
+St Barthelemy,BL/St_Barthelemy,-04:00,America/St_Barthelemy
+Bermuda,BM/Bermuda,-04:00,Atlantic/Bermuda
+Brunei,BN/Brunei,+08:00,Asia/Brunei
+Bolivia,BO/La_Paz,-04:00,America/La_Paz
+Caribbean NL,BQ/Kralendijk,-04:00,America/Kralendijk
+Brazil,BR/Araguaina,-03:00,America/Araguaina
+Brazil,BR/Bahia,-03:00,America/Bahia
+Brazil,BR/Belem,-03:00,America/Belem
+Brazil,BR/Boa_Vista,-04:00,America/Boa_Vista
+Brazil,BR/Campo_Grande,-04:00,America/Campo_Grande
+Brazil,BR/Cuiaba,-04:00,America/Cuiaba
+Brazil,BR/Eirunepe,-05:00,America/Eirunepe
+Brazil,BR/Fortaleza,-03:00,America/Fortaleza
+Brazil,BR/Maceio,-03:00,America/Maceio
+Brazil,BR/Manaus,-04:00,America/Manaus
+Brazil,BR/Noronha,-02:00,America/Noronha
+Brazil,BR/Porto_Velho,-04:00,America/Porto_Velho
+Brazil,BR/Recife,-03:00,America/Recife
+Brazil,BR/Rio_Branco,-05:00,America/Rio_Branco
+Brazil,BR/Santarem,-03:00,America/Santarem
+Brazil,BR/Sao_Paulo,-03:00,America/Sao_Paulo
+Bahamas,BS/Nassau,-05:00,America/Nassau
+Bhutan,BT/Thimphu,+06:00,Asia/Thimphu
+Botswana,BW/Gaborone,+02:00,Africa/Gaborone
+Belarus,BY/Minsk,+03:00,Europe/Minsk
+Belize,BZ/Belize,-06:00,America/Belize
+Canada,CA/Atikokan,-05:00,America/Atikokan
+Canada,CA/Blanc-Sablon,-04:00,America/Blanc-Sablon
+Canada,CA/Cambridge_Bay,-07:00,America/Cambridge_Bay
+Canada,CA/Creston,-07:00,America/Creston
+Canada,CA/Dawson,-08:00,America/Dawson
+Canada,CA/Dawson_Creek,-07:00,America/Dawson_Creek
+Canada,CA/Edmonton,-07:00,America/Edmonton
+Canada,CA/Fort_Nelson,-07:00,America/Fort_Nelson
+Canada,CA/Glace_Bay,-04:00,America/Glace_Bay
+Canada,CA/Goose_Bay,-04:00,America/Goose_Bay
+Canada,CA/Halifax,-04:00,America/Halifax
+Canada,CA/Inuvik,-07:00,America/Inuvik
+Canada,CA/Iqaluit,-05:00,America/Iqaluit
+Canada,CA/Moncton,-04:00,America/Moncton
+Canada,CA/Nipigon,-05:00,America/Nipigon
+Canada,CA/Pangnirtung,-05:00,America/Pangnirtung
+Canada,CA/Rainy_River,-06:00,America/Rainy_River
+Canada,CA/Rankin_Inlet,-06:00,America/Rankin_Inlet
+Canada,CA/Regina,-06:00,America/Regina
+Canada,CA/Resolute,-06:00,America/Resolute
+Canada,CA/St_Johns,-03:30,America/St_Johns
+Canada,CA/Swift_Current,-06:00,America/Swift_Current
+Canada,CA/Thunder_Bay,-05:00,America/Thunder_Bay
+Canada,CA/Toronto,-05:00,America/Toronto
+Canada,CA/Vancouver,-08:00,America/Vancouver
+Canada,CA/Whitehorse,-08:00,America/Whitehorse
+Canada,CA/Winnipeg,-06:00,America/Winnipeg
+Canada,CA/Yellowknife,-07:00,America/Yellowknife
+Cocos (Keeling) Islands,CC/Cocos,+06:30,Indian/Cocos
+Congo (Dem. Rep.),CD/Kinshasa,+01:00,Africa/Kinshasa
+Congo (Dem. Rep.),CD/Lubumbashi,+02:00,Africa/Lubumbashi
+Central African Rep.,CF/Bangui,+01:00,Africa/Bangui
+Congo (Rep.),CG/Brazzaville,+01:00,Africa/Brazzaville
+Switzerland,CH/Zurich,+01:00,Europe/Zurich
+Côte d'Ivoire,CI/Abidjan,-00:00,Africa/Abidjan
+Cook Islands,CK/Rarotonga,-10:00,Pacific/Rarotonga
+Chile,CL/Easter,-06:00,Pacific/Easter
+Chile,CL/Punta_Arenas,-03:00,America/Punta_Arenas
+Chile,CL/Santiago,-04:00,America/Santiago
+Cameroon,CM/Douala,+01:00,Africa/Douala
+China,CN/Shanghai,+08:00,Asia/Shanghai
+China,CN/Urumqi,+06:00,Asia/Urumqi
+Colombia,CO/Bogota,-05:00,America/Bogota
+Costa Rica,CR/Costa_Rica,-06:00,America/Costa_Rica
+Cuba,CU/Havana,-05:00,America/Havana
+Cape Verde,CV/Cape_Verde,-01:00,Atlantic/Cape_Verde
+Curaçao,CW/Curacao,-04:00,America/Curacao
+Christmas Island,CX/Christmas,+07:00,Indian/Christmas
+Cyprus,CY/Famagusta,+02:00,Asia/Famagusta
+Cyprus,CY/Nicosia,+02:00,Asia/Nicosia
+Czech Republic,CZ/Prague,+01:00,Europe/Prague
+Germany,DE/Berlin,+01:00,Europe/Berlin
+Germany,DE/Busingen,+01:00,Europe/Busingen
+Djibouti,DJ/Djibouti,+03:00,Africa/Djibouti
+Denmark,DK/Copenhagen,+01:00,Europe/Copenhagen
+Dominica,DM/Dominica,-04:00,America/Dominica
+Dominican Republic,DO/Santo_Domingo,-04:00,America/Santo_Domingo
+Algeria,DZ/Algiers,+01:00,Africa/Algiers
+Ecuador,EC/Galapagos,-06:00,Pacific/Galapagos
+Ecuador,EC/Guayaquil,-05:00,America/Guayaquil
+Estonia,EE/Tallinn,+02:00,Europe/Tallinn
+Egypt,EG/Cairo,+02:00,Africa/Cairo
+Western Sahara,EH/El_Aaiun,-00:00,Africa/El_Aaiun
+Eritrea,ER/Asmara,+03:00,Africa/Asmara
+Spain,ES/Canary,-00:00,Atlantic/Canary
+Spain,ES/Ceuta,+01:00,Africa/Ceuta
+Spain,ES/Madrid,+01:00,Europe/Madrid
+Ethiopia,ET/Addis_Ababa,+03:00,Africa/Addis_Ababa
+Finland,FI/Helsinki,+02:00,Europe/Helsinki
+Fiji,FJ/Fiji,+12:00,Pacific/Fiji
+Falkland Islands,FK/Stanley,-03:00,Atlantic/Stanley
+Micronesia,FM/Chuuk,+10:00,Pacific/Chuuk
+Micronesia,FM/Kosrae,+11:00,Pacific/Kosrae
+Micronesia,FM/Pohnpei,+11:00,Pacific/Pohnpei
+Faroe Islands,FO/Faroe,-00:00,Atlantic/Faroe
+France,FR/Paris,+01:00,Europe/Paris
+Gabon,GA/Libreville,+01:00,Africa/Libreville
+Britain (UK),GB/London,-00:00,Europe/London
+Grenada,GD/Grenada,-04:00,America/Grenada
+Georgia,GE/Tbilisi,+04:00,Asia/Tbilisi
+French Guiana,GF/Cayenne,-03:00,America/Cayenne
+Guernsey,GG/Guernsey,-00:00,Europe/Guernsey
+Ghana,GH/Accra,-00:00,Africa/Accra
+Gibraltar,GI/Gibraltar,+01:00,Europe/Gibraltar
+Greenland,GL/Danmarkshavn,-00:00,America/Danmarkshavn
+Greenland,GL/Godthab,-03:00,America/Godthab
+Greenland,GL/Scoresbysund,-01:00,America/Scoresbysund
+Greenland,GL/Thule,-04:00,America/Thule
+Gambia,GM/Banjul,-00:00,Africa/Banjul
+Guinea,GN/Conakry,-00:00,Africa/Conakry
+Guadeloupe,GP/Guadeloupe,-04:00,America/Guadeloupe
+Equatorial Guinea,GQ/Malabo,+01:00,Africa/Malabo
+Greece,GR/Athens,+02:00,Europe/Athens
+South Georgia & the South Sandwich Islands,GS/South_Georgia,-02:00,Atlantic/South_Georgia
+Guatemala,GT/Guatemala,-06:00,America/Guatemala
+Guam,GU/Guam,+10:00,Pacific/Guam
+Guinea-Bissau,GW/Bissau,-00:00,Africa/Bissau
+Guyana,GY/Guyana,-04:00,America/Guyana
+Hong Kong,HK/Hong_Kong,+08:00,Asia/Hong_Kong
+Honduras,HN/Tegucigalpa,-06:00,America/Tegucigalpa
+Croatia,HR/Zagreb,+01:00,Europe/Zagreb
+Haiti,HT/Port-au-Prince,-05:00,America/Port-au-Prince
+Hungary,HU/Budapest,+01:00,Europe/Budapest
+Indonesia,ID/Jakarta,+07:00,Asia/Jakarta
+Indonesia,ID/Jayapura,+09:00,Asia/Jayapura
+Indonesia,ID/Makassar,+08:00,Asia/Makassar
+Indonesia,ID/Pontianak,+07:00,Asia/Pontianak
+Ireland,IE/Dublin,+01:00,Europe/Dublin
+Israel,IL/Jerusalem,+02:00,Asia/Jerusalem
+Isle of Man,IM/Isle_of_Man,-00:00,Europe/Isle_of_Man
+India,IN/Kolkata,+05:30,Asia/Kolkata
+British Indian Ocean Territory,IO/Chagos,+06:00,Indian/Chagos
+Iraq,IQ/Baghdad,+03:00,Asia/Baghdad
+Iran,IR/Tehran,+03:30,Asia/Tehran
+Iceland,IS/Reykjavik,-00:00,Atlantic/Reykjavik
+Italy,IT/Rome,+01:00,Europe/Rome
+Jersey,JE/Jersey,-00:00,Europe/Jersey
+Jamaica,JM/Jamaica,-05:00,America/Jamaica
+Jordan,JO/Amman,+02:00,Asia/Amman
+Japan,JP/Tokyo,+09:00,Asia/Tokyo
+Kenya,KE/Nairobi,+03:00,Africa/Nairobi
+Kyrgyzstan,KG/Bishkek,+06:00,Asia/Bishkek
+Cambodia,KH/Phnom_Penh,+07:00,Asia/Phnom_Penh
+Kiribati,KI/Enderbury,+13:00,Pacific/Enderbury
+Kiribati,KI/Kiritimati,+14:00,Pacific/Kiritimati
+Kiribati,KI/Tarawa,+12:00,Pacific/Tarawa
+Comoros,KM/Comoro,+03:00,Indian/Comoro
+St Kitts & Nevis,KN/St_Kitts,-04:00,America/St_Kitts
+Korea (North),KP/Pyongyang,+09:00,Asia/Pyongyang
+Korea (South),KR/Seoul,+09:00,Asia/Seoul
+Kuwait,KW/Kuwait,+03:00,Asia/Kuwait
+Cayman Islands,KY/Cayman,-05:00,America/Cayman
+Kazakhstan,KZ/Almaty,+06:00,Asia/Almaty
+Kazakhstan,KZ/Aqtau,+05:00,Asia/Aqtau
+Kazakhstan,KZ/Aqtobe,+05:00,Asia/Aqtobe
+Kazakhstan,KZ/Atyrau,+05:00,Asia/Atyrau
+Kazakhstan,KZ/Oral,+05:00,Asia/Oral
+Kazakhstan,KZ/Qyzylorda,+06:00,Asia/Qyzylorda
+Laos,LA/Vientiane,+07:00,Asia/Vientiane
+Lebanon,LB/Beirut,+02:00,Asia/Beirut
+St Lucia,LC/St_Lucia,-04:00,America/St_Lucia
+Liechtenstein,LI/Vaduz,+01:00,Europe/Vaduz
+Sri Lanka,LK/Colombo,+05:30,Asia/Colombo
+Liberia,LR/Monrovia,-00:00,Africa/Monrovia
+Lesotho,LS/Maseru,+02:00,Africa/Maseru
+Lithuania,LT/Vilnius,+02:00,Europe/Vilnius
+Luxembourg,LU/Luxembourg,+01:00,Europe/Luxembourg
+Latvia,LV/Riga,+02:00,Europe/Riga
+Libya,LY/Tripoli,+02:00,Africa/Tripoli
+Morocco,MA/Casablanca,-00:00,Africa/Casablanca
+Monaco,MC/Monaco,+01:00,Europe/Monaco
+Moldova,MD/Chisinau,+02:00,Europe/Chisinau
+Montenegro,ME/Podgorica,+01:00,Europe/Podgorica
+St Martin (French),MF/Marigot,-04:00,America/Marigot
+Madagascar,MG/Antananarivo,+03:00,Indian/Antananarivo
+Marshall Islands,MH/Kwajalein,+12:00,Pacific/Kwajalein
+Marshall Islands,MH/Majuro,+12:00,Pacific/Majuro
+Macedonia,MK/Skopje,+01:00,Europe/Skopje
+Mali,ML/Bamako,-00:00,Africa/Bamako
+Myanmar (Burma),MM/Yangon,+06:30,Asia/Yangon
+Mongolia,MN/Choibalsan,+08:00,Asia/Choibalsan
+Mongolia,MN/Hovd,+07:00,Asia/Hovd
+Mongolia,MN/Ulaanbaatar,+08:00,Asia/Ulaanbaatar
+Macau,MO/Macau,+08:00,Asia/Macau
+Northern Mariana Islands,MP/Saipan,+10:00,Pacific/Saipan
+Martinique,MQ/Martinique,-04:00,America/Martinique
+Mauritania,MR/Nouakchott,-00:00,Africa/Nouakchott
+Montserrat,MS/Montserrat,-04:00,America/Montserrat
+Malta,MT/Malta,+01:00,Europe/Malta
+Mauritius,MU/Mauritius,+04:00,Indian/Mauritius
+Maldives,MV/Maldives,+05:00,Indian/Maldives
+Malawi,MW/Blantyre,+02:00,Africa/Blantyre
+Mexico,MX/Bahia_Banderas,-06:00,America/Bahia_Banderas
+Mexico,MX/Cancun,-05:00,America/Cancun
+Mexico,MX/Chihuahua,-07:00,America/Chihuahua
+Mexico,MX/Hermosillo,-07:00,America/Hermosillo
+Mexico,MX/Matamoros,-06:00,America/Matamoros
+Mexico,MX/Mazatlan,-07:00,America/Mazatlan
+Mexico,MX/Merida,-06:00,America/Merida
+Mexico,MX/Mexico_City,-06:00,America/Mexico_City
+Mexico,MX/Monterrey,-06:00,America/Monterrey
+Mexico,MX/Ojinaga,-07:00,America/Ojinaga
+Mexico,MX/Tijuana,-08:00,America/Tijuana
+Malaysia,MY/Kuala_Lumpur,+08:00,Asia/Kuala_Lumpur
+Malaysia,MY/Kuching,+08:00,Asia/Kuching
+Mozambique,MZ/Maputo,+02:00,Africa/Maputo
+Namibia,NA/Windhoek,+02:00,Africa/Windhoek
+New Caledonia,NC/Noumea,+11:00,Pacific/Noumea
+Niger,NE/Niamey,+01:00,Africa/Niamey
+Norfolk Island,NF/Norfolk,+11:00,Pacific/Norfolk
+Nigeria,NG/Lagos,+01:00,Africa/Lagos
+Nicaragua,NI/Managua,-06:00,America/Managua
+Netherlands,NL/Amsterdam,+01:00,Europe/Amsterdam
+Norway,NO/Oslo,+01:00,Europe/Oslo
+Nepal,NP/Kathmandu,+05:45,Asia/Kathmandu
+Nauru,NR/Nauru,+12:00,Pacific/Nauru
+Niue,NU/Niue,-11:00,Pacific/Niue
+New Zealand,NZ/Auckland,+12:00,Pacific/Auckland
+New Zealand,NZ/Chatham,+12:45,Pacific/Chatham
+Oman,OM/Muscat,+04:00,Asia/Muscat
+Panama,PA/Panama,-05:00,America/Panama
+Peru,PE/Lima,-05:00,America/Lima
+French Polynesia,PF/Gambier,-09:00,Pacific/Gambier
+French Polynesia,PF/Marquesas,-09:30,Pacific/Marquesas
+French Polynesia,PF/Tahiti,-10:00,Pacific/Tahiti
+Papua New Guinea,PG/Bougainville,+11:00,Pacific/Bougainville
+Papua New Guinea,PG/Port_Moresby,+10:00,Pacific/Port_Moresby
+Philippines,PH/Manila,+08:00,Asia/Manila
+Pakistan,PK/Karachi,+05:00,Asia/Karachi
+Poland,PL/Warsaw,+01:00,Europe/Warsaw
+St Pierre & Miquelon,PM/Miquelon,-03:00,America/Miquelon
+Pitcairn,PN/Pitcairn,-08:00,Pacific/Pitcairn
+Puerto Rico,PR/Puerto_Rico,-04:00,America/Puerto_Rico
+Palestine,PS/Gaza,+02:00,Asia/Gaza
+Palestine,PS/Hebron,+02:00,Asia/Hebron
+Portugal,PT/Azores,-01:00,Atlantic/Azores
+Portugal,PT/Lisbon,-00:00,Europe/Lisbon
+Portugal,PT/Madeira,-00:00,Atlantic/Madeira
+Palau,PW/Palau,+09:00,Pacific/Palau
+Paraguay,PY/Asuncion,-04:00,America/Asuncion
+Qatar,QA/Qatar,+03:00,Asia/Qatar
+Réunion,RE/Reunion,+04:00,Indian/Reunion
+Romania,RO/Bucharest,+02:00,Europe/Bucharest
+Serbia,RS/Belgrade,+01:00,Europe/Belgrade
+Russia,RU/Anadyr,+12:00,Asia/Anadyr
+Russia,RU/Astrakhan,+04:00,Europe/Astrakhan
+Russia,RU/Barnaul,+07:00,Asia/Barnaul
+Russia,RU/Chita,+09:00,Asia/Chita
+Russia,RU/Irkutsk,+08:00,Asia/Irkutsk
+Russia,RU/Kaliningrad,+02:00,Europe/Kaliningrad
+Russia,RU/Kamchatka,+12:00,Asia/Kamchatka
+Russia,RU/Khandyga,+09:00,Asia/Khandyga
+Russia,RU/Kirov,+03:00,Europe/Kirov
+Russia,RU/Krasnoyarsk,+07:00,Asia/Krasnoyarsk
+Russia,RU/Magadan,+11:00,Asia/Magadan
+Russia,RU/Moscow,+03:00,Europe/Moscow
+Russia,RU/Novokuznetsk,+07:00,Asia/Novokuznetsk
+Russia,RU/Novosibirsk,+07:00,Asia/Novosibirsk
+Russia,RU/Omsk,+06:00,Asia/Omsk
+Russia,RU/Sakhalin,+11:00,Asia/Sakhalin
+Russia,RU/Samara,+04:00,Europe/Samara
+Russia,RU/Saratov,+04:00,Europe/Saratov
+Russia,RU/Simferopol,+03:00,Europe/Simferopol
+Russia,RU/Srednekolymsk,+11:00,Asia/Srednekolymsk
+Russia,RU/Tomsk,+07:00,Asia/Tomsk
+Russia,RU/Ulyanovsk,+04:00,Europe/Ulyanovsk
+Russia,RU/Ust-Nera,+10:00,Asia/Ust-Nera
+Russia,RU/Vladivostok,+10:00,Asia/Vladivostok
+Russia,RU/Volgograd,+03:00,Europe/Volgograd
+Russia,RU/Yakutsk,+09:00,Asia/Yakutsk
+Russia,RU/Yekaterinburg,+05:00,Asia/Yekaterinburg
+Rwanda,RW/Kigali,+02:00,Africa/Kigali
+Saudi Arabia,SA/Riyadh,+03:00,Asia/Riyadh
+Solomon Islands,SB/Guadalcanal,+11:00,Pacific/Guadalcanal
+Seychelles,SC/Mahe,+04:00,Indian/Mahe
+Sudan,SD/Khartoum,+02:00,Africa/Khartoum
+Sweden,SE/Stockholm,+01:00,Europe/Stockholm
+Singapore,SG/Singapore,+08:00,Asia/Singapore
+St Helena,SH/St_Helena,-00:00,Atlantic/St_Helena
+Slovenia,SI/Ljubljana,+01:00,Europe/Ljubljana
+Svalbard & Jan Mayen,SJ/Longyearbyen,+01:00,Arctic/Longyearbyen
+Slovakia,SK/Bratislava,+01:00,Europe/Bratislava
+Sierra Leone,SL/Freetown,-00:00,Africa/Freetown
+San Marino,SM/San_Marino,+01:00,Europe/San_Marino
+Senegal,SN/Dakar,-00:00,Africa/Dakar
+Somalia,SO/Mogadishu,+03:00,Africa/Mogadishu
+Suriname,SR/Paramaribo,-03:00,America/Paramaribo
+South Sudan,SS/Juba,+03:00,Africa/Juba
+Sao Tome & Principe,ST/Sao_Tome,+01:00,Africa/Sao_Tome
+El Salvador,SV/El_Salvador,-06:00,America/El_Salvador
+St Maarten (Dutch),SX/Lower_Princes,-04:00,America/Lower_Princes
+Syria,SY/Damascus,+02:00,Asia/Damascus
+Swaziland,SZ/Mbabane,+02:00,Africa/Mbabane
+Turks & Caicos Is,TC/Grand_Turk,-05:00,America/Grand_Turk
+Chad,TD/Ndjamena,+01:00,Africa/Ndjamena
+French Southern & Antarctic Lands,TF/Kerguelen,+05:00,Indian/Kerguelen
+Togo,TG/Lome,-00:00,Africa/Lome
+Thailand,TH/Bangkok,+07:00,Asia/Bangkok
+Tajikistan,TJ/Dushanbe,+05:00,Asia/Dushanbe
+Tokelau,TK/Fakaofo,+13:00,Pacific/Fakaofo
+East Timor,TL/Dili,+09:00,Asia/Dili
+Turkmenistan,TM/Ashgabat,+05:00,Asia/Ashgabat
+Tunisia,TN/Tunis,+01:00,Africa/Tunis
+Tonga,TO/Tongatapu,+13:00,Pacific/Tongatapu
+Turkey,TR/Istanbul,+03:00,Europe/Istanbul
+Trinidad & Tobago,TT/Port_of_Spain,-04:00,America/Port_of_Spain
+Tuvalu,TV/Funafuti,+12:00,Pacific/Funafuti
+Taiwan,TW/Taipei,+08:00,Asia/Taipei
+Tanzania,TZ/Dar_es_Salaam,+03:00,Africa/Dar_es_Salaam
+Ukraine,UA/Kiev,+02:00,Europe/Kiev
+Ukraine,UA/Uzhgorod,+02:00,Europe/Uzhgorod
+Ukraine,UA/Zaporozhye,+02:00,Europe/Zaporozhye
+Uganda,UG/Kampala,+03:00,Africa/Kampala
+US minor outlying islands,UM/Midway,-11:00,Pacific/Midway
+US minor outlying islands,UM/Wake,+12:00,Pacific/Wake
+United States,US/Alaska,-09:00,America/Anchorage
+United States,US/Central,-06:00,America/Chicago
+United States,US/Eastern,-05:00,America/New_York
+United States,US/Hawaii,-10:00,Pacific/Honolulu
+United States,US/Mountain,-07:00,America/Denver
+United States,US/Arizona,-07:00,America/Phoenix
+United States,US/Pacific,-08:00,America/Los_Angeles
+Uruguay,UY/Montevideo,-03:00,America/Montevideo
+Uzbekistan,UZ/Samarkand,+05:00,Asia/Samarkand
+Uzbekistan,UZ/Tashkent,+05:00,Asia/Tashkent
+Vatican City,VA/Vatican,+01:00,Europe/Vatican
+St Vincent,VC/St_Vincent,-04:00,America/St_Vincent
+Venezuela,VE/Caracas,-04:00,America/Caracas
+Virgin Islands (UK),VG/Tortola,-04:00,America/Tortola
+Virgin Islands (US),VI/St_Thomas,-04:00,America/St_Thomas
+Vietnam,VN/Ho_Chi_Minh,+07:00,Asia/Ho_Chi_Minh
+Vanuatu,VU/Efate,+11:00,Pacific/Efate
+Wallis & Futuna,WF/Wallis,+12:00,Pacific/Wallis
+Samoa (western),WS/Apia,+13:00,Pacific/Apia
+Yemen,YE/Aden,+03:00,Asia/Aden
+Mayotte,YT/Mayotte,+03:00,Indian/Mayotte
+South Africa,ZA/Johannesburg,+02:00,Africa/Johannesburg
+Zambia,ZM/Lusaka,+02:00,Africa/Lusaka
+Zimbabwe,ZW/Harare,+02:00,Africa/Harare

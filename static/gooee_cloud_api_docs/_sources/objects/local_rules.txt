@@ -1,0 +1,504 @@
+.. _objects_local_rules:
+
+===========
+Local Rules
+===========
+
+.. contents:: Quick Links
+
+Description
+===========
+
+Local Rules are composed of triggers and conditions that dictate when and how a
+:ref:`Device <objects_devices>` Meta change triggers a rule event.
+
+Data Model
+==========
+
+================  =====================================  =========
+Key               Datatype                               Notes
+================  =====================================  =========
+id                ref                                    read-only
+created           datetime                               read-only
+modified          datetime                               read-only
+name              string                                 required
+description       string
+building          :ref:`ref <objects_buildings>`         read-only
+customer          :ref:`ref <objects_customers>`         read-only
+spaces            array(:ref:`ref <objects_spaces>`)     read-only
+device            ref                                    required
+conditions        :ref:`ref <rule_conditions>`           required, 5 conditions max
+lock_condition    :ref:`ref <rule_lock_condition>`
+operations        :ref:`ref <rule_operations>`           required
+enabled           boolean                                default=true
+customer_scopes   array(:ref:`ref <objects_customers>`)  see :ref:`general_scope`
+partner_scopes    array(:ref:`ref <objects_partners>`)   see :ref:`general_scope`
+tags              array(str)                             max_length=50 per tag
+last_execution    datetime                               read-only
+execution_count   number                                 read-only
+================  =====================================  =========
+
+.. _rules_complex_constraints:
+
+Complex Constraints
+-------------------
+
+* Rule `name` must be unique per Building.
+* Rule `device` must have a `commission_state` of `"active"`.
+* Rule `device` must not be associated with a :ref:`Gateway Lite <integrations_gateway_lite>`.
+* The payload must validate against a JSON schema:
+  :download:`Rules JSONSchema </_static/rules-schema.json>`
+
+.. _rule_conditions:
+
+Conditions
+----------
+
+Conditions are JSON structures composed of **and** or **or** operations. The last condition must
+contain a `logical_operator` of null
+
+
+.. sourcecode:: json
+
+ {
+    "conditions": [
+      {
+        "variable": "occupancy_detected",
+        "operator": "=",
+        "value": false,
+        "duration": 60,
+        "logical_operator": "or"
+      },
+      {
+        "action": "button_pressed",
+        "parameters": {
+          "variable": "button_number",
+          "operator": "=",
+          "value": 2
+        },
+        "logical_operator": "and"
+      },
+      {
+        "variable": "time_of_day",
+        "operator": "<",
+        "value": "13:00:00",
+        "logical_operator": "and"
+      },
+      {
+        "variable": "day_of_week",
+        "operator": "=",
+        "value": [
+          "mon",
+          "tue",
+          "wed"
+        ]
+      }
+    ]
+  }
+
+
+.. _rule_operations:
+
+Operations
+----------
+
+When the conditions are met, a Rule executes its Operations. Operations are a set of :ref:`Actions
+<objects_actions>` applied over a set of :ref:`Spaces <objects_spaces>`.
+
+.. sourcecode:: json
+
+    {
+      "operations": [
+        {
+          "spaces": [
+            "<UUID>"
+          ],
+          "actions": [
+            {
+              "name": "on"
+            },
+            {
+              "name": "dim",
+              "parameters": {
+                "level": 50
+              }
+            }
+          ]
+        }
+      ]
+    }
+
+
+.. _rule_locking:
+
+Locking
+-------
+
+Rules employ a locking mechanism to ensure that the same Rule won't keep evaluating once the
+intended effects are achieved. A Rule will never execute more than once *while its conditions
+are still met*.
+
+Once a Rule executes, it is immediately **locked**. A **locked** Rule will not
+execute, regardless of whether its conditions are fulfilled.
+
+The lock is removed once the Rule's conditions are no longer fulfilled, allowing the Rule to
+execute as normal again.
+
+For example, say you have a Rule with the following ``conditions``:
+
+.. code-block:: json
+
+  [{
+    "variable": "motion_intensity",
+    "operator": ">",
+    "value": 15
+  }]
+
+This scenario might play out:
+
+  * ``"motion_intensity"`` = ``22``:
+    * Rule conditions are fulfilled, and
+    * Rule is not **locked**, so
+    * execute operations, and set Rule to **locked**.
+  * ``"motion_intensity"`` = ``33``:
+    * Rule conditions are fulfilled, but
+    * Rule is **locked**, so skip execution.
+  * ``"motion_intensity"`` = ``10``:
+    * Rule conditions are not fulfilled, so
+    * remove **lock** from Rule.
+  * ``"motion_intensity"` = ``18``
+    * Rule conditions are fulfilled, and
+    * Rule is not **locked**, so
+    * execute operations, and set Rule to **locked**.
+
+
+.. _rule_lock_condition:
+
+Lock Condition
+~~~~~~~~~~~~~~
+
+In some cases, the default locking behavior may not meet your needs. To change the default
+locking behavior, supply a value for the ``"lock_condition"`` parameter. The data model for
+``"lock_condition"`` is a subset of the data model for individual ``"conditions"``:
+
+==========  =======================================
+Key         Datatype
+==========  =======================================
+variable    string
+operator    enum
+value       string | boolean | int | float | array
+==========  =======================================
+
+Example:
+
+.. sourcecode:: json
+
+     {
+        "lock_condition": {
+           "variable": "als",
+           "operator": ">=",
+           "value": 55
+        }
+     }
+
+If a lock condition is present, the normal locking Rules will be ignored. Instead, the Rule
+will be locked when the lock condition is fulfilled, and unlocked when the lock condition is
+*not* fulfilled.
+
+This provides more flexibility and allows for a Rule to execute multiple times
+until a specific state is achieved.
+
+Examples
+--------
+
+.. include:: ../_static/rules-sample-1.json
+   :code: json
+
+.. include:: ../_static/rules-sample-2.json
+   :code: json
+
+.. include:: ../_static/rules-sample-3.json
+   :code: json
+
+.. include:: ../_static/rules-sample-4.json
+   :code: json
+
+.. include:: ../_static/rules-sample-actions.json
+   :code: json
+
+
+API Endpoints
+=============
+
+Create a Rule
+-------------
+
+.. http:POST:: /rules
+
+   :statuscode 201:
+
+List Rules
+----------
+
+.. http:GET:: /rules
+
+   :statuscode 200:
+
+Update a Rule
+-------------
+
+.. http:PUT:: /rules/(id)
+
+   :statuscode 200:
+
+Retrieve a Rule
+---------------
+
+.. http:GET:: /rules/(id)
+
+   :statuscode 200:
+
+Delete a Rule
+-------------
+
+.. http:DELETE:: /rules/(id)
+
+   :statuscode 204:
+
+.. _objects_rules_activity:
+
+Retrieve a Rule activity log
+----------------------------
+
+.. note:: The `activity_log` endpoint has been decomissioned and will be available again soon after
+          the intial deployment of the rules engine v2. ETA 1st quarter of 2019.
+
+.. http:GET:: /rules/(id)/activity_log
+
+   :statuscode 200:
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /rules/93378718-b2ad-4b6c-a1bb-39c5436bf3e6/activity_log HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json
+
+      [
+         {
+            "last_activity": "2016-08-23T13:59:03",
+            "log_level": "warning",
+            "event": "Execution timed out. Restarting..."
+          },
+          {
+            "last_activity": "2016-08-23T13:59:03",
+            "log_level": "info",
+            "event": "Rule created"
+          },
+          {
+            "last_activity": "2016-08-23T13:59:03",
+            "log_level": "info",
+            "event": "Rule executed"
+          },
+          {
+            "last_activity": "2016-08-23T13:59:03",
+            "log_level": "error",
+            "event": "Parse error"
+          }
+      ]
+
+.. _objects_rules_meta_options:
+
+Retrieve Meta, Variables, and Operators for building Rules
+----------------------------------------------------------
+
+This endpoint provides a list of the currently available Rule triggers and conditions.  The default
+set of options is listed below.  However, additional options are likely to be present.  Device Meta
+that's in the ``~rule_trigger`` Meta Group will also be included as long as the Meta exists.
+
+.. http:GET:: /rules/meta/options
+
+   :statuscode 200:
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /rules/meta/options HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json
+
+      [
+          {
+              "name": "day_of_week",
+              "display_name": "Day of week",
+              "data_type": "list",
+              "operators": [
+                  {
+                      "value": "=",
+                      "display": "equal to"
+                  },
+                  {
+                      "value": "!=",
+                      "display": "not equal to"
+                  }
+              ],
+              "options": [
+                  {
+                      "value": "mon",
+                      "display": "Monday"
+                  },
+                  {
+                      "value": "tue",
+                      "display": "Tuesday"
+                  },
+                  {
+                      "value": "wed",
+                      "display": "Wednesday"
+                  },
+                  {
+                      "value": "thu",
+                      "display": "Thursday"
+                  },
+                  {
+                      "value": "fri",
+                      "display": "Friday"
+                  },
+                  {
+                      "value": "sat",
+                      "display": "Saturday"
+                  },
+                  {
+                      "value": "sun",
+                      "display": "Sunday"
+                  }
+              ]
+          },
+          {
+              "name": "time_of_day",
+              "display_name": "Time of day",
+              "data_type": "time",
+              "operators": [
+                  {
+                      "value": ">",
+                      "display": "after"
+                  },
+                  {
+                      "value": ">",
+                      "display": "at or after"
+                  },
+                  {
+                      "value": "<",
+                      "display": "before"
+                  },
+                  {
+                      "value": "<=",
+                      "display": "at or before"
+                  },
+                  {
+                      "value": "=",
+                      "display": "is"
+                  },
+                  {
+                      "value": "!=",
+                      "display": "is not"
+                  }
+              ],
+              "options": null
+          },
+          {
+              "name": "motion_intensity",
+              "display_name": "Motion Intensity",
+              "data_type": "number",
+              "operators": [
+                  {
+                      "value": ">",
+                      "display": "greater than"
+                  },
+                  {
+                      "value": ">=",
+                      "display": "greater than or equal to"
+                  },
+                  {
+                      "value": "<",
+                      "display": "less than"
+                  },
+                  {
+                      "value": "<=",
+                      "display": "less than or equal to"
+                  },
+                  {
+                      "value": "=",
+                      "display": "equal to"
+                  },
+                  {
+                      "value": "!=",
+                      "display": "not equal to"
+                  }
+              ],
+              "options": null
+          },
+          {
+              "name": "occupancy_detected",
+              "display_name": "Occupancy",
+              "data_type": "bool",
+              "operators": [
+                  {
+                      "value": "=",
+                      "display": "detected"
+                  },
+                  {
+                      "value": "!=",
+                      "display": "not detected"
+                  }
+              ],
+              "options": null
+          },
+          {
+              "name": "dim",
+              "display_name": "Dim",
+              "data_type": "number",
+              "operators": [
+                  {
+                      "value": ">",
+                      "display": "greater than"
+                  },
+                  {
+                      "value": ">=",
+                      "display": "greater than or equal to"
+                  },
+                  {
+                      "value": "<",
+                      "display": "less than"
+                  },
+                  {
+                      "value": "<=",
+                      "display": "less than or equal to"
+                  },
+                  {
+                      "value": "=",
+                      "display": "equal to"
+                  },
+                  {
+                      "value": "!=",
+                      "display": "not equal to"
+                  }
+              ],
+              "options": null
+          }
+      ]

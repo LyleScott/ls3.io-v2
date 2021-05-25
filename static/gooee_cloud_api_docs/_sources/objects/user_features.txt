@@ -1,0 +1,56 @@
+.. _objects_user_features:
+
+=============
+User Features
+=============
+
+
+Description
+===========
+
+Features are used to describe functionality which is enabled/disabled for a particular :ref:`User <objects_users>`.
+We return the features in the API's Auth Response. The following would be the relevant part of the API Auth Response
+which lists the status of two sample features named analytics and history:
+
+    .. code-block:: json
+
+        {
+            "features": {
+                "analytics": true,
+                "history": false
+            }
+        }
+
+
+Data Model
+==========
+
+======================  ==============================================  =====================================================
+Key                     Datatype                                        Notes
+======================  ==============================================  =====================================================
+features                array(obj)                                      JSON Field
+======================  ==============================================  =====================================================
+
+
+Complex Constraints
+-------------------
+
+Only Gooee Users are allowed to set feature flags.
+
+
+API Endpoints
+=============
+
+Update features
+---------------
+
+.. http:PUT:: /users/(id)/features
+
+   :statuscode 200:
+
+Partially Update features
+-------------------------
+
+.. http:PATCH:: /users/(id)/features
+
+   :statuscode 200:

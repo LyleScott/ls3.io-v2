@@ -1,0 +1,231 @@
+.. _objects_areas:
+
+======
+Areas
+======
+
+.. contents:: Quick Links
+
+Description
+===========
+
+Areas are abstractions over the capture area of one or more sensors. Unlike
+:ref:`Spaces <objects_spaces>`, they are not used for lighting control. Rather, they are used for
+data collection. The nature of this data collection is determined by the ``product`` of the Area.
+
+Data Model
+==========
+
+====================  ===============================================  ==============================================================
+Key                   Datatype                                         Notes
+====================  ===============================================  ==============================================================
+id                    ref                                              read-only
+created               datetime                                         read-only
+modified              datetime                                         read-only
+name                  string                                           required, max_length=100
+status                enum                                             read-only, options=[draft, published, active],
+                                                                       see :ref:`Area Status Conditions <area_status_conditions>`
+description           string
+space                 :ref:`ref <objects_spaces>`                      :ref:`Complex Constraints <area_complex_constraints>`
+product               :ref:`ref <objects_products>`                    :ref:`Complex Constraints <area_complex_constraints>`
+type                  string                                           read-only
+devices               array(:ref:`ref <objects_devices>`)              :ref:`Complex Constraints <area_complex_constraints>`
+meta                  array(:ref:`meta <general_meta>`)
+data_source_id        string                                           read-only
+anx_dimensions        array(str)                                       see :ref:`analytics_dimensions`
+customer_scopes       array(:ref:`ref <objects_customers>`)            see :ref:`general_scope`
+partner_scopes        array(:ref:`ref <objects_partners>`)             see :ref:`general_scope`
+tags                  array(str)                                       max_length=50 per tag
+rollup                boolean                                          default=false. If true, then the `head_count` meta is
+                                                                       rolled up to the `Floor Space` and `Building`.
+data_origin           enum                                             options=[http, mqtt], default=http
+====================  ===============================================  ==============================================================
+
+.. _area_status_conditions:
+
+Area Status Conditions
+======================
+
+The status of an Area is recalculated during the save and delete of its related Devices, Meta, and
+the Area itself. The following is a sequential list of the different Area statuses and their
+conditions:
+
+====================  ===========
+Status                Description
+====================  ===========
+draft                 The Area has been created or modified and needs to be exported.
+                      The Area type dictates what specific field modifications are detected
+                      e.g. For PointGrab, currently a change is detected only on the 'name' field.
+published             The Area information was exported for import into the associated sensor's system.
+active                The Area has been registered with the associated sensor's system and is receiving data.
+====================  ===========
+
+.. _area_complex_constraints:
+
+Complex Constraints
+===================
+
+Space Constraints
+-----------------
+
+The `type` of the associated `space` must not be `"virtual"`.
+
+The associated `space` may not be changed once the Area has been linked with a `data_source_id`.
+
+The associated `space` may not be changed if the Area has one or more `devices`.
+
+Product Constraints
+-------------------
+
+The `type` of the associated `product` must be `"sensor"`.
+
+The `state` of the associated `product` must be `active`.
+
+The associated `product` must have the `"sen_headcount"` specification.
+
+The associated `product` may not be changed once the Area has been linked with a `data_source_id`.
+
+The associated `product` may not be changed if the Area has one or more `devices`.
+
+Devices Constraints
+-------------------
+
+The associated `devices` must have the same `product` as the Area.
+
+The `commission_state` of associated `devices` must be `"active"`.
+
+The associated `devices` must have the same `space` as the Area.
+
+
+.. _area_data_source_integration:
+
+Data Source Integration
+=======================
+
+Areas can be registered with a data source by acquiring a `data_source_id` for the Area and for
+each of its :ref:`Devices <objects_devices>`.
+
+.. note:: This is done manually, but will be automated in the future.
+
+Data Model
+----------
+
+===============  ==========================================  ========================
+Key              Datatype                                    Notes
+===============  ==========================================  ========================
+data_source_id   string                                      required, write-only
+devices          array(ref)                                  required, write-only
+===============  ==========================================  ========================
+
+Example
+~~~~~~~
+
+.. sourcecode:: json
+
+    {
+      "data_source_id": "a5n1l15ll",
+      "devices": [
+        {
+          "id": "0298978e-e855-4b94-b686-817ff1ec19af",
+          "data_source_id": "f4gn69kss"
+        },
+        {
+          "id": "029cd0ec-245f-4c1d-bf78-883fb1bf76e5",
+          "data_source_id": "a55nagk5s"
+        }
+      ]
+    }
+
+
+API Endpoints
+=============
+
+Create a Area
+--------------
+
+.. http:POST:: /areas/
+
+   :statuscode 201:
+
+List Areas
+-----------
+
+.. http:GET:: /areas/
+
+   :statuscode 200:
+
+Update a Area
+--------------
+
+.. http:PUT:: /areas/(id)/
+
+   :statuscode 200:
+
+Partially Update a Area
+------------------------
+
+.. http:PATCH:: /areas/(id)/
+
+   :statuscode 200:
+
+Retrieve a Area
+----------------
+
+.. http:GET:: /areas/(id)/
+
+   :statuscode 200:
+
+Delete a Area
+--------------
+
+.. http:DELETE:: /areas/(id)/
+
+   :statuscode 204:
+
+.. _objects_areas_register:
+
+Register an Area With a Data Source
+-----------------------------------
+
+.. http:POST:: /areas/(id)/register
+
+    :json string data_source_id: an Area or Device's acquired data_source_id.
+
+    :statuscode 200: success.
+    :statuscode 400: parameters are missing or invalid.
+    :statuscode 404: device not found.
+
+    **Example request**:
+
+    .. sourcecode:: http
+
+        POST /areas/(id)/register HTTP/1.1
+        Host: api.gooee.io
+        Accept: application/json
+
+        {
+          "data_source_id": "foo123",
+          "devices": [
+            {
+              "id": "cea008ed-c136-4434-8a70-cddcb7048932",
+              "data_source_id": "bar456"
+            }
+          ]
+        }
+
+    **Example response**:
+
+    .. sourcecode:: http
+
+        HTTP/1.1 200 OK
+        Content-Type: application/json
+
+        {
+          "data_source_id": "foo123",
+          "devices": [
+            {
+              "id": "cea008ed-c136-4434-8a70-cddcb7048932",
+              "data_source_id": "bar456"
+            }
+          ]
+        }

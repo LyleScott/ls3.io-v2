@@ -1,0 +1,9 @@
+.. _misc:
+
+Misc
+====
+
+.. toctree::
+
+   misc/change_log
+   misc/object_relation_diagram

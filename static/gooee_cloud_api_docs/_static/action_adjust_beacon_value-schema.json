@@ -1,0 +1,32 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "onoff": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "interval": {
+      "type": "number",
+      "minimum": 30,
+      "maximum": 5000
+    },
+    "slot": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 3
+    },
+    "broadcast_tx": {
+      "type": "number",
+      "enum": [-30, -20, -16, -12, -8, -4, 0, 4]
+    },
+    "tx_rssi": {
+      "type": "number",
+      "minimum": -200,
+      "maximum": 4
+    }
+  },
+  "required": ["slot"],
+  "additionalProperties": false
+}

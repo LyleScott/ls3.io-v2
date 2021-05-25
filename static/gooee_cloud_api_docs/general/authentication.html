@@ -1,0 +1,1184 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Authentication &mdash; Documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/navtree.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Documentation" href="../index.html"/>
+        <link rel="up" title="General" href="../general.html"/>
+        <link rel="next" title="Clearing Field Values" href="clearing_field_values.html"/>
+        <link rel="prev" title="API Tokens" href="api_tokens.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Cloud API
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="link caption"><span class="link caption-text"><a class="reference internal" href="../misc.html">Misc</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/change_log.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/object_relation_diagram.html">Object Relation Diagram</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../general.html">General</a></span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="analytics.html">Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_tokens.html">API Tokens</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#jwt-tokens">JWT Tokens</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logging-in">Logging In</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#refresh-a-token">Refresh a Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#verify-token">Verify Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#revoke-token">Revoke Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#oauth2-tokens">OAuth2 Tokens</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#refresh-an-oauth2-token">Refresh an OAuth2 Token</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="clearing_field_values.html">Clearing Field Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="device_counts.html">Device Counts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exclude_include_fields.html">Include/Exclude Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filtering.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ordering.html">Ordering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meta.html">Meta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meta_groups.html">Meta Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pagination.html">Pagination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pubsub.html">PubSub Message Broker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search.html">Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scope.html">Scope</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../objects.html">Objects</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../objects/action_types.html">Action Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/actions.html">Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/analytics_export.html">Analytics Export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/analytics_query.html">Analytics Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/areas.html">Areas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/buildings.html">Buildings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/connected_products.html">Connected Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/currency.html">Currency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/customers.html">Customers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/dashboards.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/devices.html">Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/fault_alarms.html">Fault Alarms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/local_rules.html">Local Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/locations.html">Locations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/partners.html">Partners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/product_files.html">Product Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/product_types.html">Product Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/products.html">Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/rules_v2.html">Rules V2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/rule_groups.html">Rule Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/scenes.html">Scenes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/schedules.html">Schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/spaces.html">Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/timezones.html">Timezones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/user_features.html">User Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/user_groups.html">User Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/user_preferences.html">User Preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/users.html">Users</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../integrations.html">Integrations</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/als2lux.html">Als-to-Lux Correlation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/external_sensor.html">External Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/gateway_lite.html">Gateway Lite</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cloud API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../general.html">General</a> &raquo;</li>
+        
+      <li>Authentication</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/general/authentication.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="authentication">
+<span id="general-authentication"></span><h1>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h1>
+<p>Upon supplying the correct <cite>username</cite> and <cite>password</cite> combination, a response is returned containing
+a portal theme and a JWT token that will be used for authenticating future requests on the behalf
+of the <a class="reference internal" href="../objects/users.html#objects-users"><span class="std std-ref">User</span></a> until it expires.</p>
+<p>You&#8217;ll then be able to make authenticated requests to the API service by supplying either the JWT
+token in the headers of future requests:</p>
+<p><strong>Authorization: JWT $JWT_TOKEN</strong></p>
+<p>Before the token expires, the token may be refreshed until the <em>ttl</em> is met. This allows short
+lived <em>exp</em> times on JWT tokens to be extended so that the user does not have to reauthenticate.</p>
+<p>For utility, there is also an endpoint for verifying that a token is valid.</p>
+<div class="section" id="jwt-tokens">
+<h2>JWT Tokens<a class="headerlink" href="#jwt-tokens" title="Permalink to this headline">¶</a></h2>
+<p>The <cite>token</cite> in the authorization response is a <a class="reference external" href="https://en.wikipedia.org/wiki/JSON_Web_Token">JWT_Token</a>. If you decode it at <a class="reference external" href="https://jwt.io">jwt.io</a>, you&#8217;ll see
+something like the following structure:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="94%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Claim</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>sub</td>
+<td>The subject of the token. Often, the username of the user that the token is for.</td>
+</tr>
+<tr class="row-odd"><td>iat</td>
+<td>Issued At Time. The time that the token was issued.</td>
+</tr>
+<tr class="row-even"><td>exp</td>
+<td>Expiration. Once exceeded, the token is invalid and can no longer be refreshed.</td>
+</tr>
+<tr class="row-odd"><td>ttl</td>
+<td>Time To Live. Once exceeded, the token can no longer be refreshed.</td>
+</tr>
+<tr class="row-even"><td>iss</td>
+<td>The issuer of the token.</td>
+</tr>
+<tr class="row-odd"><td>aud</td>
+<td>The resource for which the token is for.</td>
+</tr>
+<tr class="row-even"><td>jti</td>
+<td>A unique identifier to prevent replay attacks.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;lyle@gooee.com&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;iat&quot;</span><span class="p">:</span> <span class="mi">1459964702</span><span class="p">,</span>
+  <span class="nt">&quot;exp&quot;</span><span class="p">:</span> <span class="mi">1459965002</span><span class="p">,</span>
+  <span class="nt">&quot;ttl&quot;</span><span class="p">:</span> <span class="mi">1460569502</span><span class="p">,</span>
+  <span class="nt">&quot;iss&quot;</span><span class="p">:</span> <span class="s2">&quot;https://dev-portal.gooee.com/&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;aud&quot;</span><span class="p">:</span> <span class="s2">&quot;portal&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;jti&quot;</span><span class="p">:</span> <span class="s2">&quot;b48d2d1f-f5bf-432f-bdc5-32dbd8ed7eeb&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;user_id&quot;</span><span class="p">:</span> <span class="s2">&quot;d7b011c9-4d19-4c97-a29b-d21b91d2e876&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;account_type&quot;</span><span class="p">:</span> <span class="s2">&quot;customer&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;api_token&quot;</span><span class="p">:</span> <span class="s2">&quot;5377b1c628a1bc3760f342b2046c8fae&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This token was issued at <cite>iat</cite> and expires at <cite>exp</cite>.</p>
+</div>
+<div class="section" id="logging-in">
+<span id="general-authentication-login"></span><h2>Logging In<a class="headerlink" href="#logging-in" title="Permalink to this headline">¶</a></h2>
+<p>Simply supply the <code class="docutils literal"><span class="pre">username</span></code> and <code class="docutils literal"><span class="pre">password</span></code> to receive the JWT token to use in further requests. If the User has
+Two-Factor Authentication enabled and verified, the <code class="docutils literal"><span class="pre">two_factor_auth_code</span></code> (received via the method configured in the
+<code class="docutils literal"><span class="pre">two_factor_auth_method</span></code>) also needs to be supplied in a second request to obtain a JWT token.</p>
+<blockquote>
+<div><p><strong>Request Model</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="56%" />
+<col width="22%" />
+<col width="22%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>username</td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr class="row-odd"><td>password</td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr class="row-even"><td>two_factor_auth_code</td>
+<td>string</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response Model</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="59%" />
+<col width="25%" />
+<col width="16%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>token</td>
+<td>string</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>theme</td>
+<td>object</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>preferences</td>
+<td>object</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<div class="section" id="login-without-two-factor-authentication">
+<h3>Login without Two-Factor Authentication<a class="headerlink" href="#login-without-two-factor-authentication" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--auth-login">
+<code class="descname">POST </code><code class="descname">/auth/login</code><a class="headerlink" href="#post--auth-login" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Request</strong></p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/auth/login</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+    <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;$username&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;$password&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Response</strong></p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+  <span class="nt">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;abcdefg.hijklmnop.qrstuvwxyz&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;preferences&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;date_format&quot;</span><span class="p">:</span> <span class="s2">&quot;YYYY-MM-DD&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;datetime_format&quot;</span><span class="p">:</span> <span class="s2">&quot;YYYY-MM-DD HH:mm:ss&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;locale&quot;</span><span class="p">:</span> <span class="s2">&quot;fr_FR&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;time_format&quot;</span><span class="p">:</span> <span class="s2">&quot;HH:mm:ss&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;timezone&quot;</span><span class="p">:</span> <span class="s2">&quot;UTC&quot;</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;theme&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;favicon&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;image_url&gt;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;css&quot;</span><span class="p">:</span> <span class="s2">&quot;https://s3.amazonaws.com/gc-portal-theme-builder/&lt;ENV&gt;/49d95f5d333fc2faa666811a8307d557.css&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;logo&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;image_url&gt;&quot;</span>
+  <span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; User logged in successfully.</li>
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> &#8211; Invalid username and/or password was submitted.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="login-with-two-factor-authentication">
+<h3>Login with Two-Factor Authentication<a class="headerlink" href="#login-with-two-factor-authentication" title="Permalink to this headline">¶</a></h3>
+<p>This requires first that Two-Factor Authentication is setup for your user. For setup, please
+reference <a class="reference internal" href="../objects/users.html#users-two-factor"><span class="std std-ref">Two-Factor Authentication</span></a>. Once setup, then follow these steps:</p>
+<p>Make a first request to the login endpoint and it will return a <strong>423</strong> response code indicating that
+the Two-Factor Authentication code (<code class="docutils literal"><span class="pre">two_factor_auth_code</span></code>) is required.</p>
+<dl class="post">
+<dt id="post--auth-login">
+<code class="descname">POST </code><code class="descname">/auth/login</code><a class="headerlink" href="#post--auth-login" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Request</strong></p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/auth/login</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+    <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;$username&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;$password&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Response</strong></p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">423</span> <span class="ne">LOCKED</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+  <span class="nt">&quot;two_factor_auth_code&quot;</span><span class="p">:</span> <span class="s2">&quot;You need to provide the Two-Factor Authentication code to login.&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;two_factor_auth_method&quot;</span><span class="p">:</span> <span class="s2">&quot;app&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> &#8211; Invalid username and/or password was submitted.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p>Check E-Mail, SMS or the App ( e.g <a class="reference external" href="https://support.google.com/accounts/answer/1066447?hl=en">Google Authenticator</a>
+or <a class="reference external" href="https://authy.com">Authy 2-Factor Authentication</a> ) according to the
+<code class="docutils literal"><span class="pre">two_factor_auth_method</span></code>, then make a second request providing the received or generated code.
+If the code is correct, you can obtain the JWT token, otherwise you can try again. You can repeat
+the first step again if the code has expired to send a new one (in case email or SMS is used).</p>
+<dl class="post">
+<dt id="post--auth-login">
+<code class="descname">POST </code><code class="descname">/auth/login</code><a class="headerlink" href="#post--auth-login" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Request</strong></p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/auth/login</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+    <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;$username&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;$password&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;two_factor_auth_code&quot;</span><span class="p">:</span> <span class="s2">&quot;$code&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Response</strong></p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+  <span class="nt">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;abcdefg.hijklmnop.qrstuvwxyz&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;preferences&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;date_format&quot;</span><span class="p">:</span> <span class="s2">&quot;YYYY-MM-DD&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;number_format&quot;</span><span class="p">:</span> <span class="s2">&quot;fr_FR&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;timezone&quot;</span><span class="p">:</span> <span class="s2">&quot;UTC&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;use_24&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;use_local&quot;</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;theme&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;favicon&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;image_url&gt;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;css&quot;</span><span class="p">:</span> <span class="s2">&quot;https://s3.amazonaws.com/gc-portal-theme-builder/&lt;ENV&gt;/49d95f5d333fc2faa666811a8307d557.css&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;logo&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;image_url&gt;&quot;</span>
+  <span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; User logged in successfully.</li>
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> &#8211; Invalid username and/or password was submitted.</li>
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> &#8211; The code is incorrect or expired.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="refresh-a-token">
+<h2>Refresh a Token<a class="headerlink" href="#refresh-a-token" title="Permalink to this headline">¶</a></h2>
+<p>Refreshing a token extends the <em>exp</em> time for an existing token. This can be done until the <em>ttl</em>
+is exceeded.</p>
+<p>For example, this is handy for extending a user&#8217;s session that is active on a website. You could
+have logic to extend the token rather than log the user out after the token expires and make them
+reenter their credentials.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This will not work on tokens that are expired (now &gt; <em>exp</em>)</p>
+</div>
+<dl class="post">
+<dt id="post--auth-refresh">
+<code class="descname">POST </code><code class="descname">/auth/refresh</code><a class="headerlink" href="#post--auth-refresh" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Request Model</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="38%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>token</td>
+<td>string</td>
+<td>required</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response Model</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="44%" />
+<col width="28%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>token</td>
+<td>string</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>user</td>
+<td>string</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Request</strong></p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/auth/refresh</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+  <span class="nt">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;abcdefg.hijklmnop.qrstuvqxyz&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Response</strong></p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+  <span class="nt">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;some.new.token&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;user@gmail.com&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; <cite>token</cite> is valid</li>
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> &#8211; <cite>token</cite> is invalid</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="verify-token">
+<h2>Verify Token<a class="headerlink" href="#verify-token" title="Permalink to this headline">¶</a></h2>
+<p>Verify that an existing token is still valid.</p>
+<dl class="post">
+<dt id="post--auth-verify">
+<code class="descname">POST </code><code class="descname">/auth/verify</code><a class="headerlink" href="#post--auth-verify" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Request Model</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="38%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>token</td>
+<td>string</td>
+<td>required</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response Model</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="44%" />
+<col width="28%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>token</td>
+<td>string</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>user</td>
+<td>string</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Request</strong></p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/auth/verify</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+  <span class="nt">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;abcdefg.hijklmnop.qrstuvqxyz&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Response</strong></p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+  <span class="nt">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;some.new.token&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;user@gmail.com&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; <cite>token</cite> is valid</li>
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> &#8211; <cite>token</cite> is invalid</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="revoke-token">
+<h2>Revoke Token<a class="headerlink" href="#revoke-token" title="Permalink to this headline">¶</a></h2>
+<p>Revoke all access for a token that has not expired.</p>
+<dl class="put">
+<dt id="put--auth-revoke-(jti)">
+<code class="descname">PUT </code><code class="descname">/auth/revoke/</code><span class="sig-paren">(</span><em>jti</em><span class="sig-paren">)</span><a class="headerlink" href="#put--auth-revoke-(jti)" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Response Model</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>user</td>
+<td>string</td>
+</tr>
+<tr class="row-odd"><td>aud</td>
+<td>string</td>
+</tr>
+<tr class="row-even"><td>jti</td>
+<td>string</td>
+</tr>
+<tr class="row-odd"><td>exp</td>
+<td>datetime</td>
+</tr>
+<tr class="row-even"><td>revoked</td>
+<td>boolean</td>
+</tr>
+<tr class="row-odd"><td>created</td>
+<td>datetime</td>
+</tr>
+<tr class="row-even"><td>modified</td>
+<td>datetime</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response</strong></p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+ <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;9bd931ce-60f4-403f-911c-4ccc2a22a2b3&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;aud&quot;</span><span class="p">:</span> <span class="s2">&quot;portal&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;jti&quot;</span><span class="p">:</span> <span class="s2">&quot;cdc56d4d-df34-8c35-f1c5-a94a26a97dad&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;exp&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-05-11T13:46:43.563480Z&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;revoked&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+ <span class="nt">&quot;created&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-05-11T13:41:43.600127Z&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;modified&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-05-11T13:42:53.104869Z&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; valid <cite>jti</cite> was revoked</li>
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> &#8211; invalid <cite>jti</cite> was provided</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="oauth2-tokens">
+<span id="general-authentication-oauth2"></span><h2>OAuth2 Tokens<a class="headerlink" href="#oauth2-tokens" title="Permalink to this headline">¶</a></h2>
+<p>For App developers needing access to a Gooee <a class="reference internal" href="../objects/users.html#objects-users"><span class="std std-ref">User</span></a>&#8216;s resources, send an email to <a class="reference external" href="mailto:cloud-backend&#37;&#52;&#48;gooee&#46;com">cloud-backend<span>&#64;</span>gooee<span>&#46;</span>com</a>.
+Provide any Redirect URIs for your OAuth2 implementation. We will respond with a Client ID and Client Secret.
+The work-flow is outlined below but follows the <a class="reference external" href="https://tools.ietf.org/html/rfc6749">OAuth 2.0 Authorization Framework Standard</a>.</p>
+<p>An example <a class="reference external" href="https://www.docker.com/get-docker">Docker-ized</a> <a class="reference external" href="http://flask.pocoo.org/">Flask</a> app that shows this work-flow can be found in the <a class="reference external" href="https://github.com/GooeeIOT/cloud-examples/tree/master/oauth2-test-client">cloud-examples repo</a>.</p>
+<dl class="get">
+<dt id="get--auth-o-authorize-">
+<code class="descname">GET </code><code class="descname">/auth/o/authorize/</code><a class="headerlink" href="#get--auth-o-authorize-" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Request Model: as query parameters</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="6%" />
+<col width="85%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>client_id</td>
+<td>string</td>
+<td>provided by Gooee via email</td>
+</tr>
+<tr class="row-odd"><td>response_type</td>
+<td>string</td>
+<td>value must be <code class="docutils literal"><span class="pre">code</span></code></td>
+</tr>
+<tr class="row-even"><td>state</td>
+<td>string</td>
+<td>a random string you must generate, used for verification in your app</td>
+</tr>
+<tr class="row-odd"><td>redirect_uri</td>
+<td>string</td>
+<td>URI that the Authentication server will send the user after successful Auth</td>
+</tr>
+<tr class="row-even"><td>scope</td>
+<td>string</td>
+<td>space separated scopes for the token, see available <a class="reference internal" href="#general-authentication-oauth2-token-scope"><span class="std std-ref">scopes</span></a> below</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<blockquote id="general-authentication-oauth2-token-scope">
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="41%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Token Scope</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>product:read</td>
+<td>Product Read scope</td>
+</tr>
+<tr class="row-odd"><td>product:write</td>
+<td>Product Write scope</td>
+</tr>
+<tr class="row-even"><td>partner:read</td>
+<td>Partner Read scope</td>
+</tr>
+<tr class="row-odd"><td>partner:write</td>
+<td>Partner Write scope</td>
+</tr>
+<tr class="row-even"><td>customer:read</td>
+<td>Customer Read scope</td>
+</tr>
+<tr class="row-odd"><td>customer:write</td>
+<td>Customer Write scope</td>
+</tr>
+<tr class="row-even"><td>building:read</td>
+<td>Building Read scope</td>
+</tr>
+<tr class="row-odd"><td>building:write</td>
+<td>Building Write scope</td>
+</tr>
+<tr class="row-even"><td>space:read</td>
+<td>Space Read scope</td>
+</tr>
+<tr class="row-odd"><td>space:write</td>
+<td>Space Write scope</td>
+</tr>
+<tr class="row-even"><td>device:read</td>
+<td>Device Read scope</td>
+</tr>
+<tr class="row-odd"><td>device:write</td>
+<td>Device Write scope</td>
+</tr>
+<tr class="row-even"><td>action:read</td>
+<td>Action Read scope</td>
+</tr>
+<tr class="row-odd"><td>action:write</td>
+<td>Action Write scope</td>
+</tr>
+<tr class="row-even"><td>schedule:read</td>
+<td>Schedule Read scope</td>
+</tr>
+<tr class="row-odd"><td>schedule:write</td>
+<td>Schedule Write scope</td>
+</tr>
+<tr class="row-even"><td>scene:read</td>
+<td>Scene Read scope</td>
+</tr>
+<tr class="row-odd"><td>scene:write</td>
+<td>Scene Write scope</td>
+</tr>
+<tr class="row-even"><td>rule:read</td>
+<td>Rule Read scope</td>
+</tr>
+<tr class="row-odd"><td>rule:write</td>
+<td>Rule Write scope</td>
+</tr>
+<tr class="row-even"><td>user:read</td>
+<td>User Read scope</td>
+</tr>
+<tr class="row-odd"><td>user:write</td>
+<td>User Write scope</td>
+</tr>
+</tbody>
+</table>
+<p>Upon successful authentication of the user, they will be redirected to the <code class="docutils literal"><span class="pre">redirect_uri</span></code> with query
+parameters containing the Authentication <code class="docutils literal"><span class="pre">code</span></code>, and the same <code class="docutils literal"><span class="pre">state</span></code> string your application
+generated (<em>which you should verify within your application</em>).</p>
+<p><strong>Response Model: as query parameters</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="8%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>code</td>
+<td>string</td>
+<td>authorization Code used for aquiring tokens from the <code class="docutils literal"><span class="pre">/auth/o/token/</span></code> endpoint</td>
+</tr>
+<tr class="row-odd"><td>state</td>
+<td>string</td>
+<td>should always be the same string passed in the request, used for verification</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<dl class="post">
+<dt id="post--auth-o-token-">
+<code class="descname">POST </code><code class="descname">/auth/o/token/</code><a class="headerlink" href="#post--auth-o-token-" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Request Model: as json payload or x-www-form-urlencoded or URL params</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="6%" />
+<col width="85%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>grant_type</td>
+<td>string</td>
+<td><code class="docutils literal"><span class="pre">authorization_code</span></code> or <code class="docutils literal"><span class="pre">refresh_token</span></code></td>
+</tr>
+<tr class="row-odd"><td>code</td>
+<td>string</td>
+<td><strong>Optional</strong> the Authentication <code class="docutils literal"><span class="pre">code</span></code> received from the prior response.
+Provide this if <code class="docutils literal"><span class="pre">grant_type</span></code> is <code class="docutils literal"><span class="pre">authorization_code</span></code></td>
+</tr>
+<tr class="row-even"><td>refresh_token</td>
+<td>string</td>
+<td><strong>Optional</strong> the <code class="docutils literal"><span class="pre">refresh_token</span></code> received from the request for a token.
+Provide this if <code class="docutils literal"><span class="pre">grant_type</span></code> is <code class="docutils literal"><span class="pre">refresh_token</span></code></td>
+</tr>
+<tr class="row-odd"><td>redirect_uri</td>
+<td>string</td>
+<td><strong>Optional</strong> the redirect_uri sent in the initial request as a means of verification
+Provide this if <code class="docutils literal"><span class="pre">grant_type</span></code> is <code class="docutils literal"><span class="pre">authorization_code</span></code></td>
+</tr>
+<tr class="row-even"><td>scope</td>
+<td>string</td>
+<td><strong>Optional</strong> list of space separated <a class="reference internal" href="#general-authentication-oauth2-token-scope"><span class="std std-ref">scopes</span></a> that the token can access.
+Can be a subset of the original token&#8217;s scopes.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response Model: as json payload</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="6%" />
+<col width="84%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>access_token</td>
+<td>string</td>
+<td>access token to be user in <code class="docutils literal"><span class="pre">Authorization:</span> <span class="pre">Bearer</span> <span class="pre">&lt;TOKEN-GOES-HERE&gt;</span></code> headers</td>
+</tr>
+<tr class="row-odd"><td>expires_in</td>
+<td>int</td>
+<td>time in seconds before access token expires</td>
+</tr>
+<tr class="row-even"><td>token_type</td>
+<td>string</td>
+<td>value will be <code class="docutils literal"><span class="pre">Bearer</span></code>. Message Auth Code (mac) types not supported</td>
+</tr>
+<tr class="row-odd"><td>scope</td>
+<td>string</td>
+<td>list of space separated <a class="reference internal" href="#general-authentication-oauth2-token-scope"><span class="std std-ref">scopes</span></a> that the token can access</td>
+</tr>
+<tr class="row-even"><td>refresh_token</td>
+<td>string</td>
+<td>token used to retrieve another valid token</td>
+</tr>
+</tbody>
+</table>
+<p>Using <a class="reference external" href="https://tools.ietf.org/html/rfc2617">Basic and Digest Access Authentication</a> with the user as the client_id
+of your app and the password as the client_secret (<em>both contained in the email from Gooee</em>), send the
+above JSON payload to retrieve an <code class="docutils literal"><span class="pre">access_token</span></code>. Use this token to make requests on behalf of your
+users by appending the following HTTP header to all requests.</p>
+<p><strong>Example token request</strong></p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/auth/o/token/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Basic am9objpzbWl0aA==</span>
+
+<span class="p">{</span>
+  <span class="nt">&quot;grant_type&quot;</span><span class="p">:</span> <span class="s2">&quot;authorization_code&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;AUTHENTICATION-CODE-GOES-HERE&gt;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;scope&quot;</span><span class="p">:</span> <span class="s2">&quot;building:read building:write&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; valid request</li>
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2">401 Unauthorized</a> &#8211; invalid refresh token or scope</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example token response</strong></p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+  <span class="nt">&quot;access_token&quot;</span><span class="p">:</span> <span class="s2">&quot;v8OUyyNcn3gqjB6KSPteqpc74XZI5w&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;expires_in&quot;</span><span class="p">:</span> <span class="mi">36000</span><span class="p">,</span>
+  <span class="nt">&quot;token_type&quot;</span><span class="p">:</span> <span class="s2">&quot;Bearer&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;scope&quot;</span><span class="p">:</span> <span class="s2">&quot;building:read building:write&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;refresh_token&quot;</span> <span class="s2">&quot;4iHDmXT3RKmwNDZABagaBhRqxXNmFf&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">The available data will be <a class="reference internal" href="scope.html#general-scope"><span class="std std-ref">scoped to the users resources</span></a> and further scoped based on the <a class="reference internal" href="#general-authentication-oauth2-token-scope"><span class="std std-ref">token scope</span></a> above.</p>
+</div>
+<p><strong>Example request using OAuth Bearer access token</strong></p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/actions</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer &lt;ACCESS-TOKEN-GOES-HERE&gt;</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dimming&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;dim&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;device&quot;</span><span class="p">:</span> <span class="s2">&quot;09e1e84c-2b8b-4e93-85ce-ee6f70eebac4&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;level&quot;</span><span class="p">:</span><span class="mi">10</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; valid request</li>
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2">401 Unauthorized</a> &#8211; invalid token or scope</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="refresh-an-oauth2-token">
+<h2>Refresh an OAuth2 Token<a class="headerlink" href="#refresh-an-oauth2-token" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>To refresh tokens, use the <code class="docutils literal"><span class="pre">refresh_token</span></code> from the <code class="docutils literal"><span class="pre">/auth/o/token/</span></code> response. Make another request to
+<code class="docutils literal"><span class="pre">/auth/o/token/</span></code> with a grant_type of <code class="docutils literal"><span class="pre">refresh_token</span></code> and provide the refresh_token as the value
+of <code class="docutils literal"><span class="pre">refresh_token</span></code>. You can optionally provide a <code class="docutils literal"><span class="pre">scope</span></code> that <strong>must</strong> be a subset of the original token&#8217;s
+<a class="reference internal" href="#general-authentication-oauth2-token-scope"><span class="std std-ref">scope</span></a>.</p>
+<p><strong>Example</strong></p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/auth/o/token/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.gooee.io</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Basic am9objpzbWl0aA==</span>
+
+<span class="p">{</span>
+  <span class="nt">&quot;grant_type&quot;</span><span class="p">:</span> <span class="s2">&quot;refresh_token&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;refresh_token&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;REFRESH-TOKEN-GOES-HERE&gt;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;scope&quot;</span><span class="p">:</span> <span class="s2">&quot;building:read&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">statuscode 200:</th><td class="field-body">valid request</td>
+</tr>
+<tr class="field-even field"><th class="field-name">statuscode 401:</th><td class="field-body">invalid refresh token or scope</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="clearing_field_values.html" class="btn btn-neutral float-right" title="Clearing Field Values" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="api_tokens.html" class="btn btn-neutral" title="API Tokens" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Gooee, LLC.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/tabs.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

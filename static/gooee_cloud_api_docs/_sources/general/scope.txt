@@ -1,0 +1,76 @@
+.. _general_scope:
+
+=====
+Scope
+=====
+
+Scope is used to define the data that a User can have access to. Most objects in our ecosystem have
+scope. An object can either be scoped to a Partner, a Customer, or both. An object can be scoped to
+multiple Partners and Customers as well. Any User associated with that Customer or Partner has
+the potential to see that object, depending also on the specific permissions of their
+:ref:`User Group <objects_user_groups>`.
+
+You will not see your own Partner or Customer scopes on objects that you own, but you will see other
+Partners or Customers (as long as they are scoped to you) that that object is scoped to. See
+:ref:`Implicit Scopes <general_scope_implicit_scopes>` for more information on this.
+
+Scopes are defined on two fields, ``"customer_scopes"`` and ``"partner_scopes"``. These are public
+fields and Users can add/remove other Partners and Customers (not their own) from these fields.
+These fields are available on most objects in our ecosystem. Others, like
+:ref:`Products <objects_products>`, have their own rules which are documented on their
+respective pages.
+
+The ``"customer_scopes"`` and ``"partner_scopes"`` fields are not included in API responses by default.
+To include them in a response, you may use the `_annotate` filter with one or both fields,
+comma-separated:
+
+.. http:get:: /buildings/?_annotate=customer_scopes
+.. http:get:: /customers/da8ef7cd-a442-4260-b177-d3af2058f7ec/?_annotate=partner_scopes
+.. http:get:: /devices/?_annotate=customer_scopes,partner_scopes
+
+Gooee Users have access to everything and are not affected by scope.
+
+.. note:: Another way to say "X is scoped to Y" is "Y owns X".
+
+.. _general_scope_implicit_scopes:
+
+Implicit Scopes
+---------------
+
+Some scopes are implicitly inherent in the system and cannot be changed. These scopes are also
+not visible to the User. The following cases apply:
+
+* Customers and Partners are always scoped to themselves.
+* Users and User Groups are always scoped to their respective Customer/Partner.
+
+In addition, if you are the owner of an object (i.e. if that object is scoped to *you*), you will
+not see your own Customer or Partner ID in the corresponding ``"customer_scopes"`` or
+``"partner_scopes"`` field of that object. However, if you have granted access to an object to another
+Customer or Partner, Users of that other Customer or Partner will see your own Customer or Partner
+ID in the corresponding scope field of that object.
+
+Scope Propagation
+-----------------
+
+Scopes are propagated through the system when new objects are created. In addition to the
+Customer or Partner ID of the current User, the following scopes are also assigned to newly created
+objects:
+
+* For Customer Users, any ``"partner_scopes"`` of the User's Customer are propagated.
+* For Partner Users, any ``"customer_scopes"`` of the User's Partner are propagated.
+
+Partner Access
+--------------
+
+A :ref:`Customer <objects_customers>` can grant scope access to a :ref:`Partner <objects_partners>`,
+granting them the ability to manage their resources on behalf of the
+:ref:`Customer <objects_customers>`. See :ref:`Partner Access <objects_customers_partner_access>`
+for more information.
+
+Constraints
+-----------
+
+In order to add a Customer or Partner to an object's scopes, any *required* relationships to other
+objects must already be scoped to that Customer or Partner. For example, to add Partner X to
+a Building's ``"partner_scopes"``, the Building's Customer must already have Partner X in its own
+``"partner_scopes"``.

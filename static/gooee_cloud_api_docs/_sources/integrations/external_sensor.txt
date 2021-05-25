@@ -1,0 +1,661 @@
+.. _integrations_external_sensor:
+
+================
+External Sensors
+================
+
+.. contents:: Quick Links
+
+Introduction
+============
+
+External Sensor Integrations are used to forward data from external sensors to the Gooee Cloud. Each integration available will have a specific set of configuration parameters
+(named :ref:`External Sensor Interface <integrations_external_sensor_interfaces>`) that may (or must) be filled in order to process the incoming data. External Sensor Integrations
+are associated to :ref:`Areas <objects_areas>` and assume Area as the entity that receives data from the external sensor (headcount, temperature, etc..) and will roll up the received
+values up to the higher logical entities like :ref:`Spaces <objects_spaces>` and :ref:`Buildings <objects_buildings>` if their `rollup` setting is configured for the Area.
+
+.. _integrations_external_sensor_interfaces:
+
+External Sensor Interface
+=========================
+
+Description
+-----------
+
+An :ref:`External Sensor Interface <integrations_external_sensor_interfaces>` is defined as a global (non :ref:`scoped <general_scope>`) object that will be created by Gooee (and later by Partners)
+to define how an External Sensor will talk to the Gooee Cloud.
+
+
+Data Model
+----------
+
+===============  ==========================================  ========================
+Key              Datatype                                    Notes
+===============  ==========================================  ========================
+id               ref                                         read-only
+created          datetime                                    read-only
+modified         datetime                                    read-only
+name             string                                      required, max_length=100
+data_transport   enum                                        read-only, options=[http, mqtt]
+auth_header      string                                      max_length=100
+auth_method      enum                                        options=[basic, token]
+data_format      enum                                        read-only, options=[json, xml]
+sensor_module    string                                      max_length=255
+tags             array(string)                               max_length=50 per tag
+===============  ==========================================  ========================
+
+.. only:: is_internal_environment
+
+  Developing Sensor Modules
+  -------------------------
+
+  Because we will be integrating many sensors to our platform that send arbitrary data formats and all behave differently; the External Sensor Interfaces will call the provided ``sensor_module``, which consists of a Python class with a predefined structure used to parse the incoming data or extend the functionality of External Sensor Integrations by making use of hooks.
+
+  Throughout this section we will guide Gooee Developers on how to create a new External Sensor Interface with the corresponding ``sensor_module``:
+
+  Creating a SensorModule
+  ~~~~~~~~~~~~~~~~~~~~~~~
+
+  .. code-block:: console
+
+    $ python gooee_django/manage.py create_sensor_module 'Sample' --description 'A sample motion sensor for development purposes' --with-urls --with-create-hook --with-delete-hook
+
+  This will create a ``sample`` directory under the :file:`/gooee_django/integrations/external_sensor/sensor_modules/` directory with the following structure::
+
+      sample/
+          __init__.py
+          sensor.py
+          views.py
+
+  These files are:
+
+  * The :file:`sample/` directory is the actual Python package for your
+    sensor module.
+
+  * :file:`sample/__init__.py`: An empty file that tells Python that this
+    directory should be considered a Python package.
+
+  * :file:`sample/sensor.py`: This is the main file that contains the class for your ``sensor_module`` . For this particular case,
+    the class will be called `Sample` and needs to later be provided on the External Sensor Interface in the form of `package_name.SensorModule`
+    (e.g. in this case will be ``integrations.external_sensor.sensor_modules.sample.Sample``).
+
+  * :file:`sample/views.py`: This optional file is created only if the parameter `--with-urls` is provided to the management command.
+    It serves as a container for any custom view needed for your External Sensor Interface ( e.g. To export a file of internal ids to the sensor ).
+
+
+  You've created your ``sensor_module`` at :file:`/gooee_django/integrations/external_sensor/sensor_modules/sample/sensor.py`, if you edit this file there will
+  be a boilerplate class named ``Sample`` that subclasses :class:`~integrations.external_sensor.base.SensorModule`. To give our sensor some functionality,
+  we must understand what this class means:
+
+  .. code-block:: python
+    :caption: sample/sensor.py
+
+    from typing import Dict, List
+
+    from rest_framework.serializers import Serializer
+
+    from integrations.external_sensor.base import SensorModule
+
+
+    class Sample(SensorModule):
+      """A sample motion sensor for development purposes."""
+
+      name = 'sample'
+      view_routes_map = {}
+
+      def get_urls(self) -> List
+          return []
+
+      def transform(self, data: Dict, **context) -> Dict:
+          return {}
+
+      def on_integration_create(self, serializer_instance: Serializer, validated_data: Dict):
+          pass
+
+      def on_integration_delete(self, instance: 'ExternalSensorIntegration'):
+          pass
+
+
+  Anatomy of a SensorModule
+  ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  Here's the formal declaration of a ``SensorModule``:
+
+  .. class:: Sample(SensorModule)
+
+      .. attribute:: name
+
+          Defines a url-friendly name for this class, it must only accept numbers, letters and
+          underscores ( e.g 'my_cool_sensor' ). All custom urls will live under a parent path
+          of this name.
+
+      .. attribute:: view_routes_map
+
+          Defines a mapping of url paths to custom sensor module views. Incoming requests matching
+          /integrations/external_sensor/:id/blah_action will be intercepted by the external_sensor app
+          and routed (based on path 'blah_action') to the view specified in the sensor module's
+          view_routes_map.
+
+          e.g.
+
+          .. code-block:: console
+
+             view_routes_map = {'bulk_register': XovisConfigImportView}
+
+      .. method:: Sample.get_urls(self)
+
+        Generate and return a list of custom urls implemented by this sensor module.
+
+      .. _integrations_external_sensor_transform:
+
+      .. method:: Sample.transform(self, data, **context)
+
+        This method is the main entry-point when Gooee receives the data on the External Sensor Integration using this Interface,
+        it takes two arguments: ``data`` and ``context``:
+
+            ``data`` is the arbitrary raw data sent by the sensor either via HTTP or MQTT. Programmers must read the sensor documentation to understand this data and transform it to the internal format handled by Gooee.
+
+            ``context`` is an optional context dictionary with relevant information from the view that receives the data. It contains the following:
+
+              - ``integration``: the :ref:`External Sensor Integration <integrations_external_sensor_integrations>` object receiving the data
+              - ``request``: object containing method, url, body/query params, which are very useful for any logic that involves checking for user permissions or accessing objects from the original request.
+              - ``view``: object containing information about the view
+              - ``format_kwarg``
+
+        This method must either return a dict or raise ``rest_framework.exceptions.ValidationError`` in case the data received
+        could not be parsed as per the sensor documentation or if it is corrupted.
+
+      .. method:: Sample.on_integration_create(self, serializer: 'ExternalSensorIntegrationSerializer', validated_data: Dict, instance: 'ExternalSensorIntegration')
+
+        Hook fired after an :ref:`External Sensor Integration <integrations_external_sensor_integrations>` is created.
+        Hook should raise OnIntegrationCreateException(e) if there are any issues during creation so
+        that the :ref:`External Sensor Integration <integrations_external_sensor_integrations>` can be deleted.
+        Takes three arguments: ``serializer``, ``validated_data``, and ``instance``.
+
+        If this method requires additional input data, then that data can be specified via the
+        ``extra_data`` request param when creating an :ref:`External Sensor Integration <integrations_external_sensor_integrations>`
+        See request :ref:`example <integrations_external_sensor_extra_data>`.
+
+      .. method:: Sample.on_integration_delete(self, instance: 'ExternalSensorIntegration')
+
+        Hook fired when an :ref:`External Sensor Integration <integrations_external_sensor_integrations>` is deleted.
+        Takes one argument: ``instance`` of :ref:`External Sensor Integration <integrations_external_sensor_integrations>`
+
+  Registering a SensorModule
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  To allow the framework to find any custom urls specified in the SensorModule, you must add the
+  sensor module path to the ``MODULES`` list in ``gooee_django.integrations.external_sensor.conf.ExternalSensorConf``
+
+  .. code-block:: python
+
+    MODULES = (
+        'integrations.external_sensor.sensor_modules.xovis.Xovis',
+        'integrations.external_sensor.sensor_modules.pointgrab.Pointgrab',
+    )
+
+  Creating an External Sensor Interface with the SensorModule
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  After the :class:`SensorModule` boilerplate created by the management command is edited and adapted to provide functionality for the `Sample` sensor,
+  one must Create an External Sensor Interface, providing the path ( ``integrations.external_sensor.sensor_modules.sample.Sample`` ) in the ``sensor_module`` field.
+
+
+  While this step could be done using the REST API, is beneficial to create an empty Django data migration for this newly created sensor by running:
+
+  .. code-block:: console
+
+    $ python gooee_django/manage.py makemigrations external_sensor --empty --name <sensor_name>
+
+  and then filling in the details. The migration could look like:
+
+  .. code-block:: python
+
+    from django.db import migrations
+
+    def forwards_func(apps, schema_editor):
+        ExternalSensorInterface = apps.get_model('external_sensor', 'ExternalSensorInterface')
+        db_alias = schema_editor.connection.alias
+        ExternalSensorInterface.objects.using(db_alias).create(
+          name='Sample',
+          data_transport='http',
+          data_format='json',
+          auth_method='token',
+          sensor_module='integrations.external_sensor.sensor_modules.sample.Sample',
+        )
+
+    def reverse_func(apps, schema_editor):
+        ExternalSensorInterface = apps.get_model('external_sensor', 'ExternalSensorInterface')
+        db_alias = schema_editor.connection.alias
+        ExternalSensorInterface.objects.using(db_alias).filter(name='Sample').delete()
+
+    class Migration(migrations.Migration):
+
+        dependencies = []
+
+        operations = [
+            migrations.RunPython(forwards_func, reverse_func),
+        ]
+
+.. _integrations_external_sensor_interface_endpoints:
+
+API Endpoints
+-------------
+.. only:: is_internal_environment
+
+  Create an External Sensor Interface
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  .. http:POST:: /integrations/external_sensor/interfaces
+
+     :statuscode 201:
+
+Get External Sensor Interfaces
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. http:GET:: /integrations/external_sensor/interfaces
+
+   :statuscode 200:
+
+.. only:: is_internal_environment
+
+  Update an External Sensor Interface
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  .. http:PUT:: /integrations/external_sensor/interfaces/(id)
+
+     :statuscode 200:
+
+  Partially Update an External Sensor Interface
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  .. http:PATCH:: /integrations/external_sensor/interfaces/(id)
+
+     :statuscode 200:
+
+Retrieve an External Sensor Interface
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. http:GET:: /integrations/external_sensor/interfaces/(id)
+
+   :statuscode 200:
+
+.. only:: is_internal_environment
+
+  Delete an External Sensor Interface
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  .. http:DELETE:: /integrations/external_sensor/interfaces/(id)
+
+     :statuscode 204:
+
+
+.. _integrations_external_sensor_integrations:
+
+External Sensor Integration
+===========================
+
+Description
+-----------
+
+An :ref:`External Sensor Integration <integrations_external_sensor_integrations>` is defined as a
+:ref:`scoped <general_scope>` instance of an :ref:`External Sensor Interface <integrations_external_sensor_interfaces>`
+that is created by Partners/Customers so that an external sensor can talk to the Gooee Cloud via the
+:ref:`External Sensor Interface's <integrations_external_sensor_interfaces>` sensor module.
+
+Data Model
+----------
+
+===============  ====================================================  ========================
+Key              Datatype                                              Notes
+===============  ====================================================  ========================
+id               ref                                                   read-only
+created          datetime                                              read-only
+modified         datetime                                              read-only
+interface        :ref:`ref <integrations_external_sensor_interfaces>`  required
+building         :ref:`ref <objects_buildings>`                        required
+areas            array(:ref:`ref <objects_areas>`)                     required
+extra_data       obj                                                   JSON Field
+auth_token       string                                                read_only
+http_endpoint    string                                                read-only
+auth_method      string                                                read-only
+auth_header      string                                                read-only
+mqtt_topic       string                                                read-only
+last_activity    datetime                                              read-only
+===============  ====================================================  ========================
+
+API Endpoints
+-------------
+
+Create an External Sensor Integration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. http:POST:: /integrations/external_sensor
+
+    :statuscode 201:
+    :statuscode 400:
+
+**Example request**:
+
+.. sourcecode:: http
+
+    POST /integrations/external_sensor HTTP/1.1
+    Host: api.gooee.io
+    Accept: application/json
+
+    {
+        "sensor_type": "44879b1b-7ab1-478f-b5a2-d75cd39353e0",
+        "building": "6b104afd-5d5f-44d0-9f24-b9350d879d25",
+        "areas": ["3055af54-7b22-4574-a0c4-a1c5d1f82992", "fdf4bf5b-773f-4a86-8618-04e69b2c466e"]
+    }
+
+**Example response (based on http/token transport interface)**:
+
+.. sourcecode:: http
+
+    HTTP/1.1 201 CREATED
+    Content-Type: application/json
+
+    {
+        "id": "933a4a1d-b28c-4cbe-b841-ec128bebeca1",
+        "created": "2018-10-29T20:15:00.124345Z",
+        "modified": "2018-10-29T20:15:00.124375Z",
+        "interface": "44879b1b-7ab1-478f-b5a2-d75cd39353e0",
+        "building": "6b104afd-5d5f-44d0-9f24-b9350d879d25",
+        "areas": ["3055af54-7b22-4574-a0c4-a1c5d1f82992", "fdf4bf5b-773f-4a86-8618-04e69b2c466e"],
+        "http_endpoint": "https://api.gooee.io/integrations/external_sensor/933a4a1d-b28c-4cbe-b841-ec128bebeca1/receiver",
+        "auth_token": "256778939d0ee57eda123447c78c353b38e2704f5a59c88553836ffb7dde",
+        "auth_header": "FooBarCustomAuthorization",
+        "auth_method": "token",
+        "last_updated": "2018-10-29T18:30:00.164599Z",
+        "extra_data": {}
+    }
+
+**Example response (based on mqtt transport interface)**:
+
+.. sourcecode:: http
+
+    HTTP/1.1 201 CREATED
+    Content-Type: application/json
+
+    {
+        "id": "933a4a1d-b28c-4cbe-b841-ec128bebeca1",
+        "created": "2018-10-29T20:15:00.124345Z",
+        "modified": "2018-10-29T20:15:00.124375Z",
+        "interface": "44879b1b-7ab1-478f-b5a2-d75cd39353e0",
+        "building": "6b104afd-5d5f-44d0-9f24-b9350d879d25",
+        "areas": ["3055af54-7b22-4574-a0c4-a1c5d1f82992", "fdf4bf5b-773f-4a86-8618-04e69b2c466e"],
+        "mqtt_topic": "integrations/external_sensor/933a4a1d-b28c-4cbe-b841-ec128bebeca1/receiver",
+        "auth_token": "056770039d0ee57e00123447008c353b3800704f5a59008553836ffb7dd0",
+        "last_updated": "2018-10-29T18:30:00.164599Z",
+        "extra_data": {}
+    }
+
+.. _integrations_external_sensor_extra_data:
+
+**Example request (with extra_data)**:
+
+.. sourcecode:: http
+
+    POST /integrations/external_sensor HTTP/1.1
+    Host: api.gooee.io
+    Accept: application/json
+
+    {
+        "sensor_type": "44879b1b-7ab1-478f-b5a2-d75cd39353e0",
+        "building": "6b104afd-5d5f-44d0-9f24-b9350d879d25",
+        "areas": ["3055af54-7b22-4574-a0c4-a1c5d1f82992", "fdf4bf5b-773f-4a86-8618-04e69b2c466e"],
+        "extra_data": {
+            "app_id": "foo",
+            "app_key": "bar"
+        }
+    }
+
+
+Get External Sensor Integration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. http:GET:: /integrations/external_sensor
+
+   :statuscode 200:
+
+Update an External Sensor Integration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. http:PUT:: /integrations/external_sensor/(id)/
+
+   :statuscode 200:
+
+Partially Update an External Sensor Integration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. http:PATCH:: /integrations/external_sensor/(id)
+
+   :statuscode 200:
+
+Retrieve an External Sensor Integration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. http:GET:: /integrations/external_sensor/(id)
+
+   :statuscode 200:
+
+Delete an External Sensor Integration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. http:DELETE:: /integrations/external_sensor/(id)
+
+   :statuscode 204:
+
+.. only:: is_internal_environment
+
+  Regenerate the Auth Token for an External Sensor Integration
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  .. http:PUT:: /integrations/external_sensor/(id)/regenerate_token
+
+     :statuscode 200:
+
+.. only:: is_internal_environment
+
+  Webhook Receiver
+  ~~~~~~~~~~~~~~~~
+
+  This is the endpoint that either the external sensor platform or an internal Cloud API service
+  posts data to, with a payload defined by the external sensor platform. The sensor module
+  :ref:`transforms <integrations_external_sensor_transform>` the payload internally into a
+  Cloud API-compatible format (mapping of the :ref:`Area <objects_areas>` Cloud API id to a list of
+  all the Metas' name, value, and modified sent by the sensor).
+
+  Webhook Receiver Authentication
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  The endpoint supports three types of authentication. The authentication used for the specific
+  webhook is defined by the integration's
+  :ref:`External Sensor Interface <integrations_external_sensor_interfaces>`'s *data transport*,
+  *auth header*, and *auth method* parameters, as shown in the following table.
+
+  ==============  ===========  ===========  =======================
+  data_transport  auth_method  auth_header  Authentication
+  ==============  ===========  ===========  =======================
+  mqtt            n/a          n/a          Internal Service Auth
+  http            basic        n/a          HTTP Basic Auth
+  http            token        <value>      HTTP Custom Header Auth
+  ==============  ===========  ===========  =======================
+
+  * Internal Service Auth:
+
+  Uses a Cloud API-specific custom header *InternalAuthorization*, with the value as the integration's
+  token.
+
+  * HTTP Basic Auth:
+
+  Traditional HTTP basic authentication using the integration's token as the password
+
+  * HTTP Custom Header Auth:
+
+  Uses a custom header as defined by the
+  :ref:`External Sensor Interface <integrations_external_sensor_interfaces>` *auth_header* parameter,
+  with the value as the integration's token.
+
+  .. http:POST:: /integrations/external_sensor/(id)/receiver
+
+      :statuscode 200:
+      :statuscode 400:
+
+  **Example request (from Cloud API internal service, e.g. mqtt)**:
+
+  .. sourcecode:: http
+
+      POST /integrations/external_sensor/23879b1b-1fb1-478f-b5a2-d75cd39353e0/receiver HTTP/1.1
+      Host: api.gooee.io
+      Accept: application/json
+      InternalAuthorization: ZAPdtLlykDqjKm
+
+      <sensor_proprietary_payload>
+
+  **Example response**:
+
+  .. sourcecode:: http
+
+      HTTP/1.1 201 CREATED
+      Content-Type: application/json
+
+      {
+          "fe279b1b-93b1-178f-c5a2-d75cd39353e0": [
+              {
+                  "name": "headcount",
+                  "value": 3,
+                  "modified": "2019-02-07T21:03:35.375151"
+              }
+          ]
+      }
+
+.. _integrations_commissioning:
+
+Bulk Commissioning
+==================
+
+This feature provides the ability to setup sensor elements in a bulk fashion via file uploads as
+opposed to individually. The file format is specific to each :ref:`External Sensor Integration <integrations_external_sensor_integrations>`, but always contains
+a uniquely generated data source id for every element/asset in the configuration. The data source id
+is necessary to link the sensor platform resource with its equivalent Cloud API resource so that
+metric data from the sensor can be associated with the right Cloud API resource.
+
+.. _integrations_commissioning_export:
+
+File Export
+-----------
+
+As part of commissioning sensors, a final file is exported from the sensor elements
+(e.g. Devices/Areas) configuration. A sensor's API (or lack thereof) largely drives the
+export functionality that the Cloud API provides and thus how the final file is ultimately generated.
+Here are some example cases:
+
+* Case 1: API-less Sensor (i.e. PointGrab):
+
+We export the Cloud API
+:ref:`External Sensor Integration <integrations_external_sensor_integrations>` configuration and
+import it into the sensor platform. Then, the sensor platform spits out a final file with unique
+data source ids, which is then imported via Cloud API to link the sensor platform and Cloud API
+:ref:`External Sensor Integration <integrations_external_sensor_integrations>` resources. The flow
+is as such:
+
+**Cloud API** (download/export from) --> (upload/import to) **Sensor Platform** (download/export from) --> (upload/import to) **Cloud API**
+
+* Case 2: Sensor with a local API only (i.e. Xovis):
+
+In other cases where a sensor platform's API is local to the sensor, we fetch a config file from
+the sensor and import it via Cloud API. The flow is as such:
+
+**Sensor** (download/export from) --> (upload/import to) **Cloud API**
+
+Request
+~~~~~~~
+
+.. http:POST:: /integrations/external_sensor/(id)/export
+
+    :statuscode 200: File exported successfully
+
+   **Example request:**
+
+   .. sourcecode:: http
+
+      POST /integrations/external_sensor/213fa400-e290-47f0-e6f4-2f8e6d75f007/export HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+   **Example response:**
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: text/csv
+
+      Site,Customer Foo - Building Bar
+      Building,Building Bar
+      Floor,Space Baz
+      width,40.0
+      length,20.0
+      height,3.0
+      imagewidth,1000
+      imageheight,500
+
+      ,Add Device,Name,PositionX,PositionY,Height,Rotation,GooeeId
+      ,,Device 1,20.0,10.0,3.0,0,2aac10ae-efff-4dd9-9081-889f8837448d
+      ,,Device 2,20.0,15.0,3.0,0,f86be8e6-5140-45e0-a150-51ed85837884
+
+      ,Add Area,Name,Frequency,Type,CenterX,CenterY,Width,Length,Rotation,Select Devices,GooeeId
+      ,,Area 1,60,DESK,20.0,9.8,8.0,3.6,0,Device 1,db017fc2-efe8-4fc2-bd1b-2673be258b1b
+      ,,Area 2,60,DESK,20.0,15.0,8.0,6.0,0,Device 2,3f4a086b-d4ca-412a-a6f5-61b922275f54
+
+      ,Link Device,Device Name,Serial Number
+      ,,Device 1,1111111-1111-111111-1111
+      ,,Device 2,2222222-2222-222222-2222
+
+.. note:: The rotation value of PointGrab Devices is exported counter-clockwise.
+
+.. _integrations_commissioning_import:
+
+File Import
+-----------
+
+The Cloud API provides a way to upload/import the exported file from a particular sensor installation
+(using the :ref:`External Sensor Integration <integrations_external_sensor_integrations>`'s
+`bulk_register` url path) so that data source ids can be linked back to Cloud API
+:ref:`Area <objects_areas>` ids. After linking, each Area's
+:ref:`status <area_status_conditions>` transitions to `active`, and the Cloud API responds with the
+number of :ref:`Areas <objects_areas>` that had data source ids successfully linked.
+
+Request
+~~~~~~~
+
+Sample curl upload command:
+
+.. sourcecode:: bash
+
+    $ curl -F 'file=@/path/to/file.xml' -X POST -H 'Authorization: JWT <jwt_token>' -H 'Content-Type: multipart/form-data' 'http://api.gooee.io/integrations/external_sensor/24ac57dc-89ad-4b30-b288-aa9ae29a6933/bulk_register'
+
+.. http:POST:: /integrations/external_sensor/(id)/bulk_register
+
+    :statuscode 200: File imported successfully
+
+**Example request:**
+
+.. sourcecode:: http
+
+    POST /integrations/external_sensor/213fa400-e290-47f0-e6f4-2f8e6d75f007/bulk_register HTTP/1.1
+    Host: api.gooee.io
+    Content-Type: multipart/form-data
+    Form: file=<exported_xovis_config.xml>
+
+**Example response:**
+
+.. sourcecode:: http
+
+    HTTP/1.1 200 OK
+    Content-Type: application/json
+
+    {
+        "num_areas": 2
+    }

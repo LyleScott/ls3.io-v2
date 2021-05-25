@@ -1,0 +1,140 @@
+.. _objects_schedules:
+
+=========
+Schedules
+=========
+
+.. contents:: Quick Links
+
+Description
+===========
+
+Schedules are a group of :ref:`Operations <schedule_operations>` that happen at a specific time.
+
+Data Model
+==========
+
+================  ============================================  =========
+Key               Datatype                                      Notes
+================  ============================================  =========
+id                ref                                           read-only
+created           datetime                                      read-only
+modified          datetime                                      read-only
+name              string                                        required
+description       string
+time_of_day       string                                        HH:MM:SS in 24 hour format
+day_of_week       array(str)                                    Ex: ["mon","tue","wed","thu","fri","sat","sun"]
+building          :ref:`ref <objects_buildings>`                :ref:`Complex Constraints <schedule_complex_constraints>`
+spaces            array(:ref:`ref <objects_spaces>`)            read-only
+devices           array(:ref:`ref <objects_devices>`)           read-only
+operations        array(obj) :ref:`ref <schedule_operations>`   required, :ref:`Complex Constraints <schedule_complex_constraints>`
+customer_scopes   array(:ref:`ref <objects_customers>`)         see :ref:`general_scope`
+partner_scopes    array(:ref:`ref <objects_partners>`)          see :ref:`general_scope`
+last_execution    datetime                                      read-only
+execution_count   number                                        read-only
+================  ============================================  =========
+
+.. _schedule_complex_constraints:
+
+Complex Constraints
+===================
+
+A :ref:`Schedule <objects_schedules>` must have a :ref:`Building <objects_buildings>` or a set of :ref:`Operations <schedule_operations>` containing one or more :ref:`Spaces <objects_spaces>` or :ref:`Devices <objects_devices>`.
+
+A :ref:`Schedule <objects_schedules>` must have at least one :ref:`Operation <schedule_operations>`.
+
+All :ref:`Operation <schedule_operations>` :ref:`Spaces <objects_spaces>` and :ref:`Devices <objects_devices>` must be within the same :ref:`Building <objects_buildings>`.
+
+All :ref:`Operation <schedule_operations>` :ref:`Device <objects_devices>` :ref:`Actions <objects_actions>` must be supported by the target :ref:`Devices <objects_devices>`.
+
+All :ref:`Operation <schedule_operations>` :ref:`Devices <objects_devices>` must have a :ref:`Building <objects_buildings>`.
+
+An individual :ref:`Operation <schedule_operations>` can only be used against :ref:`Spaces <objects_spaces>` or :ref:`Devices <objects_devices>`.
+
+.. _schedule_operations:
+
+Operations
+----------
+
+When the conditions are met, a Schedule executes its Operations. Operations are a set of
+:ref:`Actions <objects_actions>` applied over a set of :ref:`Spaces <objects_spaces>` or :ref:`Devices <objects_devices>`.
+
+.. sourcecode:: json
+
+    {
+       "building": "{{BUILDING_ID}}"
+       "operations": [
+          {
+             "spaces": [
+                "{{SPACE_ID}}"
+             ],
+             "actions": [
+                {
+                   "name": "on",
+                   "parameters": {
+                       "transition_time": 5
+                   }
+                }
+             ]
+          }
+       ]
+    }
+
+.. sourcecode:: json
+
+    {
+       "operations": [
+          {
+             "spaces": [
+                "{{SPACE_ID}}"
+             ],
+             "actions": [
+                {
+                   "name": "on",
+                   "parameters": {
+                       "transition_time": 5
+                   }
+                }
+             ]
+          }
+       ]
+    }
+
+
+API Endpoints
+=============
+
+Create a Schedule
+-----------------
+
+.. http:POST:: /schedules
+
+   :statuscode 201:
+
+List Schedules
+--------------
+
+.. http:GET:: /schedules
+
+   :statuscode 200:
+
+Update a Schedule
+-----------------
+
+.. http:PUT:: /schedules
+
+   :statuscode 200:
+
+Retrieve a Schedule
+-------------------
+
+.. http:GET:: /schedules/(id)
+
+   :statuscode 200:
+
+Delete a Schedule
+-----------------
+
+.. http:DELETE:: /schedules/(id)
+
+   :statuscode 204:

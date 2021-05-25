@@ -1,0 +1,364 @@
+.. _objects_fault_alarms:
+
+============
+Fault Alarms
+============
+
+.. contents:: Quick Links
+
+Description
+===========
+
+:ref:`Devices <objects_devices>` can generate different types of Fault Alarms under certain conditions
+which may require user attention. Additionally, Users can define device-centric Fault Alarms through
+Property Rules of :ref:`Rules V2 <objects_rules_v2>`.
+
+In order to be able to update Fault Alarms, the User needs to have `manage_gateways` permissions within
+their :ref:`User Groups <objects_user_groups>`.
+
+Data Model
+==========
+
+=================  ===================================================  =========================================================
+Key                Datatype                                             Notes
+=================  ===================================================  =========================================================
+id                 ref                                                  write-once
+created            datetime                                             read-only
+modified           datetime                                             read-only
+last_update        datetime                                             read-only
+priority           integer                                              max=255, min=0
+level              string                                               required, max_length=20
+type               string                                               required, max_length=100, write-once
+device             :ref:`ref <objects_devices>`                         required, write-once
+notes              string
+value              object                                               required
+description        string
+building           :ref:`ref <objects_buildings>`                       read-only
+origin             enum                                                 options=[``"rule"``, ``"gooee_gateway"``, ``"building_management_system"``, ``"null"``]
+rule               :ref:`ref <objects_property_rules>`                  write-once
+state              enum                                                 options=[``"open"``, ``"ack"``, ``"closed"``]
+tags               array(str)                                           max_length=50 per tag
+state_logs         array(:ref:`ref <objects_fault_alarms_state_logs>`)  read-only
+state_author       :ref:`ref <objects_users>`                           read-only
+customer_scopes    array(:ref:`ref <objects_customers>`)                see :ref:`general_scope`
+partner_scopes     array(:ref:`ref <objects_partners>`)                 see :ref:`general_scope`
+=================  ===================================================  =========================================================
+
+
+.. _fault_alarms_complex_constraints:
+
+Complex Constraints
+-------------------
+
+- When an update from a Fault Alarm is received from a :ref:`Device <objects_devices>`,
+  the `last_update` field is updated. If `timestamp` is not supplied in the JSON payload, a UTC date/time will be
+  used as the `last_update` value when the record is processed. The `timestamp` field can be written only by
+  :ref:`Devices <objects_devices>`, therefore the `last_update` field represents the last time that
+  the :ref:`device <objects_devices>` sent information of the Fault Alarm.
+
+- Fault Alarm objects in closed `state` are deleted if they remain closed for over 7 days.
+
+.. note:: The `id` field can be specified when creating a Fault Alarm object.
+
+
+.. _objects_fault_alarms_state_logs:
+
+State Logs
+-----------
+
+Every ``state`` through which a Fault Alarm transitions is recorded, together with the time and author
+of the change.
+
+Data Model
+~~~~~~~~~~
+
+===================  =====================================  ========================================================
+Key                  Datatype                               Notes
+===================  =====================================  ========================================================
+state                enum                                   options=[``"open"``, ``"ack"``, ``"closed"``]
+author               :ref:`ref <objects_users>`             read-only
+timestamp            datetime                               read-only
+===================  =====================================  ========================================================
+
+
+API Endpoints
+=============
+
+Create a Fault Alarm
+--------------------
+
+.. http:POST:: /fault_alarms/
+
+   :statuscode 201:
+
+
+**Example request**:
+
+.. sourcecode:: http
+
+  POST /fault_alarms/ HTTP/1.1
+  Host: api.gooee.io
+  Content-Type: application/json
+
+  {
+    "priority": 255,
+    "level": "info",
+    "type": "high_temperature",
+    "device": "b87fd763-0292-469e-8237-fc82a9f50d8c",
+    "notes": "Additional notes",
+    "value": {
+        "temp": 100
+    },
+    "description": "Triggered when temperature is above 90°F.",
+  }
+
+**Example response**:
+
+.. sourcecode:: http
+
+  POST /fault_alarms/ HTTP/1.1
+  Host: api.gooee.io
+  Content-Type: application/json
+
+  {
+    "id": "3de06a44-595e-466d-96a0-bb9d204cab6b",
+    "created": "2020-04-10T21:17:18.602243Z",
+    "modified": "2020-04-10T21:17:18.602274Z",
+    "priority": 255,
+    "level": "info",
+    "last_update": null,
+    "type": "high_temperature",
+    "device": "b87fd763-0292-469e-8237-fc82a9f50d8c",
+    "state": "open",
+    "state_author": "b1334763-0292-559e-9937-fc82a9f57daa",
+    "state_logs": [
+      {
+        "author": "b1334763-0292-559e-9937-fc82a9f57daa",
+        "state": "open",
+        "time":"2020-05-25T00:46:19.096134Z"
+      }
+    ],
+    "notes": "Additional notes",
+    "value": {
+        "temp": 100
+    },
+    "description": "Triggered when temperature is above 90°F.",
+    "building": "b7ce1695-0292-4c00-b563-808ca705f2dc",
+    "tags": []
+  }
+
+List Fault Alarms
+-----------------
+
+.. http:GET:: /fault_alarms/
+
+   :statuscode 200:
+
+Get a Fault Alarm
+-----------------
+
+.. http:GET:: /fault_alarms/(id)/
+
+   :statuscode 200:
+
+Update a Fault Alarm
+--------------------
+
+.. http:PUT:: /fault_alarms/(id)/
+
+   :statuscode 200:
+
+Partially Update a Fault Alarm
+------------------------------
+
+.. http:PATCH:: /fault_alarms/(id)/
+
+   :statuscode 200:
+
+Delete a Fault Alarm
+--------------------
+
+.. http:GET:: /fault_alarms/(id)/
+
+   :statuscode 204:
+
+Bulk Update of Fault Alarms' states
+-----------------------------------
+
+.. http:PUT:: /fault_alarms/change_state/
+
+   :statuscode 200:
+
+**Request Model**
+
+==============  ========  ============
+Key             Datatype  Notes
+==============  ========  ============
+state           string    required
+fault_alarms    array     required
+==============  ========  ============
+
+
+**Response Model**
+
+Returns an object with the IDs of the `updated` Fault Alarm objects. If in the request body there
+are any Fault Alarm IDs that do not exist, they are included in the `not_found` key.
+
+==============  ========
+Key             Datatype
+==============  ========
+updated          array
+not_found        array
+==============  ========
+
+**Example request**:
+
+.. sourcecode:: http
+
+  PUT /fault_alarms/change_state/ HTTP/1.1
+  Host: api.gooee.io
+  Content-Type: application/json
+
+  {
+    "state": "ack",
+    "fault_alarms": ["b942a49bf6449268230cdeff109aa13080f8f94f",  "f9b00304-cb6a-4566-9d49-d4f2c336a62b"]
+  }
+
+.. only:: is_internal_environment
+
+  Create / Update FaultAlarms in Batches
+  --------------------------------------
+
+  .. http:POST:: /fault_alarms/batch
+
+     :statuscode 207:
+
+  Creates Fault Alarm objects if they don't exist or updates them if they do. This is an internal
+  endpoint meant to be used to ingest the Fault Alarm objects coming from the :ref:`Devices <objects_devices>`.
+
+  .. _objects_fault_alarms_device_payload:
+
+  Fault Alarm Device JSON Payload
+  ===============================
+
+  =================  ==========================================  =========================================================
+  Key                Datatype                                             Notes
+  =================  ==========================================  =========================================================
+  id                 ref                                         write-once
+  description        string
+  type               string                                      required, max_length=100, write-once
+  value              object                                      required
+  device             :ref:`ref <objects_devices>`                required, write-once
+  level              enum                                        required, max_length=20
+  origin             enum                                        options=[``"rule"``, ``"gooee_gateway"``, ``"building_management_system"``, ``"null"``]
+  rule               :ref:`ref <objects_property_rules>`         write-once
+  state              enum                                        options=[``"open"``, ``"ack"``, ``"closed"``]
+  priority           integer                                     max=255, min=0 array(str), max_length=50 per tag
+  timestamp          datetime                                    write-only
+  tags               array(str)                                  max_length=50 per tag
+  =================  ==========================================  =========================================================
+
+  **Request Model**
+
+  ===================================================================================  ========
+  Request Body                                                                         Notes
+  ===================================================================================  ========
+  array(:ref:`Fault Alarm Device JSON Payload <objects_fault_alarms_device_payload>`)
+  ===================================================================================  ========
+
+
+  **Response Model**
+
+  Returns a object of the `created` and `updated` Fault Alarm values with invalid objects in the request body being ignored.
+
+  ==============  =================================================
+  Key             Datatype
+  ==============  =================================================
+  created          array(:ref:`Fault Alarm <objects_fault_alarms>`)
+  updated          array(:ref:`Fault Alarm <objects_fault_alarms>`)
+  ==============  =================================================
+
+  Note: To speed up the response, the fields `state_author`, and `state_logs`
+  are omitted in the response body.
+
+  **Example request**:
+
+  .. sourcecode:: http
+
+    POST /fault_alarms/batch HTTP/1.1
+    Host: api.gooee.io
+    Content-Type: application/json
+
+    [
+      {
+        "id": "3de06a44-595e-466d-96a0-bb9d204cab6b",
+        "timestamp": "2020-02-17T15:47:53.046570Z",
+        "priority": 255,
+        "level": "info",
+        "type": "high_temperature",
+        "device": "b87fd763-0292-469e-8237-fc82a9f50d8c",
+        "value": {
+            "temp": 100
+        }
+      },
+      {
+        "id": "3de06a44-595e-466d-96a0-bb9d204cab6b",
+        "timestamp": "2020-02-17T15:47:53.046570Z",
+        "priority": 1,
+        "level": "info",
+        "type": "low_temperature",
+        "device": "777fd763-0292-469e-aaba-fc82a9f50d43",
+        "value": {
+            "temp": 20
+        }
+      }
+    ]
+
+  **Example response**:
+
+  .. sourcecode:: http
+
+    POST /fault_alarms/batch HTTP/1.1
+    Host: api.gooee.io
+    Content-Type: application/json
+
+    {
+      "created": [
+        {
+          "id": "3de06a44-595e-466d-96a0-bb9d204cab6b",
+          "created": "2020-04-10T21:17:18.602243Z",
+          "modified": "2020-04-10T21:17:18.602274Z",
+          "last_update": "2020-02-17T15:47:53.046570Z",
+          "priority": 255,
+          "level": "info",
+          "type": "low_temperature",
+          "device": "777fd763-0292-469e-aaba-fc82a9f50d43",
+          "notes": "Additional notes",
+          "value": {
+              "temp": 20
+          },
+          "description": "Triggered when temperature is above 90°F.",
+          "building": "b7ce1695-0292-4c00-b563-808ca705f2dc",
+          "tags": []
+        }
+      ],
+      "updated": [
+        {
+          "id": "3de06a44-595e-466d-96a0-bb9d204cab6b",
+          "created": "2020-04-10T21:17:18.602243Z",
+          "modified": "2020-04-10T21:17:18.602274Z",
+          "last_update": "2020-02-17T15:47:53.046570Z",
+          "priority": 1,
+          "level": "info",
+          "type": "high_temperature",
+          "device": "b87fd763-0292-469e-8237-fc82a9f50d8c",
+          "notes": "Additional notes",
+          "value": {
+              "temp": 100
+          },
+          "description": "Triggered when temperature is above 90°F.",
+          "building": "b7ce1695-0292-4c00-b563-808ca705f2dc",
+          "tags": []
+        }
+      ]
+    }

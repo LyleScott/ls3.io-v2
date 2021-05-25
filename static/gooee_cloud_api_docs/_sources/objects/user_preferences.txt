@@ -1,0 +1,51 @@
+.. _objects_user_preferences:
+
+================
+User Preferences
+================
+
+.. contents:: Quick Links
+
+Description
+===========
+
+User Preferences are used to configure settings specific to a single :ref:`User <objects_users>`.
+
+The **date_format** conforms to the Unicode Locale Data Markup Language (LDML)
+datetime
+format as specified in the standard http://unicode.org/reports/tr35/tr35-dates.html#Date_Format_Patterns
+
+The **number_format** is according to the Unicode Locale format as specified at
+http://unicode.org/reports/tr35/#Unicode_locale_identifier.
+Typically, it is a 2-character language code followed by a separator and then a 2 character
+territory (country code).
+
+* Language code values can be found at https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
+* For the country code, grab the "country_code" value from the response of the following request:
+
+.. http:GET:: /timezones?country=<country>
+
+The **timezone** is according to the Olson Timezone Database. It should be the timezone that
+contains the 2-digit country code. For a complete list of supported timezones, see
+:ref:`Timezones <objects_timezones>`
+
+The **use_24** field is a boolean flag that indicates 24-Hr Time vs 12-Hr Time.
+
+The **use_local** field is a boolean flag that indicates the portal client should use the
+user's local machine's settings instead of the custom settings here.
+
+The **dashboard** will be the users's default :ref:`Dashboard <objects_dashboards>`.
+
+Data Model
+==========
+
+======================== =============================== =====================================================
+Key                      Datatype                        Notes
+======================== =============================== =====================================================
+date_format              string                          max_length=32, e.g. "MM/DD/YYYY"
+number_format            string                          max_length=16, e.g. "fr_FR", "en_US"
+timezone                 string                          max_length=64, e.g. "UTC", "US/Eastern", "US/Pacific"
+use_24                   boolean                         default=False
+use_local                boolean                         default=True
+dashboard                :ref:`ref <objects_dashboards>` default=none
+======================== =============================== =====================================================

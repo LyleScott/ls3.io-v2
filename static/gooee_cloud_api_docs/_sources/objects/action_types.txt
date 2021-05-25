@@ -1,0 +1,1379 @@
+.. _objects_action_types:
+
+============
+Action Types
+============
+
+.. contents:: Quick Links
+
+Description
+===========
+
+An Action Type is executed via an :ref:`Action <objects_actions>` against a target entity.
+
+.. note:: Currently, these objects are *read-only* and controlled by Gooee.
+
+Data Model
+==========
+
+====================   =================================  ========================
+Key                    Datatype                           Notes
+====================   =================================  ========================
+created                datetime                           read-only
+modified               datetime                           read-only
+name                   string/ref                         required, max_length=100, :ref:`Complex Constraints <action_type_complex_constraints>`
+display_name           string                             max_length=100, Defaults to a camel cased version of "name".
+description            string
+data_service_id        string                             read-only
+rules_support          boolean                            read-only, default=true
+available_on           array(str)                         read-only
+feature                str                                read-only
+value_schema           object                             read-only
+tags                   array(str)                         max_length=50 per tag
+====================   =================================  ========================
+
+.. _action_type_complex_constraints:
+
+Complex Constraints
+-------------------
+
+`name` may only contain letters, numbers, underscores, and spaces
+
+Gooee Defined Action Types
+==========================
+
+:ref:`Actions <objects_actions>` typically require a value object.  The Action Type used on the
+Action determines the fields that are supported and they are validated against a `JSON Schema <http://json-schema.org>`_
+defined in the `value_schema` field as well as any Action constraints defined by target Device's :ref:`Product Specs <product_type_specs>`.
+Below are the supported Action Types and the fields that are expected in the value:
+
+
+on
+--
+
+Sends a command to a :ref:`Device <objects_devices>` or :ref:`Space <objects_spaces>`
+to power on.
+
++-----------------+---------------------------------------------------+
+| Key             | Description                                       |
++-----------------+---------------------------------------------------+
+| transition_time | Time to fade in (decimal seconds, optional)       |
++-----------------+---------------------------------------------------+
+
+Example:
+
+    .. code-block:: json
+
+        {
+          "type": "on",
+          "target_type": "space",
+          "target_id": "53d81d80-369e-4a84-af26-e3b9d8aa9d1f",
+          "value": {"transition_time": 5}
+        }
+
+If the command is to a Device and the Device has a previous [dim]; then it will turn on at this %,
+otherwise it will default to 100%.
+
+If the command is to a :ref:`Space <objects_spaces>`, then  all Devices in the group should switch on
+to the last dimming value of each :ref:`Device <objects_devices>`. If a :ref:`Device <objects_devices>`
+does not have a previous [dim], then it will be dimmed to 100%.
+
+Meta values that are updated as a result of this action:
+
+- onoff
+- dim
+
+
+off
+---
+
+Sends a command to a :ref:`Device <objects_devices>` or :ref:`Space <objects_spaces>`
+to power off.
+
++-----------------+---------------------------------------------------+
+| Key             | Description                                       |
++-----------------+---------------------------------------------------+
+| transition_time | Time to fade in (decimal seconds, optional)       |
++-----------------+---------------------------------------------------+
+
+Example:
+
+    .. code-block:: json
+
+        {
+          "type": "off",
+          "target_type": "device",
+          "target_id": "4d64273a-59ce-4f65-9b05-35804c965888",
+          "value": {"transition_time": 10}
+        }
+
+Meta values that are updated as a result of this action:
+
+- onoff
+
+
+dim
+---
+
+Sends a command to a :ref:`Device <objects_devices>` or :ref:`Space <objects_spaces>`
+to move to the specified dimming level.
+
++-----------------+-------------------------------------------------------------+
+| Key             | Description                                                 |
++-----------------+-------------------------------------------------------------+
+| level           | Dim value (range 0 to 100)                                  |
++-----------------+-------------------------------------------------------------+
+| transition_time | Time to transition to dim level (decimal seconds, optional) |
++-----------------+-------------------------------------------------------------+
+
+Example:
+
+    .. code-block:: json
+
+        {
+          "type": "dim",
+          "target_type": "space",
+          "target_id": "53d81d80-369e-4a84-af26-e3b9d8aa9d1f",
+          "value": {"level": 75, "transition_time": 1}
+        }
+
+Meta values that are updated as a result of this action:
+
+- onoff
+- dim
+
+
+adjust
+------
+
+Sends a command to a :ref:`Device <objects_devices>` or :ref:`Space <objects_spaces>`
+to adjust the dimming level by the `delta`.
+
++-----------------+----------------------------------------------------------------+
+| Key             | Description                                                    |
++-----------------+----------------------------------------------------------------+
+| delta           | +/- % adjustment of existing dimming value (range -100 to 100) |
++-----------------+----------------------------------------------------------------+
+| transition_time | Time to transition to dim level (decimal seconds, optional)    |
++-----------------+----------------------------------------------------------------+
+
+Example:
+
+    .. code-block:: json
+
+        {
+          "type": "adjust",
+          "target_type": "device",
+          "target_id": "4d64273a-59ce-4f65-9b05-35804c965888",
+          "value": {"delta": 50, "transition_time": 5}
+        }
+
+Meta values that are updated as a result of this action:
+
+- onoff
+- dim
+
+
+identify
+--------
+
+Sends a command to the :ref:`Device <objects_devices>` to blink on and off. This allows
+for easily identification.
+
++-----------------+-------------------------------------------------------------------------+
+| Key             | Description                                                             |
++-----------------+-------------------------------------------------------------------------+
+| onoff           | A boolean representing on with `true` and off with `false`.             |
++-----------------+-------------------------------------------------------------------------+
+| timeout_on      | Time (decimal seconds, optional) that the identify command takes place. |
+|                 | Timeout takes effect only when onoff = true.                            |
+|                 | Default is 5s                                                           |
++-----------------+-------------------------------------------------------------------------+
+
+Example:
+
+    .. code-block:: json
+
+        {
+          "type": "identify",
+          "target_type": "device",
+          "target_id": "4d64273a-59ce-4f65-9b05-35804c965888",
+          "value": {"onoff": false, "timeout_on": 5}
+        }
+
+Depending on the device protocol this will manifest itself slightly differently.
+
+
+scene_set
+---------
+
+Send :ref:`Scene <objects_scenes>` data to a :ref:`Device <objects_devices>` locally so that it
+may be activated later by `scene_activate`.
+
++---------------------------------+---------------------------------------------------+
+| Key                             | Description                                       |
++---------------------------------+---------------------------------------------------+
+| :ref:`sceneid <objects_scenes>` | Scene ID                                          |
++---------------------------------+---------------------------------------------------+
+| dim                             | Dim value (range 0 to 100)                        |
++---------------------------------+---------------------------------------------------+
+| onoff                           | A boolean representing on with `true` and off     |
+|                                 | with `false` (optional).                          |
++---------------------------------+---------------------------------------------------+
+
+Example:
+
+    .. code-block:: json
+
+        {
+          "type": "scene_set",
+          "target_type": "device",
+          "target_id": "53d81d80-369e-4a84-af26-e3b9d8aa9d1f",
+          "value": {"sceneid": "87dddcc2-9b19-4c90-969c-4976fbd2e529", "dim": 50}
+        }
+
+
+scene_activate
+--------------
+
+Activates a :ref:`Scene <objects_scenes>` with optional transition time.
+
++---------------------------------+------------------------------------------+
+| Key                             | Description                              |
++---------------------------------+------------------------------------------+
+| :ref:`sceneid <objects_scenes>` | Scene ID                                 |
++---------------------------------+------------------------------------------+
+| transition_time                 | Scene transition time (decimal seconds)  |
++---------------------------------+------------------------------------------+
+
+Example:
+
+    .. code-block:: json
+
+        {
+          "type": "scene_activate",
+          "target_type": "scene",
+          "target_id": "87dddcc2-9b19-4c90-969c-4976fbd2e529",
+          "value": {"sceneid": "87dddcc2-9b19-4c90-969c-4976fbd2e529", "transition_time": 5}
+        }
+
+
+reboot
+------
+
+Reboots Gateways and Mesh Access Points.
+
++---------------------------------+---------------------------------------------------+
+| Key                             | Description                                       |
++---------------------------------+---------------------------------------------------+
+| :ref:`device <objects_devices>` | Gateway or Mesh Access Point Device ID            |
++---------------------------------+---------------------------------------------------+
+
+Example:
+
+    .. code-block:: json
+
+        {
+          "type": "reboot",
+          "target_type": "device",
+          "target_id": "53d81d80-369e-4a84-af26-e3b9d8aa9d1f"
+        }
+
+.. _objects_action_types_reset_fingerprints:
+
+reset_fingerprints
+------------------
+
+Reset the Fingerprints on a Gateway Lite to factory default.
+
++---------------------------------+---------------------------------------------------+
+| Key                             | Description                                       |
++---------------------------------+---------------------------------------------------+
+| :ref:`device <objects_devices>` | Gateway Lite Device ID                            |
++---------------------------------+---------------------------------------------------+
+
+Example:
+
+    .. code-block:: json
+
+        {
+          "type": "reset_fingerprints",
+          "target_type": "device",
+          "target_id": "c08d875d-a7ac-41aa-bf12-6148665bee2f"
+        }
+
+.. _objects_action_types_set_beacon:
+
+set_beacon
+----------
+
+Configure beacon slot according to values in JSON formatted data payload with advertising interval in ms. Set to on/off.
+
++---------------------------------+--------------------------------------------------------------------------------+
+| Key                             | Description                                                                    |
++---------------------------------+--------------------------------------------------------------------------------+
+| :ref:`device <objects_devices>` | Device ID                                                                      |
++---------------------------------+--------------------------------------------------------------------------------+
+| onoff                           | A boolean representing on with `1` and                                         |
+|                                 | off with `0`.                                                                  |
++---------------------------------+--------------------------------------------------------------------------------+
+| slot                            | Beacon slot number (range 0 to 3)                                              |
++---------------------------------+--------------------------------------------------------------------------------+
+| interval                        | Interval in ms that determines the advertising                                 |
+|                                 | interval with a range of 30ms to 5,000ms.                                      |
+|                                 | Default value is 1,000ms.                                                      |
++---------------------------------+--------------------------------------------------------------------------------+
+| broadcast_tx                    | The dBM broadcast power of the beacon.                                         |
++---------------------------------+--------------------------------------------------------------------------------+
+| tx_rssi                         | A dBM tx rssi value. (range -4 to 200)                                         |
++---------------------------------+--------------------------------------------------------------------------------+
+| data                            | JSON formatted payload containing the configuration data.                      |
+|                                 | :download:`Download Schema <../_static/action_set_beacon_value-schema.json>`   |
++---------------------------------+--------------------------------------------------------------------------------+
+
+    iBeacon Example:
+
+        .. code-block:: json
+
+            {
+              "ibeacon": {
+                "uuid": "acfd065ec3c011e39bbe1a514932ac01",
+                "major": 0,
+                "minor": 14876,
+                "company_id": "0x4c00"
+              }
+            }
+
+    Eddystone UID Example:
+
+        .. code-block:: json
+
+            {
+              "eddystone-uid": {
+                "uid": "acfd065e1a514932ac01000002014876"
+              }
+            }
+
+    Eddystone URL Example:
+
+        .. code-block:: json
+
+            {
+              "eddystone-url": {
+                "url": "https://www.blueupbeacons.com"
+              }
+            }
+
+.. note::
+    **broadcast_tx** has a set of values allowed according to a mapping against dBM values allowed by NRF:
+    * Radio transmit power in dBm: -30, -20, -16, -12, -8, -4, 0, and 4.
+    * In two’s complement hex, these translate to 0xEC, 0xF0 0xF4, 0xF8, 0xFC, 0x00, 0x03, and 0x04.
+    * Thus, the JSON string will contain a value on the left (e.g., "maximum", which will be converted to a specific dBM.
+
+    .. code-block:: python
+
+        {
+            "maximum": 0x4,
+            "very-high": 0x3,
+            "high": 0x00,
+            "medium-high": 0xFC,
+            "medium": 0xF8,
+            "medium-low": 0xF4,
+            "low": 0xF0,
+            "very-low": 0xEC
+        }
+
+Example:
+
+    .. code-block:: json
+
+        {
+          "type": "set_beacon",
+          "target_type": "device",
+          "target_id": "53d81d80-369e-4a84-af26-e3b9d8aa9d1f",
+          "value": {
+            "onoff": 1,
+            "slot": 0,
+            "interval": 500,
+            "broadcast_tx": 0,
+            "tx_rssi": -82,
+            "data": {
+              "ibeacon": {
+                "uuid": "acfd065ec3c011e39bbe1a514932ac01",
+                "major": 0,
+                "minor": 14876
+              }
+            }
+          }
+        }
+
+
+.. _objects_action_types_set_fault_alarm:
+
+set_fault_alarm
+----------------
+
+Set a Fault Alarm on a device. See :ref:`Fault Alarms <objects_fault_alarms>` for reference. This
+action type is available through :ref:`Property Rules <objects_property_rules>`.
+
+
++---------------------------------+--------------------------------------------------------------------------+
+| Key                             | Description                                                              |
++---------------------------------+--------------------------------------------------------------------------+
+| :ref:`device <objects_devices>` | Device ID.                                                               |
++---------------------------------+--------------------------------------------------------------------------+
+| description                     | Description of the Fault raising the Alarm (Optional).                   |
++---------------------------------+--------------------------------------------------------------------------+
+| level                           | Level of the Fault Alarm level                                           |
++---------------------------------+--------------------------------------------------------------------------+
+| priority                        | Numeric value that represents the Alarm Priority.                        |
++---------------------------------+--------------------------------------------------------------------------+
+| rule                            | ID of the rule that triggered the action.                                |
++---------------------------------+--------------------------------------------------------------------------+
+| tags                            | Arrays of tags (Optional).                                               |
++---------------------------------+--------------------------------------------------------------------------+
+
+Example:
+
+    .. code-block:: json
+
+        {
+          "type": "set_fault_alarm",
+          "target_type": "device",
+          "target_id": "c08d875d-a7ac-41aa-bf12-6148665bee2f",
+          "value": {
+            "rule": "728d875d-24ac-88aa-bf12-1148665b4273",
+            "priority": 1,
+            "level": "warning",
+            "tags": ["test"]
+          }
+        }
+
+
+clear_beacon
+------------
+
+Clear values of beacon slot and turn off.
+
++---------------------------------+---------------------------------------------------+
+| Key                             | Description                                       |
++---------------------------------+---------------------------------------------------+
+| :ref:`device <objects_devices>` | Device ID                                         |
++---------------------------------+---------------------------------------------------+
+| slot                            | Beacon slot number (range 0 to 3)                 |
++---------------------------------+---------------------------------------------------+
+
+
+Example:
+
+    .. code-block:: json
+
+        {
+          "type": "clear_beacon",
+          "target_type": "device",
+          "target_id": "53d81d80-369e-4a84-af26-e3b9d8aa9d1f",
+          "value": {"slot": 0}
+        }
+
+
+adjust_beacon
+-------------
+
+Adjust a previously configured beacon by changing on/off, interval, or broadcast power.
+
++---------------------------------+---------------------------------------------------+
+| Key                             | Description                                       |
++---------------------------------+---------------------------------------------------+
+| :ref:`device <objects_devices>` | Device ID                                         |
++---------------------------------+---------------------------------------------------+
+| slot                            | Beacon slot number (range 0 to 3)                 |
++---------------------------------+---------------------------------------------------+
+| onoff                           | A boolean representing on with `true` and         |
+|                                 | off with `false`.                                 |
++---------------------------------+---------------------------------------------------+
+| interval                        | Interval in ms that determines the advertising    |
+|                                 | interval with a range of 30ms to 5,000ms.         |
+|                                 | Default value is 1,000ms.                         |
++---------------------------------+---------------------------------------------------+
+| broadcast_tx                    | The dBM broadcast power of the beacon.            |
++---------------------------------+---------------------------------------------------+
+| tx_rssi                         | A dBM tx rssi value. (range -4 to 200)            |
++---------------------------------+---------------------------------------------------+
+
+.. note::
+    * Beacons must be set before you can adjust them.
+
+Example:
+
+    .. code-block:: json
+
+        {
+          "type": "adjust_beacon",
+          "target_type": "device",
+          "target_id": "53d81d80-369e-4a84-af26-e3b9d8aa9d1f",
+          "value": {
+              "onoff": 1,
+              "slot": 0,
+              "interval": 250,
+              "broadcast_tx": -20,
+              "tx_rssi": -82
+           }
+        }
+
+
+beacon_detected
+---------------
+
+Sets a Beacon Event as detected.
+
++---------------------------------+-------------------------------------------------------+
+| Key                             | Description                                           |
++---------------------------------+-------------------------------------------------------+
+| clientId                        | A Client provided identifier                          |
++---------------------------------+-------------------------------------------------------+
+| customFields                    | Client provided custom JSON object for tagging        |
++---------------------------------+-------------------------------------------------------+
+| beacon_id                       | EUID of beacon                                        |
++---------------------------------+-------------------------------------------------------+
+| rx                              | Signal strength                                       |
++---------------------------------+-------------------------------------------------------+
+
+
+Example:
+
+    .. code-block:: json
+
+        {
+            "type": "beacon_detected",
+            "target_id": "35537bd6-e97a-4eff-8cdc-2294b3ab2b1c",
+            "target_type": "device",
+            "value": {
+                "client_id": "GooeePhoneApp-123",
+                "customFields": {
+                    "someClientData": {
+                        "moreClientData": "010001001010000110"
+                    }
+                },
+                "beacon_id": "FEDCBA9876543210",
+                "rx": 2,
+            },
+        }
+
+
+beacons_exited
+--------------
+
+Sets a Beacon Event as Exit.
+
++---------------------------------+-------------------------------------------------------+
+| Key                             | Description                                           |
++---------------------------------+-------------------------------------------------------+
+| clientId                        | A Client provided identifier                          |
++---------------------------------+-------------------------------------------------------+
+| customFields                    | Client provided custom JSON object for tagging        |
++---------------------------------+-------------------------------------------------------+
+| beacon_id                       | EUID of beacon                                        |
++---------------------------------+-------------------------------------------------------+
+| rx                              | Signal strength                                       |
++---------------------------------+-------------------------------------------------------+
+
+
+Example:
+
+    .. code-block:: json
+
+        {
+            "type": "beacon_exited",
+            "target_id": "35537bd6-e97a-4eff-8cdc-2294b3ab2b1c",
+            "target_type": "device",
+            "value": {
+                "client_id": "GooeePhoneApp-123",
+                "customFields": {
+                    "someClientData": {
+                        "moreClientData": "010001001010000110"
+                    }
+                },
+                "beacon_id": "FEDCBA9876543210",
+                "rx": 0,
+            },
+        }
+
+
+button_pressed
+--------------
+
+An Action representing a button pressed on a Switch :ref:`Device <objects_devices>`.
+
++---------------------------------+-------------------------------------------------------+
+| Key                             | Description                                           |
++---------------------------------+-------------------------------------------------------+
+| button_number                   | A button identifier                                   |
++---------------------------------+-------------------------------------------------------+
+
+
+Example:
+
+    .. code-block:: json
+
+        {
+            "name": "New Button Press",
+            "type": "button_pressed",
+            "target_id": "126224f6-7ff2-48a7-8633-6644918633a1",
+            "target_type": "device",
+            "value": {
+                "button_number": 1
+            }
+        }
+
+
+button_released
+---------------
+
+An Action representing a button released on a Switch :ref:`Device <objects_devices>`.
+
++---------------------------------+-------------------------------------------------------+
+| Key                             | Description                                           |
++---------------------------------+-------------------------------------------------------+
+| button_number                   | A button identifier                                   |
++---------------------------------+-------------------------------------------------------+
+
+
+Example:
+
+    .. code-block:: json
+
+        {
+            "name": "New Button Release",
+            "type": "button_released",
+            "target_id": "126224f6-7ff2-48a7-8633-6644918633a1",
+            "target_type": "device",
+            "value": {
+                "button_number": 1
+            }
+        }
+
+
+.. _action_type_ct_change:
+
+ct_change
+---------
+
+Changes the Color Temperature.
+
+.. note::
+    Device must have Color Temperature Change support.
+
++---------------------------------+-------------------------------------------------------+
+| Key                             | Description                                           |
++---------------------------------+-------------------------------------------------------+
+| color_temp                      | Color temperature to change to in mireds (133-550)    |
++---------------------------------+-------------------------------------------------------+
+| transition_time                 | Change transition time (decimal seconds, optional)    |
++---------------------------------+-------------------------------------------------------+
+
+
+Example:
+
+    .. code-block:: json
+
+        {
+            "name": "New Color Temperature",
+            "type": "ct_change",
+            "target_id": "884e6276-d6ea-494e-95c3-fc92956345fd",
+            "target_type": "device",
+            "value": {
+                "color_temp": 400
+            }
+        }
+
+
+.. _action_type_rgb_change:
+
+rgb_change
+----------
+
+Changes the Hue and Saturation levels.
+
+.. note::
+    Device must have RGB Change support.
+
++---------------------------------+-------------------------------------------------------+
+| Key                             | Description                                           |
++---------------------------------+-------------------------------------------------------+
+| hue                             | Level of Hue to change to (0-360)                     |
++---------------------------------+-------------------------------------------------------+
+| saturation                      | Level of Saturation to change to (0-360)              |
++---------------------------------+-------------------------------------------------------+
+| transition_time                 | Change transition time (decimal seconds, optional)    |
++---------------------------------+-------------------------------------------------------+
+
+
+Example:
+
+    .. code-block:: json
+
+        {
+            "name": "RGB Change Action",
+            "type": "rgb_change",
+            "target_id": "884e6276-d6ea-494e-95c3-fc92956345fd",
+            "target_type": "device",
+            "value": {
+                "hue": 100,
+                "saturation": 150
+            }
+        }
+
+
+.. _action_type_blacklist:
+
+blacklist
+---------
+
+Blacklists a :ref:`Property-based Rule <objects_property_rules>` or :ref:`Event-based Rule <objects_event_rules>` from evaluating for a set duration.
+
++-----------------------+-----------------------------------------------------------------------+
+| Key                   | Description                                                           |
++-----------------------+-----------------------------------------------------------------------+
+| duration              | Duration a Rule should be disabled for (decimal seconds, required)    |
++-----------------------+-----------------------------------------------------------------------+
+
+
+Example:
+
+    .. code-block:: json
+
+        {
+            "type": "blacklist",
+            "target_id": "d5633e2c-bd1b-4530-973a-ed2f05420fc9",
+            "target_type": "propertyrule",
+            "value": {
+                "duration": 60
+            }
+        }
+
+
+.. _action_type_wait:
+
+wait
+----
+
+Wait allows users to specify a pause during a :ref:`Property-based Rule <objects_property_rules>` or :ref:`Event-based Rule <objects_event_rules>` execution phase.
+Use in conjunction with sequential action groups to stagger action execution (:ref:`see example <rule_v2_actions>`). Does not need a ``target_id`` or ``target_type``.
+Maximum duration for a wait action is 30 minutes.
+
++-----------------------+------------------------------------------------------------------------------------------------------------+
+| Key                   | Description                                                                                                |
++-----------------------+------------------------------------------------------------------------------------------------------------+
+| duration              | Duration a Rule should pause before executing the next action group (decimal seconds, required, max=1800)  |
++-----------------------+------------------------------------------------------------------------------------------------------------+
+
+
+Example:
+
+    .. code-block:: json
+
+        {
+            "type": "wait",
+            "value": {
+                "duration": 60
+            }
+        }
+
+
+co2_setpoint
+------------
+
+Sends a command to the :ref:`Device <objects_devices>` to adjust its CO2 setpoint.
+
++-----------------+-------------------------------------------------------------+
+| Key             | Description                                                 |
++-----------------+-------------------------------------------------------------+
+| level           | CO2 setpoint value to adjust to.                            |
++-----------------+-------------------------------------------------------------+
+
+Example:
+
+    .. code-block:: json
+
+        {
+            "type": "co2_setpoint",
+            "target_type": "device",
+            "target_id": "ab526c8d-9066-4e08-98ae-621bb5f991a1",
+            "value": {
+                "level": 500
+            }
+        }
+
+
+extractfan_pressure_setpoint
+----------------------------
+
+Sends a command to the :ref:`Device <objects_devices>` to adjust the extractor fan pressure setpoint.
+
++-----------------+-------------------------------------------------------------+
+| Key             | Description                                                 |
++-----------------+-------------------------------------------------------------+
+| level           | Pressure setpoint value to adjust to.                       |
++-----------------+-------------------------------------------------------------+
+
+Example:
+
+    .. code-block:: json
+
+        {
+            "type": "extractfan_pressure_setpoint",
+            "target_type": "device",
+            "target_id": "ab526c8d-9066-4e08-98ae-621bb5f991a1",
+            "value": {
+                "level": 500
+            }
+        }
+
+
+extractfan_speed_setpoint
+-------------------------
+
+Sends a command to the :ref:`Device <objects_devices>` to adjust the extractor fan speed setpoint.
+
++-----------------+-------------------------------------------------------------+
+| Key             | Description                                                 |
++-----------------+-------------------------------------------------------------+
+| level           | Speed setpoint value to adjust to.                          |
++-----------------+-------------------------------------------------------------+
+
+Example:
+
+    .. code-block:: json
+
+        {
+            "type": "extractfan_speed_setpoint",
+            "target_type": "device",
+            "target_id": "ab526c8d-9066-4e08-98ae-621bb5f991a1",
+            "value": {
+                "level": 50
+            }
+        }
+
+
+extracttemp_setpoint
+--------------------
+
+Sends a command to the :ref:`Device <objects_devices>` to adjust its temperature setpoint.
+
++-----------------+-------------------------------------------------------------+
+| Key             | Description                                                 |
++-----------------+-------------------------------------------------------------+
+| temperature     | Temperature setpoint value to adjust to.                    |
++-----------------+-------------------------------------------------------------+
+
+Example:
+
+    .. code-block:: json
+
+        {
+            "type": "extracttemp_setpoint",
+            "target_type": "device",
+            "target_id": "ab526c8d-9066-4e08-98ae-621bb5f991a1",
+            "value": {
+                "temperature": 30
+            }
+        }
+
+
+fan_mode
+--------
+
+Sends a command to the :ref:`Device <objects_devices>` to adjust its fan mode.
+
++-----------------+-------------------------------------------------------------+
+| Key             | Description                                                 |
++-----------------+-------------------------------------------------------------+
+| mode            | Mode value to adjust to.                                    |
++-----------------+-------------------------------------------------------------+
+
+Example:
+
+    .. code-block:: json
+
+        {
+            "type": "fan_mode",
+            "target_type": "device",
+            "target_id": "ab526c8d-9066-4e08-98ae-621bb5f991a1",
+            "value": {
+                "mode": "Auto"
+            }
+        }
+
+
+flowpressure_setpoint
+---------------------
+
+Sends a command to the :ref:`Device <objects_devices>` to adjust its flow pressure setpoint.
+
++-----------------+-------------------------------------------------------------+
+| Key             | Description                                                 |
++-----------------+-------------------------------------------------------------+
+| level           | Flow pressure setpoint value to adjust to.                  |
++-----------------+-------------------------------------------------------------+
+
+Example:
+
+    .. code-block:: json
+
+        {
+            "type": "flowpressure_setpoint",
+            "target_type": "device",
+            "target_id": "ab526c8d-9066-4e08-98ae-621bb5f991a1",
+            "value": {
+                "level": 80
+            }
+        }
+
+
+flowtemp_setpoint
+-----------------
+
+Sends a command to the :ref:`Device <objects_devices>` to adjust its flow temperature setpoint.
+
++-----------------+-------------------------------------------------------------+
+| Key             | Description                                                 |
++-----------------+-------------------------------------------------------------+
+| temperature     | Flow temperature setpoint value to adjust to.               |
++-----------------+-------------------------------------------------------------+
+
+Example:
+
+    .. code-block:: json
+
+        {
+            "type": "flowtemp_setpoint",
+            "target_type": "device",
+            "target_id": "ab526c8d-9066-4e08-98ae-621bb5f991a1",
+            "value": {
+                "temperature": 15
+            }
+        }
+
+
+humidity_setpoint
+-----------------
+
+Sends a command to the :ref:`Device <objects_devices>` to adjust its humidity setpoint.
+
++-----------------+-------------------------------------------------------------+
+| Key             | Description                                                 |
++-----------------+-------------------------------------------------------------+
+| level           | Humidity setpoint value to adjust to.                       |
++-----------------+-------------------------------------------------------------+
+
+Example:
+
+    .. code-block:: json
+
+        {
+            "type": "humidity_setpoint",
+            "target_type": "device",
+            "target_id": "ab526c8d-9066-4e08-98ae-621bb5f991a1",
+            "value": {
+                "level": 25
+            }
+        }
+
+
+louvers
+-------
+
+Sends a command to the :ref:`Device <objects_devices>` to adjust its louvers.
+
++-----------------+-------------------------------------------------------------+
+| Key             | Description                                                 |
++-----------------+-------------------------------------------------------------+
+| mode            | Mode value to adjust to.                                    |
++-----------------+-------------------------------------------------------------+
+
+Example:
+
+    .. code-block:: json
+
+        {
+            "type": "louvers",
+            "target_type": "device",
+            "target_id": "ab526c8d-9066-4e08-98ae-621bb5f991a1",
+            "value": {
+                "mode": "Fixed"
+            }
+        }
+
+
+mode
+----
+
+Sends a command to the :ref:`Device <objects_devices>` to adjust its mode.
+
++-----------------+-------------------------------------------------------------+
+| Key             | Description                                                 |
++-----------------+-------------------------------------------------------------+
+| mode            | Mode value to adjust to.                                    |
++-----------------+-------------------------------------------------------------+
+
+Example:
+
+    .. code-block:: json
+
+        {
+            "type": "mode",
+            "target_type": "device",
+            "target_id": "ab526c8d-9066-4e08-98ae-621bb5f991a1",
+            "value": {
+                "mode": "Low"
+            }
+        }
+
+
+returntemp_setpoint
+-------------------
+
+Sends a command to the :ref:`Device <objects_devices>` to adjust its return temperature setpoint.
+
++-----------------+-------------------------------------------------------------+
+| Key             | Description                                                 |
++-----------------+-------------------------------------------------------------+
+| temperature     | Return temperature setpoint value to adjust to.             |
++-----------------+-------------------------------------------------------------+
+
+Example:
+
+    .. code-block:: json
+
+        {
+            "type": "returntemp_setpoint",
+            "target_type": "device",
+            "target_id": "ab526c8d-9066-4e08-98ae-621bb5f991a1",
+            "value": {
+                "temperature": 30
+            }
+        }
+
+set_state
+---------
+
+Sends a command to the :ref:`Device <objects_devices>` to set its state.
+
++-----------------+-------------------------------------------------------------+
+| Key             | Description                                                 |
++-----------------+-------------------------------------------------------------+
+| mode            | State value to adjust to.                                   |
++-----------------+-------------------------------------------------------------+
+
+Example:
+
+    .. code-block:: json
+
+        {
+            "type": "set_state",
+            "target_type": "device",
+            "target_id": "ab526c8d-9066-4e08-98ae-621bb5f991a1",
+            "value": {
+                "state": "Enable"
+            }
+        }
+
+
+speed_setpoint
+--------------
+
+Sends a command to the :ref:`Device <objects_devices>` to adjust its speed setpoint.
+
++-----------------+-------------------------------------------------------------+
+| Key             | Description                                                 |
++-----------------+-------------------------------------------------------------+
+| level           | Speed setpoint value to adjust to.                          |
++-----------------+-------------------------------------------------------------+
+
+Example:
+
+    .. code-block:: json
+
+        {
+            "type": "speed_setpoint",
+            "target_type": "device",
+            "target_id": "ab526c8d-9066-4e08-98ae-621bb5f991a1",
+            "value": {
+                "level": 75
+            }
+        }
+
+
+supplyfan_pressure_setpoint
+---------------------------
+
+Sends a command to the :ref:`Device <objects_devices>` to adjust its supply air fan pressure setpoint.
+
++-----------------+-------------------------------------------------------------+
+| Key             | Description                                                 |
++-----------------+-------------------------------------------------------------+
+| level           | Supply fan pressure setpoint value to adjust to.            |
++-----------------+-------------------------------------------------------------+
+
+Example:
+
+    .. code-block:: json
+
+        {
+            "type": "supplyfan_pressure_setpoint",
+            "target_type": "device",
+            "target_id": "ab526c8d-9066-4e08-98ae-621bb5f991a1",
+            "value": {
+                "level": 75
+            }
+        }
+
+
+supplyfan_speed_setpoint
+------------------------
+
+Sends a command to the :ref:`Device <objects_devices>` to adjust its supply air fan speed setpoint.
+
++-----------------+-------------------------------------------------------------+
+| Key             | Description                                                 |
++-----------------+-------------------------------------------------------------+
+| level           | Supply fan speed setpoint value to adjust to.               |
++-----------------+-------------------------------------------------------------+
+
+Example:
+
+    .. code-block:: json
+
+        {
+            "type": "supplyfan_speed_setpoint",
+            "target_type": "device",
+            "target_id": "ab526c8d-9066-4e08-98ae-621bb5f991a1",
+            "value": {
+                "level": 40
+            }
+        }
+
+
+supplytemp_setpoint
+-------------------
+
+Sends a command to the :ref:`Device <objects_devices>` to adjust its supply air fan temperature setpoint.
+
++-----------------+-------------------------------------------------------------+
+| Key             | Description                                                 |
++-----------------+-------------------------------------------------------------+
+| temperature     | Supply fan temperature setpoint value to adjust to.         |
++-----------------+-------------------------------------------------------------+
+
+Example:
+
+    .. code-block:: json
+
+        {
+            "type": "supplytemp_setpoint",
+            "target_type": "device",
+            "target_id": "ab526c8d-9066-4e08-98ae-621bb5f991a1",
+            "value": {
+                "temperature": 15
+            }
+        }
+
+
+temperature_setpoint
+--------------------
+
+Sends a command to the :ref:`Device <objects_devices>` to adjust its temperature setpoint.
+
++-----------------+-------------------------------------------------------------+
+| Key             | Description                                                 |
++-----------------+-------------------------------------------------------------+
+| temperature     | Temperature setpoint value to adjust to.                    |
++-----------------+-------------------------------------------------------------+
+
+Example:
+
+    .. code-block:: json
+
+        {
+            "type": "temperature_setpoint",
+            "target_type": "device",
+            "target_id": "ab526c8d-9066-4e08-98ae-621bb5f991a1",
+            "value": {
+                "temperature": 30
+            }
+        }
+
+
+x1_setpoint
+-----------
+
+Sends a command to the :ref:`Device <objects_devices>` to adjust its X1 setpoint.
+
++-----------------+-------------------------------------------------------------+
+| Key             | Description                                                 |
++-----------------+-------------------------------------------------------------+
+| level           | X1 setpoint value to adjust to.                             |
++-----------------+-------------------------------------------------------------+
+
+Example:
+
+    .. code-block:: json
+
+        {
+            "type": "x1_setpoint",
+            "target_type": "device",
+            "target_id": "ab526c8d-9066-4e08-98ae-621bb5f991a1",
+            "value": {
+                "level": -5
+            }
+        }
+
+
+x2_setpoint
+-----------
+
+Sends a command to the :ref:`Device <objects_devices>` to adjust its X2 setpoint.
+
++-----------------+-------------------------------------------------------------+
+| Key             | Description                                                 |
++-----------------+-------------------------------------------------------------+
+| level           | X2 setpoint value to adjust to.                             |
++-----------------+-------------------------------------------------------------+
+
+Example:
+
+    .. code-block:: json
+
+        {
+            "type": "x2_setpoint",
+            "target_type": "device",
+            "target_id": "ab526c8d-9066-4e08-98ae-621bb5f991a1",
+            "value": {
+                "level": 10
+            }
+        }
+
+
+y1_setpoint
+-----------
+
+Sends a command to the :ref:`Device <objects_devices>` to adjust its Y1 setpoint.
+
++-----------------+-------------------------------------------------------------+
+| Key             | Description                                                 |
++-----------------+-------------------------------------------------------------+
+| level           | Y1 setpoint value to adjust to.                             |
++-----------------+-------------------------------------------------------------+
+
+Example:
+
+    .. code-block:: json
+
+        {
+            "type": "y1_setpoint",
+            "target_type": "device",
+            "target_id": "ab526c8d-9066-4e08-98ae-621bb5f991a1",
+            "value": {
+                "level": 30
+            }
+        }
+
+
+y2_setpoint
+-----------
+
+Sends a command to the :ref:`Device <objects_devices>` to adjust its Y2 setpoint.
+
++-----------------+-------------------------------------------------------------+
+| Key             | Description                                                 |
++-----------------+-------------------------------------------------------------+
+| level           | Y2 setpoint value to adjust to.                             |
++-----------------+-------------------------------------------------------------+
+
+Example:
+
+    .. code-block:: json
+
+        {
+            "type": "y2_setpoint",
+            "target_type": "device",
+            "target_id": "ab526c8d-9066-4e08-98ae-621bb5f991a1",
+            "value": {
+                "level": 40
+            }
+        }
+
+send_sms
+--------
+
+Sends an SMS notification to a list of phone numbers.
+
++-----------------+-------------------------------------------------------------+
+| Key             | Description                                                 |
++-----------------+-------------------------------------------------------------+
+| recipients      | List of phone numbers to notify.                            |
++-----------------+-------------------------------------------------------------+
+| message         | The message to send via SMS. Limited to 140 characters.     |
++-----------------+-------------------------------------------------------------+
+
+Example:
+
+    .. code-block:: json
+
+        {
+            "type": "send_sms",
+            "target_type": "device",
+            "target_id": "ab526c8d-9066-4e08-98ae-621bb5f991a1",
+            "value": {
+                "recipients": ["+1-111-777-9311", "+447911123456"],
+                "message": "High temperature on this Device. Please check on https://goo.ee/FSXu01"
+            }
+        }
+
+send_email
+----------
+
+Sends an e-mail notification to a list of addresses.
+
++-----------------+-------------------------------------------------------------+
+| Key             | Description                                                 |
++-----------------+-------------------------------------------------------------+
+| recipients      | List of e-mail addresses to notify.                         |
++-----------------+-------------------------------------------------------------+
+| subject         | Optional subject for the email sent.                        |
++-----------------+-------------------------------------------------------------+
+| message         | The message to send via e-mail.                             |
++-----------------+-------------------------------------------------------------+
+
+Example:
+
+    .. code-block:: json
+
+        {
+            "type": "send_email",
+            "target_type": "space",
+            "target_id": "ab526c8d-9066-4e08-98ae-621bb5f991a1",
+            "value": {
+                "recipients": ["someone@example.com", "mary@company.com"],
+                "subject": "Extreme Alert",
+                "message": "Alert of high importance on 1st floor. Please check on https://goo.ee/FSXu01"
+            }
+        }
+
+API Endpoints
+=============
+
+List Action Types
+-----------------
+
+.. http:GET:: /action_types/
+
+   :statuscode 200:
+
+
+Retrieve an Action Type
+-----------------------
+
+.. http:GET:: /action_types/(name)/
+
+   :statuscode 200:

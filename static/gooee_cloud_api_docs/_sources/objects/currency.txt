@@ -1,0 +1,43 @@
+.. _objects_currency:
+
+========
+Currency
+========
+
+.. contents:: Quick Links
+
+Description
+===========
+
+This read-only endpoint provides currency data from `ISO 4217`_. Currencies are identified by their
+three-letter `code`. For example, the US Dollar is identified by the code 'USD'.
+
+Data Model
+==========
+
+============== ============
+Key            Datatype
+============== ============
+code           string (ref)
+numeric_code   string
+name           string
+============== ============
+
+API Endpoints
+=============
+
+List All Currencies
+-------------------
+
+.. http:GET:: /currency
+
+   :statuscode 200:
+
+Retrieve a Specific Currency
+----------------------------
+
+.. http:GET:: /currency/(code)
+
+   :statuscode 200:
+
+.. _ISO 4217: http://www.iso.org/iso/home/standards/currency_codes.htm

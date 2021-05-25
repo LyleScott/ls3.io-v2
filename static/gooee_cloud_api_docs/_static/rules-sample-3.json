@@ -1,0 +1,26 @@
+{
+  "device": "$device_id",
+  "name": "dim als",
+  "conditions": [
+    {
+      "variable": "als",
+      "operator": "<",
+      "value": 40
+    }
+  ],
+  "operations": [
+    {
+      "spaces": [
+        "$space_id"
+      ],
+      "actions": [
+        {
+          "name": "dim",
+          "parameters": {
+            "level": 50
+          }
+        }
+      ]
+    }
+  ]
+}

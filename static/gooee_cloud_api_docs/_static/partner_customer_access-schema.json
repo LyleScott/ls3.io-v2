@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "Partner Customer Access Schema",
+  "description": "Schema used for Partner Customer Access.",
+  "additionalProperties": false,
+  "properties": {
+    "read": {
+      "type": "boolean",
+      "title": "Read",
+      "description": "Read Access"
+    },
+    "write": {
+      "type": "boolean",
+      "title": "Write",
+      "description": "Write Access"
+    }
+  }
+}

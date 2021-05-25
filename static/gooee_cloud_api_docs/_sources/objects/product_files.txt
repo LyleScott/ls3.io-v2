@@ -1,0 +1,81 @@
+.. _objects_product_files:
+
+=============
+Product Files
+=============
+
+.. contents:: Quick Links
+
+Description
+===========
+
+Product files can be any file related to a :ref:`Product <objects_products>` and can be only added
+or modified by the :ref:`Product <objects_products>` owner or Gooee users.
+
+Data Model
+==========
+
+.. _IANA_MimeTypes: https://www.iana.org/assignments/media-types/media-types.xhtml
+.. _rfc2388: https://tools.ietf.org/html/rfc5988
+
+.. note:: Upload requests must use **multipart/form-data** [rfc2388_].
+
+
+===========  ===========  ===========================================================
+Key          Datatype     Notes
+===========  ===========  ===========================================================
+id           ref          read-only
+created      datetime     read-only
+modified     datetime     read-only
+description  text
+file         file         required
+is_private   boolean      default=False
+mimetype     string       read-only, the file mimetype [IANA_MimeTypes_ ].
+size         integer      read-only, file size in bytes.
+tags         array(str)   max_length=50 per tag
+===========  ===========  ===========================================================
+
+API Endpoints
+=============
+
+Create a Product File
+---------------------
+
+.. http:POST:: /products/(id)/files
+
+   :statuscode 201:
+
+List Product Files
+------------------
+
+.. http:GET:: /products/(id)/files
+
+   :statuscode 200:
+
+Update a Product File
+---------------------
+
+.. http:PUT:: /products/(product_id)/files/(id)
+
+   :statuscode 200:
+
+Partially Update a Product File
+-------------------------------
+
+.. http:PATCH:: /products/(product_id)/files/(id)
+
+   :statuscode 200:
+
+Retrieve a Product File
+-----------------------
+
+.. http:GET:: /products/(product_id)/files/(id)
+
+   :statuscode 200:
+
+Delete a Product File
+---------------------
+
+.. http:DELETE:: /products/(product_id)/files/(id)
+
+   :statuscode 204:

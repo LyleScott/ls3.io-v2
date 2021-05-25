@@ -1,0 +1,70 @@
+{
+  "space": "$space_id",
+  "name": "A sample rule",
+  "condition_groups": [
+    {
+      "function": "all",
+      "devices": [
+        "$device1_id",
+        "$device2_id",
+        "$device3_id"
+      ],
+      "conditions": [
+        {
+          "variable": "als",
+          "operator": ">",
+          "value": 50
+        }
+      ],
+      "duration": 60,
+      "logical_operator": "and"
+    },
+    {
+      "function": null,
+      "conditions": [
+        {
+          "variable": "time_of_day",
+          "operator": "<",
+          "value": "13:00:00",
+          "logical_operator": "or"
+        },
+        {
+          "variable": "day_of_week",
+          "operator": "=",
+          "value": [
+            "mon",
+            "tue",
+            "wed"
+          ]
+        }
+      ]
+    }
+  ],
+  "lock_condition": {
+    "function": "all",
+    "devices": [
+      "$device1_id",
+      "$device2_id",
+      "$device3_id"
+    ],
+    "conditions": [
+      {
+        "variable": "als",
+        "operator": "<=",
+        "value": 50
+      }
+    ]
+  },
+  "actions": [
+    [
+      {
+        "type": "dim",
+        "target_type": "space",
+        "target_id": "$space_id",
+        "value": {
+          "level": 10
+        }
+      }
+    ]
+  ]
+}

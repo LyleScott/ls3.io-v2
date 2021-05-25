@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "client_id": {
+      "type": "string"
+    },
+    "customFields": {
+      "type": "object"
+    },
+    "beacon_id": {
+      "type": "string",
+      "pattern": "^[0-9A-F]{16}$"
+    },
+    "rx": {
+      "type": "integer",
+      "maximum": 4
+    }
+  },
+  "required": [
+    "client_id",
+    "customFields",
+    "beacon_id",
+    "rx"
+  ],
+  "additionalProperties": false
+}

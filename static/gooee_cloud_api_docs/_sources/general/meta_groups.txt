@@ -1,0 +1,74 @@
+.. _general_meta_groups:
+
+===========
+Meta Groups
+===========
+
+.. contents:: Quick Links
+
+Description
+===========
+
+:ref:`Devices <objects_devices>`, :ref:`Products <objects_products>` and
+:ref:`Connected Products <objects_connected_products>` support the ability of grouping their meta
+values with pre-configured groups that can be used later for analytics and permissions purposes. By
+default there are five grouping values defined: **~product_performance**, **~motion**, **~energy**,
+**~admin**, **~protected**.
+
+.. note:: Groups starting with the **~** character are system groups and can only be assigned to
+          Meta values by Gooee users.  Meta with these Groups may only be deleted by Gooee Users.
+
+.. note:: Meta in the **~protected** group is governed by Gooee and has pre-defined JSON schema
+          that it's value must validate against.
+
+Data Model
+==========
+
+This is the data model used to configure the Meta Groups:
+
+=======================  =====================================  ======================================================
+Key                      Datatype                               Notes
+=======================  =====================================  ======================================================
+id                       ref                                    read-only
+created                  datetime                               read-only
+modified                 datetime                               read-only
+name                     string                                 required, max_length=255
+                                                                Only lowercase alphanumeric characters, underscores and ~ are allowed.
+display_name             datetime                               read-only, auto generated from name.
+is_system_group          boolean                                read_only
+customer_scopes          array(:ref:`ref <objects_customers>`)  see :ref:`general_scope`
+partner_scopes           array(:ref:`ref <objects_partners>`)   see :ref:`general_scope`
+=======================  =====================================  ======================================================
+
+
+API Endpoints
+=============
+
+Create a Meta Group
+-------------------
+
+.. http:POST:: /meta_groups/
+
+   :statuscode 201:
+
+List Meta Groups
+----------------
+
+.. http:GET:: /meta_groups/
+
+   :statuscode 200:
+
+Retrieve a Meta Group
+---------------------
+
+.. http:GET:: /meta_groups/(id)/
+
+   :statuscode 200:
+
+Delete a Meta Group
+-------------------
+
+.. http:DELETE:: /meta_groups/(id)/
+
+   :statuscode 204:
+

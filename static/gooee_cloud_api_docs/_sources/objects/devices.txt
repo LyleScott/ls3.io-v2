@@ -1,0 +1,544 @@
+.. _objects_devices:
+
+=======
+Devices
+=======
+
+.. contents:: Quick Links
+
+Description
+===========
+
+Devices are network addressable hardware entities that have :ref:`Meta <general_meta>` values that
+can track state changes over time. For example, a Device can have a `type` of WIM, Bulb, Sensor,
+etc. Devices also support the :ref:`Action <objects_actions>` interface which allows for a more
+pragmatic way of dealing with pragmatic events.
+
+Gateway Description
+===================
+
+Gateways are on-premise devices that facilitate local communication to other
+:ref:`Devices <objects_devices>`.  By communicating Device actuation (power, dim, etc) locally, a
+much faster response time is achieved.
+
+.. _objects_mesh_access_point:
+
+Mesh Access Point Description
+=============================
+
+Mesh Access Points are devices used to extend the coverage area of a `gateway`. They operate much like a
+`gateway`, only they are children of a `gateway` and facilitate opportunities for signal-strength
+optimizations to decrease response times.
+
+Integration Specific
+====================
+
+* :ref:`Gateway Lite <integrations_gateway_lite>`
+
+
+Data Model
+==========
+
+.. todo::
+
+   Make `mesh_access_points` and `devices` read-only on 'gateways' since they are programatically
+   managed by the Gateway.
+
+=======================  ========================================================  =========================================
+Key                      Datatype                                                  Notes
+=======================  ========================================================  =========================================
+id                       ref                                                       read-only
+created                  datetime                                                  read-only
+modified                 datetime                                                  read-only
+name                     string                                                    required, max_length=100
+description              string
+type                     string                                                    read-only
+commission_state         enum                                                      read-only, options=[inactive, customer_provisioned, site_provisioned, active, deactivated],
+                                                                                   see :ref:`Commission State Conditions <device_commission_state_conditions>`
+commissioned_date        datetime
+sku                      string                                                    Copied from :ref:`Product <objects_products>` for a *new* Device, if not supplied.
+product                  :ref:`ref <objects_products>`                             required
+parent_device            :ref:`ref <objects_devices>`                              :ref:`Complex Constraints <device_complex_constraints>`
+child_devices            array(:ref:`ref <objects_devices>`)                       :ref:`Complex Constraints <device_complex_constraints>`
+building                 :ref:`ref <objects_buildings>`                            Copied from :ref:`Spaces <objects_spaces>` :ref:`Building <objects_buildings>` when available.
+space                    :ref:`ref <objects_spaces>`                               :ref:`Complex Constraints <device_complex_constraints>`
+virtual_spaces           array(:ref:`ref <objects_spaces>`)                        :ref:`Complex Constraints <device_complex_constraints>`
+connected_products       array(:ref:`ref <objects_connected_products>`)
+device_count             :ref:`count object <general_device_counts>`               read-only
+mesh_access_point_count  :ref:`count object <general_device_counts>`               read-only
+euid                     string                                                    max_length=128, unique, base16 value, write-once
+serial                   string                                                    max_length=64, unique, alphanumeric, write-once
+meta                     array(:ref:`meta <general_meta>`)
+custom_fields            object
+features                 object                                                    read-only
+data_service_id          string                                                    read-only
+data_source_id           string                                                    read-only
+customer_scopes          array(:ref:`ref <objects_customers>`)                     see :ref:`general_scope`
+partner_scopes           array(:ref:`ref <objects_partners>`)                      see :ref:`general_scope`
+tags                     array(str)                                                max_length=50 per tag
+=======================  ========================================================  =========================================
+
+.. _device_commission_state_conditions:
+
+Commission State Conditions
+===========================
+
+The Commission State of a Device is recalculated during the save and delete of its Space,
+parent Devices, and the Device itself. The following is a sequential list of the different
+Commission States and their conditions:
+
+====================  ===========
+Status                Description
+====================  ===========
+inactive              Device has never been associated with a Customer, Building, or Space.
+customer_provisioned  Device is scoped to a Customer.
+site_provisioned      Device meets the conditions for `customer_provisioned` and is assigned to a
+                      Building.
+active                Device meets the conditions for `site_provisioned` and is assigned to a Space.
+deactivated           Device is not associated with a Customer, Building, or Space, but was
+                      previously active.
+====================  ===========
+
+.. _device_complex_constraints:
+
+Complex Constraints
+===================
+
+The `state` of the associated `product` must be `active`.
+
+*space* cannot be of type virtual.
+
+*virtual_spaces* must all be of type virtual.
+
+All *virtual_spaces* and the physical space must be associated with the same :ref:`Building <objects_buildings>`.
+
+All parent and child devices must have the same Building.
+
+The `building` cannot change.
+
+The *parent_device* of a `mesh_access_point` can only be a `gateway`.
+
+Devices of `type` `wim` cannot be on more than one non-virtual Space.
+
+Gateway Managed Attributes
+==========================
+
+`mesh_access_points` and `devices` are all managed by the Gateway itself and are not meant to be updated
+directly from the API.
+
+Extra Filters
+=============
+
+See the :ref:`general filtering docs <general_filtering>` page for details on filtering by
+:ref:`Customers <objects_customers>` and :ref:`Buildings <objects_buildings>`.
+
+.. _device_beacon_config_meta:
+
+Beacon Config Meta
+==================
+
+Devices which are `beacon-capable` support a :ref:`Meta <general_meta>` named `beacon_config` which
+is managed by the `gateway` and sent to the API for create/update via the `cloudapi-evt-bridge`.
+The following shows the format for the `value` property of the `beacon_config` :ref:`Meta <general_meta>`:
+
+    .. code-block:: json
+
+        {
+            "slot_0": {
+                "onoff": 1,
+                "interval": 500,
+                "broadcast_tx": 0,
+                "data": {
+                    "type": "ibeacon",
+                    "uuid": "acfd065ec3c011e39bbe1a514932ac01",
+                    "major": 0,
+                    "minor": 14876
+                }
+            },
+            "slot_1": {
+                "onoff": 1,
+                "interval": 500,
+                "broadcast_tx": 0,
+                "data": {
+                    "type": "ibeacon",
+                    "uuid": "acfd065ec3c011e39bbe1a514932ac01",
+                    "major": 0,
+                    "minor": 14876
+                }
+            },
+            "slot_2": {
+                "onoff": 1,
+                "interval": 500,
+                "broadcast_tx": 0,
+                "data": {
+                    "type": "eddystone-uid",
+                    "uid": "acfd065e1a514932ac01000002014876"
+                }
+            },
+            "slot_3": {
+                "onoff": 1,
+                "interval": 500,
+                "broadcast_tx": 0,
+                "data": {
+                    "type": "eddystone-url",
+                    "url": "https://www.blueupbeacons.com"
+                }
+            }
+        }
+
+See the :ref:`Action Types <objects_action_types>` page for details about the meaning of each of the
+`key/values` pairs above.
+
+.. _device_default_meta:
+
+Default Meta Values
+===================
+
+.. note:: Meta values are also created based on :ref:`Product <objects_products>` features.
+
+=============  =============  =====
+Name           Display Name   Value
+=============  =============  =====
+onoff          Status         true
+last_activity  Last Activity
+is_online      Online         false
+=============  =============  =====
+
+.. _wim_default_meta:
+
+Devices of Type WIM
+===================
+
+==========================  ======================  ==========
+Name                        Display Name            Value
+==========================  ======================  ==========
+dim                         Dim                     100
+gen_power_measurement_type  Power Metering Support  Calculated
+==========================  ======================  ==========
+
+.. _gateway_default_meta:
+
+Devices of Type Gateway
+-----------------------
+
+The following :ref:`Meta <general_meta>` are automatically created when you create a Gateway.
+
+======================  ======================  =====
+Name                    Display Name            Value
+======================  ======================  =====
+bluetooth_channel       BlueTooth Channel       ""
+network_type            Network Type            ""
+firmware_version        Firmware Version        ""
+======================  ======================  =====
+
+.. _mesh_access_point_default_meta:
+
+Devices of Type Mesh Access Point
+---------------------------------
+
+The following :ref:`Meta <general_meta>` are automatically created when you create a Mesh Access Point.
+
+======================  ======================  =====
+Name                    Display Name            Value
+======================  ======================  =====
+bluetooth_channel       BlueTooth Channel       ""
+======================  ======================  =====
+
+.. _sensor_default_meta:
+
+Devices of Type Sensor
+----------------------
+
+The following :ref:`Meta <general_meta>` are automatically created when you create a Sensor.
+
+======================  ======================  ===========
+Name                    Display Name            Value
+======================  ======================  ===========
+ip_address              IP Address              "127.0.0.1"
+======================  ======================  ===========
+
+.. _dimmable_default_meta:
+
+Devices with Dimmable Support
+=============================
+
+=============  =============  =====
+Name           Display Name   Value
+=============  =============  =====
+dim            Dim            100
+=============  =============  =====
+
+API Endpoints
+=============
+
+Create a Device
+---------------
+
+.. http:POST:: /devices
+
+   :statuscode 201:
+
+.. _device_check_euid:
+
+Check Device EUID availability
+------------------------------
+
+.. http:POST:: /devices/euid/check
+
+    :json string euid: A device EUID.
+
+    :statuscode 200: returns whether or not an euid is available.
+    :statuscode 400: parameters are missing or invalid.
+
+    **Example request**:
+
+    .. sourcecode:: http
+
+        POST /devices/euid/check HTTP/1.1
+        Host: api.gooee.io
+        Accept: application/json
+
+        {
+          "euid": "0123456789ABCDEF"
+        }
+
+    **Example response**:
+
+    .. sourcecode:: http
+
+        HTTP/1.1 200 OK
+        Content-Type: application/json
+
+        {
+            "euid": "0123456789ABCDEF",
+            "is_available": false
+        }
+
+List Devices
+------------
+
+.. http:GET:: /devices
+
+   :statuscode 200:
+
+Update a Device
+---------------
+
+.. http:PUT:: /devices/(id)
+
+   :statuscode 200:
+
+Partially Update a Device
+-------------------------
+
+.. http:PATCH:: /devices/(id)
+
+   :statuscode 200:
+
+Retrieve a Device
+-----------------
+
+.. http:GET:: /devices/(id)
+
+   :statuscode 200:
+
+.. _device_deactivate:
+
+Deactivate a Device
+-------------------
+
+.. http:PUT:: /devices/(id)/deactivate
+
+   :statuscode 204:
+
+Delete a Device
+---------------
+
+.. note:: Only Gooee Admins may delete a Device.
+
+.. http:DELETE:: /devices/(id)
+
+   :statuscode 204:
+
+.. _device_ops:
+
+Device Operations
+=================
+
+Move/Unassign Space
+-------------------
+
+This endpoint is for moving or unassigning a Space from Devices. Set ``plan`` to ``true`` to see what entities will be affected by the move/unassign Space operation **without** actually performing the operation.
+
+.. http:POST:: /devices/ops/move/
+
+    :json boolean plan: ``default=false``, if ``true``, the response is an object that shows affected entities, **no actual operation is performed**
+    :json array devices: Array of Device ids to move/unassign from a Space.
+    :json string to_space: ID of the Space to move all the Devices into. Can be set to ``null`` for unassigning the Space.
+    :json string from_space: ID of the Space that contains all the Devices, **All Devices must exist in this Space**
+
+    :statuscode 200: move/unassign operation completed successfully
+    :statuscode 202: payload valid, plan flag was set to true, **operation NOT executed**
+    :statuscode 400: parameters are missing or incorrect
+
+    **Example request**:
+
+    .. sourcecode:: http
+
+        POST /devices/ops/move/ HTTP/1.1
+        Host: api.gooee.io
+        Accept: application/json
+
+        {
+          "plan": true,
+          "devices": ["{{DEVICE1_ID}}", "{{DEVICE2_ID}}"],
+          "to_space": null,
+          "from_space": "{{SPACE_ID}}"
+        }
+
+    **Example response**:
+
+    .. sourcecode:: http
+
+        HTTP/1.1 202 ACCEPTED
+
+        {
+          "{{DEVICE1_ID}}": {
+            "from_space": "{{SPACE_ID}}",
+            "to_space": null,
+            "from_parent_device": "{{PARENT_DEVICE_ID}}",
+            "to_parent_device": null,
+            "from_child_devices": ["{{CHILD_1}}", "{{CHILD_2}}"],
+            "to_child_devices": [],
+            "from_rules": ["{{RULE_ID}}"],
+            "to_rules": [],
+            "from_property_rules": [],
+            "to_property_rules": [],
+            "from_event_rules": [],
+            "to_event_rules": [],
+            "from_property_rule_groups": [],
+            "to_property_rule_groups": [],
+            "from_areas": ["{{AREA_ID}}"],
+            "to_areas": []
+          },
+          "{{DEVICE2_ID}}": {
+            ...
+          }
+        }
+
+Unassign Building
+-----------------
+
+This endpoint is for unassigning the Building from Devices. Set ``plan`` to ``true`` to see what entities will be affected by the unassign Building operation **without** actually performing the operation.
+
+.. http:POST:: /devices/ops/unassign/building/
+
+    :json boolean plan: ``default=false``, if ``true``, the response is an object that shows affected entities, **no actual operation is performed**
+    :json array devices: Array of Device ids to unassign from a Building.
+
+    :statuscode 200: unassign operation completed successfully
+    :statuscode 202: payload valid, plan flag was set to true, **operation NOT executed**
+    :statuscode 400: parameters are missing or incorrect
+
+    **Example request**:
+
+    .. sourcecode:: http
+
+        POST /devices/ops/unassign/building/ HTTP/1.1
+        Host: api.gooee.io
+        Accept: application/json
+
+        {
+          "plan": true,
+          "devices": ["{{DEVICE1_ID}}", "{{DEVICE2_ID}}"]
+        }
+
+    **Example response**:
+
+    .. sourcecode:: http
+
+        HTTP/1.1 202 ACCEPTED
+
+        {
+          "{{DEVICE1_ID}}": {
+            "from_building": "{{BUILDING_ID}}",
+            "to_building": null,
+            "from_areas": [],
+            "to_areas": [],
+            "from_space": "{{SPACE_ID}}",
+            "to_space": null,
+            "from_parent_device": null,
+            "to_parent_device": null,
+            "from_child_devices": [],
+            "to_child_devices": [],
+            "from_rules": [],
+            "to_rules": [],
+            "from_property_rules": [],
+            "to_property_rules": [],
+            "from_event_rules": [],
+            "to_event_rules": [],
+            "from_property_rule_groups": [],
+            "to_property_rule_groups": []
+          },
+          "{{DEVICE2_ID}}": {
+            ...
+          }
+        }
+
+Unassign Customer
+-----------------
+
+This endpoint is for unassigning the Customer from Devices. Set ``plan`` to ``true`` to see which entities will be affected by the unassign Customer operation **without** actually performing the operation. Customer will be deduced from the provided Devices' Building. If it cannot be deduced due to Devices not being assigned to a Building, then it **must** be provided. This operation essentially :ref:`un-scopes <general_scope>` the Customer from the provided Devices.
+
+.. http:POST:: /devices/ops/unassign/customer/
+
+    :json boolean plan: ``default=false``, if ``true``, the response is an object that shows affected entities, **no actual operation is performed**
+    :json array devices: Array of Device ids to unassign/de-scope from a Customer.
+    :json string customer: ID of the Customer to unassign all the Devices from. Defaults to the Device's Building's Customer.
+
+    :statuscode 200: unassign operation completed successfully
+    :statuscode 202: payload valid, plan flag was set to true, **operation NOT executed**
+    :statuscode 400: parameters are missing or incorrect
+
+    **Example request**:
+
+    .. sourcecode:: http
+
+        POST /devices/ops/unassign/customer/ HTTP/1.1
+        Host: api.gooee.io
+        Accept: application/json
+
+        {
+          "plan": true,
+          "devices": ["{{DEVICE1_ID}}", "{{DEVICE2_ID}}"]
+        }
+
+    **Example response**:
+
+    .. sourcecode:: http
+
+        HTTP/1.1 202 ACCEPTED
+
+        {
+          "{{DEVICE1_ID}}": {
+            "from_customers": [
+              "{{CUSTOMER_ID}}"
+            ],
+            "to_customers": [],
+            "from_building": "{{BUILDING_ID}}",
+            "to_building": null,
+            "from_areas": [],
+            "to_areas": [],
+            "from_space": "{{SPACE_ID}}",
+            "to_space": null,
+            "from_parent_device": null,
+            "to_parent_device": null,
+            "from_child_devices": [],
+            "to_child_devices": [],
+            "from_rules": [],
+            "to_rules": []
+          },
+          "{{DEVICE2_ID}}": {
+            ...
+          }
+        }

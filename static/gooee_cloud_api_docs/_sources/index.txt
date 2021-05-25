@@ -1,0 +1,44 @@
+
+.. image:: _static/gooee_api_logo.png
+   :align: right
+
+Home
+====
+
+Welcome to the Gooee Cloud API documentation!
+
+This is the place to find out about :ref:`recent changes <misc_change_log>`,
+:ref:`general API information <general>`, :ref:`object specific documentation <objects>`.
+
+We've also :ref:`illustrated the object relations <misc_object_relation_diagram>` for a high-level
+overview.
+
+.. note:: Contact cloud-backend@gooee.com for any API feedback, bugs, or clarifications.
+
+Misc
+----
+
+.. toctree::
+
+   misc
+
+General
+-------
+
+.. toctree::
+
+   general
+
+Objects
+-------
+
+.. toctree::
+
+   objects
+
+Integrations
+------------
+
+.. toctree::
+
+  integrations

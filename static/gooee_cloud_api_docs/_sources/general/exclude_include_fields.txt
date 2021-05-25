@@ -1,0 +1,24 @@
+.. _general_include_exclude_fields:
+
+======================
+Include/Exclude Fields
+======================
+
+If you want to show or hide specific fields from the result set you may include
+or exclude them easily with the following parameters.  If you provide more than
+one field be sure to comma delimit them.
+
+========  ===========================
+Filter    Notes
+========  ===========================
+_include  Display only these fields
+_exclude  Don't display these fields
+========  ===========================
+
+Examples
+--------
+
+.. http:get:: /customers/?_include=name
+.. http:get:: /customers/?_include=name,description
+.. http:get:: /customers/?_exclude=data_service_id
+.. http:get:: /customers/?_exclude=id,data_service_id

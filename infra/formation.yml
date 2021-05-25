@@ -8,18 +8,18 @@ Parameters:
     Type: String
     AllowedPattern: '^[a-z0-9-.]*$'
 
-  AcmCert:
+  AcmCertArn:
     Description: The pre-provisioned ACM Certificate for this site.
     Type: String
 
   PriceClass:
-    Description: '100 < 200 < ALL'
+    Description: 'PriceClass_100 < PriceClass_200 < PriceClass_ALL'
     Type: String
-    Default: 100
+    Default: PriceClass_100
     AllowedValues:
-      - ALL
-      - 100
-      - 200
+      - PriceClass_100
+      - PriceClass_200
+      - PriceClass_ALL
 
   CacheThatMess:
     Description: Use high caching times (not for dev envs...)
@@ -69,7 +69,7 @@ Resources:
         DefaultRootObject: index.html
         Enabled: true
         HttpVersion: http2
-        PriceClass: !Sub "PriceClass_${PriceClass}"
+        PriceClass: !Ref PriceClass
         DefaultCacheBehavior:
           TargetOriginId: !Join
             - '-'
@@ -98,6 +98,6 @@ Resources:
             CustomOriginConfig:
               OriginProtocolPolicy: 'http-only'
         ViewerCertificate:
-          AcmCertificateArn: !Sub 'arn:aws:acm:us-east-1:${AWS::AccountId}:certificate/${AcmCert}'
+          AcmCertificateArn: !Ref AcmCertArn
           SslSupportMethod: sni-only
           MinimumProtocolVersion: TLSv1.2_2018

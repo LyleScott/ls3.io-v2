@@ -1,0 +1,13 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "slot": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 3
+    }
+  },
+  "required": ["slot"],
+  "additionalProperties": false
+}

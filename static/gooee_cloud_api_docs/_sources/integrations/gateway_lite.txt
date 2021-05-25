@@ -1,0 +1,468 @@
+.. _integrations_gateway_lite:
+
+============
+Gateway Lite
+============
+
+.. contents:: Quick Links
+
+Description
+===========
+
+Gateway Lite is a special type of Gateway aimed at residential and small business Users. Gateway Lite
+should have a custom field named `installation_code` to allow the Cloud API to talk directly to it.
+This installation code is usually printed on the back of the Gateway.
+
+User Registration
+=================
+
+.. _integration_gateway_lite_integration_key:
+
+Obtaining an Integration Key
+----------------------------
+
+Integration Key is a token associated with each Gateway Lite :ref:`Provider <objects_partners>`
+(Partners with `is_gateway_lite_provider=True`). They can be used to allow :ref:`Users <objects_users>` to self register and manage Gateway Lite Devices.
+
+.. http:GET:: /partners/(id)/integration_key/
+
+    :statuscode 200: Response served successfully.
+    :statuscode 404: The Partner  is not a Gateway Lite provider (`is_gateway_lite_provider=True`).
+
+    **Example request**:
+
+    .. sourcecode:: http
+
+        GET /partners/(id)/integration_key/ HTTP/1.1
+        Host: api.gooee.io
+        Accept: application/json
+
+
+    **Example response**:
+
+    .. sourcecode:: http
+
+        HTTP/1.1 200 OK
+        Content-Type: application/json
+
+        {
+          "integration_key": "3878732iydjdahdajhd",
+        }
+
+
+.. _integration_gateway_lite_users_registration:
+
+Registering as a Gateway Lite User
+----------------------------------
+
+.. http:POST:: /integrations/gateway_lite/users/register/
+
+    :json string integration_key: An integration key provided by the Partner to allow User's registration.
+    :json string first_name: User's first name (required)
+    :json string last_name: User's last name (required)
+    :json string email: User's email (required)
+    :json string password: Set a password for the User
+    :json string password_confirm: Confirm User's password
+
+    :statuscode 201: user was created successfully
+    :statuscode 400: parameters are missing or incorrect
+
+    **Example request**:
+
+    .. sourcecode:: http
+
+        POST /integrations/gateway_lite/users/register/ HTTP/1.1
+        Host: api.gooee.io
+        Accept: application/json
+
+        {
+          "integration_key": "3878732iydjdahdajhd",
+          "first_name": "Bob",
+          "last_name": "Bobsen",
+          "email": "bob.bobsen@email.com",
+          "password": "somepassword",
+          "password_confirm": "somepassword"
+        }
+
+    **Example response**:
+
+    .. sourcecode:: http
+
+        HTTP/1.1 201 CREATED
+        Content-Type: application/json
+
+        {
+            "detail": "User account registered successfully. Please check your email to activate it."
+        }
+
+.. _integration_gateway_lite_users_activation:
+
+Activating a Gateway Lite User
+------------------------------
+
+Once a :ref:`User <objects_users>` has registered, she/he will receive an email with a 6 digit token
+and must use this endpoint to activate the account and login.
+
+.. http:POST:: /integrations/gateway_lite/users/activate/
+
+    :json string activation_token: the activation token sent to the user (required)
+
+    :statuscode 200: user was activated successfully
+    :statuscode 400: parameters are missing or incorrect
+    :statuscode 404: activation_token not found
+
+    **Example request**:
+
+    .. sourcecode:: http
+
+        POST /integrations/gateway_lite/users/activate/ HTTP/1.1
+        Host: api.gooee.io
+        Accept: application/json
+
+        {
+          "activation_token": "387873"
+        }
+
+    **Example response**:
+
+    .. sourcecode:: http
+
+        HTTP/1.1 200 OK
+
+.. _integrations_gateway_lite_acquire:
+
+Acquiring a Gateway Lite
+========================
+
+Acquiring a Gateway Lite is the process of getting it from `inactive` commission state to
+`customer_provisioned`, making the authenticated :ref:`User <objects_users>` the owner of the Gateway.
+This process is done by providing the **euid** located on the back of the Gateway as raw data or scanning the QR code on it.
+
+
+.. http:POST:: /integrations/gateway_lite/acquire
+
+   :statuscode 200: The device was acquired correctly.
+   :statuscode 400: Invalid request data.
+   :statuscode 400: Device already acquired.
+   :statuscode 404: Device not found.
+
+**Request Model**
+
+====================  ========  ========
+Key                   Datatype  Notes
+====================  ========  ========
+euid                  string    required
+====================  ========  ========
+
+**Example request**:
+
+.. sourcecode:: http
+
+  POST /integrations/gateway_lite/acquire HTTP/1.1
+  Host: api.gooee.io
+  Content-Type: application/json
+
+  {
+        "euid": "0200000100001274"
+  }
+
+
+**Example responses**:
+
+.. sourcecode:: http
+
+  HTTP/1.1 200 OK
+  Content-Type: application/json
+
+  {
+        "uuid": "120e54bb-0fdc-4929-a7f4-7fab08cb0469",
+        "euid": "0200000100001274",
+        "access_url": "0200000100001274-88d198253b85f1a35282.p2p.gooee.com"
+  }
+
+.. _integrations_gateway_lite_release:
+
+Releasing a Gateway Lite
+========================
+
+Releasing is the process of un-scoping (removing ownership) of a Gateway Lite from the
+:ref:`Customer <objects_customers>` which brings it back to the `inactive` state.
+
+
+.. http:PUT:: /devices/(ID)/release/
+.. http:PATCH:: /devices/(ID)/release/
+
+    :statuscode 200: The Gateway was released successfully.
+    :statuscode 404: The Gateway cannot be found.
+
+    **Example request:**
+
+      .. sourcecode:: http
+
+        PUT /devices/867f431a-601a-480f-a590-570ebc1c3fdb/release/ HTTP/1.1
+        Host: api.gooee.io
+        Content-Type: application/json
+
+    **Example response:**
+
+      .. sourcecode:: http
+
+        HTTP/1.1 200 OK
+        Content-Type: application/json
+
+        {
+          "detail": "The Gateway was released successfully."
+        }
+
+
+.. _integrations_gateway_lite_fingerprints:
+
+Fingerprint Management
+======================
+
+Fingerprints are used by `Gateway Lite` to allow :ref:`User's <objects_users>` mobile devices to
+authenticate on the Gateway Lite to control itself and it's associated :ref:`Devices <objects_devices>`.
+They are represented by a 32 characters hexadecimal string.
+
+Data Model
+----------
+
+====================  =====================================  ========================
+Key                   Datatype                               Notes
+====================  =====================================  ========================
+id                    ref                                    read-only
+fingerprint           string                                 required, max_length=32, unique, base16 value
+user                  :ref:`ref <objects_users>`             write-only, defaults to the logged :ref:`User <objects_users>`
+description           string
+====================  =====================================  ========================
+
+Create a Fingerprint
+--------------------
+
+.. http:POST:: /integrations/gateway_lite/fingerprints
+
+   :statuscode 201: Fingerprint was created correctly.
+
+   **Example request:**
+
+   .. sourcecode:: http
+
+      POST /integrations/gateway_lite/fingerprints HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+      {
+        "fingerprint": "e66db5dc25c4423da290d42a5b57af21",
+        "description": "Iphone 7s Plus",
+      }
+
+   **Example response:**
+
+   .. sourcecode:: http
+
+      HTTP/1.1 201 CREATED
+      Content-Type: application/json
+
+      {
+        "id": "867f431a-601a-480f-a590-570ebc1c3fdb",
+        "fingerprint": "e66db5dc25c4423da290d42a5b57af21",
+        "description": "Iphone 7s Plus"
+      }
+
+List Fingerprints
+-----------------
+
+.. http:GET:: /integrations/gateway_lite/fingerprints
+
+   :statuscode 200:
+
+   **Example request:**
+
+   .. sourcecode:: http
+
+      GET /integrations/gateway_lite/fingerprints HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+   **Example response:**
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json
+
+      [
+        {
+          "id": "867f431a-601a-480f-a590-570ebc1c3fdb",
+          "fingerprint": "e66db5dc25c4423da290d42a5b57af21",
+          "description": "Iphone 7s Plus"
+        },
+        {
+          "id": "453f431a-601a-480f-a590-570ebc1c3f12",
+          "fingerprint": "e66db5dc25c4423da290d42a5b57af34",
+          "description": "Test Phone"
+        }
+      ]
+
+Retrieve a Fingerprint
+----------------------
+
+.. http:GET:: /integrations/gateway_lite/fingerprints/(id)
+
+   :statuscode 200:
+
+   **Example request:**
+
+   .. sourcecode:: http
+
+      GET /integrations/gateway_lite/fingerprints/867f431a-601a-480f-a590-570ebc1c3fdb HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+
+   **Example response:**
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json
+
+      {
+        "id": "867f431a-601a-480f-a590-570ebc1c3fdb",
+        "fingerprint": "e66db5dc25c4423da290d42a5b57af21",
+        "description": "Iphone 7s Plus"
+      }
+
+Delete a Fingerprint
+--------------------
+
+.. http:DELETE:: /integrations/gateway_lite/fingerprints/(id)
+
+   :statuscode 204: Fingerprint was deleted successfully.
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      DELETE /integrations/gateway_lite/fingerprints/867f431a-601a-480f-a590-570ebc1c3fdb HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+Resyncing Fingerprints
+----------------------
+
+Resync all Fingerprints scoped to your User.
+
+.. http:POST:: /integrations/gateway_lite/fingerprints/resync
+
+   :statuscode 200: Synchronizing 3 fingerprint(s).
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      POST /integrations/gateway_lite/fingerprints/resync HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+.. _integrations_gateway_lite_fingerprints_resync_specific:
+
+Resync specific Fingerprints scoped to your User by specifying an array of
+Fingerprints in the request payload.  Alternatively, you can use their IDs if hyphens are omitted.
+
+.. http:POST:: /integrations/gateway_lite/fingerprints/resync
+
+   :statuscode 200: Synchronizing 2 fingerprint(s).
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      POST /integrations/gateway_lite/fingerprints/resync HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+      {
+        "fingerprints": ["f641649b1a2a4f3caee3c40c16b9806b", "ebd70e23ebd1439fb325bda663c52266"]
+      }
+
+.. _integrations_gateway_lite_import:
+
+Importing Gateway Lite Devices
+==============================
+
+An endpoint for uploading a CSV file containing device information that will be processed into
+individual Gateway Lite devices that can be acquired by consumers.
+
+Data Model
+----------
+
+===============  =====================================  =========================
+Key              Datatype                               Notes
+===============  =====================================  =========================
+id               ref                                    read-only
+created          datetime                               read-only
+modified         datetime                               read-only
+csv_file         file                                   required
+product_id       UUID                                   required
+status           enum                                   read-only
+customer_scopes  array(:ref:`ref <objects_customers>`)  see :ref:`general_scope`
+partner_scopes   array(:ref:`ref <objects_partners>`)   see :ref:`general_scope`
+error_message    string                                 read-only
+partner_id       UUID                                   read-only
+tags             array(str)                             max_length=50 per tag
+===============  =====================================  =========================
+
+Complex Constraints
+-------------------
+
+You must upload a CSV file with `;` delimiters and containing a header of:
+``"Product Serial Number";"FW Code";"Nabto DeviceId";"InstallCode"``
+
+Upload/Parse a Gateway Lite File
+--------------------------------
+
+.. http:POST:: /integrations/gateway_lite/import
+
+   :statuscode 201:
+
+**Example request**:
+
+.. sourcecode:: http
+
+  POST /integrations/gateway_lite/import HTTP/1.1
+  Host: api.gooee.io
+  Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+  ------WebKitFormBoundary7MA4YWxkTrZu0gW
+  Content-Disposition: form-data; name="csv_file"; filename="gateway_lite_devices.csv"
+  Content-Type: text/csv
+
+
+  ------WebKitFormBoundary7MA4YWxkTrZu0gW
+  Content-Disposition: form-data; name="product_id"
+
+  8c6c4bbd-1398-4cc6-85f0-d8bb04965f8e
+  ------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+
+List of Gateway Lite Files
+--------------------------
+
+.. http:GET:: /integrations/gateway_lite/import
+
+   :statuscode 200:
+
+Retrieve a Gateway Lite File (resource)
+---------------------------------------
+
+.. http:GET:: /integrations/gateway_lite/import
+
+   :statuscode 200:
+
+Delete a Gateway Lite File
+--------------------------
+
+.. http:DELETE:: /integrations/gateway_lite/import
+
+   :statuscode 204:

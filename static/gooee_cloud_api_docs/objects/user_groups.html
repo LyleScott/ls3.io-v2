@@ -1,0 +1,894 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>User Groups &mdash; Documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/navtree.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Documentation" href="../index.html"/>
+        <link rel="up" title="Objects" href="../objects.html"/>
+        <link rel="next" title="User Preferences" href="user_preferences.html"/>
+        <link rel="prev" title="User Features" href="user_features.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Cloud API
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="link caption"><span class="link caption-text"><a class="reference internal" href="../misc.html">Misc</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/change_log.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/object_relation_diagram.html">Object Relation Diagram</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../general.html">General</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/analytics.html">Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api_tokens.html">API Tokens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/authentication.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/clearing_field_values.html">Clearing Field Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/device_counts.html">Device Counts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/exclude_include_fields.html">Include/Exclude Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/filtering.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ordering.html">Ordering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/meta.html">Meta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/meta_groups.html">Meta Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/pagination.html">Pagination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/pubsub.html">PubSub Message Broker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/search.html">Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/scope.html">Scope</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../objects.html">Objects</a></span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="action_types.html">Action Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions.html">Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analytics_export.html">Analytics Export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analytics_query.html">Analytics Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="areas.html">Areas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="buildings.html">Buildings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="connected_products.html">Connected Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="currency.html">Currency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customers.html">Customers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dashboards.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="devices.html">Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fault_alarms.html">Fault Alarms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="local_rules.html">Local Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="locations.html">Locations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="partners.html">Partners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="product_files.html">Product Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="product_types.html">Product Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="products.html">Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules_v2.html">Rules V2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rule_groups.html">Rule Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scenes.html">Scenes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schedules.html">Schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spaces.html">Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timezones.html">Timezones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_features.html">User Features</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">User Groups</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#complex-constraints">Complex Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#permission-sets">Permission Sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#api-endpoints">API Endpoints</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_preferences.html">User Preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Users</a></li>
+</ul>
+<p class="link caption"><span class="link caption-text"><a class="reference internal" href="../integrations.html">Integrations</a></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/als2lux.html">Als-to-Lux Correlation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/external_sensor.html">External Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/gateway_lite.html">Gateway Lite</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cloud API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../objects.html">Objects</a> &raquo;</li>
+        
+      <li>User Groups</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/objects/user_groups.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="user-groups">
+<span id="objects-user-groups"></span><h1><a class="toc-backref" href="#id2">User Groups</a><a class="headerlink" href="#user-groups" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="quick-links">
+<p class="topic-title first">Quick Links</p>
+<ul class="simple">
+<li><a class="reference internal" href="#user-groups" id="id2">User Groups</a><ul>
+<li><a class="reference internal" href="#description" id="id3">Description</a></li>
+<li><a class="reference internal" href="#data-model" id="id4">Data Model</a></li>
+<li><a class="reference internal" href="#complex-constraints" id="id5">Complex Constraints</a></li>
+<li><a class="reference internal" href="#permission-sets" id="id6">Permission Sets</a><ul>
+<li><a class="reference internal" href="#id1" id="id7">Complex Constraints</a></li>
+<li><a class="reference internal" href="#permission-set-data-model" id="id8">Permission Set Data Model</a></li>
+<li><a class="reference internal" href="#permission-tiers" id="id9">Permission Tiers</a></li>
+<li><a class="reference internal" href="#string-filters-of-objects-in-permission-sets" id="id10">String Filters of Objects in Permission Sets</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#api-endpoints" id="id11">API Endpoints</a><ul>
+<li><a class="reference internal" href="#list-permission-sets" id="id12">List Permission Sets</a></li>
+<li><a class="reference internal" href="#create-a-user-group" id="id13">Create a User Group</a></li>
+<li><a class="reference internal" href="#list-user-group" id="id14">List User Group</a></li>
+<li><a class="reference internal" href="#update-a-user-group" id="id15">Update a User Group</a></li>
+<li><a class="reference internal" href="#partially-update-a-user-group" id="id16">Partially Update a User Group</a></li>
+<li><a class="reference internal" href="#retrieve-a-user-group" id="id17">Retrieve a User Group</a></li>
+<li><a class="reference internal" href="#delete-a-user-group" id="id18">Delete a User Group</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="description">
+<h2><a class="toc-backref" href="#id3">Description</a><a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>User Groups contain <a class="reference internal" href="#objects-user-groups-permission-sets"><span class="std std-ref">Permission Sets</span></a>. They are assigned to
+<a class="reference internal" href="users.html#objects-users"><span class="std std-ref">Users</span></a> and determine what the User is allowed to do with each resource in
+the system. Each User Group can have many Users. This allows you to conveniently group Users by
+their level of access in the system.</p>
+</div>
+<div class="section" id="data-model">
+<h2><a class="toc-backref" href="#id4">Data Model</a><a class="headerlink" href="#data-model" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="23%" />
+<col width="65%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>ref</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>created</td>
+<td>datetime</td>
+<td>read-only</td>
+</tr>
+<tr class="row-even"><td>modified</td>
+<td>datetime</td>
+<td>read-only</td>
+</tr>
+<tr class="row-odd"><td>name</td>
+<td>str</td>
+<td>required, max_length=80</td>
+</tr>
+<tr class="row-even"><td>description</td>
+<td>str</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>type</td>
+<td>str</td>
+<td>required, options=[gooee, partner, customer], <a class="reference internal" href="#user-groups-complex-constraints"><span class="std std-ref">Complex Constraints</span></a></td>
+</tr>
+<tr class="row-even"><td>users</td>
+<td>array(<a class="reference internal" href="users.html#objects-users"><span class="std std-ref">ref</span></a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>customer</td>
+<td><a class="reference internal" href="customers.html#objects-customers"><span class="std std-ref">ref</span></a></td>
+<td><a class="reference internal" href="#user-groups-complex-constraints"><span class="std std-ref">Complex Constraints</span></a></td>
+</tr>
+<tr class="row-even"><td>partner</td>
+<td><a class="reference internal" href="partners.html#objects-partners"><span class="std std-ref">ref</span></a></td>
+<td><a class="reference internal" href="#user-groups-complex-constraints"><span class="std std-ref">Complex Constraints</span></a></td>
+</tr>
+<tr class="row-odd"><td>permission_sets</td>
+<td>object(ref)</td>
+<td>required, see <a class="reference internal" href="#objects-user-groups-permission-sets"><span class="std std-ref">Permission Sets</span></a></td>
+</tr>
+<tr class="row-even"><td>customer_scopes</td>
+<td>array(<a class="reference internal" href="customers.html#objects-customers"><span class="std std-ref">ref</span></a>)</td>
+<td>see <a class="reference internal" href="../general/scope.html#general-scope"><span class="std std-ref">Scope</span></a></td>
+</tr>
+<tr class="row-odd"><td>partner_scopes</td>
+<td>array(<a class="reference internal" href="partners.html#objects-partners"><span class="std std-ref">ref</span></a>)</td>
+<td>see <a class="reference internal" href="../general/scope.html#general-scope"><span class="std std-ref">Scope</span></a></td>
+</tr>
+<tr class="row-even"><td>tags</td>
+<td>array(str)</td>
+<td>max_length=50 per tag</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="complex-constraints">
+<span id="user-groups-complex-constraints"></span><h2><a class="toc-backref" href="#id5">Complex Constraints</a><a class="headerlink" href="#complex-constraints" title="Permalink to this headline">¶</a></h2>
+<p>When a User creates a User Group, the specified permission sets must be a subset of the User&#8217;s current permission sets.
+For example, a user with a <code class="docutils literal"><span class="pre">manage_customers</span></code> only permission set cannot create a User Group with a <code class="docutils literal"><span class="pre">manage_partners</span></code> permission set.</p>
+<p>If User Group type is gooee/partner, the partner field is required.</p>
+<p>If User Group type is customer, the customer field is required.</p>
+<p>If the User Group has Users associated with it, the type field cannot change.</p>
+<p>All Users associated to a User Group must have the same type as the User Group.</p>
+<p>All Partners are visible for authenticated customer users and partner users regardless of the the Permission Set configuration of the User Group.</p>
+</div>
+<div class="section" id="permission-sets">
+<span id="objects-user-groups-permission-sets"></span><h2><a class="toc-backref" href="#id6">Permission Sets</a><a class="headerlink" href="#permission-sets" title="Permalink to this headline">¶</a></h2>
+<p>Permission Sets are groups of permissions for a particular set of resources. They can be mixed and
+matched by the User to create User Groups. For example, you may create a read-only User Group
+by including view permission only.</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="nt">&quot;view_buildings&quot;</span><span class="p">:</span> <span class="p">[],</span>
+   <span class="nt">&quot;view_customers&quot;</span><span class="p">:</span> <span class="p">[],</span>
+   <span class="nt">&quot;access_customer_analytics&quot;</span><span class="p">:</span> <span class="p">[],</span>
+   <span class="nt">&quot;access_partner_analytics&quot;</span><span class="p">:</span> <span class="p">[],</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Each Permission Set also has a set of <cite>dependencies</cite>, which is
+a list of other Permission Sets which are encompassed by that one. For example, the
+<cite>manage_buildings</cite> Permission Set has a dependency of <cite>control_fixtures</cite>, therefore if a User Group
+has <cite>manage_buildings</cite>, it also has all the functionality of <cite>control_fixtures</cite>. In order
+to make the Permission Sets explicit, any omitted <cite>dependency</cite> key is automatically added to the
+<cite>permission_sets</cite> of the User Group when it is created or edited.</p>
+<p><strong>Example</strong>:</p>
+<p>All the permissions that grant any sort of write access, have also view permissions as dependencies.
+Therefore saving a permission_set like:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="nt">&quot;manage_buildings&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;131aab1d-e11c-fb91-a687-717af11c4444&quot;</span><span class="p">],</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>would return also <cite>view_customers</cite> and <cite>view_buildings</cite> in the response:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="nt">&quot;view_customers&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;4318978d-e111-db91-b687-717af11c10a0&quot;</span><span class="p">],</span>
+   <span class="nt">&quot;view_buildings&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;131aab1d-e11c-fb91-a687-717af11c4444&quot;</span><span class="p">],</span>
+   <span class="nt">&quot;manage_buildings&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;131aab1d-e11c-fb91-a687-717af11c4444&quot;</span><span class="p">],</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>As is shown in the example, in User Groups the <cite>permission_sets</cite> key is expressed as an object,
+where the keys are codes of the Permission Sets and the values are arrays that can optionally
+include object ids. In this case the User Group can see only the Customer with id
+<cite>4318978d-e111-db91-b687-717af11c10a0</cite> and can edit only the Building with id
+<cite>131aab1d-e11c-fb91-a687-717af11c4444</cite>.</p>
+<p>If the user tries to see a resource (HTTP GET) for which they do not have view permissions,
+then the Cloud-API returns 404 as response code (Not Found). If the user does have view permissions
+for the resource, but instead the operation is related to creation, editing, or deletion
+of the resource for which they don&#8217;t have the corresponding write permission, then the Cloud-API
+returns 403 (Forbidden).</p>
+<div class="section" id="id1">
+<h3><a class="toc-backref" href="#id7">Complex Constraints</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>Object level permissions can be specified for the following objects:</dt>
+<dd><ul class="first last">
+<li><a class="reference internal" href="buildings.html#objects-buildings"><span class="std std-ref">Building</span></a>: through the Permission Set codes <cite>manage_buildings</cite>,
+<cite>view_buildings</cite>, <cite>control_fixtures</cite>, and <cite>manage_gateways</cite>.</li>
+<li><a class="reference internal" href="customers.html#objects-customers"><span class="std std-ref">Customer</span></a>: through the Permission Set codes <cite>view_customers</cite>,
+<cite>manage_customers</cite>, <cite>edit_customers</cite>, and <cite>manage_customer_users</cite>.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>When a permission_set code is present, but the the objects are not specified (empty list) it defaults to
+all the objects scoped to the User.</li>
+<li>Having write or read permissions for an object implies having view permissions for all the direct
+parent objects of that object. For example, if the <cite>view_buildings</cite> Permission Set is added,
+then <cite>view_customers</cite> is also included in the permission_sets. If
+the necessary view permissions are not included when creating/updating the User Group, then the view permissions
+will be automatically added.</li>
+<li>All objects inside the Permission Sets of a User Group must be scoped to the Customer or Partner
+of that User Group, depending on its <cite>type</cite>.</li>
+</ul>
+</div>
+<div class="section" id="permission-set-data-model">
+<h3><a class="toc-backref" href="#id8">Permission Set Data Model</a><a class="headerlink" href="#permission-set-data-model" title="Permalink to this headline">¶</a></h3>
+<p>Permission Sets are identified by their <cite>code</cite>. They cannot be created or modified.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="55%" />
+<col width="45%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Datatype</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>code</td>
+<td>ref</td>
+</tr>
+<tr class="row-odd"><td>name</td>
+<td>str</td>
+</tr>
+<tr class="row-even"><td>description</td>
+<td>str</td>
+</tr>
+<tr class="row-odd"><td>dependencies</td>
+<td>array(str)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="permission-tiers">
+<h3><a class="toc-backref" href="#id9">Permission Tiers</a><a class="headerlink" href="#permission-tiers" title="Permalink to this headline">¶</a></h3>
+<p>Permission Tiers are groupings of Permission Sets that are available to each User depending on their
+account type (<cite>partner</cite>, <cite>customer</cite>, <cite>gooee</cite>, see <a class="reference internal" href="users.html#objects-users"><span class="std std-ref">User</span></a>). Users created
+in their company can be assigned all or some permission sets in their tier. The tiers are ordered,
+with each tier providing all Permission Sets available in lower tiers.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="34%" />
+<col width="30%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Customer Tier</th>
+<th class="head">Partner Tier</th>
+<th class="head">Gooee Tier</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>edit_customers</td>
+<td>Includes Customer Tier</td>
+<td>Includes Partner Tier</td>
+</tr>
+<tr class="row-odd"><td>manage_customer_users</td>
+<td>edit_partners</td>
+<td>manage_partners</td>
+</tr>
+<tr class="row-even"><td>manage_buildings</td>
+<td>manage_partner_users</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>control_fixtures</td>
+<td>manage_customers</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>manage_gateways</td>
+<td>access_partner_analytics</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>access_customer_analytics</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>view_buildings</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>view_customers</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="string-filters-of-objects-in-permission-sets">
+<h3><a class="toc-backref" href="#id10">String Filters of Objects in Permission Sets</a><a class="headerlink" href="#string-filters-of-objects-in-permission-sets" title="Permalink to this headline">¶</a></h3>
+<p>The array of objects inside permission sets support only the following filters:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="73%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Filter</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>__contains</td>
+<td>Substring match</td>
+</tr>
+<tr class="row-odd"><td>__contained_by</td>
+<td>Substring match</td>
+</tr>
+<tr class="row-even"><td>__gt</td>
+<td>Array greater than</td>
+</tr>
+<tr class="row-odd"><td>__gte</td>
+<td>Array greater than or equal to</td>
+</tr>
+<tr class="row-even"><td>__lt</td>
+<td>Array less than</td>
+</tr>
+<tr class="row-odd"><td>__lte</td>
+<td>Array less than to</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example requests</strong>:</p>
+<p>Get all User Groups that have <cite>view_buildings</cite> permission of the building with ID <cite>f9b00304-cb6a-4566-9d49-d4f2c336a62b</cite>:</p>
+<dl class="get">
+<dt id="get--user_groups?permission_sets__view_buildings__contains=a2b00304-cb6a-4566-9d49-d4f2c336a72a">
+<code class="descname">GET </code><code class="descname">/user_groups?permission_sets__view_buildings__contains=a2b00304-cb6a-4566-9d49-d4f2c336a72a</code><a class="headerlink" href="#get--user_groups?permission_sets__view_buildings__contains=a2b00304-cb6a-4566-9d49-d4f2c336a72a" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Get all User Groups that have <cite>view_buildings</cite> permission key defaulting to all objects <code class="docutils literal"><span class="pre">[]</span></code>:</p>
+<dl class="get">
+<dt id="get--user_groups?permission_sets__view_buildings__contained_by=[]">
+<code class="descname">GET </code><code class="descname">/user_groups?permission_sets__view_buildings__contained_by=[]</code><a class="headerlink" href="#get--user_groups?permission_sets__view_buildings__contained_by=[]" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+<div class="section" id="api-endpoints">
+<h2><a class="toc-backref" href="#id11">API Endpoints</a><a class="headerlink" href="#api-endpoints" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="list-permission-sets">
+<h3><a class="toc-backref" href="#id12">List Permission Sets</a><a class="headerlink" href="#list-permission-sets" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--user_groups-permission_sets-">
+<code class="descname">GET </code><code class="descname">/user_groups/permission_sets/</code><a class="headerlink" href="#get--user_groups-permission_sets-" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">[</span>
+  <span class="p">{</span>
+      <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;manage_partners&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Manage Partners&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Create, edit and delete Partners&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;dependencies&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">&quot;edit_partners&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;manage_partner_users&quot;</span>
+      <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+      <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;edit_partners&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Edit Partners&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Edit Partners that already exist&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;dependencies&quot;</span><span class="p">:</span> <span class="p">[]</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+      <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;manage_partner_users&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Manage Partner Users&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Create, edit, and delete Users in a Partner company&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;dependencies&quot;</span><span class="p">:</span> <span class="p">[]</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+      <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;manage_customers&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Manage Customers&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Create, edit, and delete Customers&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;dependencies&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">&quot;edit_customers&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;manage_customer_users&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;manage_buildings&quot;</span>
+      <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+      <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;edit_customers&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Edit Customers&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Edit Customers that already exist&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;dependencies&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">&quot;view_customers&quot;</span>
+      <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+      <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;manage_customer_users&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Manage Customer Users&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Create, edit, and delete Users in a Customer company&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;dependencies&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">&quot;view_customers&quot;</span>
+      <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+      <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;manage_buildings&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Manage Buildings&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Create, edit and delete Buildings and their resources&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;dependencies&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">&quot;manage_gateways&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;control_fixtures&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;view_buildings&quot;</span>
+      <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+      <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;control_fixtures&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Control Fixtures&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Control lighting fixtures&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;dependencies&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">&quot;view_buildings&quot;</span>
+      <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+      <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;manage_gateways&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Manage Gateways&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Create Actions for Gateways&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;dependencies&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">&quot;control_fixtures&quot;</span>
+      <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+      <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;access_partner_analytics&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Access Partner Analytics&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;View partner analytics&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;dependencies&quot;</span><span class="p">:</span> <span class="p">[]</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+      <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;access_customer_analytics&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Access Customer Analytics&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;View customer analytics&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;dependencies&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">&quot;view_customers&quot;</span>
+      <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+      <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;view_buildings&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;View Buildings&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;View access to buildings and all the entities in the buildings&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;dependencies&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">&quot;view_customers&quot;</span>
+      <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+      <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;view_customers&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;View Customers&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;View access to customers&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;dependencies&quot;</span><span class="p">:</span> <span class="p">[]</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-a-user-group">
+<h3><a class="toc-backref" href="#id13">Create a User Group</a><a class="headerlink" href="#create-a-user-group" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--user_groups-">
+<code class="descname">POST </code><code class="descname">/user_groups/</code><a class="headerlink" href="#post--user_groups-" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2">201 Created</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p><strong>Example request body</strong>:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Admin Partner&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;permission_sets&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;edit_partners&quot;</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="nt">&quot;view_buildings&quot;</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="nt">&quot;view_customers&quot;</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="nt">&quot;manage_buildings&quot;</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="nt">&quot;manage_customers&quot;</span><span class="p">:</span> <span class="p">[]</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;users&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;f9b00304-cb6a-4566-9d49-d4f2c336a62b&quot;</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;partner&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;partner&quot;</span><span class="p">:</span> <span class="s2">&quot;a2f70a98-1110-b00f-0000-444400002340&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="list-user-group">
+<h3><a class="toc-backref" href="#id14">List User Group</a><a class="headerlink" href="#list-user-group" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--user_groups-">
+<code class="descname">GET </code><code class="descname">/user_groups/</code><a class="headerlink" href="#get--user_groups-" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="update-a-user-group">
+<h3><a class="toc-backref" href="#id15">Update a User Group</a><a class="headerlink" href="#update-a-user-group" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--user_groups-(id)-">
+<code class="descname">PUT </code><code class="descname">/user_groups/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><code class="descname">/</code><a class="headerlink" href="#put--user_groups-(id)-" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="partially-update-a-user-group">
+<h3><a class="toc-backref" href="#id16">Partially Update a User Group</a><a class="headerlink" href="#partially-update-a-user-group" title="Permalink to this headline">¶</a></h3>
+<dl class="patch">
+<dt id="patch--user_groups-(id)-">
+<code class="descname">PATCH </code><code class="descname">/user_groups/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><code class="descname">/</code><a class="headerlink" href="#patch--user_groups-(id)-" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="retrieve-a-user-group">
+<h3><a class="toc-backref" href="#id17">Retrieve a User Group</a><a class="headerlink" href="#retrieve-a-user-group" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--user_groups-(id)-">
+<code class="descname">GET </code><code class="descname">/user_groups/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><code class="descname">/</code><a class="headerlink" href="#get--user_groups-(id)-" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="delete-a-user-group">
+<h3><a class="toc-backref" href="#id18">Delete a User Group</a><a class="headerlink" href="#delete-a-user-group" title="Permalink to this headline">¶</a></h3>
+<dl class="delete">
+<dt id="delete--user_groups-(id)-">
+<code class="descname">DELETE </code><code class="descname">/user_groups/</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><code class="descname">/</code><a class="headerlink" href="#delete--user_groups-(id)-" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.5">204 No Content</a> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="user_preferences.html" class="btn btn-neutral float-right" title="User Preferences" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="user_features.html" class="btn btn-neutral" title="User Features" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Gooee, LLC.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/tabs.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.2.7/tab.min.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

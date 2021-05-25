@@ -1,0 +1,35 @@
+.. _objects:
+
+Objects
+=======
+
+.. toctree::
+
+   objects/action_types
+   objects/actions
+   objects/analytics_export
+   objects/analytics_query
+   objects/areas
+   objects/buildings
+   objects/connected_products
+   objects/currency
+   objects/customers
+   objects/dashboards
+   objects/devices
+   objects/fault_alarms
+   objects/local_rules
+   objects/locations
+   objects/partners
+   objects/product_files
+   objects/product_types
+   objects/products
+   objects/rules_v2
+   objects/rule_groups
+   objects/scenes
+   objects/schedules
+   objects/spaces
+   objects/timezones
+   objects/user_features
+   objects/user_groups
+   objects/user_preferences
+   objects/users

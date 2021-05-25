@@ -1,0 +1,47 @@
+.. _general_device_counts:
+
+=============
+Device Counts
+=============
+
+:ref:`Device <objects_devices>` counts are available on the objects mentioned below. To view the
+counts, you must add `device_counts` to the `_annotate` URL parameter during a `GET` request. This
+will add a `device_counts` field to the response that contains the `total` and `online` counts of all
+child :ref:`Devices <objects_devices>` found under that entity. If there are no counts listed
+for a :ref:`Device <objects_devices>` type, this means there are 0 of them.
+
+Objects supporting device counts
+________________________________
+
+* :ref:`Customer <objects_customers>`
+* :ref:`Building <objects_buildings>`
+* :ref:`Space <objects_spaces>`
+* :ref:`Device <objects_devices>`
+
+Counts Annotation API
+---------------------
+
+    .. http:GET:: /customers?_annotate=device_counts
+
+    **Example response (counts object)**:
+
+    .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json
+
+      [
+        {
+          "name": "My Customer",
+          "counts": {
+            "gateway": {
+               "total": 2,
+               "online": 1
+            },
+            "wim": {
+               "total": 10,
+               "online": 7
+            }
+          }
+        }
+      ]

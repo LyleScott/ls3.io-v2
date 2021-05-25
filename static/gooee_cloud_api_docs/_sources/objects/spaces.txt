@@ -1,0 +1,201 @@
+.. _objects_spaces:
+
+======
+Spaces
+======
+
+.. contents:: Quick Links
+
+Description
+===========
+
+Spaces allow for arbitrary nesting of groups of objects.  ie,
+:ref:`Devices <objects_devices>` and :ref:`Connected Products <objects_connected_products>`.
+
+Spaces have specific types that can be used to logically group things: `floor`, `room`,
+`zone`, `virtual`.  These allow for tangible correlations of API objects to real-world layouts and
+configurations. Since Spaces can be nested, sending :ref:`Actions <objects_actions>` to a
+Space often results in propagating that same :ref:`Action <objects_actions>` to all Spaces nested
+under it.
+
+Data Model
+==========
+
+====================  ===============================================  ==============================================================
+Key                   Datatype                                         Notes
+====================  ===============================================  ==============================================================
+id                    ref                                              read-only
+created               datetime                                         read-only
+modified              datetime                                         read-only
+name                  string                                           required, max_length=100
+description           string
+type                  enum                                             required, options=[floor, room, zone, virtual]
+building              :ref:`ref <objects_buildings>`                   :ref:`Complex Constraints <space_complex_constraints>`
+connected_products    array(:ref:`ref <objects_connected_products>`)
+parent_space          :ref:`ref <objects_spaces>`                      :ref:`Complex Constraints <space_complex_constraints>`
+child_spaces          array(:ref:`ref <objects_spaces>`)               :ref:`Complex Constraints <space_complex_constraints>`
+devices               array(:ref:`ref <objects_devices>`)              directly related only, see :ref:`List All Space Devices <objects_all_space_devices>`
+euid                  string                                           max_length=128
+last_activity         datetime                                         read-only
+meta                  array(:ref:`meta <general_meta>`)
+bg_image              base64_image                                     :ref:`Complex Constraints <space_complex_constraints>`
+scenes                array(:ref:`ref <objects_scenes>`)
+data_service_id       string                                           read-only
+customer_scopes       array(:ref:`ref <objects_customers>`)            see :ref:`general_scope`
+partner_scopes        array(:ref:`ref <objects_partners>`)             see :ref:`general_scope`
+tags                  array(str)                                       max_length=50 per tag
+====================  ===============================================  ==============================================================
+
+.. _objects_spaces_annotations:
+
+Device Counts
+=============
+
+Device counts (online/total) are supported on an opt-in basis via the "_annotate" filter.
+See: :ref:`Device Counts <general_device_counts>` for reference.
+
+.. _space_complex_constraints:
+
+Complex Constraints
+-------------------
+
+You must provide either *parent_space* or *building*.
+
+You may not change *building* after it has been set.
+
+A virtual space must be associated with a *building* or a non-virtual *parent_space*.
+
+Spaces of type virtual cannot have child spaces of any type.
+
+You can only relate a *parent_space* and *child_spaces* of the same *building*.
+
+Only Spaces of type ``"floor"`` can have a ``"bg_image"``, as this field is used for floor plans.
+
+You cannot change the type of a virtual space to a non-virtual type or vice versa.
+
+Spaces of type non-virtual can only have parent spaces of type non-virtual.
+
+Space nesting is constrained such that:
+
+* A space can only have up to 3 levels of nesting. This means space nesting is allowed up to:
+  Building -> Space A -> Space B -> Space C.
+
+* Only Spaces of type ``"floor"`` can be directly under a *building*.
+
+* *child_spaces* can only be of type ``"room"`` or ``"zone"``.
+
+* A space of type ``"room"`` must have a *parent_space* of type ``"floor"``.
+
+* *parent_space* cannot be of type ``"zone"``.
+
+API Endpoints
+=============
+
+Create a Space
+--------------
+
+.. http:POST:: /spaces/
+
+   :statuscode 201:
+
+List Spaces
+-----------
+
+.. http:GET:: /spaces/
+
+   :statuscode 200:
+
+Update a Space
+--------------
+
+.. http:PUT:: /spaces/(id)/
+
+   :statuscode 200:
+
+Partially Update a Space
+------------------------
+
+.. http:PATCH:: /spaces/(id)/
+
+   :statuscode 200:
+
+Retrieve a Space
+----------------
+
+.. http:GET:: /spaces/(id)/
+
+   :statuscode 200:
+
+Delete a Space
+--------------
+
+.. http:DELETE:: /spaces/(id)/
+
+   :statuscode 204:
+
+.. _objects_all_space_devices:
+
+List All Space Devices
+----------------------
+
+Use this end-point to list all :ref:`Devices <objects_devices>` associated with the Space
+**and all of its child Spaces** combined in a flat list.  Filtering on this endpoint is done
+against the Devices.
+
+.. http:GET:: /spaces/(id)/devices/
+
+   :statuscode 200:
+
+.. _objects_all_space_connected_products:
+
+List All Space Connected Products
+---------------------------------
+
+Use this end-point to list all :ref:`Connected Products <objects_connected_products>` associated
+with the Space **and all of its child Spaces** combined in a flat list.  Filtering on this endpoint
+is done against the Connected Products.
+
+.. http:GET:: /spaces/(id)/connected_products/
+
+   :statuscode 200:
+
+.. _space_states:
+
+Retrieve Space States
+---------------------
+
+Use this end-point to obtain a snapshot of the current Device states in a Space. This data
+is provided to facilitate the creation of :ref:`Scenes <objects_scenes>` from existing
+configurations.  Devices that don't support dimming or control are omitted.
+
+.. http:get:: /spaces/(id)/device_states
+
+   :statuscode 200:
+
+   **Example Request**:
+
+   .. sourcecode:: http
+
+      GET /spaces/(id)/device_states HTTP/1.1
+      Host: api.gooee.io
+      Content-Type: application/json
+
+   **Example Response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json
+
+      {
+        "space": "$space_id",
+        "states": {
+          "$device_id": {
+            "dim": 0,
+            "off": true
+          },
+          "$device_id": {
+            "on": true
+          }
+        }
+      }

@@ -1,0 +1,80 @@
+.. _objects_connected_products:
+
+==================
+Connected Products
+==================
+
+.. contents:: Quick Links
+
+Description
+===========
+
+A ConnectedProduct is an instance of a :ref:`Product <objects_products>` that is connected to a
+:ref:`Device <objects_devices>`. A ConnectedProduct is a dumb device, since it is not directly
+addressable and exists to supply meta data about the items that are connected to a
+:ref:`Device <objects_devices>`.
+
+Data Model
+==========
+
+=======================  ==========================================  ==============================
+Key                      Datatype                                    Notes
+=======================  ==========================================  ==============================
+id                       ref                                         read-only
+created                  datetime                                    read-only
+modified                 datetime                                    read-only
+sku                      string                                      read-only, pulled from Product
+name                     string                                      max_length=100
+product                  :ref:`ref <objects_products>`               required
+device                   :ref:`ref <objects_devices>`
+spaces                   array(:ref:`ref <objects_spaces>`)
+meta                     array(:ref:`meta <general_meta>`)
+customer_scopes          array(:ref:`ref <objects_customers>`)       see :ref:`general_scope`
+partner_scopes           array(:ref:`ref <objects_partners>`)        see :ref:`general_scope`
+tags                     array(str)                                  max_length=50 per tag
+=======================  ==========================================  ==============================
+
+API Endpoints
+=============
+
+Create a Connected Product
+--------------------------
+
+.. http:POST:: /connected_products/
+
+   :statuscode 201:
+
+List Connected Products
+-----------------------
+
+.. http:GET:: /connected_products/
+
+   :statuscode 200:
+
+Update a Connected Product
+--------------------------
+
+.. http:PUT:: /connected_products/(id)/
+
+   :statuscode 200:
+
+Partially Update a Connected Product
+------------------------------------
+
+.. http:PATCH:: /connected_products/(id)/
+
+   :statuscode 200:
+
+Retrieve a Connected Product
+----------------------------
+
+.. http:GET:: /connected_products/(id)/
+
+   :statuscode 200:
+
+Delete a Connected Product
+--------------------------
+
+.. http:DELETE:: /connected_products/(id)/
+
+   :statuscode 204:
