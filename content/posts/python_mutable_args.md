@@ -1,18 +1,21 @@
----
-title: "Do Not Use Mutable types a Python Default Arguments"
-date: 2019-05-09T13:13:56-04:00
-tags:
-  - "Python"
-  - "programming"
-meta_kw:
-  - "Python mutable"
-  - "default arguments"
-  - "antipattern"
-  - "tutorial"
-  - "warning"
-  - "mutability"
-  - "immutable"
----
++++
+date = "2019-05-09T13:13:56-04:00"
+title = "Do Not Use Mutable types a Python Default Arguments"
+description = "Why you should (usually) avoid using mutable types as default arguments."
+tags = [
+  "Python",
+  "programming"
+]
+meta_kw = [
+  "Python mutable",
+  "default arguments",
+  "antipattern",
+  "tutorial",
+  "warning",
+  "mutability",
+  "immutable"
+]
++++
 
 A popular mistake writing Python is using mutable types as default variables in places
 that have unintentional consequences. The following outlines a few of those scenarios.
@@ -33,7 +36,7 @@ A very basic example:
 
 ```python
 # This modifies `people`, a dict, a mutable data type without returning anything.
-def pour_beer(people: dict):  # <--- !!! UH OH
+def pour_beer(people={}):  # <--- !!! UH OH
     people["alice"] = 1
     
 # Start with a dict with just "bob" in it.
